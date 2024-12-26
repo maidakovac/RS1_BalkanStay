@@ -49,39 +49,35 @@ public class DataSeedGenerateEndpoint(ApplicationDbContext db)
         {
             new MyAppUser
             {
-                Username = "admin1",
-                Password = "admin123",
-                FirstName = "Admin",
-                LastName = "One",
-                IsAdmin = true, 
-                IsManager = false 
+                Email = "admin1@example.com",
+                Phone = "123-456-7890",
+                Image = "admin1.jpg",
+                CityID = cities[0].ID,
+                GenderID = null
             },
             new MyAppUser
             {
-                Username = "manager1",
-                Password = "manager123",
-                FirstName = "Manager",
-                LastName = "One",
-                IsAdmin = false,
-                IsManager = true 
+                Email = "manager1@example.com",
+                Phone = "123-456-7891",
+                Image = "manager1.jpg",
+                CityID = cities[1].ID,
+                GenderID = null
             },
             new MyAppUser
             {
-                Username = "user1",
-                Password = "user123",
-                FirstName = "User",
-                LastName = "One",
-                IsAdmin = false, 
-                IsManager = false 
+                Email = "user1@example.com",
+                Phone = "123-456-7892",
+                Image = "user1.jpg",
+                CityID = cities[2].ID,
+                GenderID = null
             },
             new MyAppUser
             {
-                Username = "user2",
-                Password = "user456",
-                FirstName = "User",
-                LastName = "Two",
-                IsAdmin = false,
-                IsManager = false
+                Email = "user2@example.com",
+                Phone = "123-456-7893",
+                Image = "user2.jpg",
+                CityID = cities[3].ID,
+                GenderID = null
             }
         };
 

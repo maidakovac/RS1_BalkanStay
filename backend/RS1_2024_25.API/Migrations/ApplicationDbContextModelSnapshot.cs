@@ -24,35 +24,36 @@ namespace RS1_2024_25.API.Migrations
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.MyAppUser", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"));
 
-                    b.Property<string>("FirstName")
+                    b.Property<int?>("CityID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit");
+                    b.Property<int?>("GenderID")
+                        .HasColumnType("int");
 
-                    b.Property<bool>("IsManager")
-                        .HasColumnType("bit");
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("UserID");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasIndex("CityID");
 
-                    b.HasKey("ID");
+                    b.HasIndex("GenderID");
 
                     b.ToTable("MyAppUsers");
                 });
@@ -123,6 +124,40 @@ namespace RS1_2024_25.API.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Models.Gender", b =>
+                {
+                    b.Property<int>("GenderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenderID"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GenderID");
+
+                    b.ToTable("Gender");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.MyAppUser", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Models.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityID")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("RS1_2024_25.API.Data.Models.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderID")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("City");
+
+                    b.Navigation("Gender");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.MyAuthenticationToken", b =>

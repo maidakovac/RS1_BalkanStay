@@ -9,10 +9,20 @@ using RS1_2024_25.API.Helper;
 
 namespace RS1_2024_25.API.Services
 {
-    public class MyAuthService(ApplicationDbContext applicationDbContext, IHttpContextAccessor httpContextAccessor, MyTokenGenerator myTokenGenerator)
+    public class MyAuthService
     {
+        private readonly ApplicationDbContext applicationDbContext;
+        private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly MyTokenGenerator myTokenGenerator;
 
-        // Generisanje novog tokena za korisnika
+        public MyAuthService(ApplicationDbContext dbContext, IHttpContextAccessor contextAccessor, MyTokenGenerator tokenGenerator)
+        {
+            applicationDbContext = dbContext;
+            httpContextAccessor = contextAccessor;
+            myTokenGenerator = tokenGenerator;
+        }
+
+        // Generate a new token for the user
         public async Task<MyAuthenticationToken> GenerateAuthToken(MyAppUser user, CancellationToken cancellationToken = default)
         {
             string randomToken = myTokenGenerator.Generate(10);
@@ -31,7 +41,7 @@ namespace RS1_2024_25.API.Services
             return authToken;
         }
 
-        // Uklanjanje tokena iz baze podataka
+        // Revoke an authentication token
         public async Task<bool> RevokeAuthToken(string tokenValue, CancellationToken cancellationToken = default)
         {
             var authToken = await applicationDbContext.MyAuthenticationTokens
@@ -46,7 +56,7 @@ namespace RS1_2024_25.API.Services
             return true;
         }
 
-        // Dohvatanje informacija o autentifikaciji korisnika
+        // Get authentication info
         public MyAuthInfo GetAuthInfo()
         {
             string? authToken = httpContextAccessor.HttpContext?.Request.Headers["my-auth-token"];
@@ -68,21 +78,22 @@ namespace RS1_2024_25.API.Services
             {
                 return new MyAuthInfo
                 {
-                    IsAdmin = false,
-                    IsManager = false,
-                    IsLoggedIn = false,
+                    IsLoggedIn = false
                 };
             }
 
+            var user = myAuthToken.MyAppUser;
+
             return new MyAuthInfo
             {
-                UserId = myAuthToken.MyAppUserId,
-                Username = myAuthToken.MyAppUser!.Username,
-                FirstName = myAuthToken.MyAppUser.FirstName,
-                LastName = myAuthToken.MyAppUser.LastName,
-                IsAdmin = myAuthToken.MyAppUser.IsAdmin,
-                IsManager = myAuthToken.MyAppUser.IsManager,
-                IsLoggedIn = true
+                UserId = user.UserID,
+                Username = user.Email, // Use Email as Username
+                FirstName = user.Email.Split('@')[0], // Derive FirstName from Email if necessary
+                LastName = "N/A", // Placeholder as LastName no longer exists
+                IsAdmin = false, // Placeholder for admin logic
+                IsManager = false, // Placeholder for manager logic
+                IsLoggedIn = true,
+                SlikaPath = user.Image // Use the Image property for SlikaPath
             };
         }
     }
@@ -92,11 +103,11 @@ namespace RS1_2024_25.API.Services
     {
         public int UserId { get; set; }
         public string Username { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public bool IsAdmin { get; set; }
-        public bool IsManager { get; set; }
+        public string FirstName { get; set; } // Derived from Email
+        public string LastName { get; set; } // Placeholder
+        public bool IsAdmin { get; set; } // Defaulted to false
+        public bool IsManager { get; set; } // Defaulted to false
         public bool IsLoggedIn { get; set; }
-        public string SlikaPath {  get; set; }
+        public string SlikaPath { get; set; } // Maps to Image
     }
 }
