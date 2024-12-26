@@ -1,24 +1,37 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace RS1_2024_25.API.Data.Models.Auth;
 
 public class MyAppUser
 {
-    [Key]
-    public int ID { get; set; }
-    public string Username { get; set; }
-    [JsonIgnore]
-    public string Password { get; set; }
+        [Key]
+        public int UserID { get; set; } // Primary key (AutoNumber)
 
-    // Additional properties
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+        [Required]
+        [EmailAddress] // Ensures a valid email format
+        public string Email { get; set; }
 
+        [Required]
+        [Phone] // Ensures a valid phone number format
+        public string Phone { get; set; }
 
-    //----------------
-    public bool IsAdmin { get; set; }
-    public bool IsManager { get; set; }
+        [MaxLength(255)] // Limits the maximum length of the image URL
+        public string Image { get; set; }
+
+        // Foreign Key to City
+        [ForeignKey("City")]
+        public int? CityID { get; set; }
+
+        // Foreign Key to Gender
+        [ForeignKey("Gender")]
+        public int? GenderID { get; set; }
+
+        // Navigation Properties
+        public virtual City City { get; set; }
+        public virtual Gender Gender { get; set; }
+    }
 
     /*
      
@@ -35,4 +48,3 @@ public class MyAppUser
     Dakle, za stabilne sisteme s manjim brojem fiksnih rola, boolean polja su sasvim razumno rješenje.
      */
 
-}
