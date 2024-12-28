@@ -52,7 +52,7 @@ public class DataSeedGenerateEndpoint(ApplicationDbContext db)
                 Email = "admin1@example.com",
                 Phone = "123-456-7890",
                 Image = "admin1.jpg",
-                CityID = cities[0].ID,
+                City = cities[0],
                 GenderID = null
             },
             new MyAppUser
@@ -60,7 +60,7 @@ public class DataSeedGenerateEndpoint(ApplicationDbContext db)
                 Email = "manager1@example.com",
                 Phone = "123-456-7891",
                 Image = "manager1.jpg",
-                CityID = cities[1].ID,
+                City = cities[0],
                 GenderID = null
             },
             new MyAppUser
@@ -68,7 +68,7 @@ public class DataSeedGenerateEndpoint(ApplicationDbContext db)
                 Email = "user1@example.com",
                 Phone = "123-456-7892",
                 Image = "user1.jpg",
-                CityID = cities[2].ID,
+                City = cities[1],
                 GenderID = null
             },
             new MyAppUser
@@ -76,7 +76,7 @@ public class DataSeedGenerateEndpoint(ApplicationDbContext db)
                 Email = "user2@example.com",
                 Phone = "123-456-7893",
                 Image = "user2.jpg",
-                CityID = cities[3].ID,
+                City = cities[2],
                 GenderID = null
             }
         };
