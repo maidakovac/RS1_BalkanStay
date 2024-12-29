@@ -26,7 +26,7 @@ namespace RS1_2024_25.API.Data
         public DbSet<Rule> Rules { get; set; }
         public DbSet<ApartmentRule> ApartmentRules { get; set; }
         public DbSet<Amenity> Amenities { get; set; }
-
+        public DbSet<ApartmentAmenity> ApartmentAmenities { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
