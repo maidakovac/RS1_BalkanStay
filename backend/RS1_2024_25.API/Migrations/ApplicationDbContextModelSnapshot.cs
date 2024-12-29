@@ -22,6 +22,22 @@ namespace RS1_2024_25.API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Amenity", b =>
+                {
+                    b.Property<int>("AmenityID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AmenityID"));
+
+                    b.Property<int>("AmenityText")
+                        .HasColumnType("int");
+
+                    b.HasKey("AmenityID");
+
+                    b.ToTable("Amenities");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
                 {
                     b.Property<int>("ApartmentId")
@@ -94,6 +110,29 @@ namespace RS1_2024_25.API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentAmenity", b =>
+                {
+                    b.Property<int>("ApartmentAmenityID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ApartmentAmenityID"));
+
+                    b.Property<int>("AmenityID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ApartmentAmenityID");
+
+                    b.HasIndex("AmenityID");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.ToTable("ApartmentAmenities");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentImage", b =>
                 {
                     b.Property<int>("ApartmentImageID")
@@ -138,6 +177,29 @@ namespace RS1_2024_25.API.Migrations
                     b.HasIndex("RuleID");
 
                     b.ToTable("ApartmentRules");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentToiletry", b =>
+                {
+                    b.Property<int>("ApartmentToiletryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ApartmentToiletryID"));
+
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ToiletryID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ApartmentToiletryID");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("ToiletryID");
+
+                    b.ToTable("ApartmentToiletries");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Favorite", b =>
@@ -727,6 +789,23 @@ namespace RS1_2024_25.API.Migrations
                     b.ToTable("Rules");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Toiletry", b =>
+                {
+                    b.Property<int>("ToiletryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ToiletryID"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ToiletryID");
+
+                    b.ToTable("Toiletries");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Models.City", "City")
@@ -736,6 +815,25 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired();
 
                     b.Navigation("City");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentAmenity", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Amenity", "Amenity")
+                        .WithMany()
+                        .HasForeignKey("AmenityID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Amenity");
+
+                    b.Navigation("Apartment");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentImage", b =>
@@ -774,6 +872,25 @@ namespace RS1_2024_25.API.Migrations
                     b.Navigation("Apartment");
 
                     b.Navigation("Rule");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentToiletry", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("RS1_2024_25.API.Data.Toiletry", "Toiletry")
+                        .WithMany()
+                        .HasForeignKey("ToiletryID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Apartment");
+
+                    b.Navigation("Toiletry");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Favorite", b =>

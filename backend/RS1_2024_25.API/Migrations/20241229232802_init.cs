@@ -26,6 +26,19 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Amenities",
+                columns: table => new
+                {
+                    AmenityID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AmenityText = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Amenities", x => x.AmenityID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Countries",
                 columns: table => new
                 {
@@ -91,6 +104,19 @@ namespace RS1_2024_25.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Rules", x => x.RuleID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Toiletries",
+                columns: table => new
+                {
+                    ToiletryID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Toiletries", x => x.ToiletryID);
                 });
 
             migrationBuilder.CreateTable(
@@ -162,6 +188,30 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ApartmentAmenities",
+                columns: table => new
+                {
+                    ApartmentAmenityID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ApartmentId = table.Column<int>(type: "int", nullable: false),
+                    AmenityID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApartmentAmenities", x => x.ApartmentAmenityID);
+                    table.ForeignKey(
+                        name: "FK_ApartmentAmenities_Amenities_AmenityID",
+                        column: x => x.AmenityID,
+                        principalTable: "Amenities",
+                        principalColumn: "AmenityID");
+                    table.ForeignKey(
+                        name: "FK_ApartmentAmenities_Apartments_ApartmentId",
+                        column: x => x.ApartmentId,
+                        principalTable: "Apartments",
+                        principalColumn: "ApartmentId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ApartmentImages",
                 columns: table => new
                 {
@@ -207,6 +257,30 @@ namespace RS1_2024_25.API.Migrations
                         column: x => x.RuleID,
                         principalTable: "Rules",
                         principalColumn: "RuleID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ApartmentToiletries",
+                columns: table => new
+                {
+                    ApartmentToiletryID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ApartmentId = table.Column<int>(type: "int", nullable: false),
+                    ToiletryID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApartmentToiletries", x => x.ApartmentToiletryID);
+                    table.ForeignKey(
+                        name: "FK_ApartmentToiletries_Apartments_ApartmentId",
+                        column: x => x.ApartmentId,
+                        principalTable: "Apartments",
+                        principalColumn: "ApartmentId");
+                    table.ForeignKey(
+                        name: "FK_ApartmentToiletries_Toiletries_ToiletryID",
+                        column: x => x.ToiletryID,
+                        principalTable: "Toiletries",
+                        principalColumn: "ToiletryID");
                 });
 
             migrationBuilder.CreateTable(
@@ -490,6 +564,16 @@ namespace RS1_2024_25.API.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_ApartmentAmenities_AmenityID",
+                table: "ApartmentAmenities",
+                column: "AmenityID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApartmentAmenities_ApartmentId",
+                table: "ApartmentAmenities",
+                column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ApartmentImages_ApartmentId",
                 table: "ApartmentImages",
                 column: "ApartmentId");
@@ -514,6 +598,16 @@ namespace RS1_2024_25.API.Migrations
                 table: "Apartments",
                 column: "CityId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApartmentToiletries_ApartmentId",
+                table: "ApartmentToiletries",
+                column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApartmentToiletries_ToiletryID",
+                table: "ApartmentToiletries",
+                column: "ToiletryID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cities_CountryId",
@@ -599,10 +693,16 @@ namespace RS1_2024_25.API.Migrations
                 name: "Administrators");
 
             migrationBuilder.DropTable(
+                name: "ApartmentAmenities");
+
+            migrationBuilder.DropTable(
                 name: "ApartmentImages");
 
             migrationBuilder.DropTable(
                 name: "ApartmentRules");
+
+            migrationBuilder.DropTable(
+                name: "ApartmentToiletries");
 
             migrationBuilder.DropTable(
                 name: "Favorites");
@@ -626,10 +726,16 @@ namespace RS1_2024_25.API.Migrations
                 name: "TwoFactorAuths");
 
             migrationBuilder.DropTable(
+                name: "Amenities");
+
+            migrationBuilder.DropTable(
                 name: "Images");
 
             migrationBuilder.DropTable(
                 name: "Rules");
+
+            migrationBuilder.DropTable(
+                name: "Toiletries");
 
             migrationBuilder.DropTable(
                 name: "Owners");
