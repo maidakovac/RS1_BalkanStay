@@ -18,6 +18,7 @@ namespace RS1_2024_25.API.Data
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Favorite> Favorites{ get; set; }
+        public DbSet<Owner> Owners { get; set; }
 
 
 
