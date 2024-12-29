@@ -20,6 +20,7 @@ namespace RS1_2024_25.API.Data
         public DbSet<Favorite> Favorites{ get; set; }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<OwnerReview> OwnerReviews { get; set; }
+        public DbSet<OwnerApartment> OwnerApartments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
