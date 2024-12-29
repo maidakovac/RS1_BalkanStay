@@ -52,6 +52,22 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Owners",
+                columns: table => new
+                {
+                    OwnerID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Owners", x => x.OwnerID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Cities",
                 columns: table => new
                 {
@@ -185,6 +201,32 @@ namespace RS1_2024_25.API.Migrations
                         column: x => x.MyAppUserId,
                         principalTable: "MyAppUsers",
                         principalColumn: "UserID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OwnerReviews",
+                columns: table => new
+                {
+                    OwnerReviewID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OwnerReviews", x => x.OwnerReviewID);
+                    table.ForeignKey(
+                        name: "FK_OwnerReviews_MyAppUsers_MyAppUserUserID",
+                        column: x => x.MyAppUserUserID,
+                        principalTable: "MyAppUsers",
+                        principalColumn: "UserID");
+                    table.ForeignKey(
+                        name: "FK_OwnerReviews_Owners_OwnerID",
+                        column: x => x.OwnerID,
+                        principalTable: "Owners",
+                        principalColumn: "OwnerID");
                 });
 
             migrationBuilder.CreateTable(
@@ -386,6 +428,16 @@ namespace RS1_2024_25.API.Migrations
                 column: "MyAppUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OwnerReviews_MyAppUserUserID",
+                table: "OwnerReviews",
+                column: "MyAppUserUserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OwnerReviews_OwnerID",
+                table: "OwnerReviews",
+                column: "OwnerID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reservations_ApartmentId",
                 table: "Reservations",
                 column: "ApartmentId");
@@ -425,6 +477,9 @@ namespace RS1_2024_25.API.Migrations
                 name: "MyAuthenticationTokens");
 
             migrationBuilder.DropTable(
+                name: "OwnerReviews");
+
+            migrationBuilder.DropTable(
                 name: "Reservations");
 
             migrationBuilder.DropTable(
@@ -432,6 +487,9 @@ namespace RS1_2024_25.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "TwoFactorAuths");
+
+            migrationBuilder.DropTable(
+                name: "Owners");
 
             migrationBuilder.DropTable(
                 name: "Apartments");

@@ -12,7 +12,7 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241229223032_init")]
+    [Migration("20241229224319_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -499,6 +499,65 @@ namespace RS1_2024_25.API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Owner", b =>
+                {
+                    b.Property<int>("OwnerID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OwnerID"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("OwnerID");
+
+                    b.ToTable("Owners");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.OwnerReview", b =>
+                {
+                    b.Property<int>("OwnerReviewID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OwnerReviewID"));
+
+                    b.Property<int>("MyAppUserUserID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OwnerID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Rating")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("OwnerReviewID");
+
+                    b.HasIndex("MyAppUserUserID");
+
+                    b.HasIndex("OwnerID");
+
+                    b.ToTable("OwnerReviews");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Reservation", b =>
                 {
                     b.Property<int>("ReservationID")
@@ -657,6 +716,25 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.OwnerReview", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Models.Auth.MyAppUser", "MyAppUser")
+                        .WithMany()
+                        .HasForeignKey("MyAppUserUserID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("RS1_2024_25.API.Data.Owner", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("MyAppUser");
+
+                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Reservation", b =>
