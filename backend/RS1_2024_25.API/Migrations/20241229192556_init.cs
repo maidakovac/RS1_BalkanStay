@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace RS1_2024_25.API.Migrations
 {
     /// <inheritdoc />
@@ -157,6 +159,32 @@ namespace RS1_2024_25.API.Migrations
                         column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "AccountID");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "AccountID", "FirstName", "LastName", "MyAppUserID", "Password", "Username" },
+                values: new object[,]
+                {
+                    { 1, "izel", "repuh", 1, "xxxx", "izellapin" },
+                    { 2, "maida", "kovac", 1, "yyyy", "maidakcv" },
+                    { 3, "user", "userlastname", 2, "zzzz**", "usernameexample" },
+                    { 4, "example", "examplelastname", 3, "hhhh", "example" },
+                    { 5, "exampleXX", "examplelastnameXXX", 4, "ggggXX", "examplexxx" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Administrators",
+                column: "AdministratorID",
+                values: new object[]
+                {
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
                 });
 
             migrationBuilder.CreateIndex(

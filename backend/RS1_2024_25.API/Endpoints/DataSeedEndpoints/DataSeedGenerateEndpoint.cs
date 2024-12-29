@@ -49,6 +49,7 @@ public class DataSeedGenerateEndpoint(ApplicationDbContext db)
         {
             new MyAppUser
             {
+                UserID = 1,
                 Email = "admin1@example.com",
                 Phone = "123-456-7890",
                 Image = "admin1.jpg",
@@ -57,6 +58,7 @@ public class DataSeedGenerateEndpoint(ApplicationDbContext db)
             },
             new MyAppUser
             {
+                UserID = 2,
                 Email = "manager1@example.com",
                 Phone = "123-456-7891",
                 Image = "manager1.jpg",
@@ -65,6 +67,7 @@ public class DataSeedGenerateEndpoint(ApplicationDbContext db)
             },
             new MyAppUser
             {
+                UserID = 3,
                 Email = "user1@example.com",
                 Phone = "123-456-7892",
                 Image = "user1.jpg",
@@ -73,6 +76,7 @@ public class DataSeedGenerateEndpoint(ApplicationDbContext db)
             },
             new MyAppUser
             {
+                UserID = 4,
                 Email = "user2@example.com",
                 Phone = "123-456-7893",
                 Image = "user2.jpg",

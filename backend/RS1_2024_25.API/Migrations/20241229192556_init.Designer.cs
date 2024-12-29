@@ -12,7 +12,7 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241229183126_init")]
+    [Migration("20241229192556_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -58,6 +58,53 @@ namespace RS1_2024_25.API.Migrations
                         .IsUnique();
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            AccountID = 1,
+                            FirstName = "izel",
+                            LastName = "repuh",
+                            MyAppUserID = 1,
+                            Password = "xxxx",
+                            Username = "izellapin"
+                        },
+                        new
+                        {
+                            AccountID = 2,
+                            FirstName = "maida",
+                            LastName = "kovac",
+                            MyAppUserID = 1,
+                            Password = "yyyy",
+                            Username = "maidakcv"
+                        },
+                        new
+                        {
+                            AccountID = 3,
+                            FirstName = "user",
+                            LastName = "userlastname",
+                            MyAppUserID = 2,
+                            Password = "zzzz**",
+                            Username = "usernameexample"
+                        },
+                        new
+                        {
+                            AccountID = 4,
+                            FirstName = "example",
+                            LastName = "examplelastname",
+                            MyAppUserID = 3,
+                            Password = "hhhh",
+                            Username = "example"
+                        },
+                        new
+                        {
+                            AccountID = 5,
+                            FirstName = "exampleXX",
+                            LastName = "examplelastnameXXX",
+                            MyAppUserID = 4,
+                            Password = "ggggXX",
+                            Username = "examplexxx"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Administrator", b =>
@@ -71,6 +118,36 @@ namespace RS1_2024_25.API.Migrations
                     b.HasKey("AdministratorID");
 
                     b.ToTable("Administrators");
+
+                    b.HasData(
+                        new
+                        {
+                            AdministratorID = 1
+                        },
+                        new
+                        {
+                            AdministratorID = 2
+                        },
+                        new
+                        {
+                            AdministratorID = 3
+                        },
+                        new
+                        {
+                            AdministratorID = 4
+                        },
+                        new
+                        {
+                            AdministratorID = 5
+                        },
+                        new
+                        {
+                            AdministratorID = 6
+                        },
+                        new
+                        {
+                            AdministratorID = 7
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.MyAppUser", b =>
