@@ -15,6 +15,7 @@ namespace RS1_2024_25.API.Data
         public DbSet<Administrator> Administrators { get; set; }
         public DbSet<TwoFactorAuth> TwoFactorAuths { get; set; }
         public DbSet<Apartment> Apartments { get; set; }
+        public DbSet<Reservation> Reservations{ get; set; }
 
 
 
