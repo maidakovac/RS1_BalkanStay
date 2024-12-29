@@ -11,8 +11,8 @@ namespace RS1_2024_25.API.Data
         {
             modelBuilder.Entity<Gender>().HasData
             (
-                  new Gender { GenderID = 1, Name = "Male"},
-                  new Gender { GenderID = 2, Name = "Female"}
+                  new Gender { GenderID = 1, Name = "Male" },
+                  new Gender { GenderID = 2, Name = "Female" }
 
             );
 
@@ -27,7 +27,7 @@ namespace RS1_2024_25.API.Data
 
             modelBuilder.Entity<Country>().HasData
             (
-               new Country { ID = 1, Name = "Example Country1"},
+               new Country { ID = 1, Name = "Example Country1" },
                new Country { ID = 2, Name = "Example Country2" },
                new Country { ID = 3, Name = "Example Country3" },
                new Country { ID = 4, Name = "Example Country4" }
@@ -65,7 +65,8 @@ namespace RS1_2024_25.API.Data
                     GenderID = null
                 },
                 new MyAppUser
-                { UserID = 4,
+                {
+                    UserID = 4,
                     Email = "manager1@example.com",
                     Phone = "123-456-8888",
                     Image = new byte[0],
@@ -75,36 +76,80 @@ namespace RS1_2024_25.API.Data
 
                 new MyAppUser
                 {
-                    UserID = 5, 
+                    UserID = 5,
                     Email = "manager5@example.com",
                     Phone = "123-456-7777",
                     Image = new byte[0],
-                    CityID = 1, 
+                    CityID = 1,
                     GenderID = null
                 }
 
             );
 
-                modelBuilder.Entity<Administrator>().HasData
-                (
-                    new Administrator { AdministratorID = 1 },
-                    new Administrator { AdministratorID = 2 },
-                    new Administrator { AdministratorID = 3 },
-                    new Administrator { AdministratorID = 4 },
-                    new Administrator { AdministratorID = 5 },
-                    new Administrator { AdministratorID = 6 },
-                    new Administrator { AdministratorID = 7 }
-                );
+            modelBuilder.Entity<Administrator>().HasData
+            (
+                new Administrator { AdministratorID = 1 },
+                new Administrator { AdministratorID = 2 },
+                new Administrator { AdministratorID = 3 },
+                new Administrator { AdministratorID = 4 },
+                new Administrator { AdministratorID = 5 },
+                new Administrator { AdministratorID = 6 },
+                new Administrator { AdministratorID = 7 }
+            );
 
-                modelBuilder.Entity<Account>().HasData
-                (
-                    new Account { AccountID = 1, Username = "izellapin", Password = "xxxx" ,FirstName = "izel", LastName = "repuh", MyAppUserID = 1},
-                    new Account { AccountID = 2, Username = "maidakcv", Password = "yyyy" ,FirstName = "maida", LastName = "kovac", MyAppUserID = 2 },
-                    new Account { AccountID = 3, Username = "usernameexample", Password = "zzzz**" ,FirstName = "user", LastName = "userlastname", MyAppUserID = 3 },
-                    new Account { AccountID = 4, Username = "example", Password = "hhhh" ,FirstName = "example", LastName = "examplelastname", MyAppUserID = 4 },
-                    new Account { AccountID = 5, Username = "examplexxx", Password = "ggggXX" ,FirstName = "exampleXX", LastName = "examplelastnameXXX", MyAppUserID = 5 }
-               
-                );
+            modelBuilder.Entity<Account>().HasData
+            (
+                new Account { AccountID = 1, Username = "izellapin", Password = "xxxx", FirstName = "izel", LastName = "repuh", MyAppUserID = 1 },
+                new Account { AccountID = 2, Username = "maidakcv", Password = "yyyy", FirstName = "maida", LastName = "kovac", MyAppUserID = 2 },
+                new Account { AccountID = 3, Username = "usernameexample", Password = "zzzz**", FirstName = "user", LastName = "userlastname", MyAppUserID = 3 },
+                new Account { AccountID = 4, Username = "example", Password = "hhhh", FirstName = "example", LastName = "examplelastname", MyAppUserID = 4 },
+                new Account { AccountID = 5, Username = "examplexxx", Password = "ggggXX", FirstName = "exampleXX", LastName = "examplelastnameXXX", MyAppUserID = 5 }
+
+            );
+
+        //    Name { get; set; }
+        //public string Description { get; set; }
+        //public string Adress { get; set; }
+        //public int PricePerNight { get; set; }
+        //public int CityId
+
+            modelBuilder.Entity<Apartment>().HasData
+            (
+               new Apartment { ApartmentId = 1,
+                   Name = "Apartment Marshal",
+                   Description = "opis neki", 
+                   Adress = "Adresa 1", 
+                   PricePerNight = 50, 
+                   CityId = 1 },
+               new Apartment
+               {
+                   ApartmentId = 2,
+                   Name = "Apartment Charm",
+                   Description = "opis neki",
+                   Adress = "Adresa 2",
+                   PricePerNight = 70,
+                   CityId = 2
+               },
+               new Apartment
+               {
+                   ApartmentId = 3,
+                   Name = "Apartment Sun",
+                   Description = "opis neki",
+                   Adress = "Adresa 3",
+                   PricePerNight = 50,
+                   CityId = 3
+               },
+               new Apartment
+               {
+                   ApartmentId = 4,
+                   Name = "Apartment Exclusive",
+                   Description = "opis neki",
+                   Adress = "Adresa 4",
+                   PricePerNight = 150,
+                   CityId = 4
+               }
+
+            );
         }
     }
 }

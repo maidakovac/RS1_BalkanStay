@@ -50,9 +50,48 @@ namespace RS1_2024_25.API.Migrations
 
                     b.HasKey("ApartmentId");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("CityId")
+                        .IsUnique();
 
                     b.ToTable("Apartments");
+
+                    b.HasData(
+                        new
+                        {
+                            ApartmentId = 1,
+                            Adress = "Adresa 1",
+                            CityId = 1,
+                            Description = "opis neki",
+                            Name = "Apartment Marshal",
+                            PricePerNight = 50
+                        },
+                        new
+                        {
+                            ApartmentId = 2,
+                            Adress = "Adresa 2",
+                            CityId = 2,
+                            Description = "opis neki",
+                            Name = "Apartment Charm",
+                            PricePerNight = 70
+                        },
+                        new
+                        {
+                            ApartmentId = 3,
+                            Adress = "Adresa 3",
+                            CityId = 3,
+                            Description = "opis neki",
+                            Name = "Apartment Sun",
+                            PricePerNight = 50
+                        },
+                        new
+                        {
+                            ApartmentId = 4,
+                            Adress = "Adresa 4",
+                            CityId = 4,
+                            Description = "opis neki",
+                            Name = "Apartment Exclusive",
+                            PricePerNight = 150
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>
@@ -434,8 +473,8 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Models.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
+                        .WithOne("Apartment")
+                        .HasForeignKey("RS1_2024_25.API.Data.Apartment", "CityId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -513,6 +552,11 @@ namespace RS1_2024_25.API.Migrations
                 {
                     b.Navigation("Account")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Models.City", b =>
+                {
+                    b.Navigation("Apartment");
                 });
 #pragma warning restore 612, 618
         }

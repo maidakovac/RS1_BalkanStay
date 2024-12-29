@@ -229,6 +229,17 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Apartments",
+                columns: new[] { "ApartmentId", "Adress", "CityId", "Description", "Name", "PricePerNight" },
+                values: new object[,]
+                {
+                    { 1, "Adresa 1", 1, "opis neki", "Apartment Marshal", 50 },
+                    { 2, "Adresa 2", 2, "opis neki", "Apartment Charm", 70 },
+                    { 3, "Adresa 3", 3, "opis neki", "Apartment Sun", 50 },
+                    { 4, "Adresa 4", 4, "opis neki", "Apartment Exclusive", 150 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "MyAppUsers",
                 columns: new[] { "UserID", "CityID", "Email", "GenderID", "Image", "Phone" },
                 values: new object[,]
@@ -261,7 +272,8 @@ namespace RS1_2024_25.API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Apartments_CityId",
                 table: "Apartments",
-                column: "CityId");
+                column: "CityId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cities_CountryId",
