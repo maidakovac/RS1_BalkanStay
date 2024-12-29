@@ -71,6 +71,28 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Apartments",
+                columns: table => new
+                {
+                    ApartmentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PricePerNight = table.Column<int>(type: "int", nullable: false),
+                    CityId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Apartments", x => x.ApartmentId);
+                    table.ForeignKey(
+                        name: "FK_Apartments_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
+                        principalColumn: "ID");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MyAppUsers",
                 columns: table => new
                 {
@@ -237,6 +259,11 @@ namespace RS1_2024_25.API.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Apartments_CityId",
+                table: "Apartments",
+                column: "CityId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Cities_CountryId",
                 table: "Cities",
                 column: "CountryId");
@@ -268,6 +295,9 @@ namespace RS1_2024_25.API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Administrators");
+
+            migrationBuilder.DropTable(
+                name: "Apartments");
 
             migrationBuilder.DropTable(
                 name: "MyAuthenticationTokens");

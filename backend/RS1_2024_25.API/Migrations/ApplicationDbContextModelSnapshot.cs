@@ -22,6 +22,39 @@ namespace RS1_2024_25.API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
+                {
+                    b.Property<int>("ApartmentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ApartmentId"));
+
+                    b.Property<string>("Adress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PricePerNight")
+                        .HasColumnType("int");
+
+                    b.HasKey("ApartmentId");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Apartments");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>
                 {
                     b.Property<int>("AccountID")
@@ -396,6 +429,17 @@ namespace RS1_2024_25.API.Migrations
                             GenderID = 2,
                             Name = "Female"
                         });
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Models.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>
