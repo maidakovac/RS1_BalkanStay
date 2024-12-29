@@ -142,6 +142,31 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Favorites",
+                columns: table => new
+                {
+                    FavoriteID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    ApartmentId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Favorites", x => x.FavoriteID);
+                    table.ForeignKey(
+                        name: "FK_Favorites_Apartments_ApartmentId",
+                        column: x => x.ApartmentId,
+                        principalTable: "Apartments",
+                        principalColumn: "ApartmentId");
+                    table.ForeignKey(
+                        name: "FK_Favorites_MyAppUsers_MyAppUserUserID",
+                        column: x => x.MyAppUserUserID,
+                        principalTable: "MyAppUsers",
+                        principalColumn: "UserID");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MyAuthenticationTokens",
                 columns: table => new
                 {
@@ -185,6 +210,33 @@ namespace RS1_2024_25.API.Migrations
                         principalColumn: "ApartmentId");
                     table.ForeignKey(
                         name: "FK_Reservations_MyAppUsers_MyAppUserUserID",
+                        column: x => x.MyAppUserUserID,
+                        principalTable: "MyAppUsers",
+                        principalColumn: "UserID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    ReviewID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ApartmentId = table.Column<int>(type: "int", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.ReviewID);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Apartments_ApartmentId",
+                        column: x => x.ApartmentId,
+                        principalTable: "Apartments",
+                        principalColumn: "ApartmentId");
+                    table.ForeignKey(
+                        name: "FK_Reviews_MyAppUsers_MyAppUserUserID",
                         column: x => x.MyAppUserUserID,
                         principalTable: "MyAppUsers",
                         principalColumn: "UserID");
@@ -309,6 +361,16 @@ namespace RS1_2024_25.API.Migrations
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Favorites_ApartmentId",
+                table: "Favorites",
+                column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Favorites_MyAppUserUserID",
+                table: "Favorites",
+                column: "MyAppUserUserID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MyAppUsers_CityID",
                 table: "MyAppUsers",
                 column: "CityID");
@@ -334,6 +396,16 @@ namespace RS1_2024_25.API.Migrations
                 column: "MyAppUserUserID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Reviews_ApartmentId",
+                table: "Reviews",
+                column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reviews_MyAppUserUserID",
+                table: "Reviews",
+                column: "MyAppUserUserID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TwoFactorAuths_AccountId",
                 table: "TwoFactorAuths",
                 column: "AccountId",
@@ -347,10 +419,16 @@ namespace RS1_2024_25.API.Migrations
                 name: "Administrators");
 
             migrationBuilder.DropTable(
+                name: "Favorites");
+
+            migrationBuilder.DropTable(
                 name: "MyAuthenticationTokens");
 
             migrationBuilder.DropTable(
                 name: "Reservations");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
 
             migrationBuilder.DropTable(
                 name: "TwoFactorAuths");

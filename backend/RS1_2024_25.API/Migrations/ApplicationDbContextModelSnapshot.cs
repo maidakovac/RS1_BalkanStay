@@ -94,6 +94,32 @@ namespace RS1_2024_25.API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Favorite", b =>
+                {
+                    b.Property<int>("FavoriteID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FavoriteID"));
+
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MyAppUserUserID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("FavoriteID");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("MyAppUserUserID");
+
+                    b.ToTable("Favorites");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>
                 {
                     b.Property<int>("AccountID")
@@ -505,6 +531,40 @@ namespace RS1_2024_25.API.Migrations
                     b.ToTable("Reservations");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Review", b =>
+                {
+                    b.Property<int>("ReviewID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewID"));
+
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MyAppUserUserID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Rating")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReviewID");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("MyAppUserUserID");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Models.City", "City")
@@ -514,6 +574,25 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired();
 
                     b.Navigation("City");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Favorite", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("RS1_2024_25.API.Data.Models.Auth.MyAppUser", "MyAppUser")
+                        .WithMany()
+                        .HasForeignKey("MyAppUserUserID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Apartment");
+
+                    b.Navigation("MyAppUser");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>
@@ -578,6 +657,25 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Reservation", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("RS1_2024_25.API.Data.Models.Auth.MyAppUser", "MyAppUser")
+                        .WithMany()
+                        .HasForeignKey("MyAppUserUserID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Apartment");
+
+                    b.Navigation("MyAppUser");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Review", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
                         .WithMany()
