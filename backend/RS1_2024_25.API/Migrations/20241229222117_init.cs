@@ -163,6 +163,34 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    ReservationID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    ApartmentId = table.Column<int>(type: "int", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.ReservationID);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Apartments_ApartmentId",
+                        column: x => x.ApartmentId,
+                        principalTable: "Apartments",
+                        principalColumn: "ApartmentId");
+                    table.ForeignKey(
+                        name: "FK_Reservations_MyAppUsers_MyAppUserUserID",
+                        column: x => x.MyAppUserUserID,
+                        principalTable: "MyAppUsers",
+                        principalColumn: "UserID");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TwoFactorAuths",
                 columns: table => new
                 {
@@ -296,6 +324,16 @@ namespace RS1_2024_25.API.Migrations
                 column: "MyAppUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Reservations_ApartmentId",
+                table: "Reservations",
+                column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservations_MyAppUserUserID",
+                table: "Reservations",
+                column: "MyAppUserUserID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TwoFactorAuths_AccountId",
                 table: "TwoFactorAuths",
                 column: "AccountId",
@@ -309,13 +347,16 @@ namespace RS1_2024_25.API.Migrations
                 name: "Administrators");
 
             migrationBuilder.DropTable(
-                name: "Apartments");
-
-            migrationBuilder.DropTable(
                 name: "MyAuthenticationTokens");
 
             migrationBuilder.DropTable(
+                name: "Reservations");
+
+            migrationBuilder.DropTable(
                 name: "TwoFactorAuths");
+
+            migrationBuilder.DropTable(
+                name: "Apartments");
 
             migrationBuilder.DropTable(
                 name: "Accounts");

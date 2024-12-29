@@ -470,6 +470,41 @@ namespace RS1_2024_25.API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Reservation", b =>
+                {
+                    b.Property<int>("ReservationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReservationID"));
+
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MyAppUserUserID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReservationID");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("MyAppUserUserID");
+
+                    b.ToTable("Reservations");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Models.City", "City")
@@ -540,6 +575,25 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Reservation", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("RS1_2024_25.API.Data.Models.Auth.MyAppUser", "MyAppUser")
+                        .WithMany()
+                        .HasForeignKey("MyAppUserUserID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Apartment");
+
+                    b.Navigation("MyAppUser");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>
