@@ -12,7 +12,7 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241228171226_init")]
+    [Migration("20241229174716_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -58,6 +58,19 @@ namespace RS1_2024_25.API.Migrations
                         .IsUnique();
 
                     b.ToTable("Accounts");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Administrator", b =>
+                {
+                    b.Property<int>("AdministratorID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdministratorID"));
+
+                    b.HasKey("AdministratorID");
+
+                    b.ToTable("Administrators");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.MyAppUser", b =>

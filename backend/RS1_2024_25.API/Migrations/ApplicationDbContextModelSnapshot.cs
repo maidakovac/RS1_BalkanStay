@@ -57,6 +57,19 @@ namespace RS1_2024_25.API.Migrations
                     b.ToTable("Accounts");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Administrator", b =>
+                {
+                    b.Property<int>("AdministratorID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdministratorID"));
+
+                    b.HasKey("AdministratorID");
+
+                    b.ToTable("Administrators");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.MyAppUser", b =>
                 {
                     b.Property<int>("UserID")
