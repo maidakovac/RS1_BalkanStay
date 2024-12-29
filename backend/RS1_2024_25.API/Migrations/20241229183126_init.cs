@@ -138,6 +138,27 @@ namespace RS1_2024_25.API.Migrations
                         principalColumn: "UserID");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TwoFactorAuths",
+                columns: table => new
+                {
+                    TwoFactorAuthId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AccountId = table.Column<int>(type: "int", nullable: false),
+                    AuthToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExpiresAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TwoFactorAuths", x => x.TwoFactorAuthId);
+                    table.ForeignKey(
+                        name: "FK_TwoFactorAuths_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
+                        principalColumn: "AccountID");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_MyAppUserID",
                 table: "Accounts",
@@ -163,19 +184,28 @@ namespace RS1_2024_25.API.Migrations
                 name: "IX_MyAuthenticationTokens_MyAppUserId",
                 table: "MyAuthenticationTokens",
                 column: "MyAppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TwoFactorAuths_AccountId",
+                table: "TwoFactorAuths",
+                column: "AccountId",
+                unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Accounts");
-
-            migrationBuilder.DropTable(
                 name: "Administrators");
 
             migrationBuilder.DropTable(
                 name: "MyAuthenticationTokens");
+
+            migrationBuilder.DropTable(
+                name: "TwoFactorAuths");
+
+            migrationBuilder.DropTable(
+                name: "Accounts");
 
             migrationBuilder.DropTable(
                 name: "MyAppUsers");

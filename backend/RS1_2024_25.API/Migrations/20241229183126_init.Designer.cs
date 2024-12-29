@@ -12,7 +12,7 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241229174716_init")]
+    [Migration("20241229183126_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -138,6 +138,35 @@ namespace RS1_2024_25.API.Migrations
                     b.ToTable("MyAuthenticationTokens");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.TwoFactorAuth", b =>
+                {
+                    b.Property<int>("TwoFactorAuthId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TwoFactorAuthId"));
+
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AuthToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("TwoFactorAuthId");
+
+                    b.HasIndex("AccountId")
+                        .IsUnique();
+
+                    b.ToTable("TwoFactorAuths");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.City", b =>
                 {
                     b.Property<int>("ID")
@@ -233,6 +262,17 @@ namespace RS1_2024_25.API.Migrations
                     b.Navigation("MyAppUser");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.TwoFactorAuth", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Models.Auth.Account", "Account")
+                        .WithOne("TwoFactorAuth")
+                        .HasForeignKey("RS1_2024_25.API.Data.Models.Auth.TwoFactorAuth", "AccountId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.City", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Models.Country", "Country")
@@ -242,6 +282,12 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>
+                {
+                    b.Navigation("TwoFactorAuth")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.MyAppUser", b =>

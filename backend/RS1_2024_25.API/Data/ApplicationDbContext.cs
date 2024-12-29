@@ -13,7 +13,9 @@ namespace RS1_2024_25.API.Data
         public DbSet<MyAuthenticationToken> MyAuthenticationTokens { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
-      
+        public DbSet<TwoFactorAuth> TwoFactorAuths { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

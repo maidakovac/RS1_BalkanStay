@@ -10,6 +10,8 @@
 
         public int MyAppUserID { get; set; } // Strani ključ
         public MyAppUser MyAppUser { get; set; }
+
+        public TwoFactorAuth TwoFactorAuth { get; set; }
     }
 }
 
