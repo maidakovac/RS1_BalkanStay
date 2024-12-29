@@ -31,6 +31,8 @@ public class MyAppUser
         // Navigation Properties
         public virtual City City { get; set; }
         public virtual Gender Gender { get; set; }
+
+         public Account Account { get; set; }
     }
 
     /*
