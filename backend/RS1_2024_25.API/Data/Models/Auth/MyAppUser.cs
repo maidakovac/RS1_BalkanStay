@@ -16,9 +16,8 @@ public class MyAppUser
         [Required]
         [Phone] // Ensures a valid phone number format
         public string Phone { get; set; }
-
-        [MaxLength(255)] // Limits the maximum length of the image URL
-        public string Image { get; set; }
+        // Limits the maximum length of the image URL
+        public byte[] Image { get; set; }
 
         // Foreign Key to City
         [ForeignKey("City")]

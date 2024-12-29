@@ -78,7 +78,7 @@ namespace RS1_2024_25.API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     CityID = table.Column<int>(type: "int", nullable: true),
                     GenderID = table.Column<int>(type: "int", nullable: true)
                 },
@@ -162,18 +162,6 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Accounts",
-                columns: new[] { "AccountID", "FirstName", "LastName", "MyAppUserID", "Password", "Username" },
-                values: new object[,]
-                {
-                    { 1, "izel", "repuh", 1, "xxxx", "izellapin" },
-                    { 2, "maida", "kovac", 1, "yyyy", "maidakcv" },
-                    { 3, "user", "userlastname", 2, "zzzz**", "usernameexample" },
-                    { 4, "example", "examplelastname", 3, "hhhh", "example" },
-                    { 5, "exampleXX", "examplelastnameXXX", 4, "ggggXX", "examplexxx" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Administrators",
                 column: "AdministratorID",
                 values: new object[]
@@ -185,6 +173,61 @@ namespace RS1_2024_25.API.Migrations
                     5,
                     6,
                     7
+                });
+
+            migrationBuilder.InsertData(
+                table: "Countries",
+                columns: new[] { "ID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Example Country1" },
+                    { 2, "Example Country2" },
+                    { 3, "Example Country3" },
+                    { 4, "Example Country4" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Gender",
+                columns: new[] { "GenderID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Male" },
+                    { 2, "Female" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Cities",
+                columns: new[] { "ID", "CountryId", "Name" },
+                values: new object[,]
+                {
+                    { 1, 1, "Example City" },
+                    { 2, 1, "Another City" },
+                    { 3, 1, "Third City" },
+                    { 4, 1, "Four City" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "MyAppUsers",
+                columns: new[] { "UserID", "CityID", "Email", "GenderID", "Image", "Phone" },
+                values: new object[,]
+                {
+                    { 1, 1, "manager1@example.com", null, new byte[0], "123-456-7891" },
+                    { 2, 2, "manager1@example.com", null, new byte[0], "123-456-7891" },
+                    { 3, 3, "manager1@example.com", null, new byte[0], "123-456-6666" },
+                    { 4, 4, "manager1@example.com", null, new byte[0], "123-456-8888" },
+                    { 5, 1, "manager5@example.com", null, new byte[0], "123-456-7777" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "AccountID", "FirstName", "LastName", "MyAppUserID", "Password", "Username" },
+                values: new object[,]
+                {
+                    { 1, "izel", "repuh", 1, "xxxx", "izellapin" },
+                    { 2, "maida", "kovac", 2, "yyyy", "maidakcv" },
+                    { 3, "user", "userlastname", 3, "zzzz**", "usernameexample" },
+                    { 4, "example", "examplelastname", 4, "hhhh", "example" },
+                    { 5, "exampleXX", "examplelastnameXXX", 5, "ggggXX", "examplexxx" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -12,7 +12,7 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241229192556_init")]
+    [Migration("20241229202019_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -74,7 +74,7 @@ namespace RS1_2024_25.API.Migrations
                             AccountID = 2,
                             FirstName = "maida",
                             LastName = "kovac",
-                            MyAppUserID = 1,
+                            MyAppUserID = 2,
                             Password = "yyyy",
                             Username = "maidakcv"
                         },
@@ -83,7 +83,7 @@ namespace RS1_2024_25.API.Migrations
                             AccountID = 3,
                             FirstName = "user",
                             LastName = "userlastname",
-                            MyAppUserID = 2,
+                            MyAppUserID = 3,
                             Password = "zzzz**",
                             Username = "usernameexample"
                         },
@@ -92,7 +92,7 @@ namespace RS1_2024_25.API.Migrations
                             AccountID = 4,
                             FirstName = "example",
                             LastName = "examplelastname",
-                            MyAppUserID = 3,
+                            MyAppUserID = 4,
                             Password = "hhhh",
                             Username = "example"
                         },
@@ -101,7 +101,7 @@ namespace RS1_2024_25.API.Migrations
                             AccountID = 5,
                             FirstName = "exampleXX",
                             LastName = "examplelastnameXXX",
-                            MyAppUserID = 4,
+                            MyAppUserID = 5,
                             Password = "ggggXX",
                             Username = "examplexxx"
                         });
@@ -168,10 +168,9 @@ namespace RS1_2024_25.API.Migrations
                     b.Property<int?>("GenderID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Image")
+                    b.Property<byte[]>("Image")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -184,6 +183,48 @@ namespace RS1_2024_25.API.Migrations
                     b.HasIndex("GenderID");
 
                     b.ToTable("MyAppUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            UserID = 1,
+                            CityID = 1,
+                            Email = "manager1@example.com",
+                            Image = new byte[0],
+                            Phone = "123-456-7891"
+                        },
+                        new
+                        {
+                            UserID = 2,
+                            CityID = 2,
+                            Email = "manager1@example.com",
+                            Image = new byte[0],
+                            Phone = "123-456-7891"
+                        },
+                        new
+                        {
+                            UserID = 3,
+                            CityID = 3,
+                            Email = "manager1@example.com",
+                            Image = new byte[0],
+                            Phone = "123-456-6666"
+                        },
+                        new
+                        {
+                            UserID = 4,
+                            CityID = 4,
+                            Email = "manager1@example.com",
+                            Image = new byte[0],
+                            Phone = "123-456-8888"
+                        },
+                        new
+                        {
+                            UserID = 5,
+                            CityID = 1,
+                            Email = "manager5@example.com",
+                            Image = new byte[0],
+                            Phone = "123-456-7777"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.MyAuthenticationToken", b =>
@@ -264,6 +305,32 @@ namespace RS1_2024_25.API.Migrations
                     b.HasIndex("CountryId");
 
                     b.ToTable("Cities");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            CountryId = 1,
+                            Name = "Example City"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            CountryId = 1,
+                            Name = "Another City"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            CountryId = 1,
+                            Name = "Third City"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            CountryId = 1,
+                            Name = "Four City"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Country", b =>
@@ -281,6 +348,28 @@ namespace RS1_2024_25.API.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "Example Country1"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "Example Country2"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "Example Country3"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Name = "Example Country4"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Gender", b =>
@@ -298,6 +387,18 @@ namespace RS1_2024_25.API.Migrations
                     b.HasKey("GenderID");
 
                     b.ToTable("Gender");
+
+                    b.HasData(
+                        new
+                        {
+                            GenderID = 1,
+                            Name = "Male"
+                        },
+                        new
+                        {
+                            GenderID = 2,
+                            Name = "Female"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>

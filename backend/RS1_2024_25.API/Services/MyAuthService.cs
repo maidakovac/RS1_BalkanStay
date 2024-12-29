@@ -108,6 +108,6 @@ namespace RS1_2024_25.API.Services
         public bool IsAdmin { get; set; } // Defaulted to false
         public bool IsManager { get; set; } // Defaulted to false
         public bool IsLoggedIn { get; set; }
-        public string SlikaPath { get; set; } // Maps to Image
+        public byte[] SlikaPath { get; set; } // Maps to Image
     }
 }
