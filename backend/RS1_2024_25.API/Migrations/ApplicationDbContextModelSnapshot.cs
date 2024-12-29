@@ -94,6 +94,29 @@ namespace RS1_2024_25.API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentImage", b =>
+                {
+                    b.Property<int>("ApartmentImageID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ApartmentImageID"));
+
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ImageID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ApartmentImageID");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("ImageID");
+
+                    b.ToTable("ApartmentImages");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Favorite", b =>
                 {
                     b.Property<int>("FavoriteID")
@@ -118,6 +141,23 @@ namespace RS1_2024_25.API.Migrations
                     b.HasIndex("MyAppUserUserID");
 
                     b.ToTable("Favorites");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Image", b =>
+                {
+                    b.Property<int>("ImageID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageID"));
+
+                    b.Property<byte[]>("Photo")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("ImageID");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>
@@ -525,6 +565,29 @@ namespace RS1_2024_25.API.Migrations
                     b.ToTable("Owners");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.OwnerApartment", b =>
+                {
+                    b.Property<int>("OwnerApartmentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OwnerApartmentID"));
+
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OwnerID")
+                        .HasColumnType("int");
+
+                    b.HasKey("OwnerApartmentID");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("OwnerID");
+
+                    b.ToTable("OwnerApartments");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.OwnerReview", b =>
                 {
                     b.Property<int>("OwnerReviewID")
@@ -635,6 +698,25 @@ namespace RS1_2024_25.API.Migrations
                     b.Navigation("City");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentImage", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("RS1_2024_25.API.Data.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Apartment");
+
+                    b.Navigation("Image");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Favorite", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
@@ -713,6 +795,25 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.OwnerApartment", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("RS1_2024_25.API.Data.Owner", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Apartment");
+
+                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.OwnerReview", b =>

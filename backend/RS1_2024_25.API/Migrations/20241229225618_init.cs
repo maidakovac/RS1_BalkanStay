@@ -52,6 +52,19 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    ImageID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.ImageID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Owners",
                 columns: table => new
                 {
@@ -133,6 +146,54 @@ namespace RS1_2024_25.API.Migrations
                         column: x => x.GenderID,
                         principalTable: "Gender",
                         principalColumn: "GenderID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ApartmentImages",
+                columns: table => new
+                {
+                    ApartmentImageID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ApartmentId = table.Column<int>(type: "int", nullable: false),
+                    ImageID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApartmentImages", x => x.ApartmentImageID);
+                    table.ForeignKey(
+                        name: "FK_ApartmentImages_Apartments_ApartmentId",
+                        column: x => x.ApartmentId,
+                        principalTable: "Apartments",
+                        principalColumn: "ApartmentId");
+                    table.ForeignKey(
+                        name: "FK_ApartmentImages_Images_ImageID",
+                        column: x => x.ImageID,
+                        principalTable: "Images",
+                        principalColumn: "ImageID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OwnerApartments",
+                columns: table => new
+                {
+                    OwnerApartmentID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    ApartmentId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OwnerApartments", x => x.OwnerApartmentID);
+                    table.ForeignKey(
+                        name: "FK_OwnerApartments_Apartments_ApartmentId",
+                        column: x => x.ApartmentId,
+                        principalTable: "Apartments",
+                        principalColumn: "ApartmentId");
+                    table.ForeignKey(
+                        name: "FK_OwnerApartments_Owners_OwnerID",
+                        column: x => x.OwnerID,
+                        principalTable: "Owners",
+                        principalColumn: "OwnerID");
                 });
 
             migrationBuilder.CreateTable(
@@ -392,6 +453,16 @@ namespace RS1_2024_25.API.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_ApartmentImages_ApartmentId",
+                table: "ApartmentImages",
+                column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApartmentImages_ImageID",
+                table: "ApartmentImages",
+                column: "ImageID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Apartments_CityId",
                 table: "Apartments",
                 column: "CityId",
@@ -426,6 +497,16 @@ namespace RS1_2024_25.API.Migrations
                 name: "IX_MyAuthenticationTokens_MyAppUserId",
                 table: "MyAuthenticationTokens",
                 column: "MyAppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OwnerApartments_ApartmentId",
+                table: "OwnerApartments",
+                column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OwnerApartments_OwnerID",
+                table: "OwnerApartments",
+                column: "OwnerID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OwnerReviews_MyAppUserUserID",
@@ -471,10 +552,16 @@ namespace RS1_2024_25.API.Migrations
                 name: "Administrators");
 
             migrationBuilder.DropTable(
+                name: "ApartmentImages");
+
+            migrationBuilder.DropTable(
                 name: "Favorites");
 
             migrationBuilder.DropTable(
                 name: "MyAuthenticationTokens");
+
+            migrationBuilder.DropTable(
+                name: "OwnerApartments");
 
             migrationBuilder.DropTable(
                 name: "OwnerReviews");
@@ -487,6 +574,9 @@ namespace RS1_2024_25.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "TwoFactorAuths");
+
+            migrationBuilder.DropTable(
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "Owners");

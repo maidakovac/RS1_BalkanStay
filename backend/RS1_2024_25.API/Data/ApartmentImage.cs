@@ -5,7 +5,8 @@
         public int ApartmentImageID { get; set; }
         public int ApartmentId { get; set; }
         public Apartment Apartment { get; set; }
-        public byte[] ImageID { get; set; }
+        public int ImageID { get; set; }
+        public Image Image { get; set; }
 
     }
 }

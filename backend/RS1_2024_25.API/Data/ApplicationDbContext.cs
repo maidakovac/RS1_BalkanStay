@@ -22,6 +22,7 @@ namespace RS1_2024_25.API.Data
         public DbSet<OwnerReview> OwnerReviews { get; set; }
         public DbSet<OwnerApartment> OwnerApartments { get; set; }
         public DbSet<ApartmentImage> ApartmentImages { get; set; }
+        public DbSet<Image> Images { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
