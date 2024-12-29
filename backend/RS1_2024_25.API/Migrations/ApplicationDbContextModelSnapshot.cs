@@ -117,6 +117,29 @@ namespace RS1_2024_25.API.Migrations
                     b.ToTable("ApartmentImages");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentRule", b =>
+                {
+                    b.Property<int>("ApartmentRuleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ApartmentRuleID"));
+
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RuleID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ApartmentRuleID");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("RuleID");
+
+                    b.ToTable("ApartmentRules");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Favorite", b =>
                 {
                     b.Property<int>("FavoriteID")
@@ -687,6 +710,23 @@ namespace RS1_2024_25.API.Migrations
                     b.ToTable("Reviews");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Rule", b =>
+                {
+                    b.Property<int>("RuleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RuleID"));
+
+                    b.Property<string>("RuleText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RuleID");
+
+                    b.ToTable("Rules");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Models.City", "City")
@@ -715,6 +755,25 @@ namespace RS1_2024_25.API.Migrations
                     b.Navigation("Apartment");
 
                     b.Navigation("Image");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentRule", b =>
+                {
+                    b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("RS1_2024_25.API.Data.Rule", "Rule")
+                        .WithMany()
+                        .HasForeignKey("RuleID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Apartment");
+
+                    b.Navigation("Rule");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Favorite", b =>

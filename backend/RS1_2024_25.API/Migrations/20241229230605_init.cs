@@ -81,6 +81,19 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Rules",
+                columns: table => new
+                {
+                    RuleID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RuleText = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rules", x => x.RuleID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Cities",
                 columns: table => new
                 {
@@ -170,6 +183,30 @@ namespace RS1_2024_25.API.Migrations
                         column: x => x.ImageID,
                         principalTable: "Images",
                         principalColumn: "ImageID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ApartmentRules",
+                columns: table => new
+                {
+                    ApartmentRuleID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ApartmentId = table.Column<int>(type: "int", nullable: false),
+                    RuleID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApartmentRules", x => x.ApartmentRuleID);
+                    table.ForeignKey(
+                        name: "FK_ApartmentRules_Apartments_ApartmentId",
+                        column: x => x.ApartmentId,
+                        principalTable: "Apartments",
+                        principalColumn: "ApartmentId");
+                    table.ForeignKey(
+                        name: "FK_ApartmentRules_Rules_RuleID",
+                        column: x => x.RuleID,
+                        principalTable: "Rules",
+                        principalColumn: "RuleID");
                 });
 
             migrationBuilder.CreateTable(
@@ -463,6 +500,16 @@ namespace RS1_2024_25.API.Migrations
                 column: "ImageID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ApartmentRules_ApartmentId",
+                table: "ApartmentRules",
+                column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApartmentRules_RuleID",
+                table: "ApartmentRules",
+                column: "RuleID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Apartments_CityId",
                 table: "Apartments",
                 column: "CityId",
@@ -555,6 +602,9 @@ namespace RS1_2024_25.API.Migrations
                 name: "ApartmentImages");
 
             migrationBuilder.DropTable(
+                name: "ApartmentRules");
+
+            migrationBuilder.DropTable(
                 name: "Favorites");
 
             migrationBuilder.DropTable(
@@ -577,6 +627,9 @@ namespace RS1_2024_25.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Images");
+
+            migrationBuilder.DropTable(
+                name: "Rules");
 
             migrationBuilder.DropTable(
                 name: "Owners");
