@@ -32,7 +32,10 @@ public class MyAppUser
         public virtual Gender Gender { get; set; }
 
          public Account Account { get; set; }
-    }
+
+         public List<Favorite> Favorites { get; set; }
+
+}
 
     /*
      

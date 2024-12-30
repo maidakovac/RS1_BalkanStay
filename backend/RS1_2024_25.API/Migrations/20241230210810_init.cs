@@ -335,8 +335,7 @@ namespace RS1_2024_25.API.Migrations
                 {
                     FavoriteID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserID = table.Column<int>(type: "int", nullable: false),
                     ApartmentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -348,8 +347,8 @@ namespace RS1_2024_25.API.Migrations
                         principalTable: "Apartments",
                         principalColumn: "ApartmentId");
                     table.ForeignKey(
-                        name: "FK_Favorites_MyAppUsers_MyAppUserUserID",
-                        column: x => x.MyAppUserUserID,
+                        name: "FK_Favorites_MyAppUsers_MyAppUserID",
+                        column: x => x.MyAppUserID,
                         principalTable: "MyAppUsers",
                         principalColumn: "UserID");
                 });
@@ -619,9 +618,9 @@ namespace RS1_2024_25.API.Migrations
                 column: "ApartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Favorites_MyAppUserUserID",
+                name: "IX_Favorites_MyAppUserID",
                 table: "Favorites",
-                column: "MyAppUserUserID");
+                column: "MyAppUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MyAppUsers_CityID",

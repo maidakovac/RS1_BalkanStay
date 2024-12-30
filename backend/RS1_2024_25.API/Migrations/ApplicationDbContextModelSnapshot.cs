@@ -212,17 +212,14 @@ namespace RS1_2024_25.API.Migrations
                     b.Property<int>("ApartmentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MyAppUserUserID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserID")
+                    b.Property<int>("MyAppUserID")
                         .HasColumnType("int");
 
                     b.HasKey("FavoriteID");
 
                     b.HasIndex("ApartmentId");
 
-                    b.HasIndex("MyAppUserUserID");
+                    b.HasIndex("MyAppUserID");
 
                     b.ToTable("Favorites");
                 });
@@ -901,8 +898,8 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired();
 
                     b.HasOne("RS1_2024_25.API.Data.Models.Auth.MyAppUser", "MyAppUser")
-                        .WithMany()
-                        .HasForeignKey("MyAppUserUserID")
+                        .WithMany("Favorites")
+                        .HasForeignKey("MyAppUserID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -1058,6 +1055,8 @@ namespace RS1_2024_25.API.Migrations
                 {
                     b.Navigation("Account")
                         .IsRequired();
+
+                    b.Navigation("Favorites");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.City", b =>
