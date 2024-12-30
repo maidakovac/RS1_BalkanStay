@@ -19,9 +19,9 @@ namespace RS1_2024_25.API.Data
             modelBuilder.Entity<City>().HasData
              (
                 new City { ID = 1, Name = "Example City", CountryId = 1 },
-                new City { ID = 2, Name = "Another City", CountryId = 1 },
+                new City { ID = 2, Name = "Another City", CountryId = 2 },
                 new City { ID = 3, Name = "Third City", CountryId = 1 },
-                new City { ID = 4, Name = "Four City", CountryId = 1 }
+                new City { ID = 4, Name = "Four City", CountryId = 4 }
 
              );
 
