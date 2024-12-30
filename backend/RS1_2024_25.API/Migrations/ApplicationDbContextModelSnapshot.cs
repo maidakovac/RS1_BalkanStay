@@ -66,8 +66,7 @@ namespace RS1_2024_25.API.Migrations
 
                     b.HasKey("ApartmentId");
 
-                    b.HasIndex("CityId")
-                        .IsUnique();
+                    b.HasIndex("CityId");
 
                     b.ToTable("Apartments");
 
@@ -809,8 +808,8 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Models.City", "City")
-                        .WithOne("Apartment")
-                        .HasForeignKey("RS1_2024_25.API.Data.Apartment", "CityId")
+                        .WithMany("Apartments")
+                        .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -965,7 +964,7 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.City", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Models.Country", "Country")
-                        .WithMany()
+                        .WithMany("Cities")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -1063,7 +1062,12 @@ namespace RS1_2024_25.API.Migrations
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.City", b =>
                 {
-                    b.Navigation("Apartment");
+                    b.Navigation("Apartments");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Models.Country", b =>
+                {
+                    b.Navigation("Cities");
                 });
 #pragma warning restore 612, 618
         }

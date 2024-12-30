@@ -596,8 +596,7 @@ namespace RS1_2024_25.API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Apartments_CityId",
                 table: "Apartments",
-                column: "CityId",
-                unique: true);
+                column: "CityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ApartmentToiletries_ApartmentId",
