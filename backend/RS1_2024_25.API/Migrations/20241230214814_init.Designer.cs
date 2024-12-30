@@ -12,7 +12,7 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241230213823_init")]
+    [Migration("20241230214814_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -716,7 +716,7 @@ namespace RS1_2024_25.API.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MyAppUserUserID")
+                    b.Property<int>("MyAppUserID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
@@ -725,14 +725,11 @@ namespace RS1_2024_25.API.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
                     b.HasKey("ReservationID");
 
                     b.HasIndex("ApartmentId");
 
-                    b.HasIndex("MyAppUserUserID");
+                    b.HasIndex("MyAppUserID");
 
                     b.ToTable("Reservations");
                 });
@@ -1010,14 +1007,14 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.Reservation", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
-                        .WithMany()
+                        .WithMany("Reservations")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("RS1_2024_25.API.Data.Models.Auth.MyAppUser", "MyAppUser")
-                        .WithMany()
-                        .HasForeignKey("MyAppUserUserID")
+                        .WithMany("Reservations")
+                        .HasForeignKey("MyAppUserID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -1045,6 +1042,11 @@ namespace RS1_2024_25.API.Migrations
                     b.Navigation("MyAppUser");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
+                {
+                    b.Navigation("Reservations");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>
                 {
                     b.Navigation("TwoFactorAuth")
@@ -1057,6 +1059,8 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Favorites");
+
+                    b.Navigation("Reservations");
 
                     b.Navigation("Reviews");
                 });

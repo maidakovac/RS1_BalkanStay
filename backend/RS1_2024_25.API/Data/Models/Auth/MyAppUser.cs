@@ -36,6 +36,10 @@ public class MyAppUser
          public List<Favorite> Favorites { get; set; }
          public List<Review> Reviews { get; set; }
 
+        public List<Reservation> Reservations { get; set; }
+
+
+
 }
 
     /*

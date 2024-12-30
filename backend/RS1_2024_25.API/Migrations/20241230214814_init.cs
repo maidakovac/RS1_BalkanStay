@@ -406,8 +406,7 @@ namespace RS1_2024_25.API.Migrations
                 {
                     ReservationID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserID = table.Column<int>(type: "int", nullable: false),
                     ApartmentId = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -422,8 +421,8 @@ namespace RS1_2024_25.API.Migrations
                         principalTable: "Apartments",
                         principalColumn: "ApartmentId");
                     table.ForeignKey(
-                        name: "FK_Reservations_MyAppUsers_MyAppUserUserID",
-                        column: x => x.MyAppUserUserID,
+                        name: "FK_Reservations_MyAppUsers_MyAppUserID",
+                        column: x => x.MyAppUserID,
                         principalTable: "MyAppUsers",
                         principalColumn: "UserID");
                 });
@@ -662,9 +661,9 @@ namespace RS1_2024_25.API.Migrations
                 column: "ApartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservations_MyAppUserUserID",
+                name: "IX_Reservations_MyAppUserID",
                 table: "Reservations",
-                column: "MyAppUserUserID");
+                column: "MyAppUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_ApartmentId",

@@ -12,5 +12,7 @@ namespace RS1_2024_25.API.Data
 
         public int CityId { get; set; }
         public City City { get; set; }
+
+        public List<Reservation> Reservations { get; set; }
     }
 }
