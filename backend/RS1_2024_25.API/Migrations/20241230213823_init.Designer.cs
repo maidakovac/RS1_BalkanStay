@@ -12,7 +12,7 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241230210810_init")]
+    [Migration("20241230213823_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -752,21 +752,18 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MyAppUserUserID")
+                    b.Property<int>("MyAppUserID")
                         .HasColumnType("int");
 
                     b.Property<string>("Rating")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
                     b.HasKey("ReviewID");
 
                     b.HasIndex("ApartmentId");
 
-                    b.HasIndex("MyAppUserUserID");
+                    b.HasIndex("MyAppUserID");
 
                     b.ToTable("Reviews");
                 });
@@ -1038,8 +1035,8 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired();
 
                     b.HasOne("RS1_2024_25.API.Data.Models.Auth.MyAppUser", "MyAppUser")
-                        .WithMany()
-                        .HasForeignKey("MyAppUserUserID")
+                        .WithMany("Reviews")
+                        .HasForeignKey("MyAppUserID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -1060,6 +1057,8 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Favorites");
+
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.City", b =>

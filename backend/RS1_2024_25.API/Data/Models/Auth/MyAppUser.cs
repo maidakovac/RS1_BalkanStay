@@ -34,6 +34,7 @@ public class MyAppUser
          public Account Account { get; set; }
 
          public List<Favorite> Favorites { get; set; }
+         public List<Review> Reviews { get; set; }
 
 }
 

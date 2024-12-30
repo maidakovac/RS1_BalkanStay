@@ -435,8 +435,7 @@ namespace RS1_2024_25.API.Migrations
                     ReviewID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ApartmentId = table.Column<int>(type: "int", nullable: false),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserID = table.Column<int>(type: "int", nullable: false),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -449,8 +448,8 @@ namespace RS1_2024_25.API.Migrations
                         principalTable: "Apartments",
                         principalColumn: "ApartmentId");
                     table.ForeignKey(
-                        name: "FK_Reviews_MyAppUsers_MyAppUserUserID",
-                        column: x => x.MyAppUserUserID,
+                        name: "FK_Reviews_MyAppUsers_MyAppUserID",
+                        column: x => x.MyAppUserID,
                         principalTable: "MyAppUsers",
                         principalColumn: "UserID");
                 });
@@ -673,9 +672,9 @@ namespace RS1_2024_25.API.Migrations
                 column: "ApartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_MyAppUserUserID",
+                name: "IX_Reviews_MyAppUserID",
                 table: "Reviews",
-                column: "MyAppUserUserID");
+                column: "MyAppUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TwoFactorAuths_AccountId",
