@@ -12,7 +12,7 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241230171747_init")]
+    [Migration("20241230191420_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -538,7 +538,7 @@ namespace RS1_2024_25.API.Migrations
                         new
                         {
                             ID = 2,
-                            CountryId = 1,
+                            CountryId = 2,
                             Name = "Another City"
                         },
                         new
@@ -550,7 +550,7 @@ namespace RS1_2024_25.API.Migrations
                         new
                         {
                             ID = 4,
-                            CountryId = 1,
+                            CountryId = 4,
                             Name = "Four City"
                         });
                 });

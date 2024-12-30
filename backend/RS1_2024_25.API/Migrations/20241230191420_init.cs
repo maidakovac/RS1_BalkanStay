@@ -517,9 +517,9 @@ namespace RS1_2024_25.API.Migrations
                 values: new object[,]
                 {
                     { 1, 1, "Example City" },
-                    { 2, 1, "Another City" },
+                    { 2, 2, "Another City" },
                     { 3, 1, "Third City" },
-                    { 4, 1, "Four City" }
+                    { 4, 4, "Four City" }
                 });
 
             migrationBuilder.InsertData(

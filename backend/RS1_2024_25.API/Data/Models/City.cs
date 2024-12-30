@@ -15,5 +15,5 @@ public class City: IMyBaseEntity
     public int CountryId { get; set; }
     public Country? Country { get; set; }
 
-    public List<Apartment> Apartments { get; set; }
+    public List<Apartment>? Apartments { get; set; } = new List<Apartment>();
 }
