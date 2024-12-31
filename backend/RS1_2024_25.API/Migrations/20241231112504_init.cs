@@ -381,16 +381,15 @@ namespace RS1_2024_25.API.Migrations
                     OwnerReviewID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OwnerID = table.Column<int>(type: "int", nullable: false),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserID = table.Column<int>(type: "int", nullable: false),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OwnerReviews", x => x.OwnerReviewID);
                     table.ForeignKey(
-                        name: "FK_OwnerReviews_MyAppUsers_MyAppUserUserID",
-                        column: x => x.MyAppUserUserID,
+                        name: "FK_OwnerReviews_MyAppUsers_MyAppUserID",
+                        column: x => x.MyAppUserID,
                         principalTable: "MyAppUsers",
                         principalColumn: "UserID");
                     table.ForeignKey(
@@ -646,9 +645,9 @@ namespace RS1_2024_25.API.Migrations
                 column: "OwnerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OwnerReviews_MyAppUserUserID",
+                name: "IX_OwnerReviews_MyAppUserID",
                 table: "OwnerReviews",
-                column: "MyAppUserUserID");
+                column: "MyAppUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OwnerReviews_OwnerID",

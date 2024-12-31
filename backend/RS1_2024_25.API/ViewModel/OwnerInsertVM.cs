@@ -1,15 +1,11 @@
-﻿namespace RS1_2024_25.API.Data
+﻿namespace RS1_2024_25.API.ViewModel
 {
-    public class Owner
+    public class OwnerInsertVM
     {
-        public int OwnerID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-
-
-        public List<OwnerReview> ownerReviews { get; set; }
 
     }
 }

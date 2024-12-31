@@ -12,7 +12,7 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241230214814_init")]
+    [Migration("20241231112504_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -680,7 +680,7 @@ namespace RS1_2024_25.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OwnerReviewID"));
 
-                    b.Property<int>("MyAppUserUserID")
+                    b.Property<int>("MyAppUserID")
                         .HasColumnType("int");
 
                     b.Property<int>("OwnerID")
@@ -690,12 +690,9 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
                     b.HasKey("OwnerReviewID");
 
-                    b.HasIndex("MyAppUserUserID");
+                    b.HasIndex("MyAppUserID");
 
                     b.HasIndex("OwnerID");
 
@@ -988,13 +985,13 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.OwnerReview", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Models.Auth.MyAppUser", "MyAppUser")
-                        .WithMany()
-                        .HasForeignKey("MyAppUserUserID")
+                        .WithMany("ownerReviews")
+                        .HasForeignKey("MyAppUserID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("RS1_2024_25.API.Data.Owner", "Owner")
-                        .WithMany()
+                        .WithMany("ownerReviews")
                         .HasForeignKey("OwnerID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -1063,6 +1060,8 @@ namespace RS1_2024_25.API.Migrations
                     b.Navigation("Reservations");
 
                     b.Navigation("Reviews");
+
+                    b.Navigation("ownerReviews");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.City", b =>
@@ -1073,6 +1072,11 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Country", b =>
                 {
                     b.Navigation("Cities");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Owner", b =>
+                {
+                    b.Navigation("ownerReviews");
                 });
 #pragma warning restore 612, 618
         }
