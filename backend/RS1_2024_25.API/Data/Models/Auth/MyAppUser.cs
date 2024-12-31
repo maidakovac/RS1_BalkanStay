@@ -37,7 +37,7 @@ public class MyAppUser
          public List<Review> Reviews { get; set; }
 
          public List<Reservation> Reservations { get; set; }
-         public List<OwnerReview> ownerReviews { get; set; }
+         public List<OwnerReview> OwnerReviews { get; set; }
 
 
 

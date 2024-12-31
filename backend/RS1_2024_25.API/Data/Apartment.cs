@@ -14,5 +14,10 @@ namespace RS1_2024_25.API.Data
         public City City { get; set; }
 
         public List<Reservation> Reservations { get; set; }
+        public List<OwnerApartment> OwnerApartments { get; set; }
+        public List<ApartmentImage> ApartmentImages { get; set; }
+        public List<ApartmentRule> ApartmentRules { get; set; }
+        public List<ApartmentAmenity> ApartmentAmenities { get; set; }
+        public List<ApartmentToiletry> ApartmentToiletries { get; set; }
     }
 }

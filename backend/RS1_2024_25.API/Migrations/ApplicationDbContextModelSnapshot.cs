@@ -807,13 +807,13 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentAmenity", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Amenity", "Amenity")
-                        .WithMany()
+                        .WithMany("ApartmentAmenities")
                         .HasForeignKey("AmenityID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
-                        .WithMany()
+                        .WithMany("ApartmentAmenities")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -826,13 +826,13 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentImage", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
-                        .WithMany()
+                        .WithMany("ApartmentImages")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("RS1_2024_25.API.Data.Image", "Image")
-                        .WithMany()
+                        .WithMany("ApartmentImages")
                         .HasForeignKey("ImageID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -845,13 +845,13 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentRule", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
-                        .WithMany()
+                        .WithMany("ApartmentRules")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("RS1_2024_25.API.Data.Rule", "Rule")
-                        .WithMany()
+                        .WithMany("ApartmentRules")
                         .HasForeignKey("RuleID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -864,13 +864,13 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentToiletry", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
-                        .WithMany()
+                        .WithMany("ApartmentToiletries")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("RS1_2024_25.API.Data.Toiletry", "Toiletry")
-                        .WithMany()
+                        .WithMany("ApartmentToiletries")
                         .HasForeignKey("ToiletryID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -963,13 +963,13 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.OwnerApartment", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Apartment", "Apartment")
-                        .WithMany()
+                        .WithMany("OwnerApartments")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("RS1_2024_25.API.Data.Owner", "Owner")
-                        .WithMany()
+                        .WithMany("OwnerApartments")
                         .HasForeignKey("OwnerID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -982,13 +982,13 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.OwnerReview", b =>
                 {
                     b.HasOne("RS1_2024_25.API.Data.Models.Auth.MyAppUser", "MyAppUser")
-                        .WithMany("ownerReviews")
+                        .WithMany("OwnerReviews")
                         .HasForeignKey("MyAppUserID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("RS1_2024_25.API.Data.Owner", "Owner")
-                        .WithMany("ownerReviews")
+                        .WithMany("OwnerReviews")
                         .HasForeignKey("OwnerID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -1036,9 +1036,29 @@ namespace RS1_2024_25.API.Migrations
                     b.Navigation("MyAppUser");
                 });
 
+            modelBuilder.Entity("RS1_2024_25.API.Data.Amenity", b =>
+                {
+                    b.Navigation("ApartmentAmenities");
+                });
+
             modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
                 {
+                    b.Navigation("ApartmentAmenities");
+
+                    b.Navigation("ApartmentImages");
+
+                    b.Navigation("ApartmentRules");
+
+                    b.Navigation("ApartmentToiletries");
+
+                    b.Navigation("OwnerApartments");
+
                     b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Image", b =>
+                {
+                    b.Navigation("ApartmentImages");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Account", b =>
@@ -1054,11 +1074,11 @@ namespace RS1_2024_25.API.Migrations
 
                     b.Navigation("Favorites");
 
+                    b.Navigation("OwnerReviews");
+
                     b.Navigation("Reservations");
 
                     b.Navigation("Reviews");
-
-                    b.Navigation("ownerReviews");
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.City", b =>
@@ -1073,7 +1093,19 @@ namespace RS1_2024_25.API.Migrations
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Owner", b =>
                 {
-                    b.Navigation("ownerReviews");
+                    b.Navigation("OwnerApartments");
+
+                    b.Navigation("OwnerReviews");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Rule", b =>
+                {
+                    b.Navigation("ApartmentRules");
+                });
+
+            modelBuilder.Entity("RS1_2024_25.API.Data.Toiletry", b =>
+                {
+                    b.Navigation("ApartmentToiletries");
                 });
 #pragma warning restore 612, 618
         }
