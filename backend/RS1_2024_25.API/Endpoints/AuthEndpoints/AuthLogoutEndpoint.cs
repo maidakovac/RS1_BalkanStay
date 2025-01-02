@@ -43,6 +43,6 @@ public class AuthLogoutEndpoint(ApplicationDbContext db, MyAuthService authServi
     public class LogoutResponse
     {
         public bool IsSuccess { get; set; }
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

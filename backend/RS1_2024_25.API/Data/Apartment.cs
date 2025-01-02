@@ -10,8 +10,9 @@ namespace RS1_2024_25.API.Data
         public string Adress { get; set; }
         public int PricePerNight { get; set; }
 
-        public int CityId { get; set; }
-        public City City { get; set; }
+        public int ?CityId { get; set; }
+        public City? City { get; set; }
+
 
         public List<Reservation> Reservations { get; set; }
         public List<OwnerApartment> OwnerApartments { get; set; }
@@ -19,5 +20,6 @@ namespace RS1_2024_25.API.Data
         public List<ApartmentRule> ApartmentRules { get; set; }
         public List<ApartmentAmenity> ApartmentAmenities { get; set; }
         public List<ApartmentToiletry> ApartmentToiletries { get; set; }
+
     }
 }

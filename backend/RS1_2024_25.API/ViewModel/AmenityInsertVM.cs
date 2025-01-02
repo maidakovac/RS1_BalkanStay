@@ -2,6 +2,6 @@
 {
     public class AmenityInsertVM
     {
-        public int AmenityText { get; set; }
+        public string AmenityText { get; set; }
     }
 }

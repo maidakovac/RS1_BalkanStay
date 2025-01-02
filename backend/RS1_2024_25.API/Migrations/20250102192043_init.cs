@@ -31,7 +31,7 @@ namespace RS1_2024_25.API.Migrations
                 {
                     AmenityID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AmenityText = table.Column<int>(type: "int", nullable: false)
+                    AmenityText = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,7 +99,7 @@ namespace RS1_2024_25.API.Migrations
                 {
                     RuleID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RuleText = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    RuleText = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -148,7 +148,7 @@ namespace RS1_2024_25.API.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PricePerNight = table.Column<int>(type: "int", nullable: false),
-                    CityId = table.Column<int>(type: "int", nullable: false)
+                    CityId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -488,6 +488,19 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Amenities",
+                columns: new[] { "AmenityID", "AmenityText" },
+                values: new object[,]
+                {
+                    { 1, "Besplatan parking" },
+                    { 2, "Klima uređaj" },
+                    { 3, "Veš mašina" },
+                    { 4, "Pogled s terase" },
+                    { 5, "Bazen" },
+                    { 6, "Sauna" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Countries",
                 columns: new[] { "ID", "Name" },
                 values: new object[,]
@@ -505,6 +518,30 @@ namespace RS1_2024_25.API.Migrations
                 {
                     { 1, "Male" },
                     { 2, "Female" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rules",
+                columns: new[] { "RuleID", "RuleText" },
+                values: new object[,]
+                {
+                    { 1, "Zabranjeno pusenje" },
+                    { 2, "Zabranjene zabave" },
+                    { 3, "Dozvoljeni ljubimci" },
+                    { 4, "Zabranjeno prekoracenje kapaciteta osoba" },
+                    { 5, "Zabranjeno NESTO" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Toiletries",
+                columns: new[] { "ToiletryID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Sapun" },
+                    { 2, "Šampon" },
+                    { 3, "Regenerator" },
+                    { 4, "Fen" },
+                    { 5, "Peškiri" }
                 });
 
             migrationBuilder.InsertData(
@@ -534,11 +571,11 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "UserID", "CityID", "Email", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 1, 1, "manager1@example.com", null, new byte[0], "123-456-7891" },
-                    { 2, 2, "manager1@example.com", null, new byte[0], "123-456-7891" },
-                    { 3, 3, "manager1@example.com", null, new byte[0], "123-456-6666" },
-                    { 4, 4, "manager1@example.com", null, new byte[0], "123-456-8888" },
-                    { 5, 1, "manager5@example.com", null, new byte[0], "123-456-7777" }
+                    { 1, 1, "manager1@example.com", 1, new byte[0], "123-456-7891" },
+                    { 2, 2, "manager1@example.com", 1, new byte[0], "123-456-7891" },
+                    { 3, 3, "manager1@example.com", 2, new byte[0], "123-456-6666" },
+                    { 4, 4, "manager1@example.com", 2, new byte[0], "123-456-8888" },
+                    { 5, 1, "manager5@example.com", 1, new byte[0], "123-456-7777" }
                 });
 
             migrationBuilder.InsertData(
@@ -551,6 +588,42 @@ namespace RS1_2024_25.API.Migrations
                     { 3, "user", "userlastname", 3, "zzzz**", "usernameexample" },
                     { 4, "example", "examplelastname", 4, "hhhh", "example" },
                     { 5, "exampleXX", "examplelastnameXXX", 5, "ggggXX", "examplexxx" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ApartmentAmenities",
+                columns: new[] { "ApartmentAmenityID", "AmenityID", "ApartmentId" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 },
+                    { 3, 3, 3 },
+                    { 4, 4, 4 },
+                    { 5, 5, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ApartmentRules",
+                columns: new[] { "ApartmentRuleID", "ApartmentId", "RuleID" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 },
+                    { 3, 3, 3 },
+                    { 4, 1, 4 },
+                    { 5, 4, 5 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ApartmentToiletries",
+                columns: new[] { "ApartmentToiletryID", "ApartmentId", "ToiletryID" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 },
+                    { 3, 3, 3 },
+                    { 4, 4, 4 },
+                    { 5, 4, 5 }
                 });
 
             migrationBuilder.CreateIndex(

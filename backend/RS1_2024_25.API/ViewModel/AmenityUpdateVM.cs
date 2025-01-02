@@ -3,6 +3,6 @@
     public class AmenityUpdateVM
     {
         public int AmenityID { get; set; }
-        public int AmenityText { get; set; }
+        public string AmenityText { get; set; }
     }
 }
