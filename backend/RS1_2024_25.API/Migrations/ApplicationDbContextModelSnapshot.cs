@@ -535,6 +535,7 @@ namespace RS1_2024_25.API.Migrations
                             UserID = 1,
                             CityID = 1,
                             Email = "manager1@example.com",
+                            GenderID = 1,
                             Image = new byte[0],
                             Phone = "123-456-7891"
                         },
@@ -543,6 +544,7 @@ namespace RS1_2024_25.API.Migrations
                             UserID = 2,
                             CityID = 2,
                             Email = "manager1@example.com",
+                            GenderID = 1,
                             Image = new byte[0],
                             Phone = "123-456-7891"
                         },
@@ -551,6 +553,7 @@ namespace RS1_2024_25.API.Migrations
                             UserID = 3,
                             CityID = 3,
                             Email = "manager1@example.com",
+                            GenderID = 2,
                             Image = new byte[0],
                             Phone = "123-456-6666"
                         },
@@ -559,6 +562,7 @@ namespace RS1_2024_25.API.Migrations
                             UserID = 4,
                             CityID = 4,
                             Email = "manager1@example.com",
+                            GenderID = 2,
                             Image = new byte[0],
                             Phone = "123-456-8888"
                         },
@@ -567,6 +571,7 @@ namespace RS1_2024_25.API.Migrations
                             UserID = 5,
                             CityID = 1,
                             Email = "manager5@example.com",
+                            GenderID = 1,
                             Image = new byte[0],
                             Phone = "123-456-7777"
                         });

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RS1_2024_25.API.Migrations
 {
     /// <inheritdoc />
-    public partial class inti : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -571,11 +571,11 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "UserID", "CityID", "Email", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 1, 1, "manager1@example.com", null, new byte[0], "123-456-7891" },
-                    { 2, 2, "manager1@example.com", null, new byte[0], "123-456-7891" },
-                    { 3, 3, "manager1@example.com", null, new byte[0], "123-456-6666" },
-                    { 4, 4, "manager1@example.com", null, new byte[0], "123-456-8888" },
-                    { 5, 1, "manager5@example.com", null, new byte[0], "123-456-7777" }
+                    { 1, 1, "manager1@example.com", 1, new byte[0], "123-456-7891" },
+                    { 2, 2, "manager1@example.com", 1, new byte[0], "123-456-7891" },
+                    { 3, 3, "manager1@example.com", 2, new byte[0], "123-456-6666" },
+                    { 4, 4, "manager1@example.com", 2, new byte[0], "123-456-8888" },
+                    { 5, 1, "manager5@example.com", 1, new byte[0], "123-456-7777" }
                 });
 
             migrationBuilder.InsertData(

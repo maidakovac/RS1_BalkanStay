@@ -44,7 +44,7 @@ namespace RS1_2024_25.API.Data
                     Phone = "123-456-7891",
                     Image = new byte[0],
                     CityID = 1,
-                    GenderID = null
+                    GenderID = 1
                 },
                 new MyAppUser
                 {
@@ -53,7 +53,7 @@ namespace RS1_2024_25.API.Data
                     Phone = "123-456-7891",
                     Image = new byte[0],
                     CityID = 2,
-                    GenderID = null
+                    GenderID = 1
                 },
                 new MyAppUser
                 {
@@ -62,7 +62,7 @@ namespace RS1_2024_25.API.Data
                     Phone = "123-456-6666",
                     Image = new byte[0],
                     CityID = 3,
-                    GenderID = null
+                    GenderID = 2
                 },
                 new MyAppUser
                 {
@@ -71,7 +71,7 @@ namespace RS1_2024_25.API.Data
                     Phone = "123-456-8888",
                     Image = new byte[0],
                     CityID = 4,
-                    GenderID = null
+                    GenderID = 2
                 },
 
                 new MyAppUser
@@ -81,7 +81,7 @@ namespace RS1_2024_25.API.Data
                     Phone = "123-456-7777",
                     Image = new byte[0],
                     CityID = 1,
-                    GenderID = null
+                    GenderID = 1
                 }
 
             );
