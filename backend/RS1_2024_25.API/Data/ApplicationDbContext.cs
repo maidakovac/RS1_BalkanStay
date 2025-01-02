@@ -9,9 +9,10 @@ namespace RS1_2024_25.API.Data
     {
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
-        public DbSet<MyAppUser> MyAppUsers { get; set; }
+        //public DbSet<User> Users { get; set; }
         public DbSet<MyAuthenticationToken> MyAuthenticationTokens { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
         public DbSet<TwoFactorAuth> TwoFactorAuths { get; set; }
         public DbSet<Apartment> Apartments { get; set; }

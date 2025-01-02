@@ -4,10 +4,8 @@ using System.Text.Json.Serialization;
 
 namespace RS1_2024_25.API.Data.Models.Auth;
 
-public class MyAppUser
+public class MyAppUser : Account
 {
-        [Key]
-        public int UserID { get; set; } // Primary key (AutoNumber)
 
         [Required]
         [EmailAddress] // Ensures a valid email format

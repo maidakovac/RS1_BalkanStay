@@ -9,9 +9,9 @@ namespace RS1_2024_25.API.Data
         public int ApartmentId { get; set; }
         public Apartment Apartment { get; set; }
 
-        [ForeignKey(nameof(MyAppUser))]
-        public int MyAppUserID { get; set; }
-        public MyAppUser? MyAppUser { get; set; }
+        [ForeignKey(nameof(Account))]
+        public int AccountID { get; set; } // Koristi se AccountID, jer User nasleđuje Account
+        public Account Account { get; set; }
 
         public string Rating { get; set; }
         public string Comment { get; set; }
