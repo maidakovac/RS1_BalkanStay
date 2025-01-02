@@ -6,7 +6,6 @@ namespace RS1_2024_25.API.Data
     public class Owner:Account
     {
 
-        public string Email { get; set; }
         public string Phone { get; set; }
         public int GenderID { get; set; }
         public Gender Gender { get; set; }

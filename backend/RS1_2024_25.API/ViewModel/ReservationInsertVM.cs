@@ -2,7 +2,7 @@
 {
     public class ReservationInsertVM
     {
-        public int MyAppUserID { get; set; }
+        public int AccountID { get; set; }
         public int ApartmentId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

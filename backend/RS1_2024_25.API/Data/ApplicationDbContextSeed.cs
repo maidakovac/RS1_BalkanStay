@@ -1,7 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.Data.Models.Auth;
 using RS1_2024_25.API.Helpers;
+using System.Numerics;
 
 namespace RS1_2024_25.API.Data
 {
@@ -35,78 +38,167 @@ namespace RS1_2024_25.API.Data
             );
 
 
-            modelBuilder.Entity<MyAppUser>().HasData
-            (
-                new MyAppUser
-                {
-                    UserID = 1,
-                    Email = "manager1@example.com",
-                    Phone = "123-456-7891",
-                    Image = new byte[0],
-                    CityID = 1,
-                    GenderID = 1
-                },
-                new MyAppUser
-                {
-                    UserID = 2,
-                    Email = "manager1@example.com",
-                    Phone = "123-456-7891",
-                    Image = new byte[0],
-                    CityID = 2,
-                    GenderID = 1
-                },
-                new MyAppUser
-                {
-                    UserID = 3,
-                    Email = "manager1@example.com",
-                    Phone = "123-456-6666",
-                    Image = new byte[0],
-                    CityID = 3,
-                    GenderID = 2
-                },
-                new MyAppUser
-                {
-                    UserID = 4,
-                    Email = "manager1@example.com",
-                    Phone = "123-456-8888",
-                    Image = new byte[0],
-                    CityID = 4,
-                    GenderID = 2
-                },
 
-                new MyAppUser
-                {
-                    UserID = 5,
-                    Email = "manager5@example.com",
-                    Phone = "123-456-7777",
-                    Image = new byte[0],
-                    CityID = 1,
-                    GenderID = 1
-                }
-
-            );
 
             modelBuilder.Entity<Administrator>().HasData
             (
-                new Administrator { AdministratorID = 1 },
-                new Administrator { AdministratorID = 2 },
-                new Administrator { AdministratorID = 3 },
-                new Administrator { AdministratorID = 4 },
-                new Administrator { AdministratorID = 5 },
-                new Administrator { AdministratorID = 6 },
-                new Administrator { AdministratorID = 7 }
+                new Administrator
+                {
+                    AccountID = 1,
+                    Username = "Admin",
+                    Email = "admin@gmail.com",
+                    Password = "Admin",
+                    FirstName = "Admin",
+                    LastName = "Admin",
+
+                },
+                new Administrator
+                {
+                    AccountID = 2,
+                    Username = "Izel",
+                    Email = "izel@gmail.com",
+                    Password = "Izel",
+                    FirstName = "Izel",
+                    LastName = "Repuh",
+
+                },
+                 new Administrator
+                 {
+                     AccountID = 3,
+                     Username = "Maida",
+                     Email = "maida@gmail.com",
+                     Password = "Maida",
+                     FirstName = "Maida",
+                     LastName = "Kovac",
+
+                 }
             );
 
-            modelBuilder.Entity<Account>().HasData
+
+
+
+
+            modelBuilder.Entity<User>().HasData
+           (
+               new User
+               {
+                   AccountID = 4,
+                   Phone = "061-000-111",
+                   GenderID = 2,
+                   CityID = 1,
+                   Image = new byte[0],
+                   Username = "Izel",
+                   Email = "izel@gmail.com",
+                   Password = "Izel",
+                   FirstName = "Izel",
+                   LastName = "Repuh",
+                   CreatedAt = DateTime.Now,
+
+               },
+               new User
+               {
+                   AccountID = 5,
+                   Phone = "061-000-222",
+                   GenderID = 2,
+                   CityID = 2,
+                   Image = new byte[0],
+                   Username = "Maida",
+                   Email = "maida@gmail.com",
+                   Password = "Maida",
+                   FirstName = "Maida",
+                   LastName = "Kovac",
+                   CreatedAt = DateTime.Now,
+
+
+               },
+               new User
+               {
+                   AccountID = 6,
+                   Phone = "061-000-333",
+                   GenderID = 1,
+                   CityID= 3,
+                   Image = new byte[0],
+                   Username = "User",
+                   Email = "user@gmail.com",
+                   Password = "Admin",
+                   FirstName = "User",
+                   LastName = "User",
+                   CreatedAt = DateTime.Now,
+
+               },
+               new User
+               {
+                   AccountID = 7,
+                   Phone = "061-000-444",
+                   GenderID = 2,
+                   CityID = 3,
+                   Image = new byte[0],
+                   Username = "Amar",
+                   Email = "amar@gmail.com",
+                   Password = "Amar",
+                   FirstName = "Amar",
+                   LastName = "Omerovic",
+                   CreatedAt = DateTime.Now,
+
+               }
+
+
+           );
+
+
+
+
+
+            modelBuilder.Entity<Owner>().HasData
             (
-                new Account { AccountID = 1, Username = "izellapin", Password = "xxxx", FirstName = "izel", LastName = "repuh", MyAppUserID = 1 },
-                new Account { AccountID = 2, Username = "maidakcv", Password = "yyyy", FirstName = "maida", LastName = "kovac", MyAppUserID = 2 },
-                new Account { AccountID = 3, Username = "usernameexample", Password = "zzzz**", FirstName = "user", LastName = "userlastname", MyAppUserID = 3 },
-                new Account { AccountID = 4, Username = "example", Password = "hhhh", FirstName = "example", LastName = "examplelastname", MyAppUserID = 4 },
-                new Account { AccountID = 5, Username = "examplexxx", Password = "ggggXX", FirstName = "exampleXX", LastName = "examplelastnameXXX", MyAppUserID = 5 }
+                new Owner
+                {
+                    AccountID = 8,
+                    Phone = "061-000-111",
+                    GenderID = 2,
+                    CityID = 1,
+                    Image = new byte[0],
+                    Username = "Izel",
+                    Email = "izel@gmail.com",
+                    Password = "Izel",
+                    FirstName = "Izel",
+                    LastName = "Repuh",
+                    CreatedAt = DateTime.Now,
+
+                },
+                 new User
+                 {
+                     AccountID = 9,
+                     Phone = "061-000-222",
+                     GenderID = 2,
+                     CityID = 2,
+                     Image = new byte[0],
+                     Username = "Maida",
+                     Email = "maida@gmail.com",
+                     Password = "Maida",
+                     FirstName = "Maida",
+                     LastName = "Kovac",
+                     CreatedAt = DateTime.Now,
+
+                 },
+                 new User
+                 {
+                     AccountID = 10,
+                     Phone = "061-000-333",
+                     GenderID = 1,
+                     CityID = 3,
+                     Image = new byte[0],
+                     Username = "Admin",
+                     Email = "owner@gmail.com",
+                     Password = "Admin",
+                     FirstName = "Admin",
+                     LastName = "Admin",
+                     CreatedAt = DateTime.Now,
+
+                 }
+
 
             );
-
 
 
             modelBuilder.Entity<Apartment>().HasData
