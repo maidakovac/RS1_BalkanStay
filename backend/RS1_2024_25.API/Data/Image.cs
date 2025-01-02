@@ -4,5 +4,8 @@
     {
         public int ImageID { get; set; }
         public byte[] Photo{ get; set; }
+
+        public List<ApartmentImage> ApartmentImages { get; set; }
+
     }
 }

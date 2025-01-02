@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RS1_2024_25.API.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class inti : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,7 +31,7 @@ namespace RS1_2024_25.API.Migrations
                 {
                     AmenityID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AmenityText = table.Column<int>(type: "int", nullable: false)
+                    AmenityText = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,7 +99,7 @@ namespace RS1_2024_25.API.Migrations
                 {
                     RuleID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RuleText = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    RuleText = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -335,8 +335,7 @@ namespace RS1_2024_25.API.Migrations
                 {
                     FavoriteID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserID = table.Column<int>(type: "int", nullable: false),
                     ApartmentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -348,8 +347,8 @@ namespace RS1_2024_25.API.Migrations
                         principalTable: "Apartments",
                         principalColumn: "ApartmentId");
                     table.ForeignKey(
-                        name: "FK_Favorites_MyAppUsers_MyAppUserUserID",
-                        column: x => x.MyAppUserUserID,
+                        name: "FK_Favorites_MyAppUsers_MyAppUserID",
+                        column: x => x.MyAppUserID,
                         principalTable: "MyAppUsers",
                         principalColumn: "UserID");
                 });
@@ -382,16 +381,15 @@ namespace RS1_2024_25.API.Migrations
                     OwnerReviewID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OwnerID = table.Column<int>(type: "int", nullable: false),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserID = table.Column<int>(type: "int", nullable: false),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OwnerReviews", x => x.OwnerReviewID);
                     table.ForeignKey(
-                        name: "FK_OwnerReviews_MyAppUsers_MyAppUserUserID",
-                        column: x => x.MyAppUserUserID,
+                        name: "FK_OwnerReviews_MyAppUsers_MyAppUserID",
+                        column: x => x.MyAppUserID,
                         principalTable: "MyAppUsers",
                         principalColumn: "UserID");
                     table.ForeignKey(
@@ -407,8 +405,7 @@ namespace RS1_2024_25.API.Migrations
                 {
                     ReservationID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserID = table.Column<int>(type: "int", nullable: false),
                     ApartmentId = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -423,8 +420,8 @@ namespace RS1_2024_25.API.Migrations
                         principalTable: "Apartments",
                         principalColumn: "ApartmentId");
                     table.ForeignKey(
-                        name: "FK_Reservations_MyAppUsers_MyAppUserUserID",
-                        column: x => x.MyAppUserUserID,
+                        name: "FK_Reservations_MyAppUsers_MyAppUserID",
+                        column: x => x.MyAppUserID,
                         principalTable: "MyAppUsers",
                         principalColumn: "UserID");
                 });
@@ -436,8 +433,7 @@ namespace RS1_2024_25.API.Migrations
                     ReviewID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ApartmentId = table.Column<int>(type: "int", nullable: false),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    MyAppUserUserID = table.Column<int>(type: "int", nullable: false),
+                    MyAppUserID = table.Column<int>(type: "int", nullable: false),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -450,8 +446,8 @@ namespace RS1_2024_25.API.Migrations
                         principalTable: "Apartments",
                         principalColumn: "ApartmentId");
                     table.ForeignKey(
-                        name: "FK_Reviews_MyAppUsers_MyAppUserUserID",
-                        column: x => x.MyAppUserUserID,
+                        name: "FK_Reviews_MyAppUsers_MyAppUserID",
+                        column: x => x.MyAppUserID,
                         principalTable: "MyAppUsers",
                         principalColumn: "UserID");
                 });
@@ -492,6 +488,19 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Amenities",
+                columns: new[] { "AmenityID", "AmenityText" },
+                values: new object[,]
+                {
+                    { 1, "Besplatan parking" },
+                    { 2, "Klima uređaj" },
+                    { 3, "Veš mašina" },
+                    { 4, "Pogled s terase" },
+                    { 5, "Bazen" },
+                    { 6, "Sauna" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Countries",
                 columns: new[] { "ID", "Name" },
                 values: new object[,]
@@ -509,6 +518,30 @@ namespace RS1_2024_25.API.Migrations
                 {
                     { 1, "Male" },
                     { 2, "Female" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rules",
+                columns: new[] { "RuleID", "RuleText" },
+                values: new object[,]
+                {
+                    { 1, "Zabranjeno pusenje" },
+                    { 2, "Zabranjene zabave" },
+                    { 3, "Dozvoljeni ljubimci" },
+                    { 4, "Zabranjeno prekoracenje kapaciteta osoba" },
+                    { 5, "Zabranjeno NESTO" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Toiletries",
+                columns: new[] { "ToiletryID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Sapun" },
+                    { 2, "Šampon" },
+                    { 3, "Regenerator" },
+                    { 4, "Fen" },
+                    { 5, "Peškiri" }
                 });
 
             migrationBuilder.InsertData(
@@ -555,6 +588,42 @@ namespace RS1_2024_25.API.Migrations
                     { 3, "user", "userlastname", 3, "zzzz**", "usernameexample" },
                     { 4, "example", "examplelastname", 4, "hhhh", "example" },
                     { 5, "exampleXX", "examplelastnameXXX", 5, "ggggXX", "examplexxx" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ApartmentAmenities",
+                columns: new[] { "ApartmentAmenityID", "AmenityID", "ApartmentId" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 },
+                    { 3, 3, 3 },
+                    { 4, 4, 4 },
+                    { 5, 5, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ApartmentRules",
+                columns: new[] { "ApartmentRuleID", "ApartmentId", "RuleID" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 },
+                    { 3, 3, 3 },
+                    { 4, 1, 4 },
+                    { 5, 4, 5 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ApartmentToiletries",
+                columns: new[] { "ApartmentToiletryID", "ApartmentId", "ToiletryID" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 },
+                    { 3, 3, 3 },
+                    { 4, 4, 4 },
+                    { 5, 4, 5 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -619,9 +688,9 @@ namespace RS1_2024_25.API.Migrations
                 column: "ApartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Favorites_MyAppUserUserID",
+                name: "IX_Favorites_MyAppUserID",
                 table: "Favorites",
-                column: "MyAppUserUserID");
+                column: "MyAppUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MyAppUsers_CityID",
@@ -649,9 +718,9 @@ namespace RS1_2024_25.API.Migrations
                 column: "OwnerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OwnerReviews_MyAppUserUserID",
+                name: "IX_OwnerReviews_MyAppUserID",
                 table: "OwnerReviews",
-                column: "MyAppUserUserID");
+                column: "MyAppUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OwnerReviews_OwnerID",
@@ -664,9 +733,9 @@ namespace RS1_2024_25.API.Migrations
                 column: "ApartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservations_MyAppUserUserID",
+                name: "IX_Reservations_MyAppUserID",
                 table: "Reservations",
-                column: "MyAppUserUserID");
+                column: "MyAppUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_ApartmentId",
@@ -674,9 +743,9 @@ namespace RS1_2024_25.API.Migrations
                 column: "ApartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_MyAppUserUserID",
+                name: "IX_Reviews_MyAppUserID",
                 table: "Reviews",
-                column: "MyAppUserUserID");
+                column: "MyAppUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TwoFactorAuths_AccountId",

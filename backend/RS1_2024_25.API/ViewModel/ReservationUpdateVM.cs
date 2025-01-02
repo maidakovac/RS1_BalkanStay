@@ -1,18 +1,14 @@
 ﻿using RS1_2024_25.API.Data.Models.Auth;
+using RS1_2024_25.API.Data;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RS1_2024_25.API.Data
+namespace RS1_2024_25.API.ViewModel
 {
-    public class Reservation
+    public class ReservationUpdateVM
     {
         public int ReservationID { get; set; }
-        [ForeignKey(nameof(MyAppUser))]
         public int MyAppUserID { get; set; }
-        public MyAppUser? MyAppUser { get; set; }
-
-        [ForeignKey(nameof(Apartment))]
         public int ApartmentId { get; set; }
-        public Apartment? Apartment { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool Status { get; set; }

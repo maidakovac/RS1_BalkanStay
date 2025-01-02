@@ -4,5 +4,8 @@
     {
         public int ToiletryID { get; set; }
         public string Name { get; set; }
+
+        public List<ApartmentToiletry> ApartmentToiletries { get; set; }
+
     }
 }
