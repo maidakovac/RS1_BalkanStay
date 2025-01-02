@@ -80,7 +80,7 @@ namespace RS1_2024_25.API.Controllers
         {
             var newReservation = new Reservation()
             {
-                MyAppUserID=x.MyAppUserID,
+                AccountID=x.AccountID,
                 ApartmentId=x.ApartmentId,
                 StartDate=x.StartDate,
                 EndDate=x.EndDate,
@@ -108,7 +108,7 @@ namespace RS1_2024_25.API.Controllers
                 return BadRequest();
             }
 
-            updatedReservation.MyAppUserID = x.MyAppUserID;
+            updatedReservation.AccountID = x.AccountID;
             updatedReservation.ApartmentId = x.ApartmentId;
             updatedReservation.StartDate = x.StartDate;
             updatedReservation.EndDate = x.EndDate;

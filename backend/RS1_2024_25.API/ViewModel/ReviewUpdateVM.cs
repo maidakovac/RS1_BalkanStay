@@ -5,7 +5,7 @@
         public int ReviewID { get; set; }
         public int ApartmentId { get; set; }
 
-        public int MyAppUserID { get; set; }
+        public int AccountID { get; set; }
 
         public string Rating { get; set; }
         public string Comment { get; set; }

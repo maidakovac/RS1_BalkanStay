@@ -21,12 +21,12 @@ namespace RS1_2024_25.API.Endpoints.Auth
         [HttpPost("login")]
         public override async Task<ActionResult<LoginResponse>> HandleAsync(LoginRequest request, CancellationToken cancellationToken = default)
         {
-            var loggedInUser = await db.MyAppUsers
-                .FirstOrDefaultAsync(u => u.Email == request.Email && u.Phone == request.Phone, cancellationToken);
+            var loggedInUser = await db.Accounts
+                .FirstOrDefaultAsync(u => u.Email == request.Email, cancellationToken);
 
             if (loggedInUser == null)
             {
-                return Unauthorized(new { Message = "Incorrect email or phone number" });
+                return Unauthorized(new { Message = "Incorrect email" });
             }
 
             var newAuthToken = await authService.GenerateAuthToken(loggedInUser, cancellationToken);
@@ -42,7 +42,7 @@ namespace RS1_2024_25.API.Endpoints.Auth
         public class LoginRequest
         {
             public required string Email { get; set; }
-            public required string Phone { get; set; }
+            
         }
 
         public class LoginResponse

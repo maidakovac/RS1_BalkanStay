@@ -2,7 +2,7 @@
 {
     public class OwnerApartmentInsertVM
     {
-        public int OwnerID { get; set; }
+        public int AccountID { get; set; }
         public int ApartmentId { get; set; }
     }
 }

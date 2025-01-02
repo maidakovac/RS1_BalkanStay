@@ -2,7 +2,7 @@
 {
     public class OwnerUpdateVM
     {
-        public int OwnerID { get; set; }
+        public int AccountID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

@@ -79,7 +79,7 @@ namespace RS1_2024_25.API.Controllers
         {
             var newFavorite = new Favorite()
             {
-                MyAppUserID = favorite.MyAppUserID,
+                AccountID = favorite.AccountID,
                 ApartmentId =favorite.ApartmentId
             };
 
@@ -104,7 +104,7 @@ namespace RS1_2024_25.API.Controllers
                 return BadRequest();
             }
 
-            updatedFavorite.MyAppUserID = favorite.MyAppUserID;
+            updatedFavorite.AccountID = favorite.AccountID;
             updatedFavorite.ApartmentId = favorite.ApartmentId;
 
             _DbContext.Favorites.Update(updatedFavorite);

@@ -8,7 +8,7 @@ namespace RS1_2024_25.API.ViewModel
     {
         public int ApartmentId { get; set; }
       
-        public int MyAppUserID { get; set; }     
+        public int AccountID { get; set; }     
 
         public string Rating { get; set; }
         public string Comment { get; set; }
