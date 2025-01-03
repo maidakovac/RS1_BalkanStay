@@ -12,7 +12,7 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250103185923_init")]
+    [Migration("20250103192903_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -40,6 +40,38 @@ namespace RS1_2024_25.API.Migrations
                     b.HasKey("AmenityID");
 
                     b.ToTable("Amenities");
+
+                    b.HasData(
+                        new
+                        {
+                            AmenityID = 1,
+                            AmenityText = "Besplatan parking"
+                        },
+                        new
+                        {
+                            AmenityID = 2,
+                            AmenityText = "Klima uređaj"
+                        },
+                        new
+                        {
+                            AmenityID = 3,
+                            AmenityText = "Veš mašina"
+                        },
+                        new
+                        {
+                            AmenityID = 4,
+                            AmenityText = "Pogled s terase"
+                        },
+                        new
+                        {
+                            AmenityID = 5,
+                            AmenityText = "Bazen"
+                        },
+                        new
+                        {
+                            AmenityID = 6,
+                            AmenityText = "Sauna"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Apartment", b =>
@@ -73,6 +105,44 @@ namespace RS1_2024_25.API.Migrations
                     b.HasIndex("CityId");
 
                     b.ToTable("Apartments");
+
+                    b.HasData(
+                        new
+                        {
+                            ApartmentId = 1,
+                            Adress = "Adresa 1",
+                            CityId = 1,
+                            Description = "opis neki",
+                            Name = "Apartment Marshal",
+                            PricePerNight = 50
+                        },
+                        new
+                        {
+                            ApartmentId = 2,
+                            Adress = "Adresa 2",
+                            CityId = 2,
+                            Description = "opis neki",
+                            Name = "Apartment Charm",
+                            PricePerNight = 70
+                        },
+                        new
+                        {
+                            ApartmentId = 3,
+                            Adress = "Adresa 3",
+                            CityId = 3,
+                            Description = "opis neki",
+                            Name = "Apartment Sun",
+                            PricePerNight = 50
+                        },
+                        new
+                        {
+                            ApartmentId = 4,
+                            Adress = "Adresa 4",
+                            CityId = 4,
+                            Description = "opis neki",
+                            Name = "Apartment Exclusive",
+                            PricePerNight = 150
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentAmenity", b =>
@@ -96,6 +166,38 @@ namespace RS1_2024_25.API.Migrations
                     b.HasIndex("ApartmentId");
 
                     b.ToTable("ApartmentAmenities");
+
+                    b.HasData(
+                        new
+                        {
+                            ApartmentAmenityID = 1,
+                            AmenityID = 1,
+                            ApartmentId = 1
+                        },
+                        new
+                        {
+                            ApartmentAmenityID = 2,
+                            AmenityID = 2,
+                            ApartmentId = 2
+                        },
+                        new
+                        {
+                            ApartmentAmenityID = 3,
+                            AmenityID = 3,
+                            ApartmentId = 3
+                        },
+                        new
+                        {
+                            ApartmentAmenityID = 4,
+                            AmenityID = 4,
+                            ApartmentId = 4
+                        },
+                        new
+                        {
+                            ApartmentAmenityID = 5,
+                            AmenityID = 5,
+                            ApartmentId = 2
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentImage", b =>
@@ -142,6 +244,38 @@ namespace RS1_2024_25.API.Migrations
                     b.HasIndex("RuleID");
 
                     b.ToTable("ApartmentRules");
+
+                    b.HasData(
+                        new
+                        {
+                            ApartmentRuleID = 1,
+                            ApartmentId = 1,
+                            RuleID = 1
+                        },
+                        new
+                        {
+                            ApartmentRuleID = 2,
+                            ApartmentId = 2,
+                            RuleID = 2
+                        },
+                        new
+                        {
+                            ApartmentRuleID = 3,
+                            ApartmentId = 3,
+                            RuleID = 3
+                        },
+                        new
+                        {
+                            ApartmentRuleID = 4,
+                            ApartmentId = 1,
+                            RuleID = 4
+                        },
+                        new
+                        {
+                            ApartmentRuleID = 5,
+                            ApartmentId = 4,
+                            RuleID = 5
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.ApartmentToiletry", b =>
@@ -165,6 +299,38 @@ namespace RS1_2024_25.API.Migrations
                     b.HasIndex("ToiletryID");
 
                     b.ToTable("ApartmentToiletries");
+
+                    b.HasData(
+                        new
+                        {
+                            ApartmentToiletryID = 1,
+                            ApartmentId = 1,
+                            ToiletryID = 1
+                        },
+                        new
+                        {
+                            ApartmentToiletryID = 2,
+                            ApartmentId = 2,
+                            ToiletryID = 2
+                        },
+                        new
+                        {
+                            ApartmentToiletryID = 3,
+                            ApartmentId = 3,
+                            ToiletryID = 3
+                        },
+                        new
+                        {
+                            ApartmentToiletryID = 4,
+                            ApartmentId = 4,
+                            ToiletryID = 4
+                        },
+                        new
+                        {
+                            ApartmentToiletryID = 5,
+                            ApartmentId = 4,
+                            ToiletryID = 5
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Favorite", b =>
@@ -563,6 +729,33 @@ namespace RS1_2024_25.API.Migrations
                     b.HasKey("RuleID");
 
                     b.ToTable("Rules");
+
+                    b.HasData(
+                        new
+                        {
+                            RuleID = 1,
+                            RuleText = "Zabranjeno pusenje"
+                        },
+                        new
+                        {
+                            RuleID = 2,
+                            RuleText = "Zabranjene zabave"
+                        },
+                        new
+                        {
+                            RuleID = 3,
+                            RuleText = "Dozvoljeni ljubimci"
+                        },
+                        new
+                        {
+                            RuleID = 4,
+                            RuleText = "Zabranjeno prekoracenje kapaciteta osoba"
+                        },
+                        new
+                        {
+                            RuleID = 5,
+                            RuleText = "Zabranjeno NESTO"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Toiletry", b =>
@@ -580,6 +773,33 @@ namespace RS1_2024_25.API.Migrations
                     b.HasKey("ToiletryID");
 
                     b.ToTable("Toiletries");
+
+                    b.HasData(
+                        new
+                        {
+                            ToiletryID = 1,
+                            Name = "Sapun"
+                        },
+                        new
+                        {
+                            ToiletryID = 2,
+                            Name = "Šampon"
+                        },
+                        new
+                        {
+                            ToiletryID = 3,
+                            Name = "Regenerator"
+                        },
+                        new
+                        {
+                            ToiletryID = 4,
+                            Name = "Fen"
+                        },
+                        new
+                        {
+                            ToiletryID = 5,
+                            Name = "Peškiri"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.Administrator", b =>
@@ -652,6 +872,60 @@ namespace RS1_2024_25.API.Migrations
                     b.HasIndex("GenderID");
 
                     b.ToTable("Users", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            AccountID = 5,
+                            Email = "johndoe@example.com",
+                            FirstName = "John",
+                            LastName = "Doe",
+                            Password = "JohnPass",
+                            Username = "johndoe",
+                            CityID = 1,
+                            CreatedAt = new DateTime(2025, 1, 3, 20, 29, 3, 166, DateTimeKind.Local).AddTicks(5752),
+                            GenderID = 1,
+                            Phone = "+38761000111"
+                        },
+                        new
+                        {
+                            AccountID = 6,
+                            Email = "janedoe@example.com",
+                            FirstName = "Jane",
+                            LastName = "Doe",
+                            Password = "JanePass",
+                            Username = "janedoe",
+                            CityID = 2,
+                            CreatedAt = new DateTime(2025, 1, 3, 20, 29, 3, 169, DateTimeKind.Local).AddTicks(624),
+                            GenderID = 2,
+                            Phone = "+38761000222"
+                        },
+                        new
+                        {
+                            AccountID = 7,
+                            Email = "xxxx@example.com",
+                            FirstName = "Xkorisnik",
+                            LastName = "PKorisnik",
+                            Password = "xxxxx",
+                            Username = "xxxxx",
+                            CityID = 3,
+                            CreatedAt = new DateTime(2025, 1, 3, 20, 29, 3, 169, DateTimeKind.Local).AddTicks(646),
+                            GenderID = 1,
+                            Phone = "+38761000222"
+                        },
+                        new
+                        {
+                            AccountID = 8,
+                            Email = "yyyy@example.com",
+                            FirstName = "YYKorisnik",
+                            LastName = "YYPrezime",
+                            Password = "YYYXX",
+                            Username = "yyyy",
+                            CityID = 4,
+                            CreatedAt = new DateTime(2025, 1, 3, 20, 29, 3, 169, DateTimeKind.Local).AddTicks(649),
+                            GenderID = 2,
+                            Phone = "+38761000222"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Owner", b =>

@@ -214,8 +214,8 @@ namespace RS1_2024_25.API.Migrations
                 {
                     AccountID = table.Column<int>(type: "int", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GenderID = table.Column<int>(type: "int", nullable: false),
                     CityID = table.Column<int>(type: "int", nullable: false),
+                    GenderID = table.Column<int>(type: "int", nullable: false),
                     Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -246,8 +246,8 @@ namespace RS1_2024_25.API.Migrations
                 {
                     AccountID = table.Column<int>(type: "int", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GenderID = table.Column<int>(type: "int", nullable: false),
                     CityID = table.Column<int>(type: "int", nullable: false),
+                    GenderID = table.Column<int>(type: "int", nullable: false),
                     Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -526,7 +526,24 @@ namespace RS1_2024_25.API.Migrations
                     { 1, "admin@example.com", "Admin", "User", "AdminPass", "admin" },
                     { 2, "superadmin@example.com", "Super", "Admin", "SuperPass", "superadmin" },
                     { 3, "izelrepuh@example.com", "Izel", "Repuh", "SuperPass", "izelrepuh" },
-                    { 4, "amaromer@example.com", "Amar", "Omer", "SuperAmar", "amaromer" }
+                    { 4, "amaromer@example.com", "Amar", "Omer", "SuperAmar", "amaromer" },
+                    { 5, "johndoe@example.com", "John", "Doe", "JohnPass", "johndoe" },
+                    { 6, "janedoe@example.com", "Jane", "Doe", "JanePass", "janedoe" },
+                    { 7, "xxxx@example.com", "Xkorisnik", "PKorisnik", "xxxxx", "xxxxx" },
+                    { 8, "yyyy@example.com", "YYKorisnik", "YYPrezime", "YYYXX", "yyyy" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Amenities",
+                columns: new[] { "AmenityID", "AmenityText" },
+                values: new object[,]
+                {
+                    { 1, "Besplatan parking" },
+                    { 2, "Klima uređaj" },
+                    { 3, "Veš mašina" },
+                    { 4, "Pogled s terase" },
+                    { 5, "Bazen" },
+                    { 6, "Sauna" }
                 });
 
             migrationBuilder.InsertData(
@@ -550,6 +567,30 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Rules",
+                columns: new[] { "RuleID", "RuleText" },
+                values: new object[,]
+                {
+                    { 1, "Zabranjeno pusenje" },
+                    { 2, "Zabranjene zabave" },
+                    { 3, "Dozvoljeni ljubimci" },
+                    { 4, "Zabranjeno prekoracenje kapaciteta osoba" },
+                    { 5, "Zabranjeno NESTO" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Toiletries",
+                columns: new[] { "ToiletryID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Sapun" },
+                    { 2, "Šampon" },
+                    { 3, "Regenerator" },
+                    { 4, "Fen" },
+                    { 5, "Peškiri" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Administrators",
                 column: "AccountID",
                 values: new object[]
@@ -569,6 +610,64 @@ namespace RS1_2024_25.API.Migrations
                     { 2, 2, "Another City" },
                     { 3, 3, "Third City" },
                     { 4, 4, "Four City" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Apartments",
+                columns: new[] { "ApartmentId", "Adress", "CityId", "Description", "Name", "PricePerNight" },
+                values: new object[,]
+                {
+                    { 1, "Adresa 1", 1, "opis neki", "Apartment Marshal", 50 },
+                    { 2, "Adresa 2", 2, "opis neki", "Apartment Charm", 70 },
+                    { 3, "Adresa 3", 3, "opis neki", "Apartment Sun", 50 },
+                    { 4, "Adresa 4", 4, "opis neki", "Apartment Exclusive", 150 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
+                values: new object[,]
+                {
+                    { 5, 1, new DateTime(2025, 1, 3, 20, 29, 3, 166, DateTimeKind.Local).AddTicks(5752), 1, null, "+38761000111" },
+                    { 6, 2, new DateTime(2025, 1, 3, 20, 29, 3, 169, DateTimeKind.Local).AddTicks(624), 2, null, "+38761000222" },
+                    { 7, 3, new DateTime(2025, 1, 3, 20, 29, 3, 169, DateTimeKind.Local).AddTicks(646), 1, null, "+38761000222" },
+                    { 8, 4, new DateTime(2025, 1, 3, 20, 29, 3, 169, DateTimeKind.Local).AddTicks(649), 2, null, "+38761000222" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ApartmentAmenities",
+                columns: new[] { "ApartmentAmenityID", "AmenityID", "ApartmentId" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 },
+                    { 3, 3, 3 },
+                    { 4, 4, 4 },
+                    { 5, 5, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ApartmentRules",
+                columns: new[] { "ApartmentRuleID", "ApartmentId", "RuleID" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 },
+                    { 3, 3, 3 },
+                    { 4, 1, 4 },
+                    { 5, 4, 5 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ApartmentToiletries",
+                columns: new[] { "ApartmentToiletryID", "ApartmentId", "ToiletryID" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 },
+                    { 3, 3, 3 },
+                    { 4, 4, 4 },
+                    { 5, 4, 5 }
                 });
 
             migrationBuilder.CreateIndex(
