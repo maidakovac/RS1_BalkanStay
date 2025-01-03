@@ -49,6 +49,8 @@ namespace RS1_2024_25.API.Data
                 relationship.DeleteBehavior = DeleteBehavior.NoAction;
             }
 
+            ApplicationDbContextSeed.Seed(modelBuilder);
+
             // Dodatne konfiguracije
             OnModelCreatingPartial(modelBuilder);
         }

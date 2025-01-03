@@ -38,31 +38,26 @@ namespace RS1_2024_25.API.Data
             );
 
 
-
-
-
-
-
             modelBuilder.Entity<Administrator>().HasData(
-         new Administrator
-         {
-             AccountID = 1,
-             Username = "admin",
-             Password = "AdminPass",
-             FirstName = "Admin",
-             LastName = "User",
-             Email = "admin@example.com"
-         },
-         new Administrator
-         {
-             AccountID = 2,
-             Username = "superadmin",
-             Password = "SuperPass",
-             FirstName = "Super",
-             LastName = "Admin",
-             Email = "superadmin@example.com"
-         }
-     );
+             new Administrator
+             {
+                 AccountID = 1,
+                 Username = "admin",
+                 Password = "AdminPass",
+                 FirstName = "Admin",
+                 LastName = "User",
+                 Email = "admin@example.com"
+             },
+             new Administrator
+             {
+                 AccountID = 2,
+                 Username = "superadmin",
+                 Password = "SuperPass",
+                 FirstName = "Super",
+                 LastName = "Admin",
+                 Email = "superadmin@example.com"
+             }
+         );
 
             modelBuilder.Entity<User>().HasData(
                 new User
@@ -113,7 +108,7 @@ namespace RS1_2024_25.API.Data
                     CreatedAt = DateTime.Now,
 
                 },
-                 new User
+                 new Owner
                  {
                      AccountID = 9,
                      FirstName = "Maida",
@@ -128,7 +123,7 @@ namespace RS1_2024_25.API.Data
                      CreatedAt = DateTime.Now,
 
                  },
-                 new User
+                 new Owner
                  {
                      AccountID = 10,
                      FirstName = "Admin",
