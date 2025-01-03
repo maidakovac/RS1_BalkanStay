@@ -8,13 +8,13 @@ namespace RS1_2024_25.API.Data
     {
         public int OwnerReviewID { get; set; }
 
-        [ForeignKey(nameof(Owner))]
+        // FK za Owner (AccountID naslijeđen od Account)
         public int OwnerID { get; set; }
-        public Owner? Owner { get; set; }
+        public Owner Owner { get; set; }
 
-        [ForeignKey(nameof(Account))]
-        public int AccountID { get; set; }
-        public Account? Account   { get; set; }
+        // FK za User (AccountID naslijeđen od Account)
+        public int UserID { get; set; }
+        public User User { get; set; }
 
         public string Rating { get; set; }
     }

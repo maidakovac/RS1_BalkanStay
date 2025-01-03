@@ -374,20 +374,26 @@ namespace RS1_2024_25.API.Migrations
                 {
                     OwnerApartmentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OwnerID = table.Column<int>(type: "int", nullable: false),
-                    ApartmentId = table.Column<int>(type: "int", nullable: false)
+                    AccountID = table.Column<int>(type: "int", nullable: false),
+                    ApartmentId = table.Column<int>(type: "int", nullable: false),
+                    OwnerAccountID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OwnerApartments", x => x.OwnerApartmentID);
+                    table.ForeignKey(
+                        name: "FK_OwnerApartments_Accounts_AccountID",
+                        column: x => x.AccountID,
+                        principalTable: "Accounts",
+                        principalColumn: "AccountID");
                     table.ForeignKey(
                         name: "FK_OwnerApartments_Apartments_ApartmentId",
                         column: x => x.ApartmentId,
                         principalTable: "Apartments",
                         principalColumn: "ApartmentId");
                     table.ForeignKey(
-                        name: "FK_OwnerApartments_Owners_OwnerID",
-                        column: x => x.OwnerID,
+                        name: "FK_OwnerApartments_Owners_OwnerAccountID",
+                        column: x => x.OwnerAccountID,
                         principalTable: "Owners",
                         principalColumn: "AccountID");
                 });
@@ -429,26 +435,20 @@ namespace RS1_2024_25.API.Migrations
                     OwnerReviewID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OwnerID = table.Column<int>(type: "int", nullable: false),
-                    AccountID = table.Column<int>(type: "int", nullable: false),
-                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserAccountID = table.Column<int>(type: "int", nullable: true)
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OwnerReviews", x => x.OwnerReviewID);
-                    table.ForeignKey(
-                        name: "FK_OwnerReviews_Accounts_AccountID",
-                        column: x => x.AccountID,
-                        principalTable: "Accounts",
-                        principalColumn: "AccountID");
                     table.ForeignKey(
                         name: "FK_OwnerReviews_Owners_OwnerID",
                         column: x => x.OwnerID,
                         principalTable: "Owners",
                         principalColumn: "AccountID");
                     table.ForeignKey(
-                        name: "FK_OwnerReviews_Users_UserAccountID",
-                        column: x => x.UserAccountID,
+                        name: "FK_OwnerReviews_Users_UserID",
+                        column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "AccountID");
                 });
@@ -530,7 +530,10 @@ namespace RS1_2024_25.API.Migrations
                     { 5, "johndoe@example.com", "John", "Doe", "JohnPass", "johndoe" },
                     { 6, "janedoe@example.com", "Jane", "Doe", "JanePass", "janedoe" },
                     { 7, "xxxx@example.com", "Xkorisnik", "PKorisnik", "xxxxx", "xxxxx" },
-                    { 8, "yyyy@example.com", "YYKorisnik", "YYPrezime", "YYYXX", "yyyy" }
+                    { 8, "yyyy@example.com", "YYKorisnik", "YYPrezime", "YYYXX", "yyyy" },
+                    { 9, "izel@gmail.com", "Izel", "Repuh", "Izel", "Izel" },
+                    { 10, "maida@gmail.com", "Maida", "Kovac", "Maida", "Maida" },
+                    { 11, "owner@gmail.com", "Admin", "Admin", "Admin", "Admin" }
                 });
 
             migrationBuilder.InsertData(
@@ -624,14 +627,24 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Owners",
+                columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
+                values: new object[,]
+                {
+                    { 9, 1, new DateTime(2025, 1, 3, 20, 56, 25, 35, DateTimeKind.Utc).AddTicks(4692), 2, new byte[0], "061-000-111" },
+                    { 10, 2, new DateTime(2025, 1, 3, 20, 56, 25, 35, DateTimeKind.Utc).AddTicks(5648), 2, new byte[0], "061-000-222" },
+                    { 11, 3, new DateTime(2025, 1, 3, 20, 56, 25, 35, DateTimeKind.Utc).AddTicks(5656), 1, new byte[0], "061-000-333" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 5, 1, new DateTime(2025, 1, 3, 20, 29, 3, 166, DateTimeKind.Local).AddTicks(5752), 1, null, "+38761000111" },
-                    { 6, 2, new DateTime(2025, 1, 3, 20, 29, 3, 169, DateTimeKind.Local).AddTicks(624), 2, null, "+38761000222" },
-                    { 7, 3, new DateTime(2025, 1, 3, 20, 29, 3, 169, DateTimeKind.Local).AddTicks(646), 1, null, "+38761000222" },
-                    { 8, 4, new DateTime(2025, 1, 3, 20, 29, 3, 169, DateTimeKind.Local).AddTicks(649), 2, null, "+38761000222" }
+                    { 5, 1, new DateTime(2025, 1, 3, 20, 56, 25, 34, DateTimeKind.Utc).AddTicks(5982), 1, null, "+38761000111" },
+                    { 6, 2, new DateTime(2025, 1, 3, 20, 56, 25, 34, DateTimeKind.Utc).AddTicks(6943), 2, null, "+38761000222" },
+                    { 7, 3, new DateTime(2025, 1, 3, 20, 56, 25, 34, DateTimeKind.Utc).AddTicks(6952), 1, null, "+38761000222" },
+                    { 8, 4, new DateTime(2025, 1, 3, 20, 56, 25, 34, DateTimeKind.Utc).AddTicks(7059), 2, null, "+38761000222" }
                 });
 
             migrationBuilder.InsertData(
@@ -741,19 +754,19 @@ namespace RS1_2024_25.API.Migrations
                 column: "AccountId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OwnerApartments_AccountID",
+                table: "OwnerApartments",
+                column: "AccountID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OwnerApartments_ApartmentId",
                 table: "OwnerApartments",
                 column: "ApartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OwnerApartments_OwnerID",
+                name: "IX_OwnerApartments_OwnerAccountID",
                 table: "OwnerApartments",
-                column: "OwnerID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OwnerReviews_AccountID",
-                table: "OwnerReviews",
-                column: "AccountID");
+                column: "OwnerAccountID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OwnerReviews_OwnerID",
@@ -761,9 +774,9 @@ namespace RS1_2024_25.API.Migrations
                 column: "OwnerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OwnerReviews_UserAccountID",
+                name: "IX_OwnerReviews_UserID",
                 table: "OwnerReviews",
-                column: "UserAccountID");
+                column: "UserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Owners_CityID",

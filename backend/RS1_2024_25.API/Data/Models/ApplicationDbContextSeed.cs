@@ -92,7 +92,7 @@ namespace RS1_2024_25.API.Data
                       GenderID = 1,
                       CityID = 1,
                       Image = null,
-                      CreatedAt = DateTime.Now
+                      CreatedAt = DateTime.UtcNow
                   },
 
                   new User
@@ -107,7 +107,7 @@ namespace RS1_2024_25.API.Data
                       GenderID = 2,
                       CityID = 2,
                       Image = null,
-                      CreatedAt = DateTime.Now
+                      CreatedAt = DateTime.UtcNow
                   },
 
                   new User
@@ -122,7 +122,7 @@ namespace RS1_2024_25.API.Data
                       GenderID = 1,
                       CityID = 3,
                       Image = null,
-                      CreatedAt = DateTime.Now
+                      CreatedAt = DateTime.UtcNow
                   },
 
                   new User
@@ -137,62 +137,62 @@ namespace RS1_2024_25.API.Data
                       GenderID = 2,
                       CityID = 4,
                       Image = null,
-                      CreatedAt = DateTime.Now
+                      CreatedAt = DateTime.UtcNow
                   }
             );
 
 
 
-            //modelBuilder.Entity<Owner>().HasData
-            //(
-            //    new Owner
-            //    {
-            //        AccountID = 8,
-            //        FirstName = "Izel",
-            //        LastName = "Repuh",
-            //        Username = "Izel",
-            //        Email = "izel@gmail.com",
-            //        Password = "Izel",
-            //        Phone = "061-000-111",
-            //        GenderID = 2,
-            //        CityID = 1,
-            //        Image = new byte[0],
-            //        CreatedAt = DateTime.Now,
+            modelBuilder.Entity<Owner>().HasData
+            (
+                new Owner
+                {
+                    AccountID = 9,
+                    FirstName = "Izel",
+                    LastName = "Repuh",
+                    Username = "Izel",
+                    Email = "izel@gmail.com",
+                    Password = "Izel",
+                    Phone = "061-000-111",
+                    GenderID = 2,
+                    CityID = 1,
+                    Image = new byte[0],
+                    CreatedAt = DateTime.UtcNow
 
-            //    },
-            //     new Owner
-            //     {
-            //         AccountID = 9,
-            //         FirstName = "Maida",
-            //         LastName = "Kovac",
-            //         Username = "Maida",
-            //         Email = "maida@gmail.com",
-            //         Password = "Maida",
-            //         Phone = "061-000-222",
-            //         GenderID = 2,
-            //         CityID = 2,
-            //         Image = new byte[0],
-            //         CreatedAt = DateTime.Now,
+                },
+                 new Owner
+                 {
+                     AccountID = 10,
+                     FirstName = "Maida",
+                     LastName = "Kovac",
+                     Username = "Maida",
+                     Email = "maida@gmail.com",
+                     Password = "Maida",
+                     Phone = "061-000-222",
+                     GenderID = 2,
+                     CityID = 2,
+                     Image = new byte[0],
+                     CreatedAt = DateTime.UtcNow,
 
-            //     },
-            //     new Owner
-            //     {
-            //         AccountID = 10,
-            //         FirstName = "Admin",
-            //         LastName = "Admin",
-            //         Username = "Admin",
-            //         Email = "owner@gmail.com",
-            //         Password = "Admin",
-            //         Phone = "061-000-333",
-            //         GenderID = 1,
-            //         CityID = 3,
-            //         Image = new byte[0],
-            //         CreatedAt = DateTime.Now,
+                 },
+                 new Owner
+                 {
+                     AccountID = 11,
+                     FirstName = "Admin",
+                     LastName = "Admin",
+                     Username = "Admin",
+                     Email = "owner@gmail.com",
+                     Password = "Admin",
+                     Phone = "061-000-333",
+                     GenderID = 1,
+                     CityID = 3,
+                     Image = new byte[0],
+                     CreatedAt = DateTime.UtcNow,
 
-            //     }
+                 }
 
 
-            //);
+            );
 
 
             modelBuilder.Entity<Apartment>().HasData
