@@ -78,8 +78,7 @@ namespace RS1_2024_25.API.Controllers
         {
             var newOwnerReview = new OwnerReview()
             {
-                OwnerID = x.OwnerID,
-                MyAppUserID = x.MyAppUserID,
+                
                 Rating = x.Rating
             };
 
@@ -104,8 +103,6 @@ namespace RS1_2024_25.API.Controllers
                 return BadRequest();
             }
             updatedOwnerReview.OwnerReviewID = x.OwnerReviewID;
-            updatedOwnerReview.OwnerID = x.OwnerID;
-            updatedOwnerReview.MyAppUserID = x.MyAppUserID;
             updatedOwnerReview.Rating = x.Rating;
 
             _DbContext.OwnerReviews.Update(updatedOwnerReview);

@@ -81,7 +81,6 @@ namespace RS1_2024_25.API.Controllers
             var newReview = new Review()
             {
                 ApartmentId=x.ApartmentId,
-                MyAppUserID=x.MyAppUserID,
                 Rating=x.Rating,
                 Comment=x.Comment
             };
@@ -108,7 +107,7 @@ namespace RS1_2024_25.API.Controllers
             }
 
             updatedReview.ApartmentId = x.ApartmentId;
-            updatedReview.MyAppUserID = x.MyAppUserID;
+
             updatedReview.Rating = x.Rating;
             updatedReview.Comment = x.Comment;
 

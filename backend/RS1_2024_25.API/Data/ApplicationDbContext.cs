@@ -4,12 +4,14 @@ using RS1_2024_25.API.Data.Models.Auth;
 
 namespace RS1_2024_25.API.Data
 {
-    public partial class ApplicationDbContext(
-        DbContextOptions options) : DbContext(options)
+    public partial class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext() { }
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
-        //public DbSet<User> Users { get; set; }
         public DbSet<MyAuthenticationToken> MyAuthenticationTokens { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<User> Users { get; set; }
@@ -18,7 +20,7 @@ namespace RS1_2024_25.API.Data
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<Favorite> Favorites{ get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<OwnerReview> OwnerReviews { get; set; }
         public DbSet<OwnerApartment> OwnerApartments { get; set; }
@@ -31,21 +33,26 @@ namespace RS1_2024_25.API.Data
         public DbSet<Toiletry> Toiletries { get; set; }
         public DbSet<ApartmentToiletry> ApartmentToiletries { get; set; }
 
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Prevent cascade delete
+            // Konfigurišite TPT nasleđivanje
+            modelBuilder.Entity<Account>().ToTable("Account");
+            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<Owner>().ToTable("Owner");
+            modelBuilder.Entity<Administrator>().ToTable("Administrator");
+
+            // Sprečavanje kaskadnog brisanja
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
                 relationship.DeleteBehavior = DeleteBehavior.NoAction;
             }
 
-            // Call the seeding method
-            ApplicationDbContextSeed.Seed(modelBuilder);
+            // Dodatne konfiguracije
+            OnModelCreatingPartial(modelBuilder);
         }
 
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

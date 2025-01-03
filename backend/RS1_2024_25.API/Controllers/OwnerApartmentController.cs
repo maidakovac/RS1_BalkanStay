@@ -78,7 +78,7 @@ namespace RS1_2024_25.API.Controllers
         {
             var newOwnerApartment = new OwnerApartment()
             {
-                OwnerID=x.OwnerID,
+
                 ApartmentId=x.ApartmentId
             };
 
@@ -104,7 +104,6 @@ namespace RS1_2024_25.API.Controllers
             }
 
             updatedOwnerApartment.OwnerApartmentID = x.OwnerApartmentID;
-            updatedOwnerApartment.OwnerID = x.OwnerID;
             updatedOwnerApartment.ApartmentId = x.ApartmentId;
 
             _DbContext.OwnerApartments.Update(updatedOwnerApartment);

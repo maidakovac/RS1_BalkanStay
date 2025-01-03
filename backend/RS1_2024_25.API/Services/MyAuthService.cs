@@ -23,7 +23,7 @@ namespace RS1_2024_25.API.Services
         }
 
         // Generate a new token for the user
-        public async Task<MyAuthenticationToken> GenerateAuthToken(MyAppUser user, CancellationToken cancellationToken = default)
+        public async Task<MyAuthenticationToken> GenerateAuthToken(Account account, CancellationToken cancellationToken = default)
         {
             string randomToken = myTokenGenerator.Generate(10);
 
@@ -31,7 +31,7 @@ namespace RS1_2024_25.API.Services
             {
                 IpAddress = httpContextAccessor.HttpContext?.Connection.RemoteIpAddress?.ToString() ?? string.Empty,
                 Value = randomToken,
-                MyAppUser = user,
+                Account = account, // Assign the Account object directly
                 RecordedAt = DateTime.Now
             };
 
@@ -40,6 +40,7 @@ namespace RS1_2024_25.API.Services
 
             return authToken;
         }
+
 
         // Revoke an authentication token
         public async Task<bool> RevokeAuthToken(string tokenValue, CancellationToken cancellationToken = default)
@@ -66,7 +67,8 @@ namespace RS1_2024_25.API.Services
             }
 
             var myAuthToken = applicationDbContext.MyAuthenticationTokens
-                .Include(x => x.MyAppUser)
+                .Include(x => x.Account) // Include Account for navigation
+                .ThenInclude(a => a.User) // Include User if Account is of type User
                 .SingleOrDefault(x => x.Value == authToken);
 
             return GetAuthInfo(myAuthToken);
@@ -74,7 +76,7 @@ namespace RS1_2024_25.API.Services
 
         public MyAuthInfo GetAuthInfo(MyAuthenticationToken? myAuthToken)
         {
-            if (myAuthToken == null)
+            if (myAuthToken == null || myAuthToken.Account == null)
             {
                 return new MyAuthInfo
                 {
@@ -82,18 +84,19 @@ namespace RS1_2024_25.API.Services
                 };
             }
 
-            var user = myAuthToken.MyAppUser;
+            var account = myAuthToken.Account;
+            var user = account.User;
 
             return new MyAuthInfo
             {
-                UserId = user.UserID,
-                Username = user.Email, // Use Email as Username
-                FirstName = user.Email.Split('@')[0], // Derive FirstName from Email if necessary
-                LastName = "N/A", // Placeholder as LastName no longer exists
-                IsAdmin = false, // Placeholder for admin logic
-                IsManager = false, // Placeholder for manager logic
+                UserId = account.AccountID,
+                Username = account.Username,
+                FirstName = account.FirstName ?? account.Email.Split('@')[0], // Derive FirstName if null
+                LastName = account.LastName ?? "N/A", // Provide fallback if LastName is null
+                IsAdmin = account.isAdministrator, // Admin check
+                IsManager = account.isOwner, // Manager logic based on Owner
                 IsLoggedIn = true,
-                SlikaPath = user.Image // Use the Image property for SlikaPath
+                SlikaPath = user?.Image // Use Image property only if the account is a User
             };
         }
     }

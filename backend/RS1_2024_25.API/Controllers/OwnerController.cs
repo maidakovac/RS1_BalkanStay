@@ -99,7 +99,7 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult Update(OwnerUpdateVM x)
         {
-            var updatedOwner = _DbContext.Owners.Find(x.OwnerID);
+            var updatedOwner = _DbContext.Owners.Find(x.AccountID);
 
             if (updatedOwner == null)
             {

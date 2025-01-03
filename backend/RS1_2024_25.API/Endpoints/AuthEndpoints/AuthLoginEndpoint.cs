@@ -21,17 +21,23 @@ namespace RS1_2024_25.API.Endpoints.Auth
         [HttpPost("login")]
         public override async Task<ActionResult<LoginResponse>> HandleAsync(LoginRequest request, CancellationToken cancellationToken = default)
         {
+            // Fetch the account using email
             var loggedInUser = await db.Accounts
                 .FirstOrDefaultAsync(u => u.Email == request.Email, cancellationToken);
 
+            // If no user is found, return Unauthorized
             if (loggedInUser == null)
             {
                 return Unauthorized(new { Message = "Incorrect email" });
             }
 
+            // Generate authentication token
             var newAuthToken = await authService.GenerateAuthToken(loggedInUser, cancellationToken);
+
+            // Get authentication information
             var authInfo = authService.GetAuthInfo(newAuthToken);
 
+            // Return response with token and authentication info
             return new LoginResponse
             {
                 Token = newAuthToken.Value,
@@ -42,7 +48,6 @@ namespace RS1_2024_25.API.Endpoints.Auth
         public class LoginRequest
         {
             public required string Email { get; set; }
-            
         }
 
         public class LoginResponse
@@ -50,6 +55,9 @@ namespace RS1_2024_25.API.Endpoints.Auth
             public required MyAuthInfo? MyAuthInfo { get; set; }
             public string Token { get; internal set; }
         }
+    }
+}
+
 
         /*
         chatgpt:
@@ -140,6 +148,3 @@ namespace RS1_2024_25.API.Endpoints.Auth
 
         Preporuka: Počnite s custom implementacijom za osnovno razumijevanje, a zatim uvesti JWT kao naprednu temu.
          */
-
-    }
-}

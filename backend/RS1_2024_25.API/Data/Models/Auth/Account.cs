@@ -1,9 +1,11 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace RS1_2024_25.API.Data.Models.Auth
 {
     public class Account
     {
+        [Key]
         public int AccountID { get; set; }
         public string Username { get; set; }
 

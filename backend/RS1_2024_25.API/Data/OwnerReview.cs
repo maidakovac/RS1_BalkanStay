@@ -12,9 +12,9 @@ namespace RS1_2024_25.API.Data
         public int OwnerID { get; set; }
         public Owner? Owner { get; set; }
 
-        [ForeignKey(nameof(MyAppUser))]
-        public int MyAppUserID { get; set; }
-        public MyAppUser? MyAppUser   { get; set; }
+        [ForeignKey(nameof(Account))]
+        public int AccountID { get; set; }
+        public Account? Account   { get; set; }
 
         public string Rating { get; set; }
     }

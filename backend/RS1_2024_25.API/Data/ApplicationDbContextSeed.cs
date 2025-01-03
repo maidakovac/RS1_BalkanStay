@@ -40,113 +40,60 @@ namespace RS1_2024_25.API.Data
 
 
 
-            modelBuilder.Entity<Administrator>().HasData
-            (
-                new Administrator
+
+
+
+            modelBuilder.Entity<Administrator>().HasData(
+         new Administrator
+         {
+             AccountID = 1,
+             Username = "admin",
+             Password = "AdminPass",
+             FirstName = "Admin",
+             LastName = "User",
+             Email = "admin@example.com"
+         },
+         new Administrator
+         {
+             AccountID = 2,
+             Username = "superadmin",
+             Password = "SuperPass",
+             FirstName = "Super",
+             LastName = "Admin",
+             Email = "superadmin@example.com"
+         }
+     );
+
+            modelBuilder.Entity<User>().HasData(
+                new User
                 {
-                    AccountID = 1,
-                    Username = "Admin",
-                    Email = "admin@gmail.com",
-                    Password = "Admin",
-                    FirstName = "Admin",
-                    LastName = "Admin",
-
+                    AccountID = 3,
+                    Username = "johndoe",
+                    Password = "JohnPass",
+                    FirstName = "John",
+                    LastName = "Doe",
+                    Email = "johndoe@example.com",
+                    Phone = "+38761000111",
+                    GenderID = 1,
+                    CityID = 1,
+                    Image = new byte[0],
+                    CreatedAt = DateTime.UtcNow,
                 },
-                new Administrator
+                new User
                 {
-                    AccountID = 2,
-                    Username = "Izel",
-                    Email = "izel@gmail.com",
-                    Password = "Izel",
-                    FirstName = "Izel",
-                    LastName = "Repuh",
-
-                },
-                 new Administrator
-                 {
-                     AccountID = 3,
-                     Username = "Maida",
-                     Email = "maida@gmail.com",
-                     Password = "Maida",
-                     FirstName = "Maida",
-                     LastName = "Kovac",
-
-                 }
+                    AccountID = 4,
+                    Username = "janedoe",
+                    Password = "JanePass",
+                    FirstName = "Jane",
+                    LastName = "Doe",
+                    Email = "janedoe@example.com",
+                    Phone = "+38761000222",
+                    GenderID = 2,
+                    CityID = 2,
+                    Image = new byte[0],
+                    CreatedAt = DateTime.UtcNow,
+                }
             );
-
-
-
-
-
-            modelBuilder.Entity<User>().HasData
-           (
-               new User
-               {
-                   AccountID = 4,
-                   Phone = "061-000-111",
-                   GenderID = 2,
-                   CityID = 1,
-                   Image = new byte[0],
-                   Username = "Izel",
-                   Email = "izel@gmail.com",
-                   Password = "Izel",
-                   FirstName = "Izel",
-                   LastName = "Repuh",
-                   CreatedAt = DateTime.Now,
-
-               },
-               new User
-               {
-                   AccountID = 5,
-                   Phone = "061-000-222",
-                   GenderID = 2,
-                   CityID = 2,
-                   Image = new byte[0],
-                   Username = "Maida",
-                   Email = "maida@gmail.com",
-                   Password = "Maida",
-                   FirstName = "Maida",
-                   LastName = "Kovac",
-                   CreatedAt = DateTime.Now,
-
-
-               },
-               new User
-               {
-                   AccountID = 6,
-                   Phone = "061-000-333",
-                   GenderID = 1,
-                   CityID= 3,
-                   Image = new byte[0],
-                   Username = "User",
-                   Email = "user@gmail.com",
-                   Password = "Admin",
-                   FirstName = "User",
-                   LastName = "User",
-                   CreatedAt = DateTime.Now,
-
-               },
-               new User
-               {
-                   AccountID = 7,
-                   Phone = "061-000-444",
-                   GenderID = 2,
-                   CityID = 3,
-                   Image = new byte[0],
-                   Username = "Amar",
-                   Email = "amar@gmail.com",
-                   Password = "Amar",
-                   FirstName = "Amar",
-                   LastName = "Omerovic",
-                   CreatedAt = DateTime.Now,
-
-               }
-
-
-           );
-
-
-
 
 
             modelBuilder.Entity<Owner>().HasData
@@ -154,45 +101,45 @@ namespace RS1_2024_25.API.Data
                 new Owner
                 {
                     AccountID = 8,
+                    FirstName = "Izel",
+                    LastName = "Repuh",
+                    Username = "Izel",
+                    Email = "izel@gmail.com",
+                    Password = "Izel",
                     Phone = "061-000-111",
                     GenderID = 2,
                     CityID = 1,
                     Image = new byte[0],
-                    Username = "Izel",
-                    Email = "izel@gmail.com",
-                    Password = "Izel",
-                    FirstName = "Izel",
-                    LastName = "Repuh",
                     CreatedAt = DateTime.Now,
 
                 },
                  new User
                  {
                      AccountID = 9,
+                     FirstName = "Maida",
+                     LastName = "Kovac",
+                     Username = "Maida",
+                     Email = "maida@gmail.com",
+                     Password = "Maida",
                      Phone = "061-000-222",
                      GenderID = 2,
                      CityID = 2,
                      Image = new byte[0],
-                     Username = "Maida",
-                     Email = "maida@gmail.com",
-                     Password = "Maida",
-                     FirstName = "Maida",
-                     LastName = "Kovac",
                      CreatedAt = DateTime.Now,
 
                  },
                  new User
                  {
                      AccountID = 10,
+                     FirstName = "Admin",
+                     LastName = "Admin",
+                     Username = "Admin",
+                     Email = "owner@gmail.com",
+                     Password = "Admin",
                      Phone = "061-000-333",
                      GenderID = 1,
                      CityID = 3,
                      Image = new byte[0],
-                     Username = "Admin",
-                     Email = "owner@gmail.com",
-                     Password = "Admin",
-                     FirstName = "Admin",
-                     LastName = "Admin",
                      CreatedAt = DateTime.Now,
 
                  }
