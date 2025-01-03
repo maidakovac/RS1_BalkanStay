@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.Data.Models.Auth;
 
@@ -38,10 +39,10 @@ namespace RS1_2024_25.API.Data
             base.OnModelCreating(modelBuilder);
 
             // Konfigurišite TPT nasleđivanje
-            modelBuilder.Entity<Account>().ToTable("Accounts");
-            modelBuilder.Entity<User>().ToTable("Users");
-            modelBuilder.Entity<Owner>().ToTable("Owners");
-            modelBuilder.Entity<Administrator>().ToTable("Administrators");
+            modelBuilder.Entity<Account>().ToTable("Account");
+            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<Owner>().ToTable("Owner");
+            modelBuilder.Entity<Administrator>().ToTable("Administrator");
 
             // Sprečavanje kaskadnog brisanja
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
@@ -53,6 +54,12 @@ namespace RS1_2024_25.API.Data
 
             // Dodatne konfiguracije
             OnModelCreatingPartial(modelBuilder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.ConfigureWarnings(warnings =>
+                warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

@@ -405,7 +405,7 @@ namespace RS1_2024_25.API.Migrations
 
                     b.HasKey("AccountID");
 
-                    b.ToTable("Accounts", (string)null);
+                    b.ToTable("Account", (string)null);
 
                     b.UseTptMappingStrategy();
                 });
@@ -803,7 +803,7 @@ namespace RS1_2024_25.API.Migrations
                 {
                     b.HasBaseType("RS1_2024_25.API.Data.Models.Auth.Account");
 
-                    b.ToTable("Administrators", (string)null);
+                    b.ToTable("Administrator", (string)null);
 
                     b.HasData(
                         new
@@ -868,7 +868,7 @@ namespace RS1_2024_25.API.Migrations
 
                     b.HasIndex("GenderID");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("User", (string)null);
 
                     b.HasData(
                         new
@@ -880,7 +880,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JohnPass",
                             Username = "johndoe",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 1, 3, 20, 56, 25, 34, DateTimeKind.Utc).AddTicks(5982),
+                            CreatedAt = new DateTime(2025, 1, 3, 21, 3, 3, 299, DateTimeKind.Utc).AddTicks(784),
                             GenderID = 1,
                             Phone = "+38761000111"
                         },
@@ -893,7 +893,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JanePass",
                             Username = "janedoe",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 1, 3, 20, 56, 25, 34, DateTimeKind.Utc).AddTicks(6943),
+                            CreatedAt = new DateTime(2025, 1, 3, 21, 3, 3, 299, DateTimeKind.Utc).AddTicks(960),
                             GenderID = 2,
                             Phone = "+38761000222"
                         },
@@ -906,7 +906,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "xxxxx",
                             Username = "xxxxx",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 1, 3, 20, 56, 25, 34, DateTimeKind.Utc).AddTicks(6952),
+                            CreatedAt = new DateTime(2025, 1, 3, 21, 3, 3, 299, DateTimeKind.Utc).AddTicks(962),
                             GenderID = 1,
                             Phone = "+38761000222"
                         },
@@ -919,7 +919,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "YYYXX",
                             Username = "yyyy",
                             CityID = 4,
-                            CreatedAt = new DateTime(2025, 1, 3, 20, 56, 25, 34, DateTimeKind.Utc).AddTicks(7059),
+                            CreatedAt = new DateTime(2025, 1, 3, 21, 3, 3, 299, DateTimeKind.Utc).AddTicks(963),
                             GenderID = 2,
                             Phone = "+38761000222"
                         });
@@ -949,7 +949,7 @@ namespace RS1_2024_25.API.Migrations
 
                     b.HasIndex("GenderID");
 
-                    b.ToTable("Owners", (string)null);
+                    b.ToTable("Owner", (string)null);
 
                     b.HasData(
                         new
@@ -961,7 +961,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Izel",
                             Username = "Izel",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 1, 3, 20, 56, 25, 35, DateTimeKind.Utc).AddTicks(4692),
+                            CreatedAt = new DateTime(2025, 1, 3, 21, 3, 3, 299, DateTimeKind.Utc).AddTicks(1708),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-111"
@@ -975,7 +975,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Maida",
                             Username = "Maida",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 1, 3, 20, 56, 25, 35, DateTimeKind.Utc).AddTicks(5648),
+                            CreatedAt = new DateTime(2025, 1, 3, 21, 3, 3, 299, DateTimeKind.Utc).AddTicks(1836),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-222"
@@ -989,7 +989,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Admin",
                             Username = "Admin",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 1, 3, 20, 56, 25, 35, DateTimeKind.Utc).AddTicks(5656),
+                            CreatedAt = new DateTime(2025, 1, 3, 21, 3, 3, 299, DateTimeKind.Utc).AddTicks(1852),
                             GenderID = 1,
                             Image = new byte[0],
                             Phone = "061-000-333"
