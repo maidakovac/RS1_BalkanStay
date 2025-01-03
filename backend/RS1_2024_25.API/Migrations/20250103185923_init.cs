@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace RS1_2024_25.API.Migrations
 {
     /// <inheritdoc />
@@ -391,31 +393,6 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OwnerReviews",
-                columns: table => new
-                {
-                    OwnerReviewID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OwnerID = table.Column<int>(type: "int", nullable: false),
-                    AccountID = table.Column<int>(type: "int", nullable: false),
-                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OwnerReviews", x => x.OwnerReviewID);
-                    table.ForeignKey(
-                        name: "FK_OwnerReviews_Accounts_AccountID",
-                        column: x => x.AccountID,
-                        principalTable: "Accounts",
-                        principalColumn: "AccountID");
-                    table.ForeignKey(
-                        name: "FK_OwnerReviews_Owners_OwnerID",
-                        column: x => x.OwnerID,
-                        principalTable: "Owners",
-                        principalColumn: "AccountID");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Favorites",
                 columns: table => new
                 {
@@ -440,6 +417,37 @@ namespace RS1_2024_25.API.Migrations
                         principalColumn: "ApartmentId");
                     table.ForeignKey(
                         name: "FK_Favorites_Users_UserAccountID",
+                        column: x => x.UserAccountID,
+                        principalTable: "Users",
+                        principalColumn: "AccountID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OwnerReviews",
+                columns: table => new
+                {
+                    OwnerReviewID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    AccountID = table.Column<int>(type: "int", nullable: false),
+                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserAccountID = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OwnerReviews", x => x.OwnerReviewID);
+                    table.ForeignKey(
+                        name: "FK_OwnerReviews_Accounts_AccountID",
+                        column: x => x.AccountID,
+                        principalTable: "Accounts",
+                        principalColumn: "AccountID");
+                    table.ForeignKey(
+                        name: "FK_OwnerReviews_Owners_OwnerID",
+                        column: x => x.OwnerID,
+                        principalTable: "Owners",
+                        principalColumn: "AccountID");
+                    table.ForeignKey(
+                        name: "FK_OwnerReviews_Users_UserAccountID",
                         column: x => x.UserAccountID,
                         principalTable: "Users",
                         principalColumn: "AccountID");
@@ -508,6 +516,59 @@ namespace RS1_2024_25.API.Migrations
                         column: x => x.UserAccountID,
                         principalTable: "Users",
                         principalColumn: "AccountID");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "AccountID", "Email", "FirstName", "LastName", "Password", "Username" },
+                values: new object[,]
+                {
+                    { 1, "admin@example.com", "Admin", "User", "AdminPass", "admin" },
+                    { 2, "superadmin@example.com", "Super", "Admin", "SuperPass", "superadmin" },
+                    { 3, "izelrepuh@example.com", "Izel", "Repuh", "SuperPass", "izelrepuh" },
+                    { 4, "amaromer@example.com", "Amar", "Omer", "SuperAmar", "amaromer" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Countries",
+                columns: new[] { "ID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Example Country1" },
+                    { 2, "Example Country2" },
+                    { 3, "Example Country3" },
+                    { 4, "Example Country4" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Gender",
+                columns: new[] { "GenderID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Male" },
+                    { 2, "Female" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Administrators",
+                column: "AccountID",
+                values: new object[]
+                {
+                    1,
+                    2,
+                    3,
+                    4
+                });
+
+            migrationBuilder.InsertData(
+                table: "Cities",
+                columns: new[] { "ID", "CountryId", "Name" },
+                values: new object[,]
+                {
+                    { 1, 1, "Example City" },
+                    { 2, 2, "Another City" },
+                    { 3, 3, "Third City" },
+                    { 4, 4, "Four City" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -599,6 +660,11 @@ namespace RS1_2024_25.API.Migrations
                 name: "IX_OwnerReviews_OwnerID",
                 table: "OwnerReviews",
                 column: "OwnerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OwnerReviews_UserAccountID",
+                table: "OwnerReviews",
+                column: "UserAccountID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Owners_CityID",

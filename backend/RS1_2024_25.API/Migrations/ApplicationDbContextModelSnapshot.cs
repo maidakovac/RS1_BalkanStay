@@ -322,6 +322,32 @@ namespace RS1_2024_25.API.Migrations
                     b.HasIndex("CountryId");
 
                     b.ToTable("Cities");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            CountryId = 1,
+                            Name = "Example City"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            CountryId = 2,
+                            Name = "Another City"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            CountryId = 3,
+                            Name = "Third City"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            CountryId = 4,
+                            Name = "Four City"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Country", b =>
@@ -339,6 +365,28 @@ namespace RS1_2024_25.API.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "Example Country1"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "Example Country2"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "Example Country3"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Name = "Example Country4"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Gender", b =>
@@ -356,6 +404,18 @@ namespace RS1_2024_25.API.Migrations
                     b.HasKey("GenderID");
 
                     b.ToTable("Gender");
+
+                    b.HasData(
+                        new
+                        {
+                            GenderID = 1,
+                            Name = "Male"
+                        },
+                        new
+                        {
+                            GenderID = 2,
+                            Name = "Female"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.OwnerApartment", b =>
@@ -399,11 +459,16 @@ namespace RS1_2024_25.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserAccountID")
+                        .HasColumnType("int");
+
                     b.HasKey("OwnerReviewID");
 
                     b.HasIndex("AccountID");
 
                     b.HasIndex("OwnerID");
+
+                    b.HasIndex("UserAccountID");
 
                     b.ToTable("OwnerReviews");
                 });
@@ -519,6 +584,44 @@ namespace RS1_2024_25.API.Migrations
                     b.HasBaseType("RS1_2024_25.API.Data.Models.Auth.Account");
 
                     b.ToTable("Administrators", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            AccountID = 1,
+                            Email = "admin@example.com",
+                            FirstName = "Admin",
+                            LastName = "User",
+                            Password = "AdminPass",
+                            Username = "admin"
+                        },
+                        new
+                        {
+                            AccountID = 2,
+                            Email = "superadmin@example.com",
+                            FirstName = "Super",
+                            LastName = "Admin",
+                            Password = "SuperPass",
+                            Username = "superadmin"
+                        },
+                        new
+                        {
+                            AccountID = 3,
+                            Email = "izelrepuh@example.com",
+                            FirstName = "Izel",
+                            LastName = "Repuh",
+                            Password = "SuperPass",
+                            Username = "izelrepuh"
+                        },
+                        new
+                        {
+                            AccountID = 4,
+                            Email = "amaromer@example.com",
+                            FirstName = "Amar",
+                            LastName = "Omer",
+                            Password = "SuperAmar",
+                            Username = "amaromer"
+                        });
                 });
 
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.User", b =>
@@ -751,6 +854,11 @@ namespace RS1_2024_25.API.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
+                    b.HasOne("RS1_2024_25.API.Data.Models.Auth.User", null)
+                        .WithMany("OwnerReviews")
+                        .HasForeignKey("UserAccountID")
+                        .OnDelete(DeleteBehavior.NoAction);
+
                     b.Navigation("Account");
 
                     b.Navigation("Owner");
@@ -917,6 +1025,8 @@ namespace RS1_2024_25.API.Migrations
             modelBuilder.Entity("RS1_2024_25.API.Data.Models.Auth.User", b =>
                 {
                     b.Navigation("Favorites");
+
+                    b.Navigation("OwnerReviews");
 
                     b.Navigation("Reservations");
 

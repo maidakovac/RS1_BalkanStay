@@ -38,10 +38,10 @@ namespace RS1_2024_25.API.Data
             base.OnModelCreating(modelBuilder);
 
             // Konfigurišite TPT nasleđivanje
-            modelBuilder.Entity<Account>().ToTable("Account");
-            modelBuilder.Entity<User>().ToTable("User");
-            modelBuilder.Entity<Owner>().ToTable("Owner");
-            modelBuilder.Entity<Administrator>().ToTable("Administrator");
+            modelBuilder.Entity<Account>().ToTable("Accounts");
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<Owner>().ToTable("Owners");
+            modelBuilder.Entity<Administrator>().ToTable("Administrators");
 
             // Sprečavanje kaskadnog brisanja
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
