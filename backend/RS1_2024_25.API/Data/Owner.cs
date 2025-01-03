@@ -14,7 +14,7 @@ namespace RS1_2024_25.API.Data
         public int CityID { get; set; }
         public City City { get; set; }
 
-        public byte[] Image { get; set; }
+        public byte[]? Image { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

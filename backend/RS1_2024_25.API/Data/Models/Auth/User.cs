@@ -18,6 +18,7 @@
         public ICollection<Favorite> Favorites { get; set; }
         public ICollection<Reservation> Reservations { get; set; }
         public ICollection<Review> Reviews { get; set; }
+        public ICollection<OwnerReview> OwnerReviews { get; set; }
 
     }
 }
