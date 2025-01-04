@@ -91,7 +91,7 @@ namespace RS1_2024_25.API.Data
                       Phone = "+38761000111",
                       GenderID = 1,
                       CityID = 1,
-                      Image = null,
+                      Image = File.ReadAllBytes("wwwroot/image2.jpg"),
                       CreatedAt = DateTime.UtcNow
                   },
 

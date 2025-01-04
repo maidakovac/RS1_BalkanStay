@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RS1_2024_25.API.Data;
+using RS1_2024_25.API.Data.Models.Auth;
 using RS1_2024_25.API.ViewModel;
 using System.Numerics;
 
@@ -79,15 +80,21 @@ namespace RS1_2024_25.API.Controllers
         {
             var newOwner = new Owner()
             {
+                Username = x.Username,
+                Email = x.Email,
+                Password = x.Password,
                 FirstName = x.FirstName,
                 LastName = x.LastName,
-                Email = x.Email,
-                Phone=x.Phone
+                Phone = x.Phone,
+                GenderID = x.GenderID,
+                CityID = x.CityID,
+                Image = x.Image,
+                CreatedAt = DateTime.Now
             };
+
 
             _DbContext.Owners.Add(newOwner);
             _DbContext.SaveChanges();
-
 
             return Ok(newOwner);
         }

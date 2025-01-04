@@ -28,6 +28,8 @@ namespace RS1_2024_25.API.Controllers
             return Ok(users);
         }
 
+
+
         [HttpGet("{AccountId}")]
         public ActionResult<User> GetById(int AccountId)
         {
@@ -38,6 +40,8 @@ namespace RS1_2024_25.API.Controllers
 
             return Ok(user);
         }
+
+
 
         [HttpDelete("{AccountId}")]
         public ActionResult Delete(int AccountId)
@@ -52,6 +56,8 @@ namespace RS1_2024_25.API.Controllers
 
             return Ok();
         }
+
+
 
         [HttpPost]
         public ActionResult Insert(UserInsertVM userVM)
@@ -75,6 +81,9 @@ namespace RS1_2024_25.API.Controllers
 
             return Ok(newUser);
         }
+
+
+
 
         [HttpPut]
         public ActionResult Update(UserUpdateVM userVM)
