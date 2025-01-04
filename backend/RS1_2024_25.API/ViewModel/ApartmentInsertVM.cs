@@ -9,6 +9,5 @@ namespace RS1_2024_25.API.ViewModel
         public string Adress { get; set; }
         public int PricePerNight { get; set; }
         public int CityId { get; set; }
-        public City City { get; set; }
     }
 }
