@@ -2,6 +2,7 @@
 {
     public class Administrator:Account
     {
-        
+        public byte[]? Image { get; set; } // Opcionalno, ako se slika dodaje prilikom kreiranja
+
     }
 }
