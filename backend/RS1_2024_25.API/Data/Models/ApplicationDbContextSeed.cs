@@ -299,6 +299,16 @@ namespace RS1_2024_25.API.Data
 
 
 
+            modelBuilder.Entity<Image>().HasData(
+                  new Image
+                  {
+                      ImageID = 1,
+                      Photo = ImageSeeder.GetImageBytes("wwwroot/image2.jpg")
+                  }
+                  );
+
+
+
         }
     }
 }
