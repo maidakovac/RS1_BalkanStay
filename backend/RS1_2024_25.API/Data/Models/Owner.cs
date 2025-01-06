@@ -27,7 +27,7 @@ namespace RS1_2024_25.API.Data
 
 
         public List<OwnerReview> OwnerReviews { get; set; }
-        public List<OwnerApartment> OwnerApartments { get; set; }
+        public List<Apartment> Apartments { get; set; }
 
     }
 }

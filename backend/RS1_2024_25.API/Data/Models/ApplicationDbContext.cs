@@ -24,7 +24,6 @@ namespace RS1_2024_25.API.Data
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<OwnerReview> OwnerReviews { get; set; }
-        public DbSet<OwnerApartment> OwnerApartments { get; set; }
         public DbSet<ApartmentImage> ApartmentImages { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Rule> Rules { get; set; }
@@ -43,6 +42,7 @@ namespace RS1_2024_25.API.Data
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Owner>().ToTable("Owner");
             modelBuilder.Entity<Administrator>().ToTable("Administrator");
+
 
             // Sprečavanje kaskadnog brisanja
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
