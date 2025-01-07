@@ -66,10 +66,22 @@ namespace RS1_2024_25.API.Services
                 return GetAuthInfo(null);
             }
 
+            //var myAuthToken = applicationDbContext.MyAuthenticationTokens
+            //    .Include(x => x.Account) // Include Account for navigation
+            //    .ThenInclude(a => a.User) // Include User if Account is of type User
+            //    .SingleOrDefault(x => x.Value == authToken);
+
+            //return GetAuthInfo(myAuthToken);
+
             var myAuthToken = applicationDbContext.MyAuthenticationTokens
-                .Include(x => x.Account) // Include Account for navigation
-                .ThenInclude(a => a.User) // Include User if Account is of type User
-                .SingleOrDefault(x => x.Value == authToken);
+        .Include(x => x.Account) // Include the base Account entity
+        .SingleOrDefault(x => x.Value == authToken);
+
+            // If the account is of type User, cast it
+            if (myAuthToken?.Account is User userAccount)
+            {
+                myAuthToken.Account = userAccount; // Cast explicitly for additional properties
+            }
 
             return GetAuthInfo(myAuthToken);
         }
