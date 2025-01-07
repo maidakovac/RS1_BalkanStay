@@ -86,7 +86,8 @@ namespace RS1_2024_25.API.Controllers
                 Description = apartment.Description,
                 Adress = apartment.Adress,
                 PricePerNight = apartment.PricePerNight,
-                CityId = apartment.CityId
+                CityId = apartment.CityId,
+                AccountID = apartment.AccountID
             };
 
             _DbContext.Apartments.Add(newApartment);
@@ -113,6 +114,7 @@ namespace RS1_2024_25.API.Controllers
             updatedApartment.Adress = apartment.Address;
             updatedApartment.PricePerNight = apartment.PricePerNight;
             updatedApartment.CityId = apartment.CityId;
+            updatedApartment.AccountID = apartment.AccountID;
 
             _DbContext.Apartments.Update(updatedApartment);
             _DbContext.SaveChanges();
