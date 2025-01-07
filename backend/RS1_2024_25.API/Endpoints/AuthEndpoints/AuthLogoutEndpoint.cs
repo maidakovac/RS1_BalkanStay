@@ -26,7 +26,7 @@ public class AuthLogoutEndpoint(ApplicationDbContext db, MyAuthService authServi
             return new LogoutResponse
             {
                 IsSuccess = false,
-                Message = "Token is missing in the request header."
+                Message = "Token is missing in the request header.Please try again later."
             };
         }
 
