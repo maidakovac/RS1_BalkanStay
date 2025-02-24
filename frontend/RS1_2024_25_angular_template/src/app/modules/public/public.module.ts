@@ -12,6 +12,8 @@ import {FormsModule} from '@angular/forms';
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
 import {MatIcon} from '@angular/material/icon';
+import {MatInput} from '@angular/material/input';
+import {MatFabButton} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {MatIcon} from '@angular/material/icon';
     MatDatepickerToggle,
     MatDatepicker,
     MatDatepickerInput,
-    MatIcon
+    MatIcon,
+    MatInput,
+    MatFabButton
   ],
 
 })

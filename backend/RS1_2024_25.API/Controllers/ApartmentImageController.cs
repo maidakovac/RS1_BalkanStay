@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.ViewModel;
 
@@ -21,7 +22,7 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<List<ApartmentImage>> Get()
         {
-            var apartmentImages = _DbContext.ApartmentImages.ToList();
+            var apartmentImages = _DbContext.ApartmentImages.Include(x => x.Image).ToList();
 
             if (apartmentImages == null)
             {

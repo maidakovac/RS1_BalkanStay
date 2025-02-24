@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.ViewModel;
@@ -25,7 +26,7 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<List<Apartment>> Get()
         {
-            var apartments = _DbContext.Apartments.ToList();
+            var apartments = _DbContext.Apartments.Include(x=> x.City).ToList();
 
             if (apartments == null)
             {
