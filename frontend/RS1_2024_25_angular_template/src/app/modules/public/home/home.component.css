@@ -1,0 +1,43 @@
+.booking-box{
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 7px 7px 28px rgba(0.1, 0.1, 0.1, 0.1);
+  border-radius: 50px;
+  margin: 30px auto;
+  width: 70%;
+  padding: 0 20px;
+}
+
+.search-button {
+  padding: 10px 15px;
+  height: fit-content;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  border: none;
+  background-color: pink;
+
+}
+.booking-input {
+  height: auto;
+
+
+}
+
+.inputbooking {
+  height: 50px;
+  width: 90%;
+  padding: 0 15px;
+  border: none !important;
+  border-right: 1px solid #ddd !important;
+  border-radius: 0; /* Prevents rounded corners */
+  padding-right: 10px; /* Space between text and border */
+}
+
+.matlabel
+{
+  color: black;
+}
+
