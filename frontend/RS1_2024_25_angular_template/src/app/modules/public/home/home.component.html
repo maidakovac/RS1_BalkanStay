@@ -3,23 +3,46 @@
 <div class="part1">
   <div class="header">
 
-    <div class="header-left">
-      <div class="header-left-title">
-        <h1>For all your travel needs</h1>
-        <p class="header-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores
-          perspiciatis, illo maxime voluptatem a itaque suscipit.</p>
-        <div class="header-left-buttons">
-          <div class="header-button">Contact Us</div>
-          <div class="header-button">About Us</div>
-        </div>
+    <div class="booking-box">
+      <div class="booking-input">
+        <mat-form-field appearance="outline">
+          <mat-label class="matlabel">Where</mat-label>
+          <input class="inputbooking" matInput placeholder="Search destinations">
+        </mat-form-field>
       </div>
-      <div class="header-right-image">
-        <img src="images/header-img.png">
-      </div>
-    </div>
-  </div>
 
-</div>
+      <div class="booking-input">
+        <mat-form-field appearance="outline">
+          <mat-label class="matlabel">Check in</mat-label>
+          <input class="inputbooking" matInput [matDatepicker]="checkInPicker" placeholder="Add dates">
+          <mat-datepicker-toggle matSuffix [for]="checkInPicker"></mat-datepicker-toggle>
+          <mat-datepicker #checkInPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="booking-input">
+        <mat-form-field appearance="outline">
+          <mat-label class="matlabel">Check out</mat-label>
+          <input class="inputbooking" matInput [matDatepicker]="checkOutPicker" placeholder="Add dates">
+          <mat-datepicker-toggle matSuffix [for]="checkOutPicker"></mat-datepicker-toggle>
+          <mat-datepicker #checkOutPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="booking-input">
+        <mat-form-field appearance="outline">
+          <mat-label>Who</mat-label>
+          <input class="inputbooking" matInput placeholder="Add guests">
+        </mat-form-field>
+      </div>
+
+      <button mat-fab color="accent" class="search-button">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+
+
+  </div>
 
 <div class="part2">
   <h1>2 Search</h1>

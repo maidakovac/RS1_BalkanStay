@@ -9,6 +9,9 @@ import {HomeComponent} from './home/home.component';
 import {PublicLayoutComponent} from './public-layout/public-layout.component';
 import {TravelsComponent} from './travels/travels.component';
 import {FormsModule} from '@angular/forms';
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
+import {MatIcon} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,13 @@ import {FormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     PublicRoutingModule,
-    FormsModule
+    FormsModule,
+    MatLabel,
+    MatFormField,
+    MatDatepickerToggle,
+    MatDatepicker,
+    MatDatepickerInput,
+    MatIcon
   ],
 
 })
