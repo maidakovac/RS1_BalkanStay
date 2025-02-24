@@ -6,6 +6,7 @@ export interface GetPodaciResponse {
   podaci: Drzava[]
 }
 
+
 export interface Drzava {
   id: number
   drzava: string
@@ -15,6 +16,23 @@ export interface Drzava {
   akcijaPoruka: string
   naredniPolazak: NaredniPolazak
   planiranaPutovanja: PlaniranaPutovanja[]
+}
+
+export interface Apartment {
+  apartmentId: number;
+  name: string;
+  description: string;
+  adress: string;
+  pricePerNight: number;
+  cityId: number| null;
+  accountID: number| null;
+  apartmentImages: ApartmentImages[];
+}
+
+export interface ApartmentImages {
+  apartmentImageID: number;
+  apartmentId: number;
+  imageID: number;
 }
 
 export interface BoravakGradovi {
@@ -48,9 +66,12 @@ export interface PlaniranaPutovanja {
 export class HomeComponent implements OnInit {
   traziVrijednost: string = "";
   baseUrl = "https://wrd-fit.info";
+  bazniUrl: string = "http://localhost:8000";
   globalPodaci: Drzava[] = [];
+  sviApartmani: Apartment[] = [];
   odabranaDrzava: Drzava | null = null;
   odabranoPutovanje: PlaniranaPutovanja | null = null;
+  odabraniApartman: Apartment| null = null;
 
   constructor(private httpClient: HttpClient) {
 
@@ -64,8 +85,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
   ngOnInit(): void {
     this.k1_Preuzmi();
+    this.k2_Preuzmi();
   }
 
   k1_Preuzmi() {
@@ -77,8 +100,26 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  k2_Preuzmi() {
+    let url = `${this.bazniUrl}/Apartment/Get`;
+
+    this.httpClient.get<Apartment[]>(url).subscribe(
+      (response) => {
+        this.sviApartmani = response;
+      },
+      (error) => {
+        console.error("❌ API Request Failed:", error);
+      }
+    );
+  }
+
+
   K2_odaberiDestinaciju(drzave: Drzava) {
     this.odabranaDrzava = drzave;
+  }
+
+  K2_odaberiApartment(apartman: Apartment) {
+    this.odabraniApartman = apartman;
   }
 
   K3_OdaberiPutovanje(polazak: PlaniranaPutovanja) {
