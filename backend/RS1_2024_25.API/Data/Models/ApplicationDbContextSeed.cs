@@ -319,6 +319,13 @@ namespace RS1_2024_25.API.Data
 
             );
 
+            modelBuilder.Entity<ApartmentImage>().HasData
+            (
+                new ApartmentImage { ApartmentImageID = 1, ApartmentId = 1, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 2, ApartmentId = 2, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 3, ApartmentId = 3, ImageID = 3 }
+            );
+
 
 
             modelBuilder.Entity<Image>().HasData(
