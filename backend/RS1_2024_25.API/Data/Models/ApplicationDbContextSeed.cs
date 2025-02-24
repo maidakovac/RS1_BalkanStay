@@ -21,19 +21,40 @@ namespace RS1_2024_25.API.Data
 
             modelBuilder.Entity<City>().HasData
              (
-                new City { ID = 1, Name = "Example City", CountryId = 1 },
-                new City { ID = 2, Name = "Another City", CountryId = 2 },
-                new City { ID = 3, Name = "Third City", CountryId = 3 },
-                new City { ID = 4, Name = "Four City", CountryId = 4 }
+                new City { ID = 1, Name = "Sarajevo", CountryId = 1 },
+                new City { ID = 2, Name = "Mostar", CountryId = 1 },
+                new City { ID = 3, Name = "Tuzla", CountryId = 1 },
+                new City { ID = 4, Name = "Zagreb", CountryId = 2 },
+                new City { ID = 5, Name = "Rijeka", CountryId = 2 },
+                new City { ID = 6, Name = "Pula", CountryId = 2 },
+                new City { ID = 7, Name = "Beograd", CountryId = 3 },
+                new City { ID = 8, Name = "Novi Sad", CountryId = 3 },
+                new City { ID = 9, Name = "Skopje", CountryId = 4 },
+                new City { ID = 10, Name = "Ohrid", CountryId = 4 },
+                new City { ID = 11, Name = "Sofia", CountryId = 5 },
+                new City { ID = 12, Name = "Varna", CountryId = 5 },
+                new City { ID = 13, Name = "Budva", CountryId = 6 },
+                new City { ID = 14, Name = "Bar", CountryId = 6 },
+                new City { ID = 15, Name = "Kotor", CountryId = 6 },
+                new City { ID = 16, Name = "Tirana", CountryId = 7},
+                new City { ID = 17, Name = "Vlorë", CountryId = 7 },
+                new City { ID = 18, Name = "Durrës", CountryId = 7 },
+                new City { ID = 19, Name = "Atena", CountryId = 8 },
+                new City { ID = 20, Name = "Thessaloniki", CountryId = 8 },
+                new City { ID = 21, Name = "Patras", CountryId = 8 }
 
              );
 
             modelBuilder.Entity<Country>().HasData
             (
-               new Country { ID = 1, Name = "Example Country1" },
-               new Country { ID = 2, Name = "Example Country2" },
-               new Country { ID = 3, Name = "Example Country3" },
-               new Country { ID = 4, Name = "Example Country4" }
+               new Country { ID = 1, Name = "Bosna i Hercegovina" },
+               new Country { ID = 2, Name = "Hrvatska" },
+               new Country { ID = 3, Name = "Srbija" },
+               new Country { ID = 4, Name = "Makedonija" },
+               new Country { ID = 5, Name = "Bugarska" },
+               new Country { ID = 6, Name = "Crna Gora" },
+               new Country { ID = 7, Name = "Albanija" },
+               new Country { ID = 8, Name = "Grčka" }
 
             );
 
@@ -91,8 +112,9 @@ namespace RS1_2024_25.API.Data
                       Phone = "+38761000111",
                       GenderID = 1,
                       CityID = 1,
-                      Image = File.ReadAllBytes("wwwroot/image2.jpg"),
-                      CreatedAt = DateTime.UtcNow
+                      Image = null,
+                      CreatedAt = DateTime.UtcNow,
+                      
                   },
 
                   new User
@@ -304,8 +326,21 @@ namespace RS1_2024_25.API.Data
                   {
                       ImageID = 1,
                       Photo = ImageSeeder.GetImageBytes("wwwroot/image2.jpg")
+                  },
+                  new Image
+                  {
+                      ImageID = 2,
+                      Photo = ImageSeeder.GetImageBytes("wwwroot/room1.jpg")
+                  },
+                  new Image
+                  {
+                      ImageID = 3,
+                      Photo = ImageSeeder.GetImageBytes("wwwroot/toilet2.jpg")
                   }
-                  );
+
+
+
+            );
 
 
 
