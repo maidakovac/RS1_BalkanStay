@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>false</InvariantGlobalization>
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>  <!-- ✅ Sprečava dupliranje -->
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,8 +17,5 @@
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
-
-
-
 
 </Project>
