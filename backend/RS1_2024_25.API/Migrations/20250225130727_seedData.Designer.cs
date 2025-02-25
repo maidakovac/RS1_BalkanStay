@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RS1_2024_25.API.Data;
 
@@ -11,9 +12,11 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250225130727_seedData")]
+    partial class seedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -291,38 +294,14 @@ namespace RS1_2024_25.API.Migrations
                         new
                         {
                             ApartmentImageID = 4,
-                            ApartmentId = 4,
+                            ApartmentId = 3,
                             ImageID = 4
                         },
                         new
                         {
                             ApartmentImageID = 5,
-                            ApartmentId = 5,
+                            ApartmentId = 3,
                             ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 6,
-                            ApartmentId = 6,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 7,
-                            ApartmentId = 7,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 8,
-                            ApartmentId = 8,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 9,
-                            ApartmentId = 9,
-                            ImageID = 4
                         });
                 });
 
@@ -1109,7 +1088,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JohnPass",
                             Username = "johndoe",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(2918),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 7, 27, 175, DateTimeKind.Utc).AddTicks(1154),
                             GenderID = 1,
                             Phone = "+38761000111"
                         },
@@ -1122,7 +1101,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JanePass",
                             Username = "janedoe",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(3088),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 7, 27, 175, DateTimeKind.Utc).AddTicks(1596),
                             GenderID = 2,
                             Phone = "+38761000222"
                         },
@@ -1135,7 +1114,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "xxxxx",
                             Username = "xxxxx",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(3090),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 7, 27, 175, DateTimeKind.Utc).AddTicks(1598),
                             GenderID = 1,
                             Phone = "+38761000222"
                         },
@@ -1148,7 +1127,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "YYYXX",
                             Username = "yyyy",
                             CityID = 4,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(3175),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 7, 27, 175, DateTimeKind.Utc).AddTicks(1600),
                             GenderID = 2,
                             Phone = "+38761000222"
                         });
@@ -1190,7 +1169,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Izel",
                             Username = "Izel",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(3898),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 7, 27, 175, DateTimeKind.Utc).AddTicks(2370),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-111"
@@ -1204,7 +1183,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Maida",
                             Username = "Maida",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(4022),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 7, 27, 175, DateTimeKind.Utc).AddTicks(2502),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-222"
@@ -1218,7 +1197,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Admin",
                             Username = "Admin",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(4024),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 7, 27, 175, DateTimeKind.Utc).AddTicks(2504),
                             GenderID = 1,
                             Image = new byte[0],
                             Phone = "061-000-333"

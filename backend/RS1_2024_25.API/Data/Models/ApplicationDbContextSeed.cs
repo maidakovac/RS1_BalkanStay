@@ -220,42 +220,89 @@ namespace RS1_2024_25.API.Data
 
             modelBuilder.Entity<Apartment>().HasData
             (
+              new Apartment
+              {
+                  ApartmentId = 1,
+                  Name = "Apartment Marshal",
+                  Description = "A stylish and modern apartment in a prime location, perfect for travelers.",
+                  Adress = "Adresa 1",
+                  PricePerNight = 50,
+                  CityId = 1
+              },
+                new Apartment
+                {
+                    ApartmentId = 2,
+                    Name = "Apartment Charm",
+                    Description = "A cozy and charming space with elegant decor and a warm atmosphere.",
+                    Adress = "Adresa 2",
+                    PricePerNight = 70,
+                    CityId = 2
+                },
+                new Apartment
+                {
+                    ApartmentId = 3,
+                    Name = "Apartment Sun",
+                    Description = "Bright and spacious apartment with plenty of natural light and a stunning view.",
+                    Adress = "Adresa 3",
+                    PricePerNight = 50,
+                    CityId = 3
+                },
+                new Apartment
+                {
+                    ApartmentId = 4,
+                    Name = "Apartment Exclusive",
+                    Description = "A luxury apartment with high-end amenities, ideal for a premium experience.",
+                    Adress = "Adresa 4",
+                    PricePerNight = 150,
+                    CityId = 4
+                },
+
                new Apartment
                {
-                   ApartmentId = 1,
-                   Name = "Apartment Marshal",
-                   Description = "opis neki",
-                   Adress = "Adresa 1",
-                   PricePerNight = 50,
-                   CityId = 1
+                   ApartmentId = 5,
+                   Name = "Mountain View Lodge",
+                   Description = "A cozy retreat with a breathtaking mountain view.",
+                   Adress = "Bjelašnica 12",
+                   PricePerNight = 80,
+                   CityId = 6
                },
-               new Apartment
-               {
-                   ApartmentId = 2,
-                   Name = "Apartment Charm",
-                   Description = "opis neki",
-                   Adress = "Adresa 2",
-                   PricePerNight = 70,
-                   CityId = 2
-               },
-               new Apartment
-               {
-                   ApartmentId = 3,
-                   Name = "Apartment Sun",
-                   Description = "opis neki",
-                   Adress = "Adresa 3",
-                   PricePerNight = 50,
-                   CityId = 3
-               },
-               new Apartment
-               {
-                   ApartmentId = 4,
-                   Name = "Apartment Exclusive",
-                   Description = "opis neki",
-                   Adress = "Adresa 4",
-                   PricePerNight = 150,
-                   CityId = 4
-               });
+            new Apartment
+            {
+                ApartmentId = 6,
+                Name = "Seaside Escape",
+                Description = "A luxurious apartment right by the Adriatic Sea.",
+                Adress = "Obala 45, Rijeka",
+                PricePerNight = 120,
+                CityId = 7
+            },
+            new Apartment
+            {
+                ApartmentId = 7,
+                Name = "Urban Loft",
+                Description = "Modern loft in the heart of the city, perfect for business travelers.",
+                Adress = "Centar 22, Novi Sad",
+                PricePerNight = 95,
+                CityId = 8
+            },
+            new Apartment
+            {
+                ApartmentId = 8,
+                Name = "Historic Downtown Apartment",
+                Description = "Stay in a beautifully restored historic building in the old town.",
+                Adress = "Stari Grad 17, Skopje",
+                PricePerNight = 70,
+                CityId = 10
+            },
+            new Apartment
+            {
+                ApartmentId = 9,
+                Name = "Luxury Penthouse",
+                Description = "Exclusive penthouse with a private terrace and panoramic city views.",
+                Adress = "Skyline Tower, Athens",
+                PricePerNight = 250,
+                CityId = 19
+            });
+
 
 
 
@@ -324,7 +371,13 @@ namespace RS1_2024_25.API.Data
             (
                 new ApartmentImage { ApartmentImageID = 1, ApartmentId = 1, ImageID = 1 },
                 new ApartmentImage { ApartmentImageID = 2, ApartmentId = 2, ImageID = 2 },
-                new ApartmentImage { ApartmentImageID = 3, ApartmentId = 3, ImageID = 3 }
+                new ApartmentImage { ApartmentImageID = 3, ApartmentId = 3, ImageID = 3 } ,
+                new ApartmentImage { ApartmentImageID = 4, ApartmentId = 4, ImageID = 4 },
+                new ApartmentImage { ApartmentImageID = 5, ApartmentId = 5, ImageID = 5 },
+                new ApartmentImage { ApartmentImageID = 6, ApartmentId = 6, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 7, ApartmentId = 7, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 8, ApartmentId = 8, ImageID = 3 },
+                new ApartmentImage { ApartmentImageID = 9, ApartmentId = 9, ImageID = 4 }
             );
 
 
@@ -344,6 +397,16 @@ namespace RS1_2024_25.API.Data
             {
                 ImageID = 3,
                 ImagePath = ImageSeeder.GetImageBytes("wwwroot/toilet2.jpg") // ❌ Wrong type (byte[])
+            },
+             new Image
+             {
+                 ImageID = 4,
+                 ImagePath = ImageSeeder.GetImageBytes("wwwroot/room1.jpg") // ❌ Wrong type (byte[])
+             },
+            new Image
+            {
+                ImageID = 5,
+                ImagePath = ImageSeeder.GetImageBytes("wwwroot/image2.jpg") // ❌ Wrong type (byte[])
             }
         );
 

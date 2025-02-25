@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RS1_2024_25.API.Data;
 
@@ -11,9 +12,11 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250225130014_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,7 +117,7 @@ namespace RS1_2024_25.API.Migrations
                             ApartmentId = 1,
                             Adress = "Adresa 1",
                             CityId = 1,
-                            Description = "A stylish and modern apartment in a prime location, perfect for travelers.",
+                            Description = "opis neki",
                             Name = "Apartment Marshal",
                             PricePerNight = 50
                         },
@@ -123,7 +126,7 @@ namespace RS1_2024_25.API.Migrations
                             ApartmentId = 2,
                             Adress = "Adresa 2",
                             CityId = 2,
-                            Description = "A cozy and charming space with elegant decor and a warm atmosphere.",
+                            Description = "opis neki",
                             Name = "Apartment Charm",
                             PricePerNight = 70
                         },
@@ -132,7 +135,7 @@ namespace RS1_2024_25.API.Migrations
                             ApartmentId = 3,
                             Adress = "Adresa 3",
                             CityId = 3,
-                            Description = "Bright and spacious apartment with plenty of natural light and a stunning view.",
+                            Description = "opis neki",
                             Name = "Apartment Sun",
                             PricePerNight = 50
                         },
@@ -141,54 +144,9 @@ namespace RS1_2024_25.API.Migrations
                             ApartmentId = 4,
                             Adress = "Adresa 4",
                             CityId = 4,
-                            Description = "A luxury apartment with high-end amenities, ideal for a premium experience.",
+                            Description = "opis neki",
                             Name = "Apartment Exclusive",
                             PricePerNight = 150
-                        },
-                        new
-                        {
-                            ApartmentId = 5,
-                            Adress = "Bjelašnica 12",
-                            CityId = 6,
-                            Description = "A cozy retreat with a breathtaking mountain view.",
-                            Name = "Mountain View Lodge",
-                            PricePerNight = 80
-                        },
-                        new
-                        {
-                            ApartmentId = 6,
-                            Adress = "Obala 45, Rijeka",
-                            CityId = 7,
-                            Description = "A luxurious apartment right by the Adriatic Sea.",
-                            Name = "Seaside Escape",
-                            PricePerNight = 120
-                        },
-                        new
-                        {
-                            ApartmentId = 7,
-                            Adress = "Centar 22, Novi Sad",
-                            CityId = 8,
-                            Description = "Modern loft in the heart of the city, perfect for business travelers.",
-                            Name = "Urban Loft",
-                            PricePerNight = 95
-                        },
-                        new
-                        {
-                            ApartmentId = 8,
-                            Adress = "Stari Grad 17, Skopje",
-                            CityId = 10,
-                            Description = "Stay in a beautifully restored historic building in the old town.",
-                            Name = "Historic Downtown Apartment",
-                            PricePerNight = 70
-                        },
-                        new
-                        {
-                            ApartmentId = 9,
-                            Adress = "Skyline Tower, Athens",
-                            CityId = 19,
-                            Description = "Exclusive penthouse with a private terrace and panoramic city views.",
-                            Name = "Luxury Penthouse",
-                            PricePerNight = 250
                         });
                 });
 
@@ -291,38 +249,14 @@ namespace RS1_2024_25.API.Migrations
                         new
                         {
                             ApartmentImageID = 4,
-                            ApartmentId = 4,
+                            ApartmentId = 3,
                             ImageID = 4
                         },
                         new
                         {
                             ApartmentImageID = 5,
-                            ApartmentId = 5,
+                            ApartmentId = 3,
                             ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 6,
-                            ApartmentId = 6,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 7,
-                            ApartmentId = 7,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 8,
-                            ApartmentId = 8,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 9,
-                            ApartmentId = 9,
-                            ImageID = 4
                         });
                 });
 
@@ -1109,7 +1043,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JohnPass",
                             Username = "johndoe",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(2918),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(4652),
                             GenderID = 1,
                             Phone = "+38761000111"
                         },
@@ -1122,7 +1056,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JanePass",
                             Username = "janedoe",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(3088),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(4892),
                             GenderID = 2,
                             Phone = "+38761000222"
                         },
@@ -1135,7 +1069,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "xxxxx",
                             Username = "xxxxx",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(3090),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(4895),
                             GenderID = 1,
                             Phone = "+38761000222"
                         },
@@ -1148,7 +1082,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "YYYXX",
                             Username = "yyyy",
                             CityID = 4,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(3175),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(4898),
                             GenderID = 2,
                             Phone = "+38761000222"
                         });
@@ -1190,7 +1124,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Izel",
                             Username = "Izel",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(3898),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(5906),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-111"
@@ -1204,7 +1138,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Maida",
                             Username = "Maida",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(4022),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(6088),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-222"
@@ -1218,7 +1152,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Admin",
                             Username = "Admin",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 2, 25, 13, 17, 10, 957, DateTimeKind.Utc).AddTicks(4024),
+                            CreatedAt = new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(6091),
                             GenderID = 1,
                             Image = new byte[0],
                             Phone = "061-000-333"
