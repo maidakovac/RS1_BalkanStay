@@ -18,6 +18,7 @@ export interface Drzava {
   planiranaPutovanja: PlaniranaPutovanja[]
 }
 
+
 export interface Apartment {
   apartmentId: number;
   name: string;
@@ -27,6 +28,20 @@ export interface Apartment {
   cityId: number| null;
   accountID: number| null;
   apartmentImages: ApartmentImages[];
+  city: City[]
+}
+
+export interface City {
+  id: number;
+  name: string;
+  countryId: number;
+  country: Country[]
+}
+
+export interface Country {
+  id: number;
+  name: string;
+  cities: City[]
 }
 
 export interface ApartmentImages {
@@ -106,12 +121,15 @@ export class HomeComponent implements OnInit {
     this.httpClient.get<Apartment[]>(url).subscribe(
       (response) => {
         this.sviApartmani = response;
+        console.log(this.sviApartmani)
       },
       (error) => {
         console.error("❌ API Request Failed:", error);
       }
     );
   }
+
+
 
 
   K2_odaberiDestinaciju(drzave: Drzava) {

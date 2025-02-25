@@ -14,6 +14,9 @@ import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/m
 import {MatIcon} from '@angular/material/icon';
 import {MatInput} from '@angular/material/input';
 import {MatFabButton} from '@angular/material/button';
+import {MatList, MatListItem} from "@angular/material/list";
+import {MatDivider} from '@angular/material/divider';
+import {MatCard} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,11 @@ import {MatFabButton} from '@angular/material/button';
     MatDatepickerInput,
     MatIcon,
     MatInput,
-    MatFabButton
+    MatFabButton,
+    MatList,
+    MatListItem,
+    MatDivider,
+    MatCard
   ],
 
 })
