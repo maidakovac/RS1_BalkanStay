@@ -79,7 +79,7 @@ namespace RS1_2024_25.API.Controllers
         {
             var newImage = new ImageEntity()
             {
-                Photo=x.Photo
+                ImagePath = x.ImagePath
             };
 
             _DbContext.Images.Add(newImage);
@@ -104,7 +104,7 @@ namespace RS1_2024_25.API.Controllers
             }
 
             updatedImage.ImageID = x.ImageID;
-            updatedImage.Photo= x.Photo;
+            updatedImage.ImagePath= x.ImagePath;
 
             _DbContext.Images.Update(updatedImage);
             _DbContext.SaveChanges();

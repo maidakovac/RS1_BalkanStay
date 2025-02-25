@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.ViewModel;
+using RS1_2024_25.API.ViewModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,19 +19,53 @@ namespace RS1_2024_25.API.Controllers
             this._DbContext = _DbContext;
         }
 
+        //[HttpGet]
+
+        //public ActionResult<List<ApartmentImage>> Get()
+        //{
+        //    var apartmentImages = _DbContext.ApartmentImages.Include(x => x.Image).ToList();
+
+        //    if (apartmentImages == null)
+        //    {
+        //        return BadRequest();
+        //    }
+
+
+        //    return Ok(apartmentImages);
+        //}
+
+
+        //[HttpGet]
+        //public ActionResult<List<ApartmentImage>> Get()
+        //{
+        //    var apartmentImages = _DbContext.ApartmentImages.Include(x => x.Image).ToList();
+
+        //    if (apartmentImages == null)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    return Ok(apartmentImages);
+        //}
+
+
+
         [HttpGet]
-
-        public ActionResult<List<ApartmentImage>> Get()
+        public ActionResult<List<ApartmentImageDTO>> Get()
         {
-            var apartmentImages = _DbContext.ApartmentImages.Include(x => x.Image).ToList();
+            var apartmentImages = _DbContext.ApartmentImages
+                .Include(ai => ai.Image)
+                .ToList();
 
-            if (apartmentImages == null)
+            var apartmentImageDtos = apartmentImages.Select(ai => new ApartmentImageDTO
             {
-                return BadRequest();
-            }
+                ApartmentImageID = ai.ApartmentImageID,
+                ApartmentId = ai.ApartmentId,
+                ImageID = ai.ImageID,
+                ImageUrl = ai.Image != null ? $"/images/{ai.Image.ImagePath}" : null // ✅ Return image URL
+            }).ToList();
 
-
-            return Ok(apartmentImages);
+            return Ok(apartmentImageDtos);
         }
 
 

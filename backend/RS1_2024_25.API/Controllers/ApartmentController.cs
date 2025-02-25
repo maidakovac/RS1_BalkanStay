@@ -26,8 +26,13 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<List<Apartment>> Get()
         {
-            var apartments = _DbContext.Apartments.Include(x=> x.City).ToList();
-
+            var apartments = _DbContext.Apartments
+                                .Include(x => x.City)
+                                    .ThenInclude(x => x.Country)
+                                .Include(y => y.ApartmentImages)
+                                    .ThenInclude(y => y.Image)
+                                .ToList();
+            
             if (apartments == null)
             {
                 return BadRequest();

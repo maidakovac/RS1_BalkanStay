@@ -5,6 +5,7 @@ using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.Data.Models.Auth;
 using RS1_2024_25.API.Helpers;
 using System.Numerics;
+using ImageSeeder = RS1_2024_25.API.Data.Models.ImageSeeder;
 
 namespace RS1_2024_25.API.Data
 {
@@ -36,7 +37,7 @@ namespace RS1_2024_25.API.Data
                 new City { ID = 13, Name = "Budva", CountryId = 6 },
                 new City { ID = 14, Name = "Bar", CountryId = 6 },
                 new City { ID = 15, Name = "Kotor", CountryId = 6 },
-                new City { ID = 16, Name = "Tirana", CountryId = 7},
+                new City { ID = 16, Name = "Tirana", CountryId = 7 },
                 new City { ID = 17, Name = "Vlorë", CountryId = 7 },
                 new City { ID = 18, Name = "Durrës", CountryId = 7 },
                 new City { ID = 19, Name = "Atena", CountryId = 8 },
@@ -114,7 +115,7 @@ namespace RS1_2024_25.API.Data
                       CityID = 1,
                       Image = null,
                       CreatedAt = DateTime.UtcNow,
-                      
+
                   },
 
                   new User
@@ -329,25 +330,45 @@ namespace RS1_2024_25.API.Data
 
 
             modelBuilder.Entity<Image>().HasData(
-                  new Image
-                  {
-                      ImageID = 1,
-                      Photo = ImageSeeder.GetImageBytes("wwwroot/image2.jpg")
-                  },
-                  new Image
-                  {
-                      ImageID = 2,
-                      Photo = ImageSeeder.GetImageBytes("wwwroot/room1.jpg")
-                  },
-                  new Image
-                  {
-                      ImageID = 3,
-                      Photo = ImageSeeder.GetImageBytes("wwwroot/toilet2.jpg")
-                  }
+            new Image
+            {
+                ImageID = 1,
+                ImagePath = ImageSeeder.GetImageBytes("wwwroot/image2.jpg") // ❌ Wrong type (byte[])
+            },
+            new Image
+            {
+                ImageID = 2,
+                ImagePath = ImageSeeder.GetImageBytes("wwwroot/room1.jpg") // ❌ Wrong type (byte[])
+            },
+            new Image
+            {
+                ImageID = 3,
+                ImagePath = ImageSeeder.GetImageBytes("wwwroot/toilet2.jpg") // ❌ Wrong type (byte[])
+            }
+        );
 
 
 
-            );
+            //modelBuilder.Entity<Image>().HasData(
+            //      new Image
+            //      {
+            //          ImageID = 1,
+            //          ImagePath = ImageSeeder.GetImageBytes("wwwroot/image2.jpg")
+            //      },
+            //      new Image
+            //      {
+            //          ImageID = 2,
+            //          ImagePath = ImageSeeder.GetImageBytes("wwwroot/room1.jpg")
+            //      },
+            //      new Image
+            //      {
+            //          ImageID = 3,
+            //          ImagePath = ImageSeeder.GetImageBytes("wwwroot/toilet2.jpg")
+            //      }
+
+
+
+            //);
 
 
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.ViewModel;
@@ -25,7 +26,7 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<List<City>> Get()
         {
-            var cities = _DbContext.Cities.ToList();
+            var cities = _DbContext.Cities.Include(x=> x.Country).ToList();
 
             if (cities == null)
             {
