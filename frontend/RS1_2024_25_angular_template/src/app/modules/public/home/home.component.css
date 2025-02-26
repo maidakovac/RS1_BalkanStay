@@ -1,43 +1,63 @@
-.booking-box{
+.booking-box {
   display: flex;
-  justify-content: center;
   justify-content: space-between;
   align-items: center;
   box-shadow: 7px 7px 28px rgba(0.1, 0.1, 0.1, 0.1);
   border-radius: 50px;
   margin: 30px auto;
   width: 70%;
-  padding: 0 20px;
+  padding: 20px;
+  background-color: white;
 }
 
+.booking-field {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  position: relative;
+}
+
+/* Dodaje desni border samo ako nije zadnji element */
+.booking-field:not(:last-child) {
+  border-right: 1px solid #ddd;
+}
+
+/* Stilizacija input polja */
+.booking-field label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+}
+
+.booking-field input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px 0;
+  color: #666;
+}
+
+/* Dugme za pretragu - kružno dugme */
 .search-button {
-  padding: 10px 15px;
-  height: fit-content;
-  border-radius: 100%;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
+  align-items: center;
   border: none;
-  background-color: pink;
-
-}
-.booking-input {
-  height: auto;
-
-
+  background-color: #ff385c;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.inputbooking {
-  height: 50px;
-  width: 90%;
-  padding: 0 15px;
-  border: none !important;
-  border-right: 1px solid #ddd !important;
-  border-radius: 0; /* Prevents rounded corners */
-  padding-right: 10px; /* Space between text and border */
+.search-button:hover {
+  background-color: #d81c40;
 }
 
-.matlabel
-{
-  color: black;
+/* Ikonica u dugmetu */
+.material-icons {
+  font-size: 20px;
 }
-

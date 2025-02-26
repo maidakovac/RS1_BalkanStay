@@ -41,26 +41,51 @@
 <!--  </div>-->
 
 <div class="part1">
-  <div class="header">
 
-    <div class="header-left">
-      <div class="header-left-title">
-        <h1>For all your travel needs</h1>
-        <p class="header-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores
-          perspiciatis, illo maxime voluptatem a itaque suscipit.</p>
-<!--        <div *ngFor="let x of sviApartmani">-->
-<!--          <p>{{x.name}}</p>-->
-<!--        </div>-->
-        <div class="header-left-buttons">
-          <div class="header-button">Contact Us</div>
-          <div class="header-button">About Us</div>
-        </div>
-      </div>
-      <div class="header-right-image">
-        <img src="images/header-img.png">
-      </div>
+  <div class="booking-box">
+    <div class="booking-field">
+      <label>Where</label>
+      <input type="text" placeholder="Search city name" class="search-input" [(ngModel)]="traziVrijednost">
     </div>
+    <div class="booking-field">
+      <label>Check in</label>
+      <input type="text" placeholder="Add dates">
+    </div>
+    <div class="booking-field">
+      <label>Check out</label>
+      <input type="text" placeholder="Add dates">
+    </div>
+    <div class="booking-field">
+      <label>Who</label>
+      <input type="text" placeholder="Add guests">
+    </div>
+    <button class="search-button">
+      <span class="material-icons">search</span>
+    </button>
   </div>
+
+
+
+  <!--  <div class="header">-->
+
+<!--    <div class="header-left">-->
+<!--      <div class="header-left-title">-->
+<!--        <h1>For all your travel needs</h1>-->
+<!--        <p class="header-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores-->
+<!--          perspiciatis, illo maxime voluptatem a itaque suscipit.</p>-->
+<!--&lt;!&ndash;        <div *ngFor="let x of sviApartmani">&ndash;&gt;-->
+<!--&lt;!&ndash;          <p>{{x.name}}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div class="header-left-buttons">-->
+<!--          <div class="header-button">Contact Us</div>-->
+<!--          <div class="header-button">About Us</div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="header-right-image">-->
+<!--        <img src="images/header-img.png">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
 </div>
 
