@@ -41,30 +41,39 @@
 <!--  </div>-->
 
 <div class="part1">
-
   <div class="booking-box">
     <div class="booking-field">
       <label>Where</label>
       <input type="text" placeholder="Search city name" class="search-input" [(ngModel)]="traziVrijednost">
     </div>
-    <div class="booking-field">
-      <label>Check in</label>
-      <input type="text" placeholder="Add dates">
+
+    <div class="booking-field date-field">
+      <label>Check-in</label>
+      <div class="custom-datepicker">
+        <input matInput [matDatepicker]="checkInPicker" [(ngModel)]="checkInDate" placeholder="Add dates">
+        <mat-datepicker-toggle matIconSuffix [for]="checkInPicker"></mat-datepicker-toggle>
+        <mat-datepicker #checkInPicker></mat-datepicker>
+      </div>
     </div>
-    <div class="booking-field">
-      <label>Check out</label>
-      <input type="text" placeholder="Add dates">
+
+    <div class="booking-field date-field">
+      <label>Check-out</label>
+      <div class="custom-datepicker">
+        <input matInput [matDatepicker]="checkOutPicker" [(ngModel)]="checkOutDate" placeholder="Add dates">
+        <mat-datepicker-toggle matIconSuffix [for]="checkOutPicker"></mat-datepicker-toggle>
+        <mat-datepicker #checkOutPicker></mat-datepicker>
+      </div>
     </div>
+
     <div class="booking-field">
       <label>Who</label>
       <input type="text" placeholder="Add guests">
     </div>
+
     <button class="search-button">
       <span class="material-icons">search</span>
     </button>
   </div>
-
-
 
   <!--  <div class="header">-->
 
@@ -89,31 +98,13 @@
 
 </div>
 
-<div class="part2">
-  <h1>2 Search</h1>
-  <div class="search">
-    <div class="search-img">
-      <img src="images/about-img.png">
-    </div>
-    <div class="search-description">
-      <h1>Search for you travel</h1>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime
-        voluptatem a itaque suscipit.</p>
-      <div class="search-right">
-        <input placeholder="search city name" class="search-input" [(ngModel)]="traziVrijednost">
-
-      </div>
-    </div>
-  </div>
-
-</div>
 <div class="part3">
   <div class="travel-destinations">
 
   </div>
   <section id="best-offers">
-    <h1>3 Best offers</h1>
-    <p>Here is a list of best travels that our company offers</p>
+    <h1>WHERE TO ?</h1>
+    <p>Here is a list of best travels that we offers</p>
     <div id="destinacije" class="offers-container">
 
       <article *ngFor="let x of sviApartmani; let b = index" class="offer">
@@ -147,6 +138,27 @@
     </div>
   </section>
 </div>
+
+
+<div class="part2">
+  <h1>2 Search</h1>
+  <div class="search">
+    <div class="search-img">
+      <img src="images/about-img.png">
+    </div>
+    <div class="search-description">
+      <h1>Search for you travel</h1>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime
+        voluptatem a itaque suscipit.</p>
+      <div class="search-right">
+        <input placeholder="search city name" class="search-input" [(ngModel)]="traziVrijednost">
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
 
 <div class="part4">
   <div class="travel-tabel">

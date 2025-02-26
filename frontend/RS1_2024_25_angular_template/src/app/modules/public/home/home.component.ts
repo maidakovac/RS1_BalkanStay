@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
+
 export interface GetPodaciResponse {
   datumPonude: string
   podaci: Drzava[]
@@ -93,6 +94,12 @@ export class HomeComponent implements OnInit {
   odabranaDrzava: Drzava | null = null;
   odabranoPutovanje: PlaniranaPutovanja | null = null;
   odabraniApartman: Apartment| null = null;
+  checkInDate: Date | null = null;
+  checkOutDate: Date | null = null;
+
+
+
+
 
   constructor(private httpClient: HttpClient) {
 
