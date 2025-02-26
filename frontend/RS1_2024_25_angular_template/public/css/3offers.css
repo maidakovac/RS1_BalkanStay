@@ -1,107 +1,109 @@
+/* Poboljšani stil za kartice */
 .part3 .offer {
-    width: 30%;
-    position: relative;
-    border: 1px solid;
-    margin-bottom: 20px;
+  width: 30%;
+  position: relative;
+  background: white;
+  border-radius: 15px; /* Zaobljene ivice */
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Blaga senka za bolji izgled */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+/* Hover efekat - blago povećanje i jača senka */
+.part3 .offer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Detalji unutar kartice */
 .part3 .offer-details {
-    justify-content: space-between;
-    padding: 10px;
-    padding-bottom: 0px;
-    margin: 20px 0;
-    margin-bottom: 0px;
-    text-align: left;
-    position: relative;
+  padding: 15px;
+  text-align: left;
+  font-family: "Poppins", sans-serif; /* Moderniji font */
+  color: #333;
 }
 
-.part3 .offer-description {
-    clear: both;
-}
-
-.part3 .offer-footer {
-    padding: 10px;
-    margin: 0px 0;
-    position: relative;
-}
-
-.part3 .offer-destination,
-.part3 .offer-dana,
-.part3 .broj-mjesta {
-    float: left;
-    font-size: large;
-    font-weight: bold;
-}
-
+/* Stil za naslov apartmana */
 .part3 .offer-destination {
-    font-size: x-large;
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 5px;
 }
 
-.part3 .offer-info{
-    display: flex;
-    justify-content: space-between;
+/* Opis apartmana */
+.part3 .offer-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
 }
 
-.part3 .offer-free {
-    color: coral;
-    font-size: large;
-    font-weight: 800;
-    border-radius: 5px;
-    padding: 5px;
-
-}
-
+/* Cena */
+/* Novi stil za cenu sa osnovnom bojom #1a2e35 i hover #ff3b5c */
 .part3 .offer-price {
-    font-size: x-large;
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 3px 8px;
-    font-weight: 700;
-    background-color: rgb(28, 187, 180);
-    color: white;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #1a2e35;
+  color: white;
+  border-radius: 25px;
+  padding: 8px 15px;
+  display: inline-block;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1px;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  margin: 0 10px;
 }
 
-.part3 .akcija {
-    position: absolute;
-    right: 10px;
-    top: 50px;
-    font-size: large;
-    background-color: rgba(255, 0, 0, 40%);
-    color: white;
-    width: 120px;
-    rotate: 45deg;
-    text-align: center;
+/* Hover efekat za cenu */
+.part3 .offer-price:hover {
+  background-color: #ff3b5c;
+  transform: scale(1.05);
 }
 
+/* Dugme "Pogledaj" */
 .part3 .ponuda-dugme {
-    background-color: rgb(26, 46, 53);
-    padding: 10px;
-    margin-top: 10px;
-    color: white;
-    cursor: pointer;
-    text-align: center;
+  background-color: #1a2e35;
+  padding: 12px;
+  margin-top: 15px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s ease-in-out;
 }
 
-.part3 #best-offers p {
-    font-style: italic;
-    color: gray;
-    width: 55%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+/* Hover na dugme */
+.part3 .ponuda-dugme:hover {
+  background-color: #ff3b5c;
 }
 
-.part3 .offers-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
+/* Poboljšana slika */
 .part3 .offer-image {
-    height: 300px;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
+  height: 250px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
+/* Poboljšano poravnanje kartica */
+.part3 .offers-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
 
+/* Naslov sekcije */
+.part3 #best-offers p {
+  font-style: italic;
+  color: gray;
+  width: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
