@@ -12,8 +12,8 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250226125114_init22")]
-    partial class init22
+    [Migration("20250226155618_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1112,7 +1112,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JohnPass",
                             Username = "johndoe",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 2, 26, 12, 51, 13, 324, DateTimeKind.Utc).AddTicks(4786),
+                            CreatedAt = new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(7808),
                             GenderID = 1,
                             Phone = "+38761000111"
                         },
@@ -1125,7 +1125,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JanePass",
                             Username = "janedoe",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 2, 26, 12, 51, 13, 324, DateTimeKind.Utc).AddTicks(5087),
+                            CreatedAt = new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8004),
                             GenderID = 2,
                             Phone = "+38761000222"
                         },
@@ -1138,7 +1138,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "xxxxx",
                             Username = "xxxxx",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 2, 26, 12, 51, 13, 324, DateTimeKind.Utc).AddTicks(5089),
+                            CreatedAt = new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8006),
                             GenderID = 1,
                             Phone = "+38761000222"
                         },
@@ -1151,7 +1151,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "YYYXX",
                             Username = "yyyy",
                             CityID = 4,
-                            CreatedAt = new DateTime(2025, 2, 26, 12, 51, 13, 324, DateTimeKind.Utc).AddTicks(5091),
+                            CreatedAt = new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8008),
                             GenderID = 2,
                             Phone = "+38761000222"
                         });
@@ -1193,7 +1193,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Izel",
                             Username = "Izel",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 2, 26, 12, 51, 13, 324, DateTimeKind.Utc).AddTicks(6189),
+                            CreatedAt = new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8764),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-111"
@@ -1207,7 +1207,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Maida",
                             Username = "Maida",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 2, 26, 12, 51, 13, 324, DateTimeKind.Utc).AddTicks(6544),
+                            CreatedAt = new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8929),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-222"
@@ -1221,7 +1221,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Admin",
                             Username = "Admin",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 2, 26, 12, 51, 13, 324, DateTimeKind.Utc).AddTicks(6546),
+                            CreatedAt = new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8931),
                             GenderID = 1,
                             Image = new byte[0],
                             Phone = "061-000-333"

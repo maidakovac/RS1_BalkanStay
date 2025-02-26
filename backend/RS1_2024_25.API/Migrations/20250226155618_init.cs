@@ -555,11 +555,11 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "ImageID", "ImagePath" },
                 values: new object[,]
                 {
-                    { 1, "wwwroot/images/image2.jpg" },
-                    { 2, "wwwroot/images/room1.jpg" },
-                    { 3, "wwwroot/images/toilet2.jpg" },
-                    { 4, "wwwroot/images/room1.jpg" },
-                    { 5, "wwwroot/images/image2.jpg" }
+                    { 1, "/images/image2.jpg" },
+                    { 2, "/images/room1.jpg" },
+                    { 3, "/images/toilet2.jpg" },
+                    { 4, "/images/room1.jpg" },
+                    { 5, "/images/image2.jpg" }
                 });
 
             migrationBuilder.InsertData(
@@ -646,9 +646,9 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 9, 1, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(7161), 2, new byte[0], "061-000-111" },
-                    { 10, 2, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(7333), 2, new byte[0], "061-000-222" },
-                    { 11, 3, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(7336), 1, new byte[0], "061-000-333" }
+                    { 9, 1, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8764), 2, new byte[0], "061-000-111" },
+                    { 10, 2, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8929), 2, new byte[0], "061-000-222" },
+                    { 11, 3, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8931), 1, new byte[0], "061-000-333" }
                 });
 
             migrationBuilder.InsertData(
@@ -656,10 +656,10 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 5, 1, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(6242), 1, null, "+38761000111" },
-                    { 6, 2, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(6420), 2, null, "+38761000222" },
-                    { 7, 3, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(6422), 1, null, "+38761000222" },
-                    { 8, 4, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(6423), 2, null, "+38761000222" }
+                    { 5, 1, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(7808), 1, null, "+38761000111" },
+                    { 6, 2, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8004), 2, null, "+38761000222" },
+                    { 7, 3, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8006), 1, null, "+38761000222" },
+                    { 8, 4, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8008), 2, null, "+38761000222" }
                 });
 
             migrationBuilder.InsertData(
