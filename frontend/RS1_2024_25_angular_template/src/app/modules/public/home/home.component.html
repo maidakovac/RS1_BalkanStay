@@ -91,28 +91,6 @@
     <p>Here is a list of best travels that our company offers</p>
     <div id="destinacije" class="offers-container">
 
-<!--      <article *ngFor="let x of globalPodaci; let b = index" class="offer">-->
-<!--        <div class="akcija">Polazak za <br>{{x.naredniPolazak.zaDana}} dana</div>-->
-<!--        <div class="offer-image" style="background-image: url('{{x.slikaUrl}}');" ></div>-->
-<!--        <div class="offer-details">-->
-<!--          <div class="offer-destination">{{x.drzava}}</div>-->
-<!--          <div class="offer-description">{{x.opisPonude}} {{x.opisPonude}}</div>-->
-<!--        </div>-->
-
-<!--        <div class="offer-footer">-->
-<!--          <div class="offer-info">-->
-<!--            <div class="offer-price">{{x.naredniPolazak.cijenaPoOsobiEur}} €-->
-<!--            </div>-->
-<!--            <div class="offer-free">-->
-<!--                                    <span>-->
-<!--                                        Slobodno mjesta: {{x.naredniPolazak.countSlobodnoMjesta}}-->
-<!--                                    </span>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="ponuda-dugme" (click)="K2_odaberiDestinaciju(x)">K2 Pogledaj</div>-->
-<!--        </div>-->
-<!--      </article>-->
-
       <article *ngFor="let x of sviApartmani; let b = index" class="offer">
         <div class="offer-image"
              [style.background-image]="'url(' + (x.apartmentImages?.[0]?.image?.imagePath || 'https://placehold.co/600x400') + ')'" >
