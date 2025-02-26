@@ -48,6 +48,12 @@ export interface ApartmentImages {
   apartmentImageID: number;
   apartmentId: number;
   imageID: number;
+  image: Image;
+}
+
+export interface  Image{
+  imageID: number
+  imagePath: string
 }
 
 export interface BoravakGradovi {

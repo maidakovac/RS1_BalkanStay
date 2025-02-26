@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Helper;
 using RS1_2024_25.API.Helper.Auth;
@@ -40,6 +41,8 @@ app.UseCors(
         .AllowCredentials()
 ); //This needs to set everything allowed
 
+app.UseStaticFiles(); // Mora biti prije rutiranja
+app.UseRouting();
 
 app.UseAuthorization();
 
@@ -47,5 +50,6 @@ app.MapControllers();
 
 app.Run();
 
-app.UseStaticFiles();
+
+
 

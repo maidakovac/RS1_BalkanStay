@@ -555,11 +555,11 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "ImageID", "ImagePath" },
                 values: new object[,]
                 {
-                    { 1, "wwwroot/image2.jpg" },
-                    { 2, "wwwroot/room1.jpg" },
-                    { 3, "wwwroot/toilet2.jpg" },
-                    { 4, "wwwroot/room1.jpg" },
-                    { 5, "wwwroot/image2.jpg" }
+                    { 1, "wwwroot/images/image2.jpg" },
+                    { 2, "wwwroot/images/room1.jpg" },
+                    { 3, "wwwroot/images/toilet2.jpg" },
+                    { 4, "wwwroot/images/room1.jpg" },
+                    { 5, "wwwroot/images/image2.jpg" }
                 });
 
             migrationBuilder.InsertData(
@@ -630,10 +630,15 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "ApartmentId", "AccountID", "Adress", "CityId", "Description", "Name", "PricePerNight" },
                 values: new object[,]
                 {
-                    { 1, null, "Adresa 1", 1, "opis neki", "Apartment Marshal", 50 },
-                    { 2, null, "Adresa 2", 2, "opis neki", "Apartment Charm", 70 },
-                    { 3, null, "Adresa 3", 3, "opis neki", "Apartment Sun", 50 },
-                    { 4, null, "Adresa 4", 4, "opis neki", "Apartment Exclusive", 150 }
+                    { 1, null, "Adresa 1", 1, "A stylish and modern apartment in a prime location, perfect for travelers.", "Apartment Marshal", 50 },
+                    { 2, null, "Adresa 2", 2, "A cozy and charming space with elegant decor and a warm atmosphere.", "Apartment Charm", 70 },
+                    { 3, null, "Adresa 3", 3, "Bright and spacious apartment with plenty of natural light and a stunning view.", "Apartment Sun", 50 },
+                    { 4, null, "Adresa 4", 4, "A luxury apartment with high-end amenities, ideal for a premium experience.", "Apartment Exclusive", 150 },
+                    { 5, null, "Bjelašnica 12", 6, "A cozy retreat with a breathtaking mountain view.", "Mountain View Lodge", 80 },
+                    { 6, null, "Obala 45, Rijeka", 7, "A luxurious apartment right by the Adriatic Sea.", "Seaside Escape", 120 },
+                    { 7, null, "Centar 22, Novi Sad", 8, "Modern loft in the heart of the city, perfect for business travelers.", "Urban Loft", 95 },
+                    { 8, null, "Stari Grad 17, Skopje", 10, "Stay in a beautifully restored historic building in the old town.", "Historic Downtown Apartment", 70 },
+                    { 9, null, "Skyline Tower, Athens", 19, "Exclusive penthouse with a private terrace and panoramic city views.", "Luxury Penthouse", 250 }
                 });
 
             migrationBuilder.InsertData(
@@ -641,9 +646,9 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 9, 1, new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(5906), 2, new byte[0], "061-000-111" },
-                    { 10, 2, new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(6088), 2, new byte[0], "061-000-222" },
-                    { 11, 3, new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(6091), 1, new byte[0], "061-000-333" }
+                    { 9, 1, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(7161), 2, new byte[0], "061-000-111" },
+                    { 10, 2, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(7333), 2, new byte[0], "061-000-222" },
+                    { 11, 3, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(7336), 1, new byte[0], "061-000-333" }
                 });
 
             migrationBuilder.InsertData(
@@ -651,10 +656,10 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 5, 1, new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(4652), 1, null, "+38761000111" },
-                    { 6, 2, new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(4892), 2, null, "+38761000222" },
-                    { 7, 3, new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(4895), 1, null, "+38761000222" },
-                    { 8, 4, new DateTime(2025, 2, 25, 13, 0, 13, 691, DateTimeKind.Utc).AddTicks(4898), 2, null, "+38761000222" }
+                    { 5, 1, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(6242), 1, null, "+38761000111" },
+                    { 6, 2, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(6420), 2, null, "+38761000222" },
+                    { 7, 3, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(6422), 1, null, "+38761000222" },
+                    { 8, 4, new DateTime(2025, 2, 26, 11, 53, 23, 854, DateTimeKind.Utc).AddTicks(6423), 2, null, "+38761000222" }
                 });
 
             migrationBuilder.InsertData(
@@ -677,8 +682,12 @@ namespace RS1_2024_25.API.Migrations
                     { 1, 1, 1 },
                     { 2, 2, 2 },
                     { 3, 3, 3 },
-                    { 4, 3, 4 },
-                    { 5, 3, 5 }
+                    { 4, 4, 4 },
+                    { 5, 5, 5 },
+                    { 6, 6, 1 },
+                    { 7, 7, 2 },
+                    { 8, 8, 3 },
+                    { 9, 9, 4 }
                 });
 
             migrationBuilder.InsertData(

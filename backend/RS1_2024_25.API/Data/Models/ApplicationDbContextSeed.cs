@@ -386,27 +386,27 @@ namespace RS1_2024_25.API.Data
             new Image
             {
                 ImageID = 1,
-                ImagePath = ImageSeeder.GetImageBytes("wwwroot/image2.jpg") // ❌ Wrong type (byte[])
+                ImagePath = ImageSeeder.GetImagePath("/images/image2.jpg") // ❌ Wrong type (byte[])
             },
             new Image
             {
                 ImageID = 2,
-                ImagePath = ImageSeeder.GetImageBytes("wwwroot/room1.jpg") // ❌ Wrong type (byte[])
+                ImagePath = ImageSeeder.GetImagePath("/images/room1.jpg") // ❌ Wrong type (byte[])
             },
             new Image
             {
                 ImageID = 3,
-                ImagePath = ImageSeeder.GetImageBytes("wwwroot/toilet2.jpg") // ❌ Wrong type (byte[])
+                ImagePath = ImageSeeder.GetImagePath("/images/toilet2.jpg") // ❌ Wrong type (byte[])
             },
              new Image
              {
                  ImageID = 4,
-                 ImagePath = ImageSeeder.GetImageBytes("wwwroot/room1.jpg") // ❌ Wrong type (byte[])
+                 ImagePath = ImageSeeder.GetImagePath("/images/room1.jpg") // ❌ Wrong type (byte[])
              },
             new Image
             {
                 ImageID = 5,
-                ImagePath = ImageSeeder.GetImageBytes("wwwroot/image2.jpg") // ❌ Wrong type (byte[])
+                ImagePath = ImageSeeder.GetImagePath("/images/image2.jpg") // ❌ Wrong type (byte[])
             }
         );
 

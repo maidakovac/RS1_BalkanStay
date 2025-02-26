@@ -22,25 +22,69 @@ namespace RS1_2024_25.API.Controllers
             this._DbContext = _DbContext;
         }
 
-        [HttpGet]
+        //[HttpGet]
 
+        //public ActionResult<List<Apartment>> Get()
+        //{
+        //    var apartments = _DbContext.Apartments
+        //                        .Include(x => x.City)
+        //                            .ThenInclude(x => x.Country)
+        //                        .Include(y => y.ApartmentImages)
+        //                            .ThenInclude(y => y.Image)
+        //                        .ToList();
+
+        //    if (apartments == null)
+        //    {
+        //        return BadRequest();
+        //    }
+
+
+        //    return Ok(apartments);
+        //}
+
+
+        [HttpGet]
         public ActionResult<List<Apartment>> Get()
         {
+            var baseUrl = $"{Request.Scheme}://{Request.Host}"; // Generiše bazni URL, npr. http://localhost:8000
+
             var apartments = _DbContext.Apartments
-                                .Include(x => x.City)
-                                    .ThenInclude(x => x.Country)
-                                .Include(y => y.ApartmentImages)
-                                    .ThenInclude(y => y.Image)
-                                .ToList();
-            
-            if (apartments == null)
+                                 .Include(x => x.City)
+                                     .ThenInclude(x => x.Country)
+                                 .Include(y => y.ApartmentImages)
+                                     .ThenInclude(y => y.Image)
+                                 .ToList();
+
+            // Osiguravamo ispravne putanje slika
+            foreach (var apartment in apartments)
             {
-                return BadRequest();
+                foreach (var apartmentImage in apartment.ApartmentImages)
+                {
+                    if (apartmentImage.Image != null && !string.IsNullOrEmpty(apartmentImage.Image.ImagePath))
+                    {
+                        string imagePath = apartmentImage.Image.ImagePath.TrimStart('/');
+
+                        // Uklanjamo "wwwroot/" iz putanje ako postoji
+                        if (imagePath.StartsWith("wwwroot/", StringComparison.OrdinalIgnoreCase))
+                        {
+                            imagePath = imagePath.Substring(8); // Uklanjamo prvih 8 karaktera ("wwwroot/")
+                        }
+
+                        // Sprečavamo dodavanje base URL ako putanja već sadrži "http"
+                        if (!imagePath.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                        {
+                            apartmentImage.Image.ImagePath = $"{baseUrl}/{imagePath}";
+                        }
+
+                    }
+                }
             }
 
 
             return Ok(apartments);
         }
+
+
 
 
 

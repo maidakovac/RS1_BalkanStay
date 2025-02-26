@@ -114,7 +114,10 @@
 <!--      </article>-->
 
       <article *ngFor="let x of sviApartmani; let b = index" class="offer">
-        <div class="offer-image" style="background-image: url('https://placehold.co/600x400');" ></div>
+        <div class="offer-image"
+             [style.background-image]="'url(' + (x.apartmentImages?.[0]?.image?.imagePath || 'https://placehold.co/600x400') + ')'" >
+        </div>
+
         <div class="offer-details">
           <div class="offer-destination">{{x.name}}</div>
           <div class="offer-description">{{x.description}}</div>
