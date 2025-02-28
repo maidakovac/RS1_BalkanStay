@@ -62,37 +62,11 @@
 
   </div>
   <section id="best-offers">
-    <h1>WHERE TO ?</h1>
-    <p>Here is a list of best travels that we offers</p>
+    <div class="title-container">
+      <h1 class="best-offers-title">Discover Your Next Balkan Stay</h1>
+      <p class="best-offers-text">Explore the best apartments across the Balkans</p>
+    </div>
     <div id="destinacije" class="offers-container">
-
-<!--      <article *ngFor="let x of sviApartmani; let b = index" class="offer">-->
-<!--        <div class="offer-image"-->
-<!--             [style.background-image]="'url(' + (x.apartmentImages?.[0]?.image?.imagePath || 'https://placehold.co/600x400') + ')'" >-->
-<!--        </div>-->
-
-<!--        <div class="offer-details">-->
-<!--          <div class="offer-destination">{{x.name}}</div>-->
-<!--          <div class="offer-description">{{x.description}}</div>-->
-<!--          <div class="offer-description">{{x.adress}}</div>-->
-<!--          <div class="offer-description">{{x.description}}</div>-->
-<!--          <div class="offer-description">{{x.cityId}} - {{x.accountID}}</div>-->
-<!--        </div>-->
-
-<!--        <div class="offer-footer">-->
-<!--          <div class="offer-info">-->
-<!--            <div class="offer-price">{{x.pricePerNight}} €-->
-<!--            </div>-->
-<!--&lt;!&ndash;            <div class="offer-free">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <span>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        Slobodno mjesta: {{x.naredniPolazak.countSlobodnoMjesta}}&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </span>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--          </div>-->
-<!--          <div class="ponuda-dugme" (click)="K2_odaberiApartment(x)">K2 Pogledaj</div>-->
-<!--        </div>-->
-<!--      </article>-->
-
       <article *ngFor="let x of sviApartmani; let b = index" class="offer">
         <div class="offer-image"
              [style.background-image]="'url(' + (x.apartmentImages?.[0]?.image?.imagePath || 'https://placehold.co/600x400') + ')'" >
@@ -113,10 +87,6 @@
           <div class="ponuda-dugme" (click)="K2_odaberiApartment(x)">K2 Pogledaj</div>
         </div>
       </article>
-
-
-
-
     </div>
   </section>
 </div>
