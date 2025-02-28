@@ -29,7 +29,7 @@ export interface Apartment {
   cityId: number| null;
   accountID: number| null;
   apartmentImages: ApartmentImages[];
-  city: City[]
+  city: City;
 }
 
 export interface City {
