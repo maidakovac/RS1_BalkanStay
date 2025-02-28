@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Data.Models.Auth;
 using RS1_2024_25.API.ViewModel;
@@ -26,7 +27,13 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<List<Owner>> Get()
         {
-            var owners = _DbContext.Owners.ToList();
+            var owners = _DbContext.Owners
+                            .Include(x => x.City) 
+                                .ThenInclude(y=>y.Country)
+                            .Include(x => x.Gender) 
+                            .Include(x => x.OwnerReviews) 
+                            .Include(x => x.Apartments) 
+                            .ToList();
 
             if (owners == null)
             {

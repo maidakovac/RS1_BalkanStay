@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.ViewModel;
 
@@ -20,7 +21,9 @@ namespace RS1_2024_25.API.Controllers
         [HttpGet]
         public ActionResult<List<Rule>> Get()
         {
-            var rules = _DbContext.Rules.ToList();
+            var rules = _DbContext.Rules
+                            .Include(x => x.ApartmentRules)
+                            .ToList();
 
             if (rules == null)
             {

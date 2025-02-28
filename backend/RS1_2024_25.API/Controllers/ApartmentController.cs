@@ -50,10 +50,17 @@ namespace RS1_2024_25.API.Controllers
 
             var apartments = _DbContext.Apartments
                                  .Include(x => x.City)
-                                     .ThenInclude(x => x.Country)
-                                 .Include(y => y.ApartmentImages)
-                                     .ThenInclude(y => y.Image)
-                                 .ToList();
+                                     .ThenInclude(y => y.Country)
+                                 .Include(x => x.ApartmentImages)
+                                     .ThenInclude(z => z.Image)
+                                  .Include(x => x.Account)
+                                  .Include(x => x.Reservations)
+                                          .ThenInclude(r => r.Account)
+                                   .Include(x => x.ApartmentRules)
+                                   .Include(x => x.ApartmentAmenities)
+                                   .Include(x => x.ApartmentToiletries)
+                                   .ToList();
+
 
             // Osiguravamo ispravne putanje slika
             foreach (var apartment in apartments)
