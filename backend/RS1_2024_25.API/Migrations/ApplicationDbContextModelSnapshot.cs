@@ -112,7 +112,7 @@ namespace RS1_2024_25.API.Migrations
                         new
                         {
                             ApartmentId = 1,
-                            Adress = "Adresa 1",
+                            Adress = "Maršala Tita 25, Sarajevo",
                             CityId = 1,
                             Description = "A stylish and modern apartment in a prime location, perfect for travelers.",
                             Name = "Apartment Marshal",
@@ -121,34 +121,133 @@ namespace RS1_2024_25.API.Migrations
                         new
                         {
                             ApartmentId = 2,
-                            Adress = "Adresa 2",
+                            Adress = "Ferhadija 12, Sarajevo",
+                            CityId = 1,
+                            Description = "Charming apartment near Baščaršija with traditional decor.",
+                            Name = "Old Town Retreat",
+                            PricePerNight = 65
+                        },
+                        new
+                        {
+                            ApartmentId = 3,
+                            Adress = "Zmaja od Bosne 15, Sarajevo",
+                            CityId = 1,
+                            Description = "Modern apartment with a beautiful city view.",
+                            Name = "City Panorama Apartment",
+                            PricePerNight = 80
+                        },
+                        new
+                        {
+                            ApartmentId = 4,
+                            Adress = "Rade Bitange 8, Mostar",
                             CityId = 2,
-                            Description = "A cozy and charming space with elegant decor and a warm atmosphere.",
+                            Description = "A cozy and charming space with elegant decor.",
                             Name = "Apartment Charm",
                             PricePerNight = 70
                         },
                         new
                         {
-                            ApartmentId = 3,
-                            Adress = "Adresa 3",
+                            ApartmentId = 5,
+                            Adress = "Maršala Tita 9, Mostar",
+                            CityId = 2,
+                            Description = "Stunning apartment with a direct view of the Old Bridge.",
+                            Name = "Bridge View Apartment",
+                            PricePerNight = 90
+                        },
+                        new
+                        {
+                            ApartmentId = 6,
+                            Adress = "Gojka Vukovića 21, Mostar",
+                            CityId = 2,
+                            Description = "Quiet and relaxing stay in the heart of Herzegovina.",
+                            Name = "Herzegovina Hideaway",
+                            PricePerNight = 75
+                        },
+                        new
+                        {
+                            ApartmentId = 7,
+                            Adress = "Slatina 10, Tuzla",
                             CityId = 3,
-                            Description = "Bright and spacious apartment with plenty of natural light and a stunning view.",
+                            Description = "Bright and spacious apartment with plenty of natural light.",
                             Name = "Apartment Sun",
                             PricePerNight = 50
                         },
                         new
                         {
-                            ApartmentId = 4,
-                            Adress = "Adresa 4",
+                            ApartmentId = 8,
+                            Adress = "Trg Slobode 5, Tuzla",
+                            CityId = 3,
+                            Description = "Apartment next to the famous Pannonian Lakes.",
+                            Name = "Central Park Apartment",
+                            PricePerNight = 60
+                        },
+                        new
+                        {
+                            ApartmentId = 9,
+                            Adress = "Aleja Alije Izetbegovića 16, Tuzla",
+                            CityId = 3,
+                            Description = "Well-furnished and comfortable apartment for travelers.",
+                            Name = "Modern City Stay",
+                            PricePerNight = 55
+                        },
+                        new
+                        {
+                            ApartmentId = 10,
+                            Adress = "Ilica 42, Zagreb",
                             CityId = 4,
-                            Description = "A luxury apartment with high-end amenities, ideal for a premium experience.",
+                            Description = "A luxury apartment with high-end amenities.",
                             Name = "Apartment Exclusive",
                             PricePerNight = 150
                         },
                         new
                         {
-                            ApartmentId = 5,
-                            Adress = "Bjelašnica 12",
+                            ApartmentId = 11,
+                            Adress = "Savska 77, Zagreb",
+                            CityId = 4,
+                            Description = "Penthouse with a skyline view of Zagreb.",
+                            Name = "Zagreb Skyline",
+                            PricePerNight = 180
+                        },
+                        new
+                        {
+                            ApartmentId = 12,
+                            Adress = "Radićeva 6, Zagreb",
+                            CityId = 4,
+                            Description = "Charming old town apartment near historical landmarks.",
+                            Name = "Upper Town Retreat",
+                            PricePerNight = 140
+                        },
+                        new
+                        {
+                            ApartmentId = 13,
+                            Adress = "Obala 45, Rijeka",
+                            CityId = 5,
+                            Description = "A luxurious apartment right by the Adriatic Sea.",
+                            Name = "Seaside Escape",
+                            PricePerNight = 120
+                        },
+                        new
+                        {
+                            ApartmentId = 14,
+                            Adress = "Korzo 10, Rijeka",
+                            CityId = 5,
+                            Description = "Beautiful apartment overlooking the Rijeka harbor.",
+                            Name = "Port View Apartment",
+                            PricePerNight = 130
+                        },
+                        new
+                        {
+                            ApartmentId = 15,
+                            Adress = "Verdijeva 3, Rijeka",
+                            CityId = 5,
+                            Description = "Stay in an elegant historic coastal apartment.",
+                            Name = "Historic Coastal Home",
+                            PricePerNight = 110
+                        },
+                        new
+                        {
+                            ApartmentId = 16,
+                            Adress = "Bjelašnica 12, Pula",
                             CityId = 6,
                             Description = "A cozy retreat with a breathtaking mountain view.",
                             Name = "Mountain View Lodge",
@@ -156,39 +255,129 @@ namespace RS1_2024_25.API.Migrations
                         },
                         new
                         {
-                            ApartmentId = 6,
-                            Adress = "Obala 45, Rijeka",
+                            ApartmentId = 17,
+                            Adress = "Flavijevska 1, Pula",
+                            CityId = 6,
+                            Description = "Apartment next to the famous Pula Arena.",
+                            Name = "Roman Amphitheater Stay",
+                            PricePerNight = 95
+                        },
+                        new
+                        {
+                            ApartmentId = 18,
+                            Adress = "Verudela 20, Pula",
+                            CityId = 6,
+                            Description = "Enjoy the Adriatic coast in this beachfront apartment.",
+                            Name = "Pula Beachfront Getaway",
+                            PricePerNight = 100
+                        },
+                        new
+                        {
+                            ApartmentId = 19,
+                            Adress = "Knez Mihailova 28, Beograd",
                             CityId = 7,
-                            Description = "A luxurious apartment right by the Adriatic Sea.",
-                            Name = "Seaside Escape",
+                            Description = "Modern apartment in the city center.",
+                            Name = "Belgrade Central",
+                            PricePerNight = 110
+                        },
+                        new
+                        {
+                            ApartmentId = 20,
+                            Adress = "Bulevar Zorana Đinđića 35, Beograd",
+                            CityId = 7,
+                            Description = "Relaxing stay by the Sava River.",
+                            Name = "Riverside Apartment",
                             PricePerNight = 120
                         },
                         new
                         {
-                            ApartmentId = 7,
-                            Adress = "Centar 22, Novi Sad",
+                            ApartmentId = 21,
+                            Adress = "Skadarska 9, Beograd",
+                            CityId = 7,
+                            Description = "A unique apartment in the famous bohemian quarter.",
+                            Name = "Luxury Skadarlija Stay",
+                            PricePerNight = 130
+                        },
+                        new
+                        {
+                            ApartmentId = 22,
+                            Adress = "Bulevar Oslobođenja 22, Novi Sad",
                             CityId = 8,
-                            Description = "Modern loft in the heart of the city, perfect for business travelers.",
+                            Description = "Modern loft in the heart of the city.",
                             Name = "Urban Loft",
                             PricePerNight = 95
                         },
                         new
                         {
-                            ApartmentId = 8,
+                            ApartmentId = 23,
+                            Adress = "Podgradje 3, Novi Sad",
+                            CityId = 8,
+                            Description = "Stay next to the historical Petrovaradin Fortress.",
+                            Name = "Petrovaradin Fortress Stay",
+                            PricePerNight = 85
+                        },
+                        new
+                        {
+                            ApartmentId = 24,
+                            Adress = "Kej žrtava racije 10, Novi Sad",
+                            CityId = 8,
+                            Description = "Relax by the beautiful Danube River.",
+                            Name = "River Danube Apartment",
+                            PricePerNight = 90
+                        },
+                        new
+                        {
+                            ApartmentId = 25,
                             Adress = "Stari Grad 17, Skopje",
-                            CityId = 10,
-                            Description = "Stay in a beautifully restored historic building in the old town.",
+                            CityId = 9,
+                            Description = "Stay in a beautifully restored historic building.",
                             Name = "Historic Downtown Apartment",
                             PricePerNight = 70
                         },
                         new
                         {
-                            ApartmentId = 9,
-                            Adress = "Skyline Tower, Athens",
+                            ApartmentId = 26,
+                            Adress = "Keј 13 Noemvri 5, Skopje",
+                            CityId = 9,
+                            Description = "Perfect location next to the iconic Stone Bridge.",
+                            Name = "Stone Bridge View",
+                            PricePerNight = 75
+                        },
+                        new
+                        {
+                            ApartmentId = 27,
+                            Adress = "Macedonia Square 1, Skopje",
+                            CityId = 9,
+                            Description = "Spacious and elegant suite in the city center.",
+                            Name = "Luxury Skopje Suite",
+                            PricePerNight = 100
+                        },
+                        new
+                        {
+                            ApartmentId = 28,
+                            Adress = "Skyline Tower, Vasilissis Sofias Ave 10, Athens",
                             CityId = 19,
-                            Description = "Exclusive penthouse with a private terrace and panoramic city views.",
+                            Description = "Exclusive penthouse with panoramic views.",
                             Name = "Luxury Penthouse",
                             PricePerNight = 250
+                        },
+                        new
+                        {
+                            ApartmentId = 29,
+                            Adress = "Dionysiou Areopagitou 17, Athens",
+                            CityId = 19,
+                            Description = "Unforgettable experience with an Acropolis view.",
+                            Name = "Acropolis View Apartment",
+                            PricePerNight = 220
+                        },
+                        new
+                        {
+                            ApartmentId = 30,
+                            Adress = "Adrianou 45, Athens",
+                            CityId = 19,
+                            Description = "Traditional Athenian home in the charming Plaka district.",
+                            Name = "Plaka Boutique Apartment",
+                            PricePerNight = 190
                         });
                 });
 
@@ -323,6 +512,132 @@ namespace RS1_2024_25.API.Migrations
                             ApartmentImageID = 9,
                             ApartmentId = 9,
                             ImageID = 4
+                        },
+                        new
+                        {
+                            ApartmentImageID = 10,
+                            ApartmentId = 10,
+                            ImageID = 5
+                        },
+                        new
+                        {
+                            ApartmentImageID = 11,
+                            ApartmentId = 11,
+                            ImageID = 1
+                        },
+                        new
+                        {
+                            ApartmentImageID = 12,
+                            ApartmentId = 12,
+                            ImageID = 2
+                        },
+                        new
+                        {
+                            ApartmentImageID = 13,
+                            ApartmentId = 13,
+                            ImageID = 3
+                        },
+                        new
+                        {
+                            ApartmentImageID = 14,
+                            ApartmentId = 14,
+                            ImageID = 4
+                        },
+                        new
+                        {
+                            ApartmentImageID = 15,
+                            ApartmentId = 15,
+                            ImageID = 5
+                        },
+                        new
+                        {
+                            ApartmentImageID = 16,
+                            ApartmentId = 16,
+                            ImageID = 1
+                        },
+                        new
+                        {
+                            ApartmentImageID = 17,
+                            ApartmentId = 17,
+                            ImageID = 2
+                        },
+                        new
+                        {
+                            ApartmentImageID = 18,
+                            ApartmentId = 18,
+                            ImageID = 3
+                        },
+                        new
+                        {
+                            ApartmentImageID = 19,
+                            ApartmentId = 19,
+                            ImageID = 4
+                        },
+                        new
+                        {
+                            ApartmentImageID = 20,
+                            ApartmentId = 20,
+                            ImageID = 5
+                        },
+                        new
+                        {
+                            ApartmentImageID = 21,
+                            ApartmentId = 21,
+                            ImageID = 1
+                        },
+                        new
+                        {
+                            ApartmentImageID = 22,
+                            ApartmentId = 22,
+                            ImageID = 2
+                        },
+                        new
+                        {
+                            ApartmentImageID = 23,
+                            ApartmentId = 23,
+                            ImageID = 3
+                        },
+                        new
+                        {
+                            ApartmentImageID = 24,
+                            ApartmentId = 24,
+                            ImageID = 4
+                        },
+                        new
+                        {
+                            ApartmentImageID = 25,
+                            ApartmentId = 25,
+                            ImageID = 5
+                        },
+                        new
+                        {
+                            ApartmentImageID = 26,
+                            ApartmentId = 26,
+                            ImageID = 1
+                        },
+                        new
+                        {
+                            ApartmentImageID = 27,
+                            ApartmentId = 27,
+                            ImageID = 2
+                        },
+                        new
+                        {
+                            ApartmentImageID = 28,
+                            ApartmentId = 28,
+                            ImageID = 3
+                        },
+                        new
+                        {
+                            ApartmentImageID = 29,
+                            ApartmentId = 29,
+                            ImageID = 4
+                        },
+                        new
+                        {
+                            ApartmentImageID = 30,
+                            ApartmentId = 30,
+                            ImageID = 5
                         });
                 });
 
@@ -1115,7 +1430,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JohnPass",
                             Username = "johndoe",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(5598),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(3797),
                             GenderID = 1,
                             Phone = "+38761000111"
                         },
@@ -1128,7 +1443,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JanePass",
                             Username = "janedoe",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(5900),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(4118),
                             GenderID = 2,
                             Phone = "+38761000222"
                         },
@@ -1141,7 +1456,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "xxxxx",
                             Username = "xxxxx",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(5904),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(4157),
                             GenderID = 1,
                             Phone = "+38761000222"
                         },
@@ -1154,7 +1469,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "YYYXX",
                             Username = "yyyy",
                             CityID = 4,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(5907),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(4159),
                             GenderID = 2,
                             Phone = "+38761000222"
                         });
@@ -1196,7 +1511,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Izel",
                             Username = "Izel",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(7363),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(5933),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-111"
@@ -1210,7 +1525,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Maida",
                             Username = "Maida",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(7598),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(6157),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-222"
@@ -1224,7 +1539,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Admin",
                             Username = "Admin",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(7601),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(6160),
                             GenderID = 1,
                             Image = new byte[0],
                             Phone = "061-000-333"

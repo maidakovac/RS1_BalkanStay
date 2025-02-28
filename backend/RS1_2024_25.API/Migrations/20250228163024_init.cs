@@ -622,7 +622,8 @@ namespace RS1_2024_25.API.Migrations
                     { 18, 7, "Durrës" },
                     { 19, 8, "Atena" },
                     { 20, 8, "Thessaloniki" },
-                    { 21, 8, "Patras" }
+                    { 21, 8, "Patras" },
+                    { 22, 8, "Corfu" }
                 });
 
             migrationBuilder.InsertData(
@@ -630,15 +631,36 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "ApartmentId", "AccountID", "Adress", "CityId", "Description", "Name", "PricePerNight" },
                 values: new object[,]
                 {
-                    { 1, null, "Adresa 1", 1, "A stylish and modern apartment in a prime location, perfect for travelers.", "Apartment Marshal", 50 },
-                    { 2, null, "Adresa 2", 2, "A cozy and charming space with elegant decor and a warm atmosphere.", "Apartment Charm", 70 },
-                    { 3, null, "Adresa 3", 3, "Bright and spacious apartment with plenty of natural light and a stunning view.", "Apartment Sun", 50 },
-                    { 4, null, "Adresa 4", 4, "A luxury apartment with high-end amenities, ideal for a premium experience.", "Apartment Exclusive", 150 },
-                    { 5, null, "Bjelašnica 12", 6, "A cozy retreat with a breathtaking mountain view.", "Mountain View Lodge", 80 },
-                    { 6, null, "Obala 45, Rijeka", 7, "A luxurious apartment right by the Adriatic Sea.", "Seaside Escape", 120 },
-                    { 7, null, "Centar 22, Novi Sad", 8, "Modern loft in the heart of the city, perfect for business travelers.", "Urban Loft", 95 },
-                    { 8, null, "Stari Grad 17, Skopje", 10, "Stay in a beautifully restored historic building in the old town.", "Historic Downtown Apartment", 70 },
-                    { 9, null, "Skyline Tower, Athens", 19, "Exclusive penthouse with a private terrace and panoramic city views.", "Luxury Penthouse", 250 }
+                    { 1, null, "Maršala Tita 25, Sarajevo", 1, "A stylish and modern apartment in a prime location, perfect for travelers.", "Apartment Marshal", 50 },
+                    { 2, null, "Ferhadija 12, Sarajevo", 1, "Charming apartment near Baščaršija with traditional decor.", "Old Town Retreat", 65 },
+                    { 3, null, "Zmaja od Bosne 15, Sarajevo", 1, "Modern apartment with a beautiful city view.", "City Panorama Apartment", 80 },
+                    { 4, null, "Rade Bitange 8, Mostar", 2, "A cozy and charming space with elegant decor.", "Apartment Charm", 70 },
+                    { 5, null, "Maršala Tita 9, Mostar", 2, "Stunning apartment with a direct view of the Old Bridge.", "Bridge View Apartment", 90 },
+                    { 6, null, "Gojka Vukovića 21, Mostar", 2, "Quiet and relaxing stay in the heart of Herzegovina.", "Herzegovina Hideaway", 75 },
+                    { 7, null, "Slatina 10, Tuzla", 3, "Bright and spacious apartment with plenty of natural light.", "Apartment Sun", 50 },
+                    { 8, null, "Trg Slobode 5, Tuzla", 3, "Apartment next to the famous Pannonian Lakes.", "Central Park Apartment", 60 },
+                    { 9, null, "Aleja Alije Izetbegovića 16, Tuzla", 3, "Well-furnished and comfortable apartment for travelers.", "Modern City Stay", 55 },
+                    { 10, null, "Ilica 42, Zagreb", 4, "A luxury apartment with high-end amenities.", "Apartment Exclusive", 150 },
+                    { 11, null, "Savska 77, Zagreb", 4, "Penthouse with a skyline view of Zagreb.", "Zagreb Skyline", 180 },
+                    { 12, null, "Radićeva 6, Zagreb", 4, "Charming old town apartment near historical landmarks.", "Upper Town Retreat", 140 },
+                    { 13, null, "Obala 45, Rijeka", 5, "A luxurious apartment right by the Adriatic Sea.", "Seaside Escape", 120 },
+                    { 14, null, "Korzo 10, Rijeka", 5, "Beautiful apartment overlooking the Rijeka harbor.", "Port View Apartment", 130 },
+                    { 15, null, "Verdijeva 3, Rijeka", 5, "Stay in an elegant historic coastal apartment.", "Historic Coastal Home", 110 },
+                    { 16, null, "Bjelašnica 12, Pula", 6, "A cozy retreat with a breathtaking mountain view.", "Mountain View Lodge", 80 },
+                    { 17, null, "Flavijevska 1, Pula", 6, "Apartment next to the famous Pula Arena.", "Roman Amphitheater Stay", 95 },
+                    { 18, null, "Verudela 20, Pula", 6, "Enjoy the Adriatic coast in this beachfront apartment.", "Pula Beachfront Getaway", 100 },
+                    { 19, null, "Knez Mihailova 28, Beograd", 7, "Modern apartment in the city center.", "Belgrade Central", 110 },
+                    { 20, null, "Bulevar Zorana Đinđića 35, Beograd", 7, "Relaxing stay by the Sava River.", "Riverside Apartment", 120 },
+                    { 21, null, "Skadarska 9, Beograd", 7, "A unique apartment in the famous bohemian quarter.", "Luxury Skadarlija Stay", 130 },
+                    { 22, null, "Bulevar Oslobođenja 22, Novi Sad", 8, "Modern loft in the heart of the city.", "Urban Loft", 95 },
+                    { 23, null, "Podgradje 3, Novi Sad", 8, "Stay next to the historical Petrovaradin Fortress.", "Petrovaradin Fortress Stay", 85 },
+                    { 24, null, "Kej žrtava racije 10, Novi Sad", 8, "Relax by the beautiful Danube River.", "River Danube Apartment", 90 },
+                    { 25, null, "Stari Grad 17, Skopje", 9, "Stay in a beautifully restored historic building.", "Historic Downtown Apartment", 70 },
+                    { 26, null, "Keј 13 Noemvri 5, Skopje", 9, "Perfect location next to the iconic Stone Bridge.", "Stone Bridge View", 75 },
+                    { 27, null, "Macedonia Square 1, Skopje", 9, "Spacious and elegant suite in the city center.", "Luxury Skopje Suite", 100 },
+                    { 28, null, "Skyline Tower, Vasilissis Sofias Ave 10, Athens", 19, "Exclusive penthouse with panoramic views.", "Luxury Penthouse", 250 },
+                    { 29, null, "Dionysiou Areopagitou 17, Athens", 19, "Unforgettable experience with an Acropolis view.", "Acropolis View Apartment", 220 },
+                    { 30, null, "Adrianou 45, Athens", 19, "Traditional Athenian home in the charming Plaka district.", "Plaka Boutique Apartment", 190 }
                 });
 
             migrationBuilder.InsertData(
@@ -646,9 +668,9 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 9, 1, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8764), 2, new byte[0], "061-000-111" },
-                    { 10, 2, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8929), 2, new byte[0], "061-000-222" },
-                    { 11, 3, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8931), 1, new byte[0], "061-000-333" }
+                    { 9, 1, new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(5933), 2, new byte[0], "061-000-111" },
+                    { 10, 2, new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(6157), 2, new byte[0], "061-000-222" },
+                    { 11, 3, new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(6160), 1, new byte[0], "061-000-333" }
                 });
 
             migrationBuilder.InsertData(
@@ -656,10 +678,10 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 5, 1, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(7808), 1, null, "+38761000111" },
-                    { 6, 2, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8004), 2, null, "+38761000222" },
-                    { 7, 3, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8006), 1, null, "+38761000222" },
-                    { 8, 4, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8008), 2, null, "+38761000222" }
+                    { 5, 1, new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(3797), 1, null, "+38761000111" },
+                    { 6, 2, new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(4118), 2, null, "+38761000222" },
+                    { 7, 3, new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(4157), 1, null, "+38761000222" },
+                    { 8, 4, new DateTime(2025, 2, 28, 16, 30, 23, 393, DateTimeKind.Utc).AddTicks(4159), 2, null, "+38761000222" }
                 });
 
             migrationBuilder.InsertData(
@@ -687,7 +709,28 @@ namespace RS1_2024_25.API.Migrations
                     { 6, 6, 1 },
                     { 7, 7, 2 },
                     { 8, 8, 3 },
-                    { 9, 9, 4 }
+                    { 9, 9, 4 },
+                    { 10, 10, 5 },
+                    { 11, 11, 1 },
+                    { 12, 12, 2 },
+                    { 13, 13, 3 },
+                    { 14, 14, 4 },
+                    { 15, 15, 5 },
+                    { 16, 16, 1 },
+                    { 17, 17, 2 },
+                    { 18, 18, 3 },
+                    { 19, 19, 4 },
+                    { 20, 20, 5 },
+                    { 21, 21, 1 },
+                    { 22, 22, 2 },
+                    { 23, 23, 3 },
+                    { 24, 24, 4 },
+                    { 25, 25, 5 },
+                    { 26, 26, 1 },
+                    { 27, 27, 2 },
+                    { 28, 28, 3 },
+                    { 29, 29, 4 },
+                    { 30, 30, 5 }
                 });
 
             migrationBuilder.InsertData(

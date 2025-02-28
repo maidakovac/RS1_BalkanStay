@@ -221,88 +221,57 @@ namespace RS1_2024_25.API.Data
 
             modelBuilder.Entity<Apartment>().HasData
             (
-              new Apartment
-              {
-                  ApartmentId = 1,
-                  Name = "Apartment Marshal",
-                  Description = "A stylish and modern apartment in a prime location, perfect for travelers.",
-                  Adress = "Adresa 1",
-                  PricePerNight = 50,
-                  CityId = 1
-              },
-                new Apartment
-                {
-                    ApartmentId = 2,
-                    Name = "Apartment Charm",
-                    Description = "A cozy and charming space with elegant decor and a warm atmosphere.",
-                    Adress = "Adresa 2",
-                    PricePerNight = 70,
-                    CityId = 2
-                },
-                new Apartment
-                {
-                    ApartmentId = 3,
-                    Name = "Apartment Sun",
-                    Description = "Bright and spacious apartment with plenty of natural light and a stunning view.",
-                    Adress = "Adresa 3",
-                    PricePerNight = 50,
-                    CityId = 3
-                },
-                new Apartment
-                {
-                    ApartmentId = 4,
-                    Name = "Apartment Exclusive",
-                    Description = "A luxury apartment with high-end amenities, ideal for a premium experience.",
-                    Adress = "Adresa 4",
-                    PricePerNight = 150,
-                    CityId = 4
-                },
+                // Sarajevo
+                new Apartment { ApartmentId = 1, Name = "Apartment Marshal", Description = "A stylish and modern apartment in a prime location, perfect for travelers.", Adress = "Maršala Tita 25, Sarajevo", PricePerNight = 50, CityId = 1 },
+                new Apartment { ApartmentId = 2, Name = "Old Town Retreat", Description = "Charming apartment near Baščaršija with traditional decor.", Adress = "Ferhadija 12, Sarajevo", PricePerNight = 65, CityId = 1 },
+                new Apartment { ApartmentId = 3, Name = "City Panorama Apartment", Description = "Modern apartment with a beautiful city view.", Adress = "Zmaja od Bosne 15, Sarajevo", PricePerNight = 80, CityId = 1 },
 
-               new Apartment
-               {
-                   ApartmentId = 5,
-                   Name = "Mountain View Lodge",
-                   Description = "A cozy retreat with a breathtaking mountain view.",
-                   Adress = "Bjelašnica 12",
-                   PricePerNight = 80,
-                   CityId = 6
-               },
-            new Apartment
-            {
-                ApartmentId = 6,
-                Name = "Seaside Escape",
-                Description = "A luxurious apartment right by the Adriatic Sea.",
-                Adress = "Obala 45, Rijeka",
-                PricePerNight = 120,
-                CityId = 7
-            },
-            new Apartment
-            {
-                ApartmentId = 7,
-                Name = "Urban Loft",
-                Description = "Modern loft in the heart of the city, perfect for business travelers.",
-                Adress = "Centar 22, Novi Sad",
-                PricePerNight = 95,
-                CityId = 8
-            },
-            new Apartment
-            {
-                ApartmentId = 8,
-                Name = "Historic Downtown Apartment",
-                Description = "Stay in a beautifully restored historic building in the old town.",
-                Adress = "Stari Grad 17, Skopje",
-                PricePerNight = 70,
-                CityId = 10
-            },
-            new Apartment
-            {
-                ApartmentId = 9,
-                Name = "Luxury Penthouse",
-                Description = "Exclusive penthouse with a private terrace and panoramic city views.",
-                Adress = "Skyline Tower, Athens",
-                PricePerNight = 250,
-                CityId = 19
-            });
+                // Mostar
+                new Apartment { ApartmentId = 4, Name = "Apartment Charm", Description = "A cozy and charming space with elegant decor.", Adress = "Rade Bitange 8, Mostar", PricePerNight = 70, CityId = 2 },
+                new Apartment { ApartmentId = 5, Name = "Bridge View Apartment", Description = "Stunning apartment with a direct view of the Old Bridge.", Adress = "Maršala Tita 9, Mostar", PricePerNight = 90, CityId = 2 },
+                new Apartment { ApartmentId = 6, Name = "Herzegovina Hideaway", Description = "Quiet and relaxing stay in the heart of Herzegovina.", Adress = "Gojka Vukovića 21, Mostar", PricePerNight = 75, CityId = 2 },
+
+                // Tuzla
+                new Apartment { ApartmentId = 7, Name = "Apartment Sun", Description = "Bright and spacious apartment with plenty of natural light.", Adress = "Slatina 10, Tuzla", PricePerNight = 50, CityId = 3 },
+                new Apartment { ApartmentId = 8, Name = "Central Park Apartment", Description = "Apartment next to the famous Pannonian Lakes.", Adress = "Trg Slobode 5, Tuzla", PricePerNight = 60, CityId = 3 },
+                new Apartment { ApartmentId = 9, Name = "Modern City Stay", Description = "Well-furnished and comfortable apartment for travelers.", Adress = "Aleja Alije Izetbegovića 16, Tuzla", PricePerNight = 55, CityId = 3 },
+
+                // Zagreb
+                new Apartment { ApartmentId = 10, Name = "Apartment Exclusive", Description = "A luxury apartment with high-end amenities.", Adress = "Ilica 42, Zagreb", PricePerNight = 150, CityId = 4 },
+                new Apartment { ApartmentId = 11, Name = "Zagreb Skyline", Description = "Penthouse with a skyline view of Zagreb.", Adress = "Savska 77, Zagreb", PricePerNight = 180, CityId = 4 },
+                new Apartment { ApartmentId = 12, Name = "Upper Town Retreat", Description = "Charming old town apartment near historical landmarks.", Adress = "Radićeva 6, Zagreb", PricePerNight = 140, CityId = 4 },
+
+                // Rijeka
+                new Apartment { ApartmentId = 13, Name = "Seaside Escape", Description = "A luxurious apartment right by the Adriatic Sea.", Adress = "Obala 45, Rijeka", PricePerNight = 120, CityId = 5 },
+                new Apartment { ApartmentId = 14, Name = "Port View Apartment", Description = "Beautiful apartment overlooking the Rijeka harbor.", Adress = "Korzo 10, Rijeka", PricePerNight = 130, CityId = 5 },
+                new Apartment { ApartmentId = 15, Name = "Historic Coastal Home", Description = "Stay in an elegant historic coastal apartment.", Adress = "Verdijeva 3, Rijeka", PricePerNight = 110, CityId = 5 },
+
+                // Pula
+                new Apartment { ApartmentId = 16, Name = "Mountain View Lodge", Description = "A cozy retreat with a breathtaking mountain view.", Adress = "Bjelašnica 12, Pula", PricePerNight = 80, CityId = 6 },
+                new Apartment { ApartmentId = 17, Name = "Roman Amphitheater Stay", Description = "Apartment next to the famous Pula Arena.", Adress = "Flavijevska 1, Pula", PricePerNight = 95, CityId = 6 },
+                new Apartment { ApartmentId = 18, Name = "Pula Beachfront Getaway", Description = "Enjoy the Adriatic coast in this beachfront apartment.", Adress = "Verudela 20, Pula", PricePerNight = 100, CityId = 6 },
+
+                // Beograd
+                new Apartment { ApartmentId = 19, Name = "Belgrade Central", Description = "Modern apartment in the city center.", Adress = "Knez Mihailova 28, Beograd", PricePerNight = 110, CityId = 7 },
+                new Apartment { ApartmentId = 20, Name = "Riverside Apartment", Description = "Relaxing stay by the Sava River.", Adress = "Bulevar Zorana Đinđića 35, Beograd", PricePerNight = 120, CityId = 7 },
+                new Apartment { ApartmentId = 21, Name = "Luxury Skadarlija Stay", Description = "A unique apartment in the famous bohemian quarter.", Adress = "Skadarska 9, Beograd", PricePerNight = 130, CityId = 7 },
+
+                // Novi Sad
+                new Apartment { ApartmentId = 22, Name = "Urban Loft", Description = "Modern loft in the heart of the city.", Adress = "Bulevar Oslobođenja 22, Novi Sad", PricePerNight = 95, CityId = 8 },
+                new Apartment { ApartmentId = 23, Name = "Petrovaradin Fortress Stay", Description = "Stay next to the historical Petrovaradin Fortress.", Adress = "Podgradje 3, Novi Sad", PricePerNight = 85, CityId = 8 },
+                new Apartment { ApartmentId = 24, Name = "River Danube Apartment", Description = "Relax by the beautiful Danube River.", Adress = "Kej žrtava racije 10, Novi Sad", PricePerNight = 90, CityId = 8 },
+
+                // Skopje
+                new Apartment { ApartmentId = 25, Name = "Historic Downtown Apartment", Description = "Stay in a beautifully restored historic building.", Adress = "Stari Grad 17, Skopje", PricePerNight = 70, CityId = 9 },
+                new Apartment { ApartmentId = 26, Name = "Stone Bridge View", Description = "Perfect location next to the iconic Stone Bridge.", Adress = "Keј 13 Noemvri 5, Skopje", PricePerNight = 75, CityId = 9 },
+                new Apartment { ApartmentId = 27, Name = "Luxury Skopje Suite", Description = "Spacious and elegant suite in the city center.", Adress = "Macedonia Square 1, Skopje", PricePerNight = 100, CityId = 9 },
+
+                // Athens
+                new Apartment { ApartmentId = 28, Name = "Luxury Penthouse", Description = "Exclusive penthouse with panoramic views.", Adress = "Skyline Tower, Vasilissis Sofias Ave 10, Athens", PricePerNight = 250, CityId = 19 },
+                new Apartment { ApartmentId = 29, Name = "Acropolis View Apartment", Description = "Unforgettable experience with an Acropolis view.", Adress = "Dionysiou Areopagitou 17, Athens", PricePerNight = 220, CityId = 19 },
+                new Apartment { ApartmentId = 30, Name = "Plaka Boutique Apartment", Description = "Traditional Athenian home in the charming Plaka district.", Adress = "Adrianou 45, Athens", PricePerNight = 190, CityId = 19 }
+            );
+
 
 
 
@@ -369,17 +338,38 @@ namespace RS1_2024_25.API.Data
             );
 
             modelBuilder.Entity<ApartmentImage>().HasData
-            (
-                new ApartmentImage { ApartmentImageID = 1, ApartmentId = 1, ImageID = 1 },
-                new ApartmentImage { ApartmentImageID = 2, ApartmentId = 2, ImageID = 2 },
-                new ApartmentImage { ApartmentImageID = 3, ApartmentId = 3, ImageID = 3 } ,
-                new ApartmentImage { ApartmentImageID = 4, ApartmentId = 4, ImageID = 4 },
-                new ApartmentImage { ApartmentImageID = 5, ApartmentId = 5, ImageID = 5 },
-                new ApartmentImage { ApartmentImageID = 6, ApartmentId = 6, ImageID = 1 },
-                new ApartmentImage { ApartmentImageID = 7, ApartmentId = 7, ImageID = 2 },
-                new ApartmentImage { ApartmentImageID = 8, ApartmentId = 8, ImageID = 3 },
-                new ApartmentImage { ApartmentImageID = 9, ApartmentId = 9, ImageID = 4 }
-            );
+             (
+                 new ApartmentImage { ApartmentImageID = 1, ApartmentId = 1, ImageID = 1 },
+                 new ApartmentImage { ApartmentImageID = 2, ApartmentId = 2, ImageID = 2 },
+                 new ApartmentImage { ApartmentImageID = 3, ApartmentId = 3, ImageID = 3 },
+                 new ApartmentImage { ApartmentImageID = 4, ApartmentId = 4, ImageID = 4 },
+                 new ApartmentImage { ApartmentImageID = 5, ApartmentId = 5, ImageID = 5 },
+                 new ApartmentImage { ApartmentImageID = 6, ApartmentId = 6, ImageID = 1 },
+                 new ApartmentImage { ApartmentImageID = 7, ApartmentId = 7, ImageID = 2 },
+                 new ApartmentImage { ApartmentImageID = 8, ApartmentId = 8, ImageID = 3 },
+                 new ApartmentImage { ApartmentImageID = 9, ApartmentId = 9, ImageID = 4 },
+                 new ApartmentImage { ApartmentImageID = 10, ApartmentId = 10, ImageID = 5 },
+                 new ApartmentImage { ApartmentImageID = 11, ApartmentId = 11, ImageID = 1 },
+                 new ApartmentImage { ApartmentImageID = 12, ApartmentId = 12, ImageID = 2 },
+                 new ApartmentImage { ApartmentImageID = 13, ApartmentId = 13, ImageID = 3 },
+                 new ApartmentImage { ApartmentImageID = 14, ApartmentId = 14, ImageID = 4 },
+                 new ApartmentImage { ApartmentImageID = 15, ApartmentId = 15, ImageID = 5 },
+                 new ApartmentImage { ApartmentImageID = 16, ApartmentId = 16, ImageID = 1 },
+                 new ApartmentImage { ApartmentImageID = 17, ApartmentId = 17, ImageID = 2 },
+                 new ApartmentImage { ApartmentImageID = 18, ApartmentId = 18, ImageID = 3 },
+                 new ApartmentImage { ApartmentImageID = 19, ApartmentId = 19, ImageID = 4 },
+                 new ApartmentImage { ApartmentImageID = 20, ApartmentId = 20, ImageID = 5 },
+                 new ApartmentImage { ApartmentImageID = 21, ApartmentId = 21, ImageID = 1 },
+                 new ApartmentImage { ApartmentImageID = 22, ApartmentId = 22, ImageID = 2 },
+                 new ApartmentImage { ApartmentImageID = 23, ApartmentId = 23, ImageID = 3 },
+                 new ApartmentImage { ApartmentImageID = 24, ApartmentId = 24, ImageID = 4 },
+                 new ApartmentImage { ApartmentImageID = 25, ApartmentId = 25, ImageID = 5 },
+                 new ApartmentImage { ApartmentImageID = 26, ApartmentId = 26, ImageID = 1 },
+                 new ApartmentImage { ApartmentImageID = 27, ApartmentId = 27, ImageID = 2 },
+                 new ApartmentImage { ApartmentImageID = 28, ApartmentId = 28, ImageID = 3 },
+                 new ApartmentImage { ApartmentImageID = 29, ApartmentId = 29, ImageID = 4 },
+                 new ApartmentImage { ApartmentImageID = 30, ApartmentId = 30, ImageID = 5 }
+             );
 
 
 
