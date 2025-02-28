@@ -42,7 +42,9 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<City> GetById(int CityId)
         {
-            var city = _DbContext.Apartments.Find(CityId);
+            var city = _DbContext.Cities
+                                .Include(x => x.Country)
+                                .FirstOrDefault(a => CityId == CityId);
 
             if (city == null)
             {

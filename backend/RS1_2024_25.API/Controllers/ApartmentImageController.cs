@@ -75,7 +75,9 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<ApartmentImage> GetById(int ApartmentImageId)
         {
-            var apartmentImage = _DbContext.ApartmentImages.Find(ApartmentImageId);
+            var apartmentImage = _DbContext.ApartmentImages
+                                    .Include(ai => ai.Image)
+                                  .FirstOrDefault(a => a.ApartmentImageID == ApartmentImageId);
 
             if (apartmentImage == null)
             {

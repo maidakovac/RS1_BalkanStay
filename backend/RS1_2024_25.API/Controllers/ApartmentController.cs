@@ -49,17 +49,17 @@ namespace RS1_2024_25.API.Controllers
             var baseUrl = $"{Request.Scheme}://{Request.Host}"; // Generiše bazni URL, npr. http://localhost:8000
 
             var apartments = _DbContext.Apartments
-                                 .Include(x => x.City)
-                                     .ThenInclude(y => y.Country)
-                                 .Include(x => x.ApartmentImages)
-                                     .ThenInclude(z => z.Image)
-                                  .Include(x => x.Account)
-                                  .Include(x => x.Reservations)
-                                          .ThenInclude(r => r.Account)
-                                   .Include(x => x.ApartmentRules)
-                                   .Include(x => x.ApartmentAmenities)
-                                   .Include(x => x.ApartmentToiletries)
-                                   .ToList();
+                                      .Include(x => x.City)
+                                          .ThenInclude(y => y.Country)
+                                      .Include(x => x.ApartmentImages)
+                                          .ThenInclude(z => z.Image)
+                                      .Include(x => x.Account)  // Include the Account navigation property
+                                      .Include(x => x.Reservations)
+                                          .ThenInclude(r => r.Account)  // Include the Account navigation in Reservations
+                                      .Include(x => x.ApartmentRules)
+                                      .Include(x => x.ApartmentAmenities)
+                                      .Include(x => x.ApartmentToiletries)
+                                      .ToList();      
 
 
             // Osiguravamo ispravne putanje slika
@@ -100,7 +100,18 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<Apartment> GetById(int ApartmentId)
         {
-            var apartment = _DbContext.Apartments.Find(ApartmentId);
+            var apartment = _DbContext.Apartments
+                              .Include(x => x.City)
+                                  .ThenInclude(y => y.Country)
+                              .Include(x => x.ApartmentImages)
+                                  .ThenInclude(z => z.Image)
+                              .Include(x => x.Account)  
+                              .Include(x => x.Reservations)
+                                  .ThenInclude(r => r.Account)  
+                              .Include(x => x.ApartmentRules)
+                              .Include(x => x.ApartmentAmenities)
+                              .Include(x => x.ApartmentToiletries)
+                              .FirstOrDefault(a => a.ApartmentId == ApartmentId);
 
             if (apartment == null)
             {
