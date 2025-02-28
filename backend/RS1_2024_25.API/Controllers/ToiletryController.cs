@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.ViewModel;
 
@@ -20,7 +21,10 @@ namespace RS1_2024_25.API.Controllers
         [HttpGet]
         public ActionResult<List<Toiletry>> Get()
         {
-            var toiletries = _DbContext.Toiletries.ToList();
+            var toiletries = _DbContext.Toiletries
+                                         .Include(t => t.ApartmentToiletries) 
+                                            .ThenInclude(at => at.Apartment)
+                                         .ToList();
 
             if (toiletries == null)
             {

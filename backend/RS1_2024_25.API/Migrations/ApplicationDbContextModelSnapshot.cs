@@ -1115,7 +1115,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JohnPass",
                             Username = "johndoe",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(5598),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(4126),
                             GenderID = 1,
                             Phone = "+38761000111"
                         },
@@ -1128,7 +1128,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JanePass",
                             Username = "janedoe",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(5900),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(4403),
                             GenderID = 2,
                             Phone = "+38761000222"
                         },
@@ -1141,7 +1141,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "xxxxx",
                             Username = "xxxxx",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(5904),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(4426),
                             GenderID = 1,
                             Phone = "+38761000222"
                         },
@@ -1154,7 +1154,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "YYYXX",
                             Username = "yyyy",
                             CityID = 4,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(5907),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(4428),
                             GenderID = 2,
                             Phone = "+38761000222"
                         });
@@ -1196,7 +1196,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Izel",
                             Username = "Izel",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(7363),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(6127),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-111"
@@ -1210,7 +1210,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Maida",
                             Username = "Maida",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(7598),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(6391),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-222"
@@ -1224,7 +1224,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Admin",
                             Username = "Admin",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 2, 28, 11, 27, 3, 533, DateTimeKind.Utc).AddTicks(7601),
+                            CreatedAt = new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(6393),
                             GenderID = 1,
                             Image = new byte[0],
                             Phone = "061-000-333"

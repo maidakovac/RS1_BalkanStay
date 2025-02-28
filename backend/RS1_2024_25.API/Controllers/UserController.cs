@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RS1_2024_25.API.Data.Models.Auth;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace RS1_2024_25.API.Controllers
 {
@@ -20,7 +21,16 @@ namespace RS1_2024_25.API.Controllers
         [HttpGet]
         public ActionResult<List<User>> Get()
         {
-            var users = _DbContext.Users.ToList();
+            var users = _DbContext.Users
+                          .Include(x => x.City)
+                            .ThenInclude(y => y.Country)
+                          .Include(x => x.Gender)
+                          .Include(x => x.Favorites)
+                          .Include(x => x.Reservations)
+                          .Include(x => x.Reviews)
+                          .Include(x => x.OwnerReviews)
+                          .ToList();
+
 
             if (users == null)
                 return BadRequest();

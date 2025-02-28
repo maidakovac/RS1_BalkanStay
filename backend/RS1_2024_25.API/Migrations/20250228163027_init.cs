@@ -622,7 +622,8 @@ namespace RS1_2024_25.API.Migrations
                     { 18, 7, "Durrës" },
                     { 19, 8, "Atena" },
                     { 20, 8, "Thessaloniki" },
-                    { 21, 8, "Patras" }
+                    { 21, 8, "Patras" },
+                    { 22, 8, "Corfu" }
                 });
 
             migrationBuilder.InsertData(
@@ -646,9 +647,9 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 9, 1, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8764), 2, new byte[0], "061-000-111" },
-                    { 10, 2, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8929), 2, new byte[0], "061-000-222" },
-                    { 11, 3, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8931), 1, new byte[0], "061-000-333" }
+                    { 9, 1, new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(6127), 2, new byte[0], "061-000-111" },
+                    { 10, 2, new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(6391), 2, new byte[0], "061-000-222" },
+                    { 11, 3, new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(6393), 1, new byte[0], "061-000-333" }
                 });
 
             migrationBuilder.InsertData(
@@ -656,10 +657,10 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 5, 1, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(7808), 1, null, "+38761000111" },
-                    { 6, 2, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8004), 2, null, "+38761000222" },
-                    { 7, 3, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8006), 1, null, "+38761000222" },
-                    { 8, 4, new DateTime(2025, 2, 26, 15, 56, 17, 493, DateTimeKind.Utc).AddTicks(8008), 2, null, "+38761000222" }
+                    { 5, 1, new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(4126), 1, null, "+38761000111" },
+                    { 6, 2, new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(4403), 2, null, "+38761000222" },
+                    { 7, 3, new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(4426), 1, null, "+38761000222" },
+                    { 8, 4, new DateTime(2025, 2, 28, 16, 30, 26, 167, DateTimeKind.Utc).AddTicks(4428), 2, null, "+38761000222" }
                 });
 
             migrationBuilder.InsertData(
