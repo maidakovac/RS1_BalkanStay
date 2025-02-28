@@ -36,7 +36,7 @@ export interface City {
   id: number;
   name: string;
   countryId: number;
-  country: Country[]
+  country: Country;
 }
 
 export interface Country {
@@ -87,7 +87,6 @@ export interface PlaniranaPutovanja {
 })
 export class HomeComponent implements OnInit {
   traziVrijednost: string = "";
-  baseUrl = "https://wrd-fit.info";
   bazniUrl: string = "http://localhost:8000";
   globalPodaci: Drzava[] = [];
   sviApartmani: Apartment[] = [];
@@ -96,6 +95,10 @@ export class HomeComponent implements OnInit {
   odabraniApartman: Apartment| null = null;
   checkInDate: Date | null = null;
   checkOutDate: Date | null = null;
+  sviGradovi: City[] = [];  // Store cities from API
+  filteredCities: City[] = [];
+  showDropdown: boolean = false;  // Toggle dropdown visibility
+
 
 
 
@@ -115,17 +118,8 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.k1_Preuzmi();
     this.k2_Preuzmi();
-  }
-
-  k1_Preuzmi() {
-
-    let url = `${this.baseUrl}/Ispit20240921/GetNovePonude`
-
-    this.httpClient.get<GetPodaciResponse>(url).subscribe((x) => {
-      this.globalPodaci = x.podaci;
-    });
+    this.getCities();
   }
 
   k2_Preuzmi() {
@@ -143,6 +137,38 @@ export class HomeComponent implements OnInit {
   }
 
 
+  getCities() {
+    let url = `${this.bazniUrl}/City/Get`; // Make sure the endpoint is correct
+
+    this.httpClient.get<City[]>(url).subscribe(
+      (response) => {
+        console.log("✅ API Response:", response); // Debugging
+        this.sviGradovi = response; // Store fetched cities
+      },
+      (error) => {
+        console.error("❌ API Request Failed:", error);
+      }
+    );
+  }
+
+
+  filterCities() {
+    const searchTerm = this.traziVrijednost.trim().toLowerCase();
+
+    if (searchTerm.length > 0) {
+      this.filteredCities = this.sviGradovi.filter(city =>
+        city.name.toLowerCase().includes(searchTerm) ||
+        city.country.name.toLowerCase().includes(searchTerm)
+      );
+    } else {
+      this.filteredCities = this.sviGradovi; // ✅ Prikazuje sve gradove ako je polje prazno
+    }
+
+    this.showDropdown = true; // ✅ Dropdown ostaje otvoren dok korisnik piše
+  }
+
+
+
 
 
   K2_odaberiDestinaciju(drzave: Drzava) {
@@ -156,4 +182,22 @@ export class HomeComponent implements OnInit {
   K3_OdaberiPutovanje(polazak: PlaniranaPutovanja) {
     this.odabranoPutovanje = polazak;
   }
+
+
+  selectCity(city: City) {
+    this.traziVrijednost = `${city.name}, ${city.country.name}`;
+    this.showDropdown = false;
+  }
+
+  hideDropdownWithDelay() {
+    setTimeout(() => {
+      this.showDropdown = false;
+    }, 200);
+  }
+
+  showAllCities() {
+    this.filteredCities = this.sviGradovi;
+    this.showDropdown = true;
+  }
+
 }

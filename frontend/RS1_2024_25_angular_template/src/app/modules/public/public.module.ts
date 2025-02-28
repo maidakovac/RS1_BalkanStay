@@ -17,6 +17,7 @@ import {MatFabButton} from '@angular/material/button';
 import {MatList, MatListItem} from "@angular/material/list";
 import {MatDivider} from '@angular/material/divider';
 import {MatCard} from '@angular/material/card';
+import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,10 @@ import {MatCard} from '@angular/material/card';
     MatList,
     MatListItem,
     MatDivider,
-    MatCard
+    MatCard,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption
   ],
 
 })

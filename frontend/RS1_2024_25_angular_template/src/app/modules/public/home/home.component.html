@@ -1,102 +1,61 @@
 
 
-<!--<div class="part1">-->
-<!--  <div class="header">-->
-
-<!--    <div class="booking-box">-->
-<!--      <div class="booking-input">-->
-<!--        <mat-form-field appearance="outline">-->
-<!--          <input class="inputbooking" matInput placeholder="Search destinations">-->
-<!--        </mat-form-field>-->
-<!--      </div>-->
-
-<!--      <div class="booking-input">-->
-<!--        <mat-form-field appearance="outline">-->
-<!--          <input class="inputbooking" matInput [matDatepicker]="checkInPicker" placeholder="Add dates">-->
-<!--          <mat-datepicker-toggle matSuffix [for]="checkInPicker"></mat-datepicker-toggle>-->
-<!--          <mat-datepicker #checkInPicker></mat-datepicker>-->
-<!--        </mat-form-field>-->
-<!--      </div>-->
-
-<!--      <div class="booking-input">-->
-<!--        <mat-form-field appearance="outline">-->
-<!--          <input class="inputbooking" matInput [matDatepicker]="checkOutPicker" placeholder="Add dates">-->
-<!--          <mat-datepicker-toggle matSuffix [for]="checkOutPicker"></mat-datepicker-toggle>-->
-<!--          <mat-datepicker #checkOutPicker></mat-datepicker>-->
-<!--        </mat-form-field>-->
-<!--      </div>-->
-
-<!--      <div class="booking-input">-->
-<!--        <mat-form-field appearance="outline">-->
-<!--          <input class="inputbooking" matInput placeholder="Add guests">-->
-<!--        </mat-form-field>-->
-<!--      </div>-->
-
-<!--      <button mat-fab color="accent" class="search-button">-->
-<!--        <mat-icon>search</mat-icon>-->
-<!--      </button>-->
-<!--    </div>-->
-
-
-<!--  </div>-->
-
 <div class="part1">
   <div class="booking-box">
     <div class="booking-field">
       <label>Where</label>
-      <input type="text" placeholder="Search city name" class="search-input" [(ngModel)]="traziVrijednost">
-    </div>
+      <input type="text"
+             placeholder="Search city name"
+             class="search-input"
+             [(ngModel)]="traziVrijednost"
+             (input)="filterCities()"
+             (focus)="showAllCities()"
+             autocomplete="off">
 
-    <div class="booking-field date-field">
-      <label>Check-in</label>
-      <div class="custom-datepicker">
-        <input matInput [matDatepicker]="checkInPicker" [(ngModel)]="checkInDate" placeholder="Add dates">
-        <mat-datepicker-toggle matIconSuffix [for]="checkInPicker"></mat-datepicker-toggle>
-        <mat-datepicker #checkInPicker></mat-datepicker>
+
+      <!-- Dropdown with filtered cities -->
+      <div class="dropdown-panel" *ngIf="showDropdown && filteredCities.length > 0">
+        <p class="dropdown-title">Available Cities</p>
+        <div *ngFor="let city of filteredCities"
+             class="dropdown-item"
+             (mousedown)="selectCity(city)">
+          <span class="city-name">{{ city.name }}, {{ city.country.name }}</span>
+        </div>
       </div>
     </div>
 
-    <div class="booking-field date-field">
-      <label>Check-out</label>
-      <div class="custom-datepicker">
-        <input matInput [matDatepicker]="checkOutPicker" [(ngModel)]="checkOutDate" placeholder="Add dates">
-        <mat-datepicker-toggle matIconSuffix [for]="checkOutPicker"></mat-datepicker-toggle>
-        <mat-datepicker #checkOutPicker></mat-datepicker>
-      </div>
+  <div class="booking-field date-field">
+    <label>Check-in</label>
+    <div class="custom-datepicker">
+      <input matInput [matDatepicker]="checkInPicker" [(ngModel)]="checkInDate" placeholder="Add dates">
+      <mat-datepicker-toggle matIconSuffix [for]="checkInPicker"></mat-datepicker-toggle>
+      <mat-datepicker #checkInPicker></mat-datepicker>
     </div>
-
-    <div class="booking-field">
-      <label>Who</label>
-      <input type="text" placeholder="Add guests">
-    </div>
-
-    <button class="search-button">
-      <span class="material-icons">search</span>
-    </button>
   </div>
 
-  <!--  <div class="header">-->
+  <div class="booking-field date-field">
+    <label>Check-out</label>
+    <div class="custom-datepicker">
+      <input matInput [matDatepicker]="checkOutPicker" [(ngModel)]="checkOutDate" placeholder="Add dates">
+      <mat-datepicker-toggle matIconSuffix [for]="checkOutPicker"></mat-datepicker-toggle>
+      <mat-datepicker #checkOutPicker></mat-datepicker>
+    </div>
+  </div>
 
-<!--    <div class="header-left">-->
-<!--      <div class="header-left-title">-->
-<!--        <h1>For all your travel needs</h1>-->
-<!--        <p class="header-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores-->
-<!--          perspiciatis, illo maxime voluptatem a itaque suscipit.</p>-->
-<!--&lt;!&ndash;        <div *ngFor="let x of sviApartmani">&ndash;&gt;-->
-<!--&lt;!&ndash;          <p>{{x.name}}</p>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--        <div class="header-left-buttons">-->
-<!--          <div class="header-button">Contact Us</div>-->
-<!--          <div class="header-button">About Us</div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="header-right-image">-->
-<!--        <img src="images/header-img.png">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+  <div class="booking-field">
+    <label>Who</label>
+    <input type="text" placeholder="Add guests">
+  </div>
 
+  <button class="search-button">
+    <span class="material-icons">search</span>
+  </button>
+  </div>
 </div>
+
+
+
+
 
 <div class="part3">
   <div class="travel-destinations">
