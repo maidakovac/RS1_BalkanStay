@@ -42,7 +42,8 @@ namespace RS1_2024_25.API.Data
                 new City { ID = 18, Name = "Durrës", CountryId = 7 },
                 new City { ID = 19, Name = "Atena", CountryId = 8 },
                 new City { ID = 20, Name = "Thessaloniki", CountryId = 8 },
-                new City { ID = 21, Name = "Patras", CountryId = 8 }
+                new City { ID = 21, Name = "Patras", CountryId = 8 },
+                new City { ID = 22, Name = "Corfu", CountryId = 8 }
 
              );
 
