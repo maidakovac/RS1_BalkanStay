@@ -1,12 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 export interface GetPodaciResponse {
   datumPonude: string
   podaci: Drzava[]
 }
-
 
 export interface Drzava {
   id: number
@@ -19,15 +17,14 @@ export interface Drzava {
   planiranaPutovanja: PlaniranaPutovanja[]
 }
 
-
 export interface Apartment {
   apartmentId: number;
   name: string;
   description: string;
   adress: string;
   pricePerNight: number;
-  cityId: number| null;
-  accountID: number| null;
+  cityId: number | null;
+  accountID: number | null;
   apartmentImages: ApartmentImages[];
   city: City;
 }
@@ -52,7 +49,7 @@ export interface ApartmentImages {
   image: Image;
 }
 
-export interface  Image{
+export interface Image {
   imageID: number
   imagePath: string
 }
@@ -85,72 +82,84 @@ export interface PlaniranaPutovanja {
   styleUrl: './home.component.css',
   standalone: false
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+  @ViewChild('scrollAnchor', { static: false }) scrollAnchor!: ElementRef; // Dodato za praćenje scroll-a
+
   traziVrijednost: string = "";
   bazniUrl: string = "http://localhost:8000";
   globalPodaci: Drzava[] = [];
   sviApartmani: Apartment[] = [];
   odabranaDrzava: Drzava | null = null;
   odabranoPutovanje: PlaniranaPutovanja | null = null;
-  odabraniApartman: Apartment| null = null;
+  odabraniApartman: Apartment | null = null;
   checkInDate: Date | null = null;
   checkOutDate: Date | null = null;
   sviGradovi: City[] = [];  // Store cities from API
   filteredCities: City[] = [];
   showDropdown: boolean = false;  // Toggle dropdown visibility
 
+  page: number = 1;         // Trenutna strana
+  isLoading: boolean = false;  // Status učitavanja
+  hasMoreData: boolean = true; // Da li ima više podataka
 
-
-
-
-
-  constructor(private httpClient: HttpClient) {
-
-  }
-
-  getFiltiratiPodaci() {
-    if (this.traziVrijednost.length > 2) {
-      return this.globalPodaci.filter(x => x.drzava.startsWith(this.traziVrijednost) || x.boravakGradovi.filter((g: any) => g.nazivGrada === this.traziVrijednost).length > 0)
-    } else {
-      return this.globalPodaci
-    }
-  }
-
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.k2_Preuzmi();
     this.getCities();
   }
 
-  k2_Preuzmi() {
-    let url = `${this.bazniUrl}/Apartment/Get`;
+  ngAfterViewInit() {
+    this.setupIntersectionObserver();
+  }
 
+  k2_Preuzmi() {
+    if (this.isLoading || !this.hasMoreData) return; // Sprečava višestruke zahteve
+
+    let url = `${this.bazniUrl}/Apartment/Get?page=${this.page}&limit=10`;
+
+    this.isLoading = true;
     this.httpClient.get<Apartment[]>(url).subscribe(
       (response) => {
-        this.sviApartmani = response;
-        console.log(this.sviApartmani)
+        if (response.length > 0) {
+          this.sviApartmani = [...this.sviApartmani, ...response]; // Dodaje nove apartmane umesto zamene
+          this.page++; // Povećava broj strane
+        } else {
+          this.hasMoreData = false; // Sprečava dalje učitavanje ako nema više podataka
+        }
+        this.isLoading = false;
       },
       (error) => {
         console.error("❌ API Request Failed:", error);
+        this.isLoading = false;
       }
     );
   }
 
+  setupIntersectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !this.isLoading && this.hasMoreData) {
+        this.k2_Preuzmi(); // Učitava nove podatke kad korisnik dođe do dna liste
+      }
+    }, { threshold: 1.0 });
+
+    if (this.scrollAnchor) {
+      observer.observe(this.scrollAnchor.nativeElement);
+    }
+  }
 
   getCities() {
-    let url = `${this.bazniUrl}/City/Get`; // Make sure the endpoint is correct
+    let url = `${this.bazniUrl}/City/Get`;
 
     this.httpClient.get<City[]>(url).subscribe(
       (response) => {
-        console.log("✅ API Response:", response); // Debugging
-        this.sviGradovi = response; // Store fetched cities
+        this.sviGradovi = response;
       },
       (error) => {
         console.error("❌ API Request Failed:", error);
       }
     );
   }
-
 
   filterCities() {
     const searchTerm = this.traziVrijednost.trim().toLowerCase();
@@ -161,15 +170,11 @@ export class HomeComponent implements OnInit {
         city.country.name.toLowerCase().includes(searchTerm)
       );
     } else {
-      this.filteredCities = this.sviGradovi; // ✅ Prikazuje sve gradove ako je polje prazno
+      this.filteredCities = this.sviGradovi;
     }
 
-    this.showDropdown = true; // ✅ Dropdown ostaje otvoren dok korisnik piše
+    this.showDropdown = true;
   }
-
-
-
-
 
   K2_odaberiDestinaciju(drzave: Drzava) {
     this.odabranaDrzava = drzave;
@@ -182,7 +187,6 @@ export class HomeComponent implements OnInit {
   K3_OdaberiPutovanje(polazak: PlaniranaPutovanja) {
     this.odabranoPutovanje = polazak;
   }
-
 
   selectCity(city: City) {
     this.traziVrijednost = `${city.name}, ${city.country.name}`;
@@ -199,5 +203,4 @@ export class HomeComponent implements OnInit {
     this.filteredCities = this.sviGradovi;
     this.showDropdown = true;
   }
-
 }

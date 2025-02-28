@@ -24,33 +24,34 @@
       </div>
     </div>
 
-  <div class="booking-field date-field">
-    <label>Check-in</label>
-    <div class="custom-datepicker">
-      <input matInput [matDatepicker]="checkInPicker" [(ngModel)]="checkInDate" placeholder="Add dates">
-      <mat-datepicker-toggle matIconSuffix [for]="checkInPicker"></mat-datepicker-toggle>
-      <mat-datepicker #checkInPicker></mat-datepicker>
+    <div class="booking-field date-field">
+      <label>Check-in</label>
+      <div class="custom-datepicker">
+        <input matInput [matDatepicker]="checkInPicker" [(ngModel)]="checkInDate" placeholder="Add dates">
+        <mat-datepicker-toggle matIconSuffix [for]="checkInPicker"></mat-datepicker-toggle>
+        <mat-datepicker #checkInPicker></mat-datepicker>
+      </div>
     </div>
-  </div>
 
-  <div class="booking-field date-field">
-    <label>Check-out</label>
-    <div class="custom-datepicker">
-      <input matInput [matDatepicker]="checkOutPicker" [(ngModel)]="checkOutDate" placeholder="Add dates">
-      <mat-datepicker-toggle matIconSuffix [for]="checkOutPicker"></mat-datepicker-toggle>
-      <mat-datepicker #checkOutPicker></mat-datepicker>
+    <div class="booking-field date-field">
+      <label>Check-out</label>
+      <div class="custom-datepicker">
+        <input matInput [matDatepicker]="checkOutPicker" [(ngModel)]="checkOutDate" placeholder="Add dates">
+        <mat-datepicker-toggle matIconSuffix [for]="checkOutPicker"></mat-datepicker-toggle>
+        <mat-datepicker #checkOutPicker></mat-datepicker>
+      </div>
     </div>
+
+    <div class="booking-field">
+      <label>Who</label>
+      <input type="text" placeholder="Add guests">
+    </div>
+
+    <button class="search-button">
+      <span class="material-icons">search</span>
+    </button>
   </div>
 
-  <div class="booking-field">
-    <label>Who</label>
-    <input type="text" placeholder="Add guests">
-  </div>
-
-  <button class="search-button">
-    <span class="material-icons">search</span>
-  </button>
-  </div>
 </div>
 
 
@@ -71,7 +72,6 @@
         <div class="offer-image"
              [style.background-image]="'url(' + (x.apartmentImages?.[0]?.image?.imagePath || 'https://placehold.co/600x400') + ')'" >
         </div>
-
         <div class="offer-details">
           <div class="offer-destination">
             {{ x.city?.name }}, {{ x.city?.country?.name }}
@@ -79,7 +79,6 @@
           <div class="offer-description">{{ x.adress }}</div>
           <div class="offer-description">{{ x.description }}</div>
         </div>
-
         <div class="offer-footer">
           <div class="offer-info">
             <div class="offer-price">{{ x.pricePerNight }} €</div>
@@ -88,7 +87,14 @@
         </div>
       </article>
     </div>
+
+    <!-- Scroll Anchor (nevidljiv div koji pokreće učitavanje kada dođe u vidno polje) -->
+    <div #scrollAnchor style="height: 1px; background: transparent;"></div>
+
+    <!-- Indikator učitavanja -->
+    <div *ngIf="isLoading" class="loading">Loading more apartments...</div>
   </section>
+
 </div>
 
 

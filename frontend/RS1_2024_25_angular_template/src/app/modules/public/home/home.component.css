@@ -84,6 +84,9 @@
   color: white;
 }
 
+.material-icons {
+  font-family: 'Material Icons' !important;
+}
 
 
 /*<!------------ DROPDOWN GRADOVA -------->*/
@@ -156,3 +159,6 @@
   text-align: left !important;
 }
 
+.part1 .part2 .part3 .part4 .part5 {
+  background-color: #00B2A9;
+}
