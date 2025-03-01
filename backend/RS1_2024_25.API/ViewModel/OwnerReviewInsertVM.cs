@@ -2,8 +2,9 @@
 {
     public class OwnerReviewInsertVM
     {
-       
-        public int AccountID { get; set; }
+
+        public int OwnerID { get; set; } 
+        public int UserID { get; set; } 
         public string Rating { get; set; }
     }
 }
