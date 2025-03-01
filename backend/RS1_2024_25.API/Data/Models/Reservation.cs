@@ -17,6 +17,8 @@ namespace RS1_2024_25.API.Data
 
         [ForeignKey(nameof(Apartment))]
         public int ApartmentId { get; set; }
+
+        [JsonIgnore]
         public Apartment? Apartment { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
