@@ -8,7 +8,6 @@
              placeholder="Search city name"
              class="search-input"
              [(ngModel)]="traziVrijednost"
-             (input)="filtrirajApartmane()"
              (focus)="showAllCities()"
              autocomplete="off">
 
@@ -48,9 +47,14 @@
       <input type="text" placeholder="Add guests">
     </div>
 
-    <button class="search-button">
+    <button class="search-button" (click)="pretraziApartmane()">
       <span class="material-icons">search</span>
     </button>
+
+    <button class="reset-button" *ngIf="isFiltered" (click)="resetFilter()">
+      Reset Filter
+    </button>
+
   </div>
 
 </div>
@@ -84,7 +88,7 @@
           <div class="offer-info">
             <div class="offer-price">{{ x.pricePerNight }} €</div>
           </div>
-          <div class="ponuda-dugme" (click)="K2_odaberiApartment(x)">K2 Pogledaj</div>
+          <div class="ponuda-dugme" (click)="K2_odaberiApartment(x)">Pogledaj apartman</div>
         </div>
       </article>
     </div>
