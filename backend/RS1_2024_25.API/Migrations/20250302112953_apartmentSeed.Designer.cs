@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RS1_2024_25.API.Data;
 
@@ -11,9 +12,11 @@ using RS1_2024_25.API.Data;
 namespace RS1_2024_25.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250302112953_apartmentSeed")]
+    partial class apartmentSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -962,222 +965,6 @@ namespace RS1_2024_25.API.Migrations
                             ApartmentImageID = 30,
                             ApartmentId = 30,
                             ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 31,
-                            ApartmentId = 31,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 32,
-                            ApartmentId = 32,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 33,
-                            ApartmentId = 33,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 34,
-                            ApartmentId = 34,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 35,
-                            ApartmentId = 35,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 36,
-                            ApartmentId = 36,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 37,
-                            ApartmentId = 37,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 38,
-                            ApartmentId = 38,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 39,
-                            ApartmentId = 39,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 40,
-                            ApartmentId = 40,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 41,
-                            ApartmentId = 41,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 42,
-                            ApartmentId = 42,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 43,
-                            ApartmentId = 43,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 44,
-                            ApartmentId = 44,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 45,
-                            ApartmentId = 45,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 46,
-                            ApartmentId = 46,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 47,
-                            ApartmentId = 47,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 48,
-                            ApartmentId = 48,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 49,
-                            ApartmentId = 49,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 50,
-                            ApartmentId = 50,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 51,
-                            ApartmentId = 51,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 52,
-                            ApartmentId = 52,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 53,
-                            ApartmentId = 53,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 54,
-                            ApartmentId = 54,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 55,
-                            ApartmentId = 55,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 56,
-                            ApartmentId = 56,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 57,
-                            ApartmentId = 57,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 58,
-                            ApartmentId = 58,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 59,
-                            ApartmentId = 59,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 60,
-                            ApartmentId = 60,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 61,
-                            ApartmentId = 61,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 62,
-                            ApartmentId = 62,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 63,
-                            ApartmentId = 63,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 64,
-                            ApartmentId = 64,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 65,
-                            ApartmentId = 65,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 66,
-                            ApartmentId = 66,
-                            ImageID = 1
                         });
                 });
 
@@ -1970,7 +1757,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JohnPass",
                             Username = "johndoe",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(725),
+                            CreatedAt = new DateTime(2025, 3, 2, 11, 29, 51, 631, DateTimeKind.Utc).AddTicks(7821),
                             GenderID = 1,
                             Phone = "+38761000111"
                         },
@@ -1983,7 +1770,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JanePass",
                             Username = "janedoe",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(1057),
+                            CreatedAt = new DateTime(2025, 3, 2, 11, 29, 51, 631, DateTimeKind.Utc).AddTicks(8124),
                             GenderID = 2,
                             Phone = "+38761000222"
                         },
@@ -1996,7 +1783,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "xxxxx",
                             Username = "xxxxx",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(1061),
+                            CreatedAt = new DateTime(2025, 3, 2, 11, 29, 51, 631, DateTimeKind.Utc).AddTicks(8153),
                             GenderID = 1,
                             Phone = "+38761000222"
                         },
@@ -2009,7 +1796,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "YYYXX",
                             Username = "yyyy",
                             CityID = 4,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(1064),
+                            CreatedAt = new DateTime(2025, 3, 2, 11, 29, 51, 631, DateTimeKind.Utc).AddTicks(8155),
                             GenderID = 2,
                             Phone = "+38761000222"
                         });
@@ -2051,7 +1838,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Izel",
                             Username = "Izel",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(2647),
+                            CreatedAt = new DateTime(2025, 3, 2, 11, 29, 51, 631, DateTimeKind.Utc).AddTicks(9683),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-111"
@@ -2065,7 +1852,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Maida",
                             Username = "Maida",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(2921),
+                            CreatedAt = new DateTime(2025, 3, 2, 11, 29, 51, 631, DateTimeKind.Utc).AddTicks(9935),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-222"
@@ -2079,7 +1866,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Admin",
                             Username = "Admin",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(3005),
+                            CreatedAt = new DateTime(2025, 3, 2, 11, 29, 51, 631, DateTimeKind.Utc).AddTicks(9939),
                             GenderID = 1,
                             Image = new byte[0],
                             Phone = "061-000-333"
