@@ -1,0 +1,33 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: 1600px;
+}
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/img01.jpg");
+  height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+.hero-text h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: white;
+}
+.hero-text p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
