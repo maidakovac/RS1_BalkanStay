@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.ViewModel;
@@ -26,7 +27,12 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<List<Favorite>> Get()
         {
-            var favorites = _DbContext.Favorites.ToList();
+            var favorites = _DbContext.Favorites
+                                        .Include(x => x.Account)
+                                        .Include(x => x.Apartment)
+                                            .ThenInclude(y => y.City)
+                                                .ThenInclude(z => z.Country)
+                                        .ToList();
 
             if (favorites == null)
             {
@@ -40,7 +46,12 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<Favorite> GetById(int FavoriteID)
         {
-            var favorites = _DbContext.Favorites.Find(FavoriteID);
+            var favorites = _DbContext.Favorites
+                                        .Include(x => x.Account)
+                                        .Include(x => x.Apartment)
+                                            .ThenInclude(y => y.City)
+                                                .ThenInclude(z => z.Country)
+                                        .FirstOrDefault(a => FavoriteID == FavoriteID);
 
             if (favorites == null)
             {

@@ -43,7 +43,15 @@ namespace RS1_2024_25.API.Controllers
         [HttpGet("{AccountId}")]
         public ActionResult<User> GetById(int AccountId)
         {
-            var user = _DbContext.Users.Find(AccountId);
+            var user = _DbContext.Users
+                          .Include(x => x.City)
+                            .ThenInclude(y => y.Country)
+                          .Include(x => x.Gender)
+                          .Include(x => x.Favorites)
+                          .Include(x => x.Reservations)
+                          .Include(x => x.Reviews)
+                          .Include(x => x.OwnerReviews)
+                          .FirstOrDefault(a => AccountId == AccountId);
 
             if (user == null)
                 return BadRequest();
