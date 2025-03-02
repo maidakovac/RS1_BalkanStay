@@ -69,7 +69,7 @@
 
 /* Podešavanje search button-a */
 .search-button {
-  background: #ff3b5c;
+  background: #1a2e35;
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -78,6 +78,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.search-button:hover{
+  background-color: #ff3b5c;
 }
 
 .search-button .material-icons {
