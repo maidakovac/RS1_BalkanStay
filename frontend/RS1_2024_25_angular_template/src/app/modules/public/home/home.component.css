@@ -88,6 +88,32 @@
   color: white;
 }
 
+
+/* Reset button - identičan Search dugmetu */
+.reset-button {
+  background: #1a2e35; /* Isto kao search dugme */
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 10px; /* Da ne bude previše blizu search button-a */
+}
+
+.reset-button:hover {
+  background-color: #ff3b5c; /* Isto hover stanje */
+}
+
+.reset-button .material-icons {
+  color: white; /* Ikonica bude bela */
+}
+
+
+
+
 .material-icons {
   font-family: 'Material Icons' !important;
 }
