@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Data.Models.Auth;
 using RS1_2024_25.API.ViewModel;
@@ -26,7 +27,10 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<List<Review>> Get()
         {
-            var reviews = _DbContext.Reviews.ToList();
+            var reviews = _DbContext.Reviews
+                                     .Include(x => x.Apartment)
+                                     .Include(x => x.Account)
+                                     .ToList();
 
             if (reviews == null)
             {
@@ -41,7 +45,10 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<Review> GetById(int ReviewID)
         {
-            var reviews = _DbContext.Reviews.Find(ReviewID);
+            var reviews = _DbContext.Reviews
+                                     .Include(x => x.Apartment)
+                                     .Include(x => x.Account)
+                                     .FirstOrDefault(a => ReviewID == ReviewID);
 
             if (reviews == null)
             {
@@ -81,7 +88,8 @@ namespace RS1_2024_25.API.Controllers
             var newReview = new Review()
             {
                 ApartmentId=x.ApartmentId,
-                Rating=x.Rating,
+                AccountID = x.AccountID,
+                Rating =x.Rating,
                 Comment=x.Comment
             };
 

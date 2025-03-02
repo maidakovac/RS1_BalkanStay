@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
+using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.Data.Models.Auth;
 using RS1_2024_25.API.ViewModel;
 using System.Net.NetworkInformation;
@@ -26,7 +28,9 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<List<Reservation>> Get()
         {
-            var reservations = _DbContext.Reservations.ToList();
+            var reservations = _DbContext.Reservations
+                                            .Include(x => x.Apartment)
+                                            .ToList();
 
             if (reservations == null)
             {
@@ -41,8 +45,10 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult<Reservation> GetById(int ReservationID)
         {
-            var reservations = _DbContext.Reservations.Find(ReservationID);
-
+            var reservations = _DbContext.Reservations
+                                .Include(x => x.Apartment)
+                                .FirstOrDefault(a => ReservationID == ReservationID);
+                                    
             if (reservations == null)
             {
                 return BadRequest();

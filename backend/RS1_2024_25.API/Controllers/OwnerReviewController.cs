@@ -78,7 +78,8 @@ namespace RS1_2024_25.API.Controllers
         {
             var newOwnerReview = new OwnerReview()
             {
-                
+                OwnerID = x.OwnerID,
+                UserID = x.UserID,
                 Rating = x.Rating
             };
 
