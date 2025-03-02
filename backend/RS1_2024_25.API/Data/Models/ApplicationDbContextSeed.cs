@@ -280,57 +280,35 @@ namespace RS1_2024_25.API.Data
                 new Apartment { ApartmentId = 38, Name = "Coastal Paradise", Description = "Luxury retreat near Varna Beach.", Adress = "Slivnitsa Blvd 8, Varna", PricePerNight = 110, CityId = 12 },
                 new Apartment { ApartmentId = 39, Name = "Historic Varna Stay", Description = "Cozy apartment near Varna Cathedral.", Adress = "Opalchenska Street 12, Varna", PricePerNight = 90, CityId = 12 },
 
-                // Budva (ID: 13)
+                // Budva (ID: 13) - samo 1 apartman
                 new Apartment { ApartmentId = 40, Name = "Budva Riviera", Description = "Luxury stay near the Budva beaches.", Adress = "Slovenska Plaža 3, Budva", PricePerNight = 120, CityId = 13 },
-                new Apartment { ApartmentId = 41, Name = "Budva Old Town Escape", Description = "Charming stone-built apartment in Old Town.", Adress = "Mediteranska Street 7, Budva", PricePerNight = 100, CityId = 13 },
-                new Apartment { ApartmentId = 42, Name = "Seaside Comfort Apartment", Description = "Relaxing stay near the famous Mogren Beach.", Adress = "Jadranski Put 15, Budva", PricePerNight = 110, CityId = 13 },
 
                 // Bar (ID: 14)
-                new Apartment { ApartmentId = 43, Name = "Bar Harbor View", Description = "Modern apartment overlooking the Adriatic Sea.", Adress = "Marina Street 10, Bar", PricePerNight = 95, CityId = 14 },
-                new Apartment { ApartmentId = 44, Name = "Old Town Charm", Description = "Rustic apartment in Bar's historical quarter.", Adress = "King Nikola Street 5, Bar", PricePerNight = 85, CityId = 14 },
-                new Apartment { ApartmentId = 45, Name = "Luxury Beachfront Suite", Description = "Exclusive suite right on the beach.", Adress = "Bar Beach Avenue 2, Bar", PricePerNight = 125, CityId = 14 },
+                new Apartment { ApartmentId = 41, Name = "Bar Harbor View", Description = "Modern apartment overlooking the Adriatic Sea.", Adress = "Marina Street 10, Bar", PricePerNight = 95, CityId = 14 },
 
                 // Kotor (ID: 15)
-                new Apartment { ApartmentId = 46, Name = "Bay of Kotor Retreat", Description = "Enjoy breathtaking bay views from this stunning apartment.", Adress = "Kotor Bay Road 10, Kotor", PricePerNight = 115, CityId = 15 },
-                new Apartment { ApartmentId = 47, Name = "Historic Kotor Stay", Description = "Charming stay in a UNESCO-protected area.", Adress = "Stari Grad 8, Kotor", PricePerNight = 105, CityId = 15 },
-                new Apartment { ApartmentId = 48, Name = "Luxury Yacht Marina Apartment", Description = "Exclusive stay next to Kotor’s yacht marina.", Adress = "Porto Montenegro 3, Kotor", PricePerNight = 140, CityId = 15 },
+                new Apartment { ApartmentId = 42, Name = "Bay of Kotor Retreat", Description = "Enjoy breathtaking bay views from this stunning apartment.", Adress = "Kotor Bay Road 10, Kotor", PricePerNight = 115, CityId = 15 },
 
                 // Tirana (ID: 16)
-                new Apartment { ApartmentId = 49, Name = "Tirana Central Loft", Description = "Modern loft in downtown Tirana.", Adress = "Blloku District 6, Tirana", PricePerNight = 90, CityId = 16 },
-                new Apartment { ApartmentId = 50, Name = "Luxury Skanderbeg Suite", Description = "Exclusive penthouse overlooking Skanderbeg Square.", Adress = "Sheshi Skënderbej 10, Tirana", PricePerNight = 130, CityId = 16 },
-                new Apartment { ApartmentId = 51, Name = "Stylish Urban Retreat", Description = "A chic and comfortable apartment in the heart of Tirana.", Adress = "Rruga Kavajes 15, Tirana", PricePerNight = 100, CityId = 16 },
+                new Apartment { ApartmentId = 43, Name = "Tirana Central Loft", Description = "Modern loft in downtown Tirana.", Adress = "Blloku District 6, Tirana", PricePerNight = 90, CityId = 16 },
 
                 // Vlorë (ID: 17)
-                new Apartment { ApartmentId = 52, Name = "Vlorë Beachfront Getaway", Description = "Beautiful beachfront apartment.", Adress = "Rruga Dhimiter Konomi 8, Vlorë", PricePerNight = 110, CityId = 17 },
-                new Apartment { ApartmentId = 53, Name = "Luxury Seaside Escape", Description = "High-end stay with panoramic sea views.", Adress = "Lungomare Boulevard 3, Vlorë", PricePerNight = 130, CityId = 17 },
-                new Apartment { ApartmentId = 54, Name = "Old Town Apartment", Description = "Traditional home in the heart of Vlorë.", Adress = "Sheshi Flamurit 5, Vlorë", PricePerNight = 95, CityId = 17 },
+                new Apartment { ApartmentId = 44, Name = "Vlorë Beachfront Getaway", Description = "Beautiful beachfront apartment.", Adress = "Rruga Dhimiter Konomi 8, Vlorë", PricePerNight = 110, CityId = 17 },
 
                 // Durrës (ID: 18)
-                new Apartment { ApartmentId = 55, Name = "Durrës Marina View", Description = "Luxury apartment with a stunning harbor view.", Adress = "Port Road 7, Durrës", PricePerNight = 120, CityId = 18 },
-                new Apartment { ApartmentId = 56, Name = "Roman Amphitheater Stay", Description = "Unique stay near the ancient Roman amphitheater.", Adress = "Amphitheater Street 10, Durrës", PricePerNight = 100, CityId = 18 },
-                new Apartment { ApartmentId = 57, Name = "Beachfront Serenity", Description = "Cozy and peaceful apartment near the beach.", Adress = "Golem Beach Road 4, Durrës", PricePerNight = 90, CityId = 18 },
+                new Apartment { ApartmentId = 45, Name = "Durrës Marina View", Description = "Luxury apartment with a stunning harbor view.", Adress = "Port Road 7, Durrës", PricePerNight = 120, CityId = 18 },
 
                 // Thessaloniki (ID: 20)
-                new Apartment { ApartmentId = 58, Name = "White Tower View", Description = "Amazing view of the iconic White Tower.", Adress = "Nikis Avenue 8, Thessaloniki", PricePerNight = 125, CityId = 20 },
-                new Apartment { ApartmentId = 59, Name = "Thessaloniki Luxury Loft", Description = "High-end apartment in the city center.", Adress = "Tsimiski Street 22, Thessaloniki", PricePerNight = 140, CityId = 20 },
-                new Apartment { ApartmentId = 60, Name = "Seafront Getaway", Description = "Relaxing stay right next to the Aegean Sea.", Adress = "Nea Paralia 5, Thessaloniki", PricePerNight = 130, CityId = 20 },
+                new Apartment { ApartmentId = 46, Name = "White Tower View", Description = "Amazing view of the iconic White Tower.", Adress = "Nikis Avenue 8, Thessaloniki", PricePerNight = 125, CityId = 20 },
 
+                // Athens (ID: 19)
+                new Apartment { ApartmentId = 47, Name = "Luxury Penthouse", Description = "Exclusive penthouse with panoramic views.", Adress = "Skyline Tower, Vasilissis Sofias Ave 10, Athens", PricePerNight = 250, CityId = 19 },
 
-                // Athens
-                new Apartment { ApartmentId = 28, Name = "Luxury Penthouse", Description = "Exclusive penthouse with panoramic views.", Adress = "Skyline Tower, Vasilissis Sofias Ave 10, Athens", PricePerNight = 250, CityId = 19 },
-                new Apartment { ApartmentId = 29, Name = "Acropolis View Apartment", Description = "Unforgettable experience with an Acropolis view.", Adress = "Dionysiou Areopagitou 17, Athens", PricePerNight = 220, CityId = 19 },
-                new Apartment { ApartmentId = 30, Name = "Plaka Boutique Apartment", Description = "Traditional Athenian home in the charming Plaka district.", Adress = "Adrianou 45, Athens", PricePerNight = 190, CityId = 19 },
-
-                                // Patras (ID: 21)
-                new Apartment { ApartmentId = 61, Name = "Patras City Center", Description = "Modern apartment in the heart of Patras.", Adress = "Agiou Nikolaou 10, Patras", PricePerNight = 110, CityId = 21 },
-                new Apartment { ApartmentId = 62, Name = "Seaside Retreat", Description = "Relaxing stay with a beautiful sea view.", Adress = "Rio Beach 15, Patras", PricePerNight = 130, CityId = 21 },
-                new Apartment { ApartmentId = 63, Name = "Historic Patras Loft", Description = "Charming apartment near Patras Castle.", Adress = "Old Town 7, Patras", PricePerNight = 120, CityId = 21 },
+                // Patras (ID: 21)
+                new Apartment { ApartmentId = 48, Name = "Patras City Center", Description = "Modern apartment in the heart of Patras.", Adress = "Agiou Nikolaou 10, Patras", PricePerNight = 110, CityId = 21 },
 
                 // Corfu (ID: 22)
-                new Apartment { ApartmentId = 64, Name = "Corfu Beachfront Escape", Description = "Luxury stay with direct beach access.", Adress = "Paleokastritsa Road 5, Corfu", PricePerNight = 140, CityId = 22 },
-                new Apartment { ApartmentId = 65, Name = "Old Town Charm", Description = "Traditional Corfiot apartment in the historic center.", Adress = "Kapodistriou Street 9, Corfu", PricePerNight = 130, CityId = 22 },
-                new Apartment { ApartmentId = 66, Name = "Luxury Marina Apartment", Description = "Exclusive apartment next to Corfu’s yacht marina.", Adress = "Gouvia Marina 2, Corfu", PricePerNight = 150, CityId = 22 }
-
+                new Apartment { ApartmentId = 49, Name = "Corfu Beachfront Escape", Description = "Luxury stay with direct beach access.", Adress = "Paleokastritsa Road 5, Corfu", PricePerNight = 140, CityId = 22 }
              );
 
 
@@ -399,76 +377,55 @@ namespace RS1_2024_25.API.Data
             );
 
             modelBuilder.Entity<ApartmentImage>().HasData
-             (
-                 new ApartmentImage { ApartmentImageID = 1, ApartmentId = 1, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 2, ApartmentId = 2, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 3, ApartmentId = 3, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 4, ApartmentId = 4, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 5, ApartmentId = 5, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 6, ApartmentId = 6, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 7, ApartmentId = 7, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 8, ApartmentId = 8, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 9, ApartmentId = 9, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 10, ApartmentId = 10, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 11, ApartmentId = 11, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 12, ApartmentId = 12, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 13, ApartmentId = 13, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 14, ApartmentId = 14, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 15, ApartmentId = 15, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 16, ApartmentId = 16, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 17, ApartmentId = 17, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 18, ApartmentId = 18, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 19, ApartmentId = 19, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 20, ApartmentId = 20, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 21, ApartmentId = 21, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 22, ApartmentId = 22, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 23, ApartmentId = 23, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 24, ApartmentId = 24, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 25, ApartmentId = 25, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 26, ApartmentId = 26, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 27, ApartmentId = 27, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 28, ApartmentId = 28, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 29, ApartmentId = 29, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 30, ApartmentId = 30, ImageID = 5 },
+            (
+                new ApartmentImage { ApartmentImageID = 1, ApartmentId = 1, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 2, ApartmentId = 2, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 3, ApartmentId = 3, ImageID = 3 },
+                new ApartmentImage { ApartmentImageID = 4, ApartmentId = 4, ImageID = 4 },
+                new ApartmentImage { ApartmentImageID = 5, ApartmentId = 5, ImageID = 5 },
+                new ApartmentImage { ApartmentImageID = 6, ApartmentId = 6, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 7, ApartmentId = 7, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 8, ApartmentId = 8, ImageID = 3 },
+                new ApartmentImage { ApartmentImageID = 9, ApartmentId = 9, ImageID = 4 },
+                new ApartmentImage { ApartmentImageID = 10, ApartmentId = 10, ImageID = 5 },
+                new ApartmentImage { ApartmentImageID = 11, ApartmentId = 11, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 12, ApartmentId = 12, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 13, ApartmentId = 13, ImageID = 3 },
+                new ApartmentImage { ApartmentImageID = 14, ApartmentId = 14, ImageID = 4 },
+                new ApartmentImage { ApartmentImageID = 15, ApartmentId = 15, ImageID = 5 },
+                new ApartmentImage { ApartmentImageID = 16, ApartmentId = 16, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 17, ApartmentId = 17, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 18, ApartmentId = 18, ImageID = 3 },
+                new ApartmentImage { ApartmentImageID = 19, ApartmentId = 19, ImageID = 4 },
+                new ApartmentImage { ApartmentImageID = 20, ApartmentId = 20, ImageID = 5 },
+                new ApartmentImage { ApartmentImageID = 21, ApartmentId = 21, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 22, ApartmentId = 22, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 23, ApartmentId = 23, ImageID = 3 },
+                new ApartmentImage { ApartmentImageID = 24, ApartmentId = 24, ImageID = 4 },
+                new ApartmentImage { ApartmentImageID = 25, ApartmentId = 25, ImageID = 5 },
+                new ApartmentImage { ApartmentImageID = 26, ApartmentId = 26, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 27, ApartmentId = 27, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 28, ApartmentId = 31, ImageID = 3 },
+                new ApartmentImage { ApartmentImageID = 29, ApartmentId = 32, ImageID = 4 },
+                new ApartmentImage { ApartmentImageID = 30, ApartmentId = 33, ImageID = 5 },
+                new ApartmentImage { ApartmentImageID = 31, ApartmentId = 34, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 32, ApartmentId = 35, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 33, ApartmentId = 36, ImageID = 3 },
+                new ApartmentImage { ApartmentImageID = 34, ApartmentId = 37, ImageID = 4 },
+                new ApartmentImage { ApartmentImageID = 35, ApartmentId = 38, ImageID = 5 },
+                new ApartmentImage { ApartmentImageID = 36, ApartmentId = 39, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 37, ApartmentId = 40, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 38, ApartmentId = 41, ImageID = 3 },
+                new ApartmentImage { ApartmentImageID = 39, ApartmentId = 42, ImageID = 4 },
+                new ApartmentImage { ApartmentImageID = 40, ApartmentId = 43, ImageID = 5 },
+                new ApartmentImage { ApartmentImageID = 41, ApartmentId = 44, ImageID = 1 },
+                new ApartmentImage { ApartmentImageID = 42, ApartmentId = 45, ImageID = 2 },
+                new ApartmentImage { ApartmentImageID = 43, ApartmentId = 46, ImageID = 3 },
+                new ApartmentImage { ApartmentImageID = 44, ApartmentId = 47, ImageID = 4 },
+                new ApartmentImage { ApartmentImageID = 45, ApartmentId = 48, ImageID = 5 },
+                new ApartmentImage { ApartmentImageID = 46, ApartmentId = 49, ImageID = 1 }
+            );
 
-                 // Dodajemo slike za apartmane od 31 do 66
-                 new ApartmentImage { ApartmentImageID = 31, ApartmentId = 31, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 32, ApartmentId = 32, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 33, ApartmentId = 33, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 34, ApartmentId = 34, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 35, ApartmentId = 35, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 36, ApartmentId = 36, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 37, ApartmentId = 37, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 38, ApartmentId = 38, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 39, ApartmentId = 39, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 40, ApartmentId = 40, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 41, ApartmentId = 41, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 42, ApartmentId = 42, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 43, ApartmentId = 43, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 44, ApartmentId = 44, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 45, ApartmentId = 45, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 46, ApartmentId = 46, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 47, ApartmentId = 47, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 48, ApartmentId = 48, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 49, ApartmentId = 49, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 50, ApartmentId = 50, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 51, ApartmentId = 51, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 52, ApartmentId = 52, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 53, ApartmentId = 53, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 54, ApartmentId = 54, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 55, ApartmentId = 55, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 56, ApartmentId = 56, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 57, ApartmentId = 57, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 58, ApartmentId = 58, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 59, ApartmentId = 59, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 60, ApartmentId = 60, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 61, ApartmentId = 61, ImageID = 1 },
-                 new ApartmentImage { ApartmentImageID = 62, ApartmentId = 62, ImageID = 2 },
-                 new ApartmentImage { ApartmentImageID = 63, ApartmentId = 63, ImageID = 3 },
-                 new ApartmentImage { ApartmentImageID = 64, ApartmentId = 64, ImageID = 4 },
-                 new ApartmentImage { ApartmentImageID = 65, ApartmentId = 65, ImageID = 5 },
-                 new ApartmentImage { ApartmentImageID = 66, ApartmentId = 66, ImageID = 1 }
-             );
 
 
 
@@ -503,27 +460,7 @@ namespace RS1_2024_25.API.Data
 
 
 
-            //modelBuilder.Entity<Image>().HasData(
-            //      new Image
-            //      {
-            //          ImageID = 1,
-            //          ImagePath = ImageSeeder.GetImageBytes("wwwroot/image2.jpg")
-            //      },
-            //      new Image
-            //      {
-            //          ImageID = 2,
-            //          ImagePath = ImageSeeder.GetImageBytes("wwwroot/room1.jpg")
-            //      },
-            //      new Image
-            //      {
-            //          ImageID = 3,
-            //          ImagePath = ImageSeeder.GetImageBytes("wwwroot/toilet2.jpg")
-            //      }
-
-
-
-            //);
-
+         
 
 
         }

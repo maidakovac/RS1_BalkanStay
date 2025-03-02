@@ -658,9 +658,25 @@ namespace RS1_2024_25.API.Migrations
                     { 25, null, "Stari Grad 17, Skopje", 9, "Stay in a beautifully restored historic building.", "Historic Downtown Apartment", 70 },
                     { 26, null, "Keј 13 Noemvri 5, Skopje", 9, "Perfect location next to the iconic Stone Bridge.", "Stone Bridge View", 75 },
                     { 27, null, "Macedonia Square 1, Skopje", 9, "Spacious and elegant suite in the city center.", "Luxury Skopje Suite", 100 },
-                    { 28, null, "Skyline Tower, Vasilissis Sofias Ave 10, Athens", 19, "Exclusive penthouse with panoramic views.", "Luxury Penthouse", 250 },
-                    { 29, null, "Dionysiou Areopagitou 17, Athens", 19, "Unforgettable experience with an Acropolis view.", "Acropolis View Apartment", 220 },
-                    { 30, null, "Adrianou 45, Athens", 19, "Traditional Athenian home in the charming Plaka district.", "Plaka Boutique Apartment", 190 }
+                    { 31, null, "Keј Marshal Tito 11, Ohrid", 10, "Stunning views of Lake Ohrid.", "Ohrid Lake View", 80 },
+                    { 32, null, "Car Samoil Street 5, Ohrid", 10, "Charming apartment in Ohrid's historic center.", "Old Town Retreat", 70 },
+                    { 33, null, "Macedonia Street 15, Ohrid", 10, "High-end suite with a private balcony and lake view.", "Luxury Lakeside Suite", 120 },
+                    { 34, null, "Vitosha Blvd 15, Sofia", 11, "Penthouse apartment in the heart of Sofia.", "Sofia Panorama", 110 },
+                    { 35, null, "Aleksandar Stamboliyski Blvd 22, Sofia", 11, "Modern loft in downtown Sofia.", "Sofia Central Loft", 95 },
+                    { 36, null, "Tsarigradsko Shose 30, Sofia", 11, "Premium business-class apartment.", "Luxury Business Suite", 130 },
+                    { 37, null, "Golden Sands 5, Varna", 12, "Beachfront apartment in Varna.", "Varna Sea View", 100 },
+                    { 38, null, "Slivnitsa Blvd 8, Varna", 12, "Luxury retreat near Varna Beach.", "Coastal Paradise", 110 },
+                    { 39, null, "Opalchenska Street 12, Varna", 12, "Cozy apartment near Varna Cathedral.", "Historic Varna Stay", 90 },
+                    { 40, null, "Slovenska Plaža 3, Budva", 13, "Luxury stay near the Budva beaches.", "Budva Riviera", 120 },
+                    { 41, null, "Marina Street 10, Bar", 14, "Modern apartment overlooking the Adriatic Sea.", "Bar Harbor View", 95 },
+                    { 42, null, "Kotor Bay Road 10, Kotor", 15, "Enjoy breathtaking bay views from this stunning apartment.", "Bay of Kotor Retreat", 115 },
+                    { 43, null, "Blloku District 6, Tirana", 16, "Modern loft in downtown Tirana.", "Tirana Central Loft", 90 },
+                    { 44, null, "Rruga Dhimiter Konomi 8, Vlorë", 17, "Beautiful beachfront apartment.", "Vlorë Beachfront Getaway", 110 },
+                    { 45, null, "Port Road 7, Durrës", 18, "Luxury apartment with a stunning harbor view.", "Durrës Marina View", 120 },
+                    { 46, null, "Nikis Avenue 8, Thessaloniki", 20, "Amazing view of the iconic White Tower.", "White Tower View", 125 },
+                    { 47, null, "Skyline Tower, Vasilissis Sofias Ave 10, Athens", 19, "Exclusive penthouse with panoramic views.", "Luxury Penthouse", 250 },
+                    { 48, null, "Agiou Nikolaou 10, Patras", 21, "Modern apartment in the heart of Patras.", "Patras City Center", 110 },
+                    { 49, null, "Paleokastritsa Road 5, Corfu", 22, "Luxury stay with direct beach access.", "Corfu Beachfront Escape", 140 }
                 });
 
             migrationBuilder.InsertData(
@@ -668,9 +684,9 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 9, 1, new DateTime(2025, 3, 1, 21, 32, 42, 142, DateTimeKind.Utc).AddTicks(5250), 2, new byte[0], "061-000-111" },
-                    { 10, 2, new DateTime(2025, 3, 1, 21, 32, 42, 142, DateTimeKind.Utc).AddTicks(5521), 2, new byte[0], "061-000-222" },
-                    { 11, 3, new DateTime(2025, 3, 1, 21, 32, 42, 142, DateTimeKind.Utc).AddTicks(5524), 1, new byte[0], "061-000-333" }
+                    { 9, 1, new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(5060), 2, new byte[0], "061-000-111" },
+                    { 10, 2, new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(5198), 2, new byte[0], "061-000-222" },
+                    { 11, 3, new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(5200), 1, new byte[0], "061-000-333" }
                 });
 
             migrationBuilder.InsertData(
@@ -678,10 +694,10 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 5, 1, new DateTime(2025, 3, 1, 21, 32, 42, 142, DateTimeKind.Utc).AddTicks(3234), 1, null, "+38761000111" },
-                    { 6, 2, new DateTime(2025, 3, 1, 21, 32, 42, 142, DateTimeKind.Utc).AddTicks(3509), 2, null, "+38761000222" },
-                    { 7, 3, new DateTime(2025, 3, 1, 21, 32, 42, 142, DateTimeKind.Utc).AddTicks(3511), 1, null, "+38761000222" },
-                    { 8, 4, new DateTime(2025, 3, 1, 21, 32, 42, 142, DateTimeKind.Utc).AddTicks(3513), 2, null, "+38761000222" }
+                    { 5, 1, new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(4148), 1, null, "+38761000111" },
+                    { 6, 2, new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(4320), 2, null, "+38761000222" },
+                    { 7, 3, new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(4322), 1, null, "+38761000222" },
+                    { 8, 4, new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(4323), 2, null, "+38761000222" }
                 });
 
             migrationBuilder.InsertData(
@@ -728,9 +744,25 @@ namespace RS1_2024_25.API.Migrations
                     { 25, 25, 5 },
                     { 26, 26, 1 },
                     { 27, 27, 2 },
-                    { 28, 28, 3 },
-                    { 29, 29, 4 },
-                    { 30, 30, 5 }
+                    { 28, 31, 3 },
+                    { 29, 32, 4 },
+                    { 30, 33, 5 },
+                    { 31, 34, 1 },
+                    { 32, 35, 2 },
+                    { 33, 36, 3 },
+                    { 34, 37, 4 },
+                    { 35, 38, 5 },
+                    { 36, 39, 1 },
+                    { 37, 40, 2 },
+                    { 38, 41, 3 },
+                    { 39, 42, 4 },
+                    { 40, 43, 5 },
+                    { 41, 44, 1 },
+                    { 42, 45, 2 },
+                    { 43, 46, 3 },
+                    { 44, 47, 4 },
+                    { 45, 48, 5 },
+                    { 46, 49, 1 }
                 });
 
             migrationBuilder.InsertData(

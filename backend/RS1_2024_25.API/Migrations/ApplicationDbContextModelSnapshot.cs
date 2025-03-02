@@ -445,24 +445,6 @@ namespace RS1_2024_25.API.Migrations
                         new
                         {
                             ApartmentId = 41,
-                            Adress = "Mediteranska Street 7, Budva",
-                            CityId = 13,
-                            Description = "Charming stone-built apartment in Old Town.",
-                            Name = "Budva Old Town Escape",
-                            PricePerNight = 100
-                        },
-                        new
-                        {
-                            ApartmentId = 42,
-                            Adress = "Jadranski Put 15, Budva",
-                            CityId = 13,
-                            Description = "Relaxing stay near the famous Mogren Beach.",
-                            Name = "Seaside Comfort Apartment",
-                            PricePerNight = 110
-                        },
-                        new
-                        {
-                            ApartmentId = 43,
                             Adress = "Marina Street 10, Bar",
                             CityId = 14,
                             Description = "Modern apartment overlooking the Adriatic Sea.",
@@ -471,25 +453,7 @@ namespace RS1_2024_25.API.Migrations
                         },
                         new
                         {
-                            ApartmentId = 44,
-                            Adress = "King Nikola Street 5, Bar",
-                            CityId = 14,
-                            Description = "Rustic apartment in Bar's historical quarter.",
-                            Name = "Old Town Charm",
-                            PricePerNight = 85
-                        },
-                        new
-                        {
-                            ApartmentId = 45,
-                            Adress = "Bar Beach Avenue 2, Bar",
-                            CityId = 14,
-                            Description = "Exclusive suite right on the beach.",
-                            Name = "Luxury Beachfront Suite",
-                            PricePerNight = 125
-                        },
-                        new
-                        {
-                            ApartmentId = 46,
+                            ApartmentId = 42,
                             Adress = "Kotor Bay Road 10, Kotor",
                             CityId = 15,
                             Description = "Enjoy breathtaking bay views from this stunning apartment.",
@@ -498,25 +462,7 @@ namespace RS1_2024_25.API.Migrations
                         },
                         new
                         {
-                            ApartmentId = 47,
-                            Adress = "Stari Grad 8, Kotor",
-                            CityId = 15,
-                            Description = "Charming stay in a UNESCO-protected area.",
-                            Name = "Historic Kotor Stay",
-                            PricePerNight = 105
-                        },
-                        new
-                        {
-                            ApartmentId = 48,
-                            Adress = "Porto Montenegro 3, Kotor",
-                            CityId = 15,
-                            Description = "Exclusive stay next to Kotor’s yacht marina.",
-                            Name = "Luxury Yacht Marina Apartment",
-                            PricePerNight = 140
-                        },
-                        new
-                        {
-                            ApartmentId = 49,
+                            ApartmentId = 43,
                             Adress = "Blloku District 6, Tirana",
                             CityId = 16,
                             Description = "Modern loft in downtown Tirana.",
@@ -525,25 +471,7 @@ namespace RS1_2024_25.API.Migrations
                         },
                         new
                         {
-                            ApartmentId = 50,
-                            Adress = "Sheshi Skënderbej 10, Tirana",
-                            CityId = 16,
-                            Description = "Exclusive penthouse overlooking Skanderbeg Square.",
-                            Name = "Luxury Skanderbeg Suite",
-                            PricePerNight = 130
-                        },
-                        new
-                        {
-                            ApartmentId = 51,
-                            Adress = "Rruga Kavajes 15, Tirana",
-                            CityId = 16,
-                            Description = "A chic and comfortable apartment in the heart of Tirana.",
-                            Name = "Stylish Urban Retreat",
-                            PricePerNight = 100
-                        },
-                        new
-                        {
-                            ApartmentId = 52,
+                            ApartmentId = 44,
                             Adress = "Rruga Dhimiter Konomi 8, Vlorë",
                             CityId = 17,
                             Description = "Beautiful beachfront apartment.",
@@ -552,25 +480,7 @@ namespace RS1_2024_25.API.Migrations
                         },
                         new
                         {
-                            ApartmentId = 53,
-                            Adress = "Lungomare Boulevard 3, Vlorë",
-                            CityId = 17,
-                            Description = "High-end stay with panoramic sea views.",
-                            Name = "Luxury Seaside Escape",
-                            PricePerNight = 130
-                        },
-                        new
-                        {
-                            ApartmentId = 54,
-                            Adress = "Sheshi Flamurit 5, Vlorë",
-                            CityId = 17,
-                            Description = "Traditional home in the heart of Vlorë.",
-                            Name = "Old Town Apartment",
-                            PricePerNight = 95
-                        },
-                        new
-                        {
-                            ApartmentId = 55,
+                            ApartmentId = 45,
                             Adress = "Port Road 7, Durrës",
                             CityId = 18,
                             Description = "Luxury apartment with a stunning harbor view.",
@@ -579,25 +489,7 @@ namespace RS1_2024_25.API.Migrations
                         },
                         new
                         {
-                            ApartmentId = 56,
-                            Adress = "Amphitheater Street 10, Durrës",
-                            CityId = 18,
-                            Description = "Unique stay near the ancient Roman amphitheater.",
-                            Name = "Roman Amphitheater Stay",
-                            PricePerNight = 100
-                        },
-                        new
-                        {
-                            ApartmentId = 57,
-                            Adress = "Golem Beach Road 4, Durrës",
-                            CityId = 18,
-                            Description = "Cozy and peaceful apartment near the beach.",
-                            Name = "Beachfront Serenity",
-                            PricePerNight = 90
-                        },
-                        new
-                        {
-                            ApartmentId = 58,
+                            ApartmentId = 46,
                             Adress = "Nikis Avenue 8, Thessaloniki",
                             CityId = 20,
                             Description = "Amazing view of the iconic White Tower.",
@@ -606,25 +498,7 @@ namespace RS1_2024_25.API.Migrations
                         },
                         new
                         {
-                            ApartmentId = 59,
-                            Adress = "Tsimiski Street 22, Thessaloniki",
-                            CityId = 20,
-                            Description = "High-end apartment in the city center.",
-                            Name = "Thessaloniki Luxury Loft",
-                            PricePerNight = 140
-                        },
-                        new
-                        {
-                            ApartmentId = 60,
-                            Adress = "Nea Paralia 5, Thessaloniki",
-                            CityId = 20,
-                            Description = "Relaxing stay right next to the Aegean Sea.",
-                            Name = "Seafront Getaway",
-                            PricePerNight = 130
-                        },
-                        new
-                        {
-                            ApartmentId = 28,
+                            ApartmentId = 47,
                             Adress = "Skyline Tower, Vasilissis Sofias Ave 10, Athens",
                             CityId = 19,
                             Description = "Exclusive penthouse with panoramic views.",
@@ -633,25 +507,7 @@ namespace RS1_2024_25.API.Migrations
                         },
                         new
                         {
-                            ApartmentId = 29,
-                            Adress = "Dionysiou Areopagitou 17, Athens",
-                            CityId = 19,
-                            Description = "Unforgettable experience with an Acropolis view.",
-                            Name = "Acropolis View Apartment",
-                            PricePerNight = 220
-                        },
-                        new
-                        {
-                            ApartmentId = 30,
-                            Adress = "Adrianou 45, Athens",
-                            CityId = 19,
-                            Description = "Traditional Athenian home in the charming Plaka district.",
-                            Name = "Plaka Boutique Apartment",
-                            PricePerNight = 190
-                        },
-                        new
-                        {
-                            ApartmentId = 61,
+                            ApartmentId = 48,
                             Adress = "Agiou Nikolaou 10, Patras",
                             CityId = 21,
                             Description = "Modern apartment in the heart of Patras.",
@@ -660,48 +516,12 @@ namespace RS1_2024_25.API.Migrations
                         },
                         new
                         {
-                            ApartmentId = 62,
-                            Adress = "Rio Beach 15, Patras",
-                            CityId = 21,
-                            Description = "Relaxing stay with a beautiful sea view.",
-                            Name = "Seaside Retreat",
-                            PricePerNight = 130
-                        },
-                        new
-                        {
-                            ApartmentId = 63,
-                            Adress = "Old Town 7, Patras",
-                            CityId = 21,
-                            Description = "Charming apartment near Patras Castle.",
-                            Name = "Historic Patras Loft",
-                            PricePerNight = 120
-                        },
-                        new
-                        {
-                            ApartmentId = 64,
+                            ApartmentId = 49,
                             Adress = "Paleokastritsa Road 5, Corfu",
                             CityId = 22,
                             Description = "Luxury stay with direct beach access.",
                             Name = "Corfu Beachfront Escape",
                             PricePerNight = 140
-                        },
-                        new
-                        {
-                            ApartmentId = 65,
-                            Adress = "Kapodistriou Street 9, Corfu",
-                            CityId = 22,
-                            Description = "Traditional Corfiot apartment in the historic center.",
-                            Name = "Old Town Charm",
-                            PricePerNight = 130
-                        },
-                        new
-                        {
-                            ApartmentId = 66,
-                            Adress = "Gouvia Marina 2, Corfu",
-                            CityId = 22,
-                            Description = "Exclusive apartment next to Corfu’s yacht marina.",
-                            Name = "Luxury Marina Apartment",
-                            PricePerNight = 150
                         });
                 });
 
@@ -948,235 +768,115 @@ namespace RS1_2024_25.API.Migrations
                         new
                         {
                             ApartmentImageID = 28,
-                            ApartmentId = 28,
+                            ApartmentId = 31,
                             ImageID = 3
                         },
                         new
                         {
                             ApartmentImageID = 29,
-                            ApartmentId = 29,
+                            ApartmentId = 32,
                             ImageID = 4
                         },
                         new
                         {
                             ApartmentImageID = 30,
-                            ApartmentId = 30,
+                            ApartmentId = 33,
                             ImageID = 5
                         },
                         new
                         {
                             ApartmentImageID = 31,
-                            ApartmentId = 31,
+                            ApartmentId = 34,
                             ImageID = 1
                         },
                         new
                         {
                             ApartmentImageID = 32,
-                            ApartmentId = 32,
+                            ApartmentId = 35,
                             ImageID = 2
                         },
                         new
                         {
                             ApartmentImageID = 33,
-                            ApartmentId = 33,
+                            ApartmentId = 36,
                             ImageID = 3
                         },
                         new
                         {
                             ApartmentImageID = 34,
-                            ApartmentId = 34,
+                            ApartmentId = 37,
                             ImageID = 4
                         },
                         new
                         {
                             ApartmentImageID = 35,
-                            ApartmentId = 35,
+                            ApartmentId = 38,
                             ImageID = 5
                         },
                         new
                         {
                             ApartmentImageID = 36,
-                            ApartmentId = 36,
+                            ApartmentId = 39,
                             ImageID = 1
                         },
                         new
                         {
                             ApartmentImageID = 37,
-                            ApartmentId = 37,
+                            ApartmentId = 40,
                             ImageID = 2
                         },
                         new
                         {
                             ApartmentImageID = 38,
-                            ApartmentId = 38,
+                            ApartmentId = 41,
                             ImageID = 3
                         },
                         new
                         {
                             ApartmentImageID = 39,
-                            ApartmentId = 39,
+                            ApartmentId = 42,
                             ImageID = 4
                         },
                         new
                         {
                             ApartmentImageID = 40,
-                            ApartmentId = 40,
+                            ApartmentId = 43,
                             ImageID = 5
                         },
                         new
                         {
                             ApartmentImageID = 41,
-                            ApartmentId = 41,
+                            ApartmentId = 44,
                             ImageID = 1
                         },
                         new
                         {
                             ApartmentImageID = 42,
-                            ApartmentId = 42,
+                            ApartmentId = 45,
                             ImageID = 2
                         },
                         new
                         {
                             ApartmentImageID = 43,
-                            ApartmentId = 43,
+                            ApartmentId = 46,
                             ImageID = 3
                         },
                         new
                         {
                             ApartmentImageID = 44,
-                            ApartmentId = 44,
+                            ApartmentId = 47,
                             ImageID = 4
                         },
                         new
                         {
                             ApartmentImageID = 45,
-                            ApartmentId = 45,
+                            ApartmentId = 48,
                             ImageID = 5
                         },
                         new
                         {
                             ApartmentImageID = 46,
-                            ApartmentId = 46,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 47,
-                            ApartmentId = 47,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 48,
-                            ApartmentId = 48,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 49,
                             ApartmentId = 49,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 50,
-                            ApartmentId = 50,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 51,
-                            ApartmentId = 51,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 52,
-                            ApartmentId = 52,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 53,
-                            ApartmentId = 53,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 54,
-                            ApartmentId = 54,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 55,
-                            ApartmentId = 55,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 56,
-                            ApartmentId = 56,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 57,
-                            ApartmentId = 57,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 58,
-                            ApartmentId = 58,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 59,
-                            ApartmentId = 59,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 60,
-                            ApartmentId = 60,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 61,
-                            ApartmentId = 61,
-                            ImageID = 1
-                        },
-                        new
-                        {
-                            ApartmentImageID = 62,
-                            ApartmentId = 62,
-                            ImageID = 2
-                        },
-                        new
-                        {
-                            ApartmentImageID = 63,
-                            ApartmentId = 63,
-                            ImageID = 3
-                        },
-                        new
-                        {
-                            ApartmentImageID = 64,
-                            ApartmentId = 64,
-                            ImageID = 4
-                        },
-                        new
-                        {
-                            ApartmentImageID = 65,
-                            ApartmentId = 65,
-                            ImageID = 5
-                        },
-                        new
-                        {
-                            ApartmentImageID = 66,
-                            ApartmentId = 66,
                             ImageID = 1
                         });
                 });
@@ -1970,7 +1670,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JohnPass",
                             Username = "johndoe",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(725),
+                            CreatedAt = new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(4148),
                             GenderID = 1,
                             Phone = "+38761000111"
                         },
@@ -1983,7 +1683,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "JanePass",
                             Username = "janedoe",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(1057),
+                            CreatedAt = new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(4320),
                             GenderID = 2,
                             Phone = "+38761000222"
                         },
@@ -1996,7 +1696,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "xxxxx",
                             Username = "xxxxx",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(1061),
+                            CreatedAt = new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(4322),
                             GenderID = 1,
                             Phone = "+38761000222"
                         },
@@ -2009,7 +1709,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "YYYXX",
                             Username = "yyyy",
                             CityID = 4,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(1064),
+                            CreatedAt = new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(4323),
                             GenderID = 2,
                             Phone = "+38761000222"
                         });
@@ -2051,7 +1751,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Izel",
                             Username = "Izel",
                             CityID = 1,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(2647),
+                            CreatedAt = new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(5060),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-111"
@@ -2065,7 +1765,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Maida",
                             Username = "Maida",
                             CityID = 2,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(2921),
+                            CreatedAt = new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(5198),
                             GenderID = 2,
                             Image = new byte[0],
                             Phone = "061-000-222"
@@ -2079,7 +1779,7 @@ namespace RS1_2024_25.API.Migrations
                             Password = "Admin",
                             Username = "Admin",
                             CityID = 3,
-                            CreatedAt = new DateTime(2025, 3, 2, 11, 39, 31, 674, DateTimeKind.Utc).AddTicks(3005),
+                            CreatedAt = new DateTime(2025, 3, 2, 12, 11, 53, 31, DateTimeKind.Utc).AddTicks(5200),
                             GenderID = 1,
                             Image = new byte[0],
                             Phone = "061-000-333"
