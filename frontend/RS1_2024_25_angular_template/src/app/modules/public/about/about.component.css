@@ -43,6 +43,7 @@ body, html {
 .container h1 {
   font-size: 1.9rem;
   color:rgb(26, 46, 53);
+
 }
 .container p {
   font-size: 1rem;
@@ -70,15 +71,6 @@ body, html {
   padding: 20px;
 }
 
-/* responsive */
-@media screen and (max-width: 1000px) {
-  .column-66,
-  .column-33 {
-    width: 100%;
-    text-align: center;
-  }
-}
-
 .container-why-us {
   background-color: rgb(26, 46, 53);
   padding-top: 20px;
@@ -96,4 +88,53 @@ body, html {
   font-size: 1rem;
   letter-spacing: 2px;
 }
+.container-why-us img {
+  width: 100%;
+  height: auto;
+}
 
+
+/* responsive */
+@media screen and (max-width: 1000px) {
+  /* Stack columns vertically for smaller screens */
+  .column-66,
+  .column-33 {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+  }
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .hero-image {
+    height: 40vh;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .container h1 {
+    font-size: 1.5rem;
+  }
+
+  .container p {
+    font-size: 0.9rem;
+  }
+
+  .column-33 img,
+  .column-66 img {
+    width: 100%;
+    height: auto;
+  }
+}
