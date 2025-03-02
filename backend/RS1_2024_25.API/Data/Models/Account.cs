@@ -18,7 +18,7 @@ namespace RS1_2024_25.API.Data.Models.Auth
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-
+        [JsonIgnore]
         public TwoFactorAuth? TwoFactorAuth { get; set; }
 
         [JsonIgnore]

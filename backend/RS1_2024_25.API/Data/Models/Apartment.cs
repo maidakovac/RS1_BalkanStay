@@ -14,6 +14,7 @@ namespace RS1_2024_25.API.Data
         public int PricePerNight { get; set; }
 
         public int ?CityId { get; set; }
+        
         public City? City { get; set; }
 
         [ForeignKey(nameof(Owner))]
@@ -24,11 +25,15 @@ namespace RS1_2024_25.API.Data
         [JsonIgnore]
         public Owner? Account { get; set; }
 
-
+        [JsonIgnore]
         public List<Reservation> Reservations { get; set; }
+        [JsonIgnore]
         public List<ApartmentImage> ApartmentImages { get; set; }
+        [JsonIgnore]
         public List<ApartmentRule> ApartmentRules { get; set; }
+        [JsonIgnore]
         public List<ApartmentAmenity> ApartmentAmenities { get; set; }
+        [JsonIgnore]
         public List<ApartmentToiletry> ApartmentToiletries { get; set; }
 
     }
