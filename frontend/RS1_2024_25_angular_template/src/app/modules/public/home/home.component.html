@@ -8,8 +8,10 @@
              placeholder="Search city name"
              class="search-input"
              [(ngModel)]="traziVrijednost"
+             (input)="filterCities()"
              (focus)="showAllCities()"
              autocomplete="off">
+
 
 
 

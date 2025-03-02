@@ -110,54 +110,36 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.k2_Preuzmi();
     this.getCities();
+
   }
 
   ngAfterViewInit() {
     this.setupIntersectionObserver();
   }
 
-  //
-  // k2_Preuzmi() {
-  //   if (this.isLoading || !this.hasMoreData) return; // Sprečava višestruke zahteve
-  //
-  //   let url = `${this.bazniUrl}/Apartment/Get?page=${this.page}&limit=10`;
-  //
-  //   this.isLoading = true;
-  //   this.httpClient.get<Apartment[]>(url).subscribe(
-  //     (response) => {
-  //       if (response.length > 0) {
-  //         this.sviApartmani = [...this.sviApartmani, ...response]; // Dodajemo apartmane
-  //         this.filtriraniApartmani = this.sviApartmani; // ✅ Prikazujemo sve apartmane inicijalno
-  //         this.page++; // Povećavamo broj strane
-  //       } else {
-  //         this.hasMoreData = false; // Sprečava dalje učitavanje ako nema više podataka
-  //       }
-  //       this.isLoading = false;
-  //     },
-  //     (error) => {
-  //       console.error("❌ API Request Failed:", error);
-  //       this.isLoading = false;
-  //     }
-  //   );
-  // }
-  //
 
-  // k2_Preuzmi() {
   k2_Preuzmi() {
-    if (this.isLoading || !this.hasMoreData || this.isFiltered) return; // Sprečava višestruke zahteve i infinity scroll kada je filter aktivan
+    if (this.isLoading || !this.hasMoreData || this.isFiltered) return; // 🛑 STOP dupli pozivi
+
+    console.log(`🔄 Učitavam podatke za Page ${this.page}`);
 
     let url = `${this.bazniUrl}/Apartment/Get?page=${this.page}&limit=10`;
+
+    console.time(`⏳ API Load Time (Page ${this.page})`); // 🕒 Početak merenja vremena
 
     this.isLoading = true;
     this.httpClient.get<Apartment[]>(url).subscribe(
       (response) => {
+        console.timeEnd(`⏳ API Load Time (Page ${this.page})`); // 🕒 Kraj merenja vremena
+
         if (response.length > 0) {
           this.sviApartmani = [...this.sviApartmani, ...response];
-          this.filtriraniApartmani = [...this.sviApartmani]; // ✅ Prikazujemo sve apartmane inicijalno
+          this.filtriraniApartmani = [...this.sviApartmani];
           this.page++;
         } else {
-          this.hasMoreData = false;
+          this.hasMoreData = false; // 🚨 Nema više podataka, stopiraj infinite scroll
         }
+
         this.isLoading = false;
       },
       (error) => {
@@ -169,17 +151,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
 
+
+
   setupIntersectionObserver() {
+    if (!this.scrollAnchor || this.scrollAnchor.nativeElement.__observerSet) return; // 🛑 Ako je već postavljen observer, prekini
+
+    this.scrollAnchor.nativeElement.__observerSet = true; // ✅ Postavljamo flag da observer ne bude dodan više puta
+
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !this.isLoading && this.hasMoreData) {
-        this.k2_Preuzmi(); // Učitava nove podatke kad korisnik dođe do dna liste
+        console.log("🔄 Učitavam nove apartmane...");
+        this.k2_Preuzmi();
       }
     }, { threshold: 1.0 });
 
-    if (this.scrollAnchor) {
-      observer.observe(this.scrollAnchor.nativeElement);
-    }
+    observer.observe(this.scrollAnchor.nativeElement);
   }
+
+
+
 
   getCities() {
     let url = `${this.bazniUrl}/City/Get`;
@@ -199,15 +189,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     if (searchTerm.length > 0) {
       this.filteredCities = this.sviGradovi.filter(city =>
-        city.name.toLowerCase().includes(searchTerm) ||
-        city.country.name.toLowerCase().includes(searchTerm)
+        city.name.toLowerCase().startsWith(searchTerm) // 🟢 Filtrira samo gradove koji počinju sa unetim slovima
       );
     } else {
-      this.filteredCities = this.sviGradovi;
+      this.filteredCities = this.sviGradovi; // 🟢 Ako nema unosa, prikazuje sve gradove
     }
 
     this.showDropdown = true;
   }
+
+
 
 
   pretraziApartmane() {
@@ -248,11 +239,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   resetFilter() {
     this.isFiltered = false;
-    this.filtriraniApartmani = [...this.sviApartmani]; // ✅ Vrati sve apartmane
+    this.filtriraniApartmani = [];
+    this.sviApartmani = [];
     this.page = 1;
     this.hasMoreData = true;
-    this.k2_Preuzmi(); // Ponovo pokreni učitavanje
+    this.k2_Preuzmi(); // Ponovo pokreni učitavanje od prve stranice
   }
+
+
 
 
 
