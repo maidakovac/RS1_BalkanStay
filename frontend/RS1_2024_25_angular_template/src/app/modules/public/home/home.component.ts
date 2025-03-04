@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {timer} from 'rxjs';
 
 export interface GetPodaciResponse {
   datumPonude: string
@@ -83,7 +84,7 @@ export interface PlaniranaPutovanja {
   standalone: false
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  @ViewChild('scrollAnchor', { static: false }) scrollAnchor!: ElementRef; // Dodato za praćenje scroll-a
+  @ViewChild('scrollAnchor', { static: false }) scrollAnchor!: ElementRef;
 
   traziVrijednost: string = "";
   bazniUrl: string = "http://localhost:8000";
@@ -94,82 +95,113 @@ export class HomeComponent implements OnInit, AfterViewInit {
   odabraniApartman: Apartment | null = null;
   checkInDate: Date | null = null;
   checkOutDate: Date | null = null;
-  sviGradovi: City[] = [];  // Store cities from API
+  sviGradovi: City[] = [];
   filteredCities: City[] = [];
-  showDropdown: boolean = false;  // Toggle dropdown visibility
+  showDropdown: boolean = false;
 
-  page: number = 1;         // Trenutna strana
-  isLoading: boolean = false;  // Status učitavanja
-  isFiltered: boolean = false; // Praćenje da li je pretraga aktivna
-  hasMoreData: boolean = true; // Da li ima više podataka
-
+  page: number = 1;
+  isLoading: boolean = false;
+  isFiltered: boolean = false;
+  hasMoreData: boolean = true;
+  pageSize: number = 12;
+  totalApartments: number = 0;
   filtriraniApartmani: Apartment[] = [];
 
+  private firstLoadDone: boolean = false; // ✅ Flag to track first API call
+
   constructor(private httpClient: HttpClient) { }
+
+  private initialized: boolean = false;
 
   ngOnInit(): void {
     this.k2_Preuzmi();
     this.getCities();
-
   }
 
   ngAfterViewInit() {
-    this.setupIntersectionObserver();
+    setTimeout(() => {
+      this.setupIntersectionObserver();
+    }, 3000);
   }
-
 
   k2_Preuzmi() {
-    if (this.isLoading || !this.hasMoreData || this.isFiltered) return; // 🛑 STOP dupli pozivi
+    if (this.isLoading || !this.hasMoreData || this.isFiltered) {
+      console.log('Skipping load:', { isLoading: this.isLoading, hasMoreData: this.hasMoreData, isFiltered: this.isFiltered });
+      return;
+    }
 
-    console.log(`🔄 Učitavam podatke za Page ${this.page}`);
-
-    let url = `${this.bazniUrl}/Apartment/Get?page=${this.page}&limit=10`;
-
-    console.time(`⏳ API Load Time (Page ${this.page})`); // 🕒 Početak merenja vremena
-
+    console.log(`Loading page ${this.page} with ${this.pageSize} items per page`);
     this.isLoading = true;
-    this.httpClient.get<Apartment[]>(url).subscribe(
-      (response) => {
-        console.timeEnd(`⏳ API Load Time (Page ${this.page})`); // 🕒 Kraj merenja vremena
 
-        if (response.length > 0) {
-          this.sviApartmani = [...this.sviApartmani, ...response];
-          this.filtriraniApartmani = [...this.sviApartmani];
-          this.page++;
-        } else {
-          this.hasMoreData = false; // 🚨 Nema više podataka, stopiraj infinite scroll
+
+    let url = `${this.bazniUrl}/Apartment/Get?page=${this.page}&limit=${this.pageSize}`;
+
+    const delayTime = this.firstLoadDone ? 1200 : 0; // ⏳ 1s delay only after first request
+
+
+    timer(delayTime).subscribe(() => { // 2 seconds delay
+      this.httpClient.get<Apartment[]>(url).subscribe(
+        (response) => {
+          if (response && response.length > 0) {
+            if (this.page === 1) {
+              this.totalApartments = response.length;
+            }
+
+            const startIndex = (this.page - 1) * this.pageSize;
+            const endIndex = Math.min(startIndex + this.pageSize, this.totalApartments);
+
+            const pageApartments = response.slice(startIndex, endIndex);
+
+            console.log(`Loaded ${pageApartments.length} apartments for page ${this.page}`);
+            this.sviApartmani = [...this.sviApartmani, ...pageApartments];
+            this.filtriraniApartmani = [...this.sviApartmani];
+            this.page++;
+
+            if (this.sviApartmani.length >= this.totalApartments) {
+              this.hasMoreData = false;
+              console.log('Reached end of data');
+            }
+          } else {
+            console.log('No more data to load');
+            this.hasMoreData = false;
+          }
+
+          this.isLoading = false;
+          this.firstLoadDone = true;
+
+        },
+        (error) => {
+          console.error("API Request Failed:", error);
+          this.isLoading = false;
+          this.hasMoreData = false;
         }
-
-        this.isLoading = false;
-      },
-      (error) => {
-        console.error("❌ API Request Failed:", error);
-        this.isLoading = false;
-      }
-    );
-  }
-
-
-
-
+      );
+    });
+  };
 
   setupIntersectionObserver() {
-    if (!this.scrollAnchor || this.scrollAnchor.nativeElement.__observerSet) return; // 🛑 Ako je već postavljen observer, prekini
+    if (!this.scrollAnchor || this.scrollAnchor.nativeElement.__observerSet) {
+      console.log('Observer already set or scroll anchor not found');
+      return;
+    }
 
-    this.scrollAnchor.nativeElement.__observerSet = true; // ✅ Postavljamo flag da observer ne bude dodan više puta
+    this.scrollAnchor.nativeElement.__observerSet = true;
 
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !this.isLoading && this.hasMoreData) {
-        console.log("🔄 Učitavam nove apartmane...");
-        this.k2_Preuzmi();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !this.isLoading && this.hasMoreData) {
+          console.log('Scroll anchor intersected, loading more data');
+          this.k2_Preuzmi();
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '100px'
       }
-    }, { threshold: 1.0 });
+    );
 
     observer.observe(this.scrollAnchor.nativeElement);
   }
-
-
-
 
   getCities() {
     let url = `${this.bazniUrl}/City/Get`;
@@ -189,53 +221,38 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     if (searchTerm.length > 0) {
       this.filteredCities = this.sviGradovi.filter(city =>
-        city.name.toLowerCase().startsWith(searchTerm) // 🟢 Filtrira samo gradove koji počinju sa unetim slovima
+        city.name.toLowerCase().startsWith(searchTerm)
       );
     } else {
-      this.filteredCities = this.sviGradovi; // 🟢 Ako nema unosa, prikazuje sve gradove
+      this.filteredCities = this.sviGradovi;
     }
 
     this.showDropdown = true;
   }
 
-
-
-
   pretraziApartmane() {
     const searchTerm = this.traziVrijednost.trim().toLowerCase();
 
-    // Proveravamo da li su sva polja popunjena
     if (!searchTerm || !this.checkInDate || !this.checkOutDate) {
       console.warn("Molimo popunite sva polja pre pretrage.");
       return;
     }
 
-    // Aktiviramo filter
     this.isFiltered = true;
 
-    // Filtriramo apartmane
     this.filtriraniApartmani = this.sviApartmani.filter(apartman =>
       apartman.city.name.toLowerCase() === searchTerm &&
       this.isAvailable(apartman)
     );
   }
 
-
   isAvailable(apartman: Apartment): boolean {
-    // Ova metoda bi trebalo da proverava dostupnost apartmana na osnovu datuma
-    // Ako backend vraća dostupnost, možeš je proveriti na osnovu dostupnih podataka
-
     if (!this.checkInDate || !this.checkOutDate) {
-      return false; // Ako nema izabranih datuma, apartman nije dostupan
+      return false;
     }
 
-    // Ova provera je primer, možeš je proširiti zavisno od dostupnih podataka
-    // Trenutno vraća true za sve apartmane
     return true;
   }
-
-
-
 
   resetFilter() {
     this.isFiltered = false;
@@ -243,14 +260,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.sviApartmani = [];
     this.page = 1;
     this.hasMoreData = true;
-    this.k2_Preuzmi(); // Ponovo pokreni učitavanje od prve stranice
+    this.totalApartments = 0;
+    this.k2_Preuzmi();
   }
-
-
-
-
-
-
 
   K2_odaberiDestinaciju(drzave: Drzava) {
     this.odabranaDrzava = drzave;
@@ -265,11 +277,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   selectCity(city: City) {
-    this.traziVrijednost = city.name; // Postavi samo ime grada
+    this.traziVrijednost = city.name;
     this.showDropdown = false;
-
   }
-
 
   hideDropdownWithDelay() {
     setTimeout(() => {

@@ -75,7 +75,7 @@
       <h1 class="best-offers-title">Discover Your Next Balkan Stay</h1>
       <p class="best-offers-text">Explore the best apartments across the Balkans</p>
     </div>
-    <div id="destinacije" class="offers-container">
+    <div id="destinacije" class="offers-container" [class.loading]="isLoading">
       <article *ngFor="let x of filtriraniApartmani" class="offer">
         <div class="offer-image"
              [style.background-image]="'url(' + (x.apartmentImages?.[0]?.image?.imagePath || 'https://placehold.co/600x400') + ')'" >
@@ -96,35 +96,15 @@
       </article>
     </div>
 
+    <!-- Loading Indicator -->
+    <div *ngIf="isLoading" class="loading-container">
+      <div class="loader"></div>
+      <p>Loading more apartments...</p>
+    </div>
 
-    <!-- Scroll Anchor (nevidljiv div koji pokreće učitavanje kada dođe u vidno polje) -->
+    <!-- Scroll Anchor -->
     <div #scrollAnchor style="height: 1px; background: transparent;"></div>
 
-    <!-- Indikator učitavanja -->
-    <div *ngIf="isLoading" class="loading">Loading more apartments...</div>
-  </section>
-
-</div>
-
-
-<div class="part2">
-  <h1>2 Search</h1>
-  <div class="search">
-    <div class="search-img">
-      <img src="images/about-img.png">
-    </div>
-    <div class="search-description">
-      <h1>Search for you travel</h1>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime
-        voluptatem a itaque suscipit.</p>
-      <div class="search-right">
-        <input placeholder="search city name" class="search-input" [(ngModel)]="traziVrijednost">
-
-      </div>
-    </div>
-  </div>
-
-</div>
 
 
 <div class="part4">
