@@ -32,6 +32,8 @@ body, html {
 }
 
 * {
+
+  font-family: Arial, Helvetica;
   box-sizing: border-box;
 }
 

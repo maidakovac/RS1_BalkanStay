@@ -17,6 +17,7 @@ body, html {
   font-size: 3rem;
 }
 * {
+  font-family: Arial, Helvetica;
   box-sizing: border-box;
 }
 
