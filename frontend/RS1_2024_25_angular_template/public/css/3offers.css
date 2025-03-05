@@ -116,6 +116,7 @@
   justify-content: space-around;
   gap: 20px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 /* Naslov sekcije */
