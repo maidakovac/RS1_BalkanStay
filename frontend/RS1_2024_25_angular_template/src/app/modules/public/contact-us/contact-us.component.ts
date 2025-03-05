@@ -40,7 +40,6 @@ export class ContactUsComponent implements OnInit, AfterViewInit {
       if (!emailInput.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
         event.preventDefault(); // Sprjecava slanje forme ako e-mail nije validan
         errorMessage.textContent = 'Please enter a valid email address.';
-        alert('Invalid email! Please enter a valid email address.');
       }
     });
 
