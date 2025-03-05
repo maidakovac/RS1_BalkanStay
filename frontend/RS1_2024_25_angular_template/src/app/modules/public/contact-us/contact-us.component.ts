@@ -9,10 +9,12 @@ import { NgForm } from '@angular/forms';
   standalone: false
 })
 export class ContactUsComponent implements OnInit {
+  submitted = false;
   countries: string[] = []; // lista svih drzaba
   filteredCountries: string[] = []; // filtrirane drzave
   countryInput: string = ''; // unesena vrijednost u box za drzavu
   showDropdown: boolean = false; // kontrolise prikazivanje dropdown liste
+  isValidCountry = false;
 
   constructor(private http: HttpClient) {}
 
@@ -34,7 +36,12 @@ export class ContactUsComponent implements OnInit {
   // odabir drzave iz dropdowna
   selectCountry(country: string) {
     this.countryInput = country;
+    this.isValidCountry = true;
     this.showDropdown = false;
+  }
+
+  validateCountry() {
+    this.isValidCountry = this.countries.includes(this.countryInput);
   }
 
   // sakrivanje dropdowna
@@ -44,14 +51,17 @@ export class ContactUsComponent implements OnInit {
     }, 200);
   }
 
-  // slanje forme
-  onSubmit(form: NgForm) {
-    if (form.invalid) {
-      console.log('Form is invalid');
-      return;
-    }
 
-    console.log('Form submitted successfully!', form.value);
-    // ovdje dodati funkcije za slanje forme
+  onSubmit(form: NgForm) {
+    this.submitted = true;
+
+    this.validateCountry();
+    if (form.valid && this.isValidCountry) {
+      console.log("Form submitted successfully!", form.value);
+      form.reset();
+      this.submitted = false;
+      this.isValidCountry = false;
+    }
   }
+
 }

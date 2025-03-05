@@ -12,27 +12,30 @@
       <img src="images/img_contact.png" style="width:100%">
     </div>
     <div class="column">
-      <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" >
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your name.." required ngModel>
 
-        <!-- validacija maila -->
+      <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name.." required ngModel #name="ngModel">
+        <small *ngIf="submitted && name.invalid" style="color: red;">Name is required.</small><br>
+
         <label for="mail">E-mail</label>
         <input type="email" id="mail" name="mail" placeholder="Your e-mail.." required ngModel
                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" #email="ngModel">
-        <small *ngIf="email.invalid && email.touched" style="color: red;">
-          Please enter a valid email address.
-        </small>
+        <small *ngIf="submitted && email.invalid" style="color: red;">Please enter a valid email address.</small>
 
+        <!-- Country Dropdown -->
         <div class="dropdown-wrapper">
           <label for="country">Country</label>
-          <input type="text" id="country" name="country" placeholder="Select your country.."
+          <input type="text" id="country" name="country" placeholder="Select your country.." required
                  [(ngModel)]="countryInput"
+                 #country="ngModel"
                  (input)="filterCountries()"
                  (focus)="showDropdown = true"
                  (blur)="onBlur()">
 
-          <!-- dropdown za drzave -->
+          <small *ngIf="submitted && !isValidCountry" style="color: red;">Please select a valid country.</small>
+
+
           <div class="dropdown-panel" *ngIf="showDropdown && filteredCountries.length > 0">
             <div *ngFor="let country of filteredCountries"
                  class="dropdown-item"
@@ -43,10 +46,13 @@
         </div>
 
         <label for="subject">Subject</label>
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px" ngModel></textarea>
+        <textarea id="subject" name="subject" placeholder="Write something.." required ngModel #subject="ngModel"></textarea>
+        <small *ngIf="submitted && subject.invalid" style="color: red;">Subject is required.</small><br>
 
         <input type="submit" value="SEND">
       </form>
+
+
     </div>
   </div>
 </div>
