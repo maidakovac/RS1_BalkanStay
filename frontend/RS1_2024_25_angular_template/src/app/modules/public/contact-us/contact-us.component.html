@@ -3,7 +3,6 @@
   <p>Let's get in touch!</p>
 </div>
 
-
 <div class="container">
   <div style="text-align:center">
     <p>Feel free to reach out if you need help with your reservations, account, and more.</p>
@@ -13,29 +12,42 @@
       <img src="images/img_contact.png" style="width:100%">
     </div>
     <div class="column">
-      <form id="contactForm">
+      <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" >
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your name.." required>
+        <input type="text" id="name" name="name" placeholder="Your name.." required ngModel>
 
+        <!-- validacija maila -->
         <label for="mail">E-mail</label>
-        <input type="email" id="mail" name="mail" placeholder="Your e-mail.." required
-               pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Enter a valid email"><br>
+        <input type="email" id="mail" name="mail" placeholder="Your e-mail.." required ngModel
+               pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" #email="ngModel">
+        <small *ngIf="email.invalid && email.touched" style="color: red;">
+          Please enter a valid email address.
+        </small>
 
-        <label for="country">Country</label>
-        <select id="country" name="country" >
-          <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
-        </select>
+        <div class="dropdown-wrapper">
+          <label for="country">Country</label>
+          <input type="text" id="country" name="country" placeholder="Select your country.."
+                 [(ngModel)]="countryInput"
+                 (input)="filterCountries()"
+                 (focus)="showDropdown = true"
+                 (blur)="onBlur()">
+
+          <!-- dropdown za drzave -->
+          <div class="dropdown-panel" *ngIf="showDropdown && filteredCountries.length > 0">
+            <div *ngFor="let country of filteredCountries"
+                 class="dropdown-item"
+                 (mousedown)="selectCountry(country)">
+              <span class="country-name">{{ country }}</span>
+            </div>
+          </div>
+        </div>
 
         <label for="subject">Subject</label>
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px" ngModel></textarea>
 
         <input type="submit" value="SEND">
       </form>
-
-
     </div>
   </div>
 </div>
-
-
 <script src="contact-us.component.ts"></script>

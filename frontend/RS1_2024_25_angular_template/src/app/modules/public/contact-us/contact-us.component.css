@@ -64,7 +64,32 @@ input[type=submit]:hover {
   clear: both;
 }
 
+.dropdown-wrapper {
+  position: relative;
+  width: 100%;
+}
 
+.dropdown-panel {
+  top: 100%;
+  left: 0;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  width: calc(100% - 2px); /* ista sirina kao input box (minus border) */
+  z-index: 1000;
+  box-sizing: border-box; /* da padding i border ne povecavaju sirinu */
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
 
 
 /* Responsive */
