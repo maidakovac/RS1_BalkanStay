@@ -22,10 +22,8 @@
                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Enter a valid email"><br>
 
         <label for="country">Country</label>
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
+        <select id="country" name="country" >
+          <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
         </select>
 
         <label for="subject">Subject</label>

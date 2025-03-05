@@ -1,12 +1,24 @@
-import {Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
-  styleUrl: './contact-us.component.css',
+  styleUrls: ['./contact-us.component.css'],
   standalone: false
 })
-export class ContactUsComponent implements AfterViewInit {
+export class ContactUsComponent implements OnInit, AfterViewInit {
+  countries: string[] = [];
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    // Dinamičko preuzimanje država sa REST API-ja
+    this.http.get<any[]>('https://restcountries.com/v3.1/all').subscribe(data => {
+      this.countries = data.map(country => country.name.common).sort();
+    });
+  }
+
   ngAfterViewInit() {
     const form = document.getElementById('contactForm') as HTMLFormElement;
     const emailInput = document.getElementById('mail') as HTMLInputElement;
@@ -30,6 +42,16 @@ export class ContactUsComponent implements AfterViewInit {
         errorMessage.textContent = 'Please enter a valid email address.';
         alert('Invalid email! Please enter a valid email address.');
       }
+    });
+
+    const countrySelect = document.getElementById('country') as HTMLSelectElement;
+
+    countrySelect.addEventListener('focus', () => {
+      countrySelect.setAttribute('size', '7'); // Prikazuje 7 stavki kada se otvori
+    });
+
+    countrySelect.addEventListener('blur', () => {
+      countrySelect.removeAttribute('size'); // Vrati na stari dropdown
     });
   }
 }
