@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { ContactService } from './contact-service';
 
 @Component({
   selector: 'app-contact-us',
@@ -15,8 +16,24 @@ export class ContactUsComponent implements OnInit {
   countryInput: string = ''; // unesena vrijednost u box za drzavu
   showDropdown: boolean = false; // kontrolise prikazivanje dropdown liste
   isValidCountry = false;
+  isLoading = false; // prikaz loadera prilikom slanja
+  messageStatus: string = ''; // obavijest o slanju poruke
+  messageError: string = '';  // greska slanja
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private contactService: ContactService) {}
+
+  messages: any[] = [];
+
+  loadMessages() {
+    this.contactService.getMessages().subscribe({
+      next: (data) => {
+        this.messages = data;
+      },
+      error: (err) => {
+        console.error("Error fetching messages:", err);
+      }
+    });
+  }
 
   ngOnInit() {
     // preuzimanje drzava sa REST API-ja
@@ -24,6 +41,8 @@ export class ContactUsComponent implements OnInit {
       this.countries = data.map(country => country.name.common).sort();
       this.filteredCountries = this.countries; // Inicijalno prikaži sve države
     });
+
+    this.loadMessages();
   }
 
   // filtriranje drzava dok korisnik kuca
@@ -52,15 +71,38 @@ export class ContactUsComponent implements OnInit {
   }
 
 
+  // slanje forme
   onSubmit(form: NgForm) {
     this.submitted = true;
-
     this.validateCountry();
+
     if (form.valid && this.isValidCountry) {
-      console.log("Form submitted successfully!", form.value);
-      form.reset();
-      this.submitted = false;
-      this.isValidCountry = false;
+      this.isLoading = true;
+      const formData = {
+        name: form.value.name,
+        email: form.value.mail,
+        country: this.countryInput,
+        message: form.value.subject
+      };
+
+      this.contactService.sendMessage(formData).subscribe({
+        next: (response) => {
+          console.log("Message sent successfully!", response);
+          this.messageStatus = "Your message has been sent successfully! ✅";
+          this.messageError = "";
+          form.reset();
+          this.submitted = false;
+          this.isValidCountry = false;
+        },
+        error: (err) => {
+          console.error("Error sending message:", err);
+          this.messageError = "Error sending message. Please try again. ❌";
+          this.messageStatus = "";
+        },
+        complete: () => {
+          this.isLoading = false;
+        }
+      });
     }
   }
 

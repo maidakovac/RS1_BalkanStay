@@ -44,6 +44,23 @@ namespace RS1_2024_25.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ContactMessages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SentAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ContactMessages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Countries",
                 columns: table => new
                 {
@@ -684,9 +701,9 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 9, 1, new DateTime(2025, 3, 2, 13, 15, 54, 47, DateTimeKind.Utc).AddTicks(1015), 2, new byte[0], "061-000-111" },
-                    { 10, 2, new DateTime(2025, 3, 2, 13, 15, 54, 47, DateTimeKind.Utc).AddTicks(1243), 2, new byte[0], "061-000-222" },
-                    { 11, 3, new DateTime(2025, 3, 2, 13, 15, 54, 47, DateTimeKind.Utc).AddTicks(1246), 1, new byte[0], "061-000-333" }
+                    { 9, 1, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(8095), 2, new byte[0], "061-000-111" },
+                    { 10, 2, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(8333), 2, new byte[0], "061-000-222" },
+                    { 11, 3, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(8336), 1, new byte[0], "061-000-333" }
                 });
 
             migrationBuilder.InsertData(
@@ -694,10 +711,10 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 5, 1, new DateTime(2025, 3, 2, 13, 15, 54, 46, DateTimeKind.Utc).AddTicks(9401), 1, null, "+38761000111" },
-                    { 6, 2, new DateTime(2025, 3, 2, 13, 15, 54, 46, DateTimeKind.Utc).AddTicks(9666), 2, null, "+38761000222" },
-                    { 7, 3, new DateTime(2025, 3, 2, 13, 15, 54, 46, DateTimeKind.Utc).AddTicks(9668), 1, null, "+38761000222" },
-                    { 8, 4, new DateTime(2025, 3, 2, 13, 15, 54, 46, DateTimeKind.Utc).AddTicks(9670), 2, null, "+38761000222" }
+                    { 5, 1, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(6508), 1, null, "+38761000111" },
+                    { 6, 2, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(6791), 2, null, "+38761000222" },
+                    { 7, 3, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(6794), 1, null, "+38761000222" },
+                    { 8, 4, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(6796), 2, null, "+38761000222" }
                 });
 
             migrationBuilder.InsertData(
@@ -948,6 +965,9 @@ namespace RS1_2024_25.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "ApartmentToiletries");
+
+            migrationBuilder.DropTable(
+                name: "ContactMessages");
 
             migrationBuilder.DropTable(
                 name: "Favorites");

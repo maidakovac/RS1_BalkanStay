@@ -33,6 +33,10 @@ namespace RS1_2024_25.API.Data
         public DbSet<Toiletry> Toiletries { get; set; }
         public DbSet<ApartmentToiletry> ApartmentToiletries { get; set; }
 
+
+        public DbSet<ContactMessage> ContactMessages { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

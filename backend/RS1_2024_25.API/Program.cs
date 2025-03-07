@@ -27,11 +27,24 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<MyAuthService>();
 builder.Services.AddTransient<MyTokenGenerator>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy => policy.WithOrigins("http://localhost:4200") // Dozvoli Angular frontend
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseCors("AllowAngular");
+
 
 app.UseCors(
     options => options
