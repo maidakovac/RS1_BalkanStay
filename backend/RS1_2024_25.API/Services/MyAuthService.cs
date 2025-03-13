@@ -2,8 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
+using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.Data.Models.Auth;
 using RS1_2024_25.API.Helper;
 
@@ -14,12 +16,25 @@ namespace RS1_2024_25.API.Services
         private readonly ApplicationDbContext applicationDbContext;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly MyTokenGenerator myTokenGenerator;
+        private readonly PasswordHasher<Account> _passwordHasher = new();
 
         public MyAuthService(ApplicationDbContext dbContext, IHttpContextAccessor contextAccessor, MyTokenGenerator tokenGenerator)
         {
             applicationDbContext = dbContext;
             httpContextAccessor = contextAccessor;
             myTokenGenerator = tokenGenerator;
+        }
+
+        // ✅ Hashiranje lozinke prije spremanja u bazu
+        public string HashPassword(string password)
+        {
+            return _passwordHasher.HashPassword(null, password);
+        }
+
+        // ✅ Provjera lozinke pri loginu
+        public bool VerifyPassword(string hashedPassword, string providedPassword)
+        {
+            return _passwordHasher.VerifyHashedPassword(null, hashedPassword, providedPassword) == PasswordVerificationResult.Success;
         }
 
         // Generate a new token for the user
@@ -40,7 +55,6 @@ namespace RS1_2024_25.API.Services
 
             return authToken;
         }
-
 
         // Revoke an authentication token
         public async Task<bool> RevokeAuthToken(string tokenValue, CancellationToken cancellationToken = default)
@@ -66,21 +80,14 @@ namespace RS1_2024_25.API.Services
                 return GetAuthInfo(null);
             }
 
-            //var myAuthToken = applicationDbContext.MyAuthenticationTokens
-            //    .Include(x => x.Account) // Include Account for navigation
-            //    .ThenInclude(a => a.User) // Include User if Account is of type User
-            //    .SingleOrDefault(x => x.Value == authToken);
-
-            //return GetAuthInfo(myAuthToken);
-
             var myAuthToken = applicationDbContext.MyAuthenticationTokens
-        .Include(x => x.Account) // Include the base Account entity
-        .SingleOrDefault(x => x.Value == authToken);
+                .Include(x => x.Account)
+                .SingleOrDefault(x => x.Value == authToken);
 
-            // If the account is of type User, cast it
+            // Ako je account tipa User, castuj ga
             if (myAuthToken?.Account is User userAccount)
             {
-                myAuthToken.Account = userAccount; // Cast explicitly for additional properties
+                myAuthToken.Account = userAccount;
             }
 
             return GetAuthInfo(myAuthToken);

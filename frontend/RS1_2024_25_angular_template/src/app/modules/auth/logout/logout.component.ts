@@ -11,7 +11,7 @@ import {MyAuthService} from '../../../services/auth-services/my-auth.service';
   standalone: false
 })
 export class LogoutComponent implements OnInit {
-  private apiUrl = `${MyConfig.api_address}/auth/logout`;
+  private apiUrl = `${MyConfig.base_url}/auth/logout`;
 
   constructor(
     private httpClient: HttpClient,

@@ -9,7 +9,7 @@ import {MyBaseEndpointAsync} from '../../helper/my-base-endpoint-async.interface
   providedIn: 'root'
 })
 export class AuthLogoutEndpointService implements MyBaseEndpointAsync<void, void> {
-  private apiUrl = `${MyConfig.api_address}/auth/logout`;
+  private apiUrl = `${MyConfig.base_url}/auth/logout`;
 
   constructor(private httpClient: HttpClient, private authService: MyAuthService) {
   }

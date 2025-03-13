@@ -7,4 +7,5 @@ export interface MyAuthInfo {
   isAdmin: boolean;
   isManager: boolean;
   isLoggedIn: boolean;
+  slikaPath?: any;
 }

@@ -12,7 +12,7 @@ export interface CityGetByIdResponse {
   providedIn: 'root'
 })
 export class CityGetByIdEndpointService implements MyBaseEndpointAsync<number, CityGetByIdResponse> {
-  private apiUrl = `${MyConfig.api_address}/cities`;
+  private apiUrl = `${MyConfig.base_url}/cities`;
 
   constructor(private httpClient: HttpClient) {
   }

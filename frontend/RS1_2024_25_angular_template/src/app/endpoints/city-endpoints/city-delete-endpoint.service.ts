@@ -7,7 +7,7 @@ import {MyBaseEndpointAsync} from '../../helper/my-base-endpoint-async.interface
   providedIn: 'root'
 })
 export class CityDeleteEndpointService implements MyBaseEndpointAsync<number, void> {
-  private apiUrl = `${MyConfig.api_address}/cities`;
+  private apiUrl = `${MyConfig.base_url}/cities`;
 
   constructor(private httpClient: HttpClient) {
   }

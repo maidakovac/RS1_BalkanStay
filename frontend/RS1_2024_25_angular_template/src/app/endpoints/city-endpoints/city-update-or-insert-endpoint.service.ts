@@ -19,7 +19,7 @@ export interface CityUpdateOrInsertResponse {
   providedIn: 'root'
 })
 export class CityUpdateOrInsertEndpointService implements MyBaseEndpointAsync<CityUpdateOrInsertRequest, CityUpdateOrInsertResponse> {
-  private apiUrl = `${MyConfig.api_address}/cities`;
+  private apiUrl = `${MyConfig.base_url}/cities`;
 
   constructor(private httpClient: HttpClient) {
   }

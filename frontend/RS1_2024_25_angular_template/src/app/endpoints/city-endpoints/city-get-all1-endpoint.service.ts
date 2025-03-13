@@ -13,7 +13,7 @@ export interface CityGetAll1Response {
   providedIn: 'root'
 })
 export class CityGetAll1EndpointService implements MyBaseEndpointAsync<void, CityGetAll1Response[]> {
-  private apiUrl = `${MyConfig.api_address}/cities/all`;
+  private apiUrl = `${MyConfig.base_url}/cities/all`;
 
   constructor(private httpClient: HttpClient) {
   }

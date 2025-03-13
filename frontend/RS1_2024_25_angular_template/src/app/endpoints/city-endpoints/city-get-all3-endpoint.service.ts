@@ -20,7 +20,7 @@ export interface CityGetAll3Response {
   providedIn: 'root'
 })
 export class CityGetAll3EndpointService implements MyBaseEndpointAsync<CityGetAll3Request, CityGetAll3Response[]> {
-  private apiUrl = `${MyConfig.api_address}/filter`;
+  private apiUrl = `${MyConfig.base_url}/filter`;
 
   constructor(private httpClient: HttpClient) {
   }

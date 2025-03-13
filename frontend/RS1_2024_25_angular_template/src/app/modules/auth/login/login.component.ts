@@ -9,17 +9,24 @@ import {AuthLoginEndpointService, LoginRequest} from '../../../endpoints/auth-en
   standalone: false
 })
 export class LoginComponent {
-  loginRequest: LoginRequest = {username: 'admin1', password: 'admin123'};
+  loginRequest: LoginRequest = { username: 'amar', password: 'password'};
   errorMessage: string | null = null;
 
   constructor(private authLoginService: AuthLoginEndpointService, private router: Router) {
   }
 
   onLogin(): void {
+    if ((!this.loginRequest.email && !this.loginRequest.username) || !this.loginRequest.password) {
+      this.errorMessage = 'Please enter email or username, and password is required';
+      return;
+    }
+
+    console.log(this.loginRequest);
+
     this.authLoginService.handleAsync(this.loginRequest).subscribe({
       next: () => {
         console.log('Login successful');
-        this.router.navigate(['/admin']); // Redirect to
+        this.router.navigate(['/admin']);
       },
       error: (error: any) => {
         this.errorMessage = 'Incorrect username or password';
@@ -27,4 +34,5 @@ export class LoginComponent {
       }
     });
   }
+
 }

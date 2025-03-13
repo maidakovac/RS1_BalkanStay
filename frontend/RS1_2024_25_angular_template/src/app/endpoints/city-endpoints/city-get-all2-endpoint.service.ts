@@ -15,7 +15,7 @@ export interface CityGetAll2Response {
   providedIn: 'root'
 })
 export class CityGetAll2EndpointService implements MyBaseEndpointAsync<MyPagedRequest, CityGetAll2Response[]> {
-  private apiUrl = `${MyConfig.api_address}/paged`;
+  private apiUrl = `${MyConfig.base_url}/paged`;
 
   constructor(private httpClient: HttpClient) {
   }

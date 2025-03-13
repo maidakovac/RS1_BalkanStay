@@ -12,7 +12,7 @@ export interface CountryGetAllResponse {
   providedIn: 'root'
 })
 export class CountryGetAllEndpointService implements MyBaseEndpointAsync<void, CountryGetAllResponse[]> {
-  private apiUrl = `${MyConfig.api_address}/countries/all`;
+  private apiUrl = `${MyConfig.base_url}/countries/all`;
 
   constructor(private httpClient: HttpClient) {
   }
