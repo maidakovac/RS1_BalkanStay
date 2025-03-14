@@ -1,34 +1,40 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import {AuthRoutingModule} from './auth-routing.module';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
-import {ForgetPasswordComponent} from './forget-password/forget-password.component';
 import {TwoFactorComponent} from './two-factor/two-factor.component';
-import {FormsModule} from '@angular/forms';
 import {LogoutComponent} from './logout/logout.component';
 import {AuthLayoutComponent} from './auth-layout/auth-layout.component';
-import {MatButton} from "@angular/material/button";
-import {MatSlideToggle} from '@angular/material/slide-toggle';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
+
+import {MatButton, MatButtonModule} from '@angular/material/button';
+import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ForgetPasswordComponent,
-    TwoFactorComponent,
     LogoutComponent,
-    AuthLayoutComponent
+    TwoFactorComponent,
+    AuthLayoutComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule,
     FormsModule,
+    RouterModule,
+    AuthRoutingModule,
+    MatButtonModule,
+    MatSlideToggleModule,
     MatButton,
-    MatSlideToggle
-  ]
+    MatSlideToggle,
+  ],
+  providers: []
 })
-export class AuthModule {
-}
+export class AuthModule { }
