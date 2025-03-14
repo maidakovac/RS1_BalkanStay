@@ -20,5 +20,11 @@
     <button class="login-button" type="submit">Login</button>
 
     <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <!-- Added Sign Up and Forgot Password Links -->
+    <div class="login-links">
+      <span>Don't have an account? <a routerLink="/auth/register">Sign Up</a></span>
+      <a class="forgot-password" routerLink="/auth/forgot-password">Forgot password</a>
+    </div>
   </form>
 </div>

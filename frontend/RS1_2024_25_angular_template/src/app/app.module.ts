@@ -1,14 +1,13 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {MyAuthInterceptor} from './services/auth-services/my-auth-interceptor.service';
-import {MyAuthService} from './services/auth-services/my-auth.service';
-import {SharedModule} from './modules/shared/shared.module';
-import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MyAuthInterceptor } from './services/auth-services/my-auth-interceptor.service';
+import { MyAuthService } from './services/auth-services/my-auth.service';
+import { SharedModule } from './modules/shared/shared.module';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,36 +18,38 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { FormsModule } from '@angular/forms';
 
+import {AuthRoutingModule} from './modules/auth/auth-routing.module';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserAnimationsModule, // Potrebno za animacije
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    AuthRoutingModule
+
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MyAuthInterceptor,
-      multi: true // Ensures multiple interceptors can be used if needed
+      multi: true
     },
     MyAuthService,
-    provideAnimationsAsync() // Ensure MyAuthService is available for the interceptor
+    provideAnimations()
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
-
+export class AppModule { }
