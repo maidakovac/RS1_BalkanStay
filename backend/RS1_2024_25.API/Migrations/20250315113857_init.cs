@@ -23,7 +23,9 @@ namespace RS1_2024_25.API.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ResetToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ResetTokenExpiry = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -514,20 +516,20 @@ namespace RS1_2024_25.API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Account",
-                columns: new[] { "AccountID", "Email", "FirstName", "LastName", "Password", "Username" },
+                columns: new[] { "AccountID", "Email", "FirstName", "LastName", "Password", "ResetToken", "ResetTokenExpiry", "Username" },
                 values: new object[,]
                 {
-                    { 1, "admin@example.com", "Admin", "User", "AdminPass", "admin" },
-                    { 2, "superadmin@example.com", "Super", "Admin", "SuperPass", "superadmin" },
-                    { 3, "izelrepuh@example.com", "Izel", "Repuh", "SuperPass", "izelrepuh" },
-                    { 4, "amaromer@example.com", "Amar", "Omer", "SuperAmar", "amaromer" },
-                    { 5, "johndoe@example.com", "John", "Doe", "JohnPass", "johndoe" },
-                    { 6, "janedoe@example.com", "Jane", "Doe", "JanePass", "janedoe" },
-                    { 7, "xxxx@example.com", "Xkorisnik", "PKorisnik", "xxxxx", "xxxxx" },
-                    { 8, "yyyy@example.com", "YYKorisnik", "YYPrezime", "YYYXX", "yyyy" },
-                    { 9, "izel@gmail.com", "Izel", "Repuh", "Izel", "Izel" },
-                    { 10, "maida@gmail.com", "Maida", "Kovac", "Maida", "Maida" },
-                    { 11, "owner@gmail.com", "Admin", "Admin", "Admin", "Admin" }
+                    { 1, "admin@example.com", "Admin", "User", "AdminPass", null, null, "admin" },
+                    { 2, "superadmin@example.com", "Super", "Admin", "SuperPass", null, null, "superadmin" },
+                    { 3, "izelrepuh@example.com", "Izel", "Repuh", "SuperPass", null, null, "izelrepuh" },
+                    { 4, "amaromer@example.com", "Amar", "Omer", "SuperAmar", null, null, "amaromer" },
+                    { 5, "johndoe@example.com", "John", "Doe", "JohnPass", null, null, "johndoe" },
+                    { 6, "janedoe@example.com", "Jane", "Doe", "JanePass", null, null, "janedoe" },
+                    { 7, "xxxx@example.com", "Xkorisnik", "PKorisnik", "xxxxx", null, null, "xxxxx" },
+                    { 8, "yyyy@example.com", "YYKorisnik", "YYPrezime", "YYYXX", null, null, "yyyy" },
+                    { 9, "izel@gmail.com", "Izel", "Repuh", "Izel", null, null, "Izel" },
+                    { 10, "maida@gmail.com", "Maida", "Kovac", "Maida", null, null, "Maida" },
+                    { 11, "owner@gmail.com", "Admin", "Admin", "Admin", null, null, "Admin" }
                 });
 
             migrationBuilder.InsertData(
@@ -701,9 +703,9 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 9, 1, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(8095), 2, new byte[0], "061-000-111" },
-                    { 10, 2, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(8333), 2, new byte[0], "061-000-222" },
-                    { 11, 3, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(8336), 1, new byte[0], "061-000-333" }
+                    { 9, 1, new DateTime(2025, 3, 15, 11, 38, 56, 243, DateTimeKind.Utc).AddTicks(4679), 2, new byte[0], "061-000-111" },
+                    { 10, 2, new DateTime(2025, 3, 15, 11, 38, 56, 243, DateTimeKind.Utc).AddTicks(4842), 2, new byte[0], "061-000-222" },
+                    { 11, 3, new DateTime(2025, 3, 15, 11, 38, 56, 243, DateTimeKind.Utc).AddTicks(4845), 1, new byte[0], "061-000-333" }
                 });
 
             migrationBuilder.InsertData(
@@ -711,10 +713,10 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 5, 1, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(6508), 1, null, "+38761000111" },
-                    { 6, 2, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(6791), 2, null, "+38761000222" },
-                    { 7, 3, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(6794), 1, null, "+38761000222" },
-                    { 8, 4, new DateTime(2025, 3, 7, 14, 1, 36, 477, DateTimeKind.Utc).AddTicks(6796), 2, null, "+38761000222" }
+                    { 5, 1, new DateTime(2025, 3, 15, 11, 38, 56, 243, DateTimeKind.Utc).AddTicks(3351), 1, null, "+38761000111" },
+                    { 6, 2, new DateTime(2025, 3, 15, 11, 38, 56, 243, DateTimeKind.Utc).AddTicks(3644), 2, null, "+38761000222" },
+                    { 7, 3, new DateTime(2025, 3, 15, 11, 38, 56, 243, DateTimeKind.Utc).AddTicks(3647), 1, null, "+38761000222" },
+                    { 8, 4, new DateTime(2025, 3, 15, 11, 38, 56, 243, DateTimeKind.Utc).AddTicks(3649), 2, null, "+38761000222" }
                 });
 
             migrationBuilder.InsertData(
