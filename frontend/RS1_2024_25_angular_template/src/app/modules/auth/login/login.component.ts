@@ -9,7 +9,7 @@ import {AuthLoginEndpointService, LoginRequest} from '../../../endpoints/auth-en
   standalone: false
 })
 export class LoginComponent {
-  loginRequest: LoginRequest = { username: 'amar', password: 'password'};
+  loginRequest: LoginRequest = { username: '', password: ''};
   errorMessage: string | null = null;
 
   constructor(private authLoginService: AuthLoginEndpointService, private router: Router) {
