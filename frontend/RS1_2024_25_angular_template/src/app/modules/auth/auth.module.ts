@@ -14,6 +14,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
 import {MatButton, MatButtonModule} from '@angular/material/button';
 import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-togg
     LogoutComponent,
     TwoFactorComponent,
     AuthLayoutComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
