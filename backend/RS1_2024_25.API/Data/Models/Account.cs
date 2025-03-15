@@ -37,6 +37,9 @@ namespace RS1_2024_25.API.Data.Models.Auth
         public Owner? Owner => this as Owner;
 
         public bool isOwner => Owner != null;
+
+        public string? ResetToken { get; set; }
+        public DateTime? ResetTokenExpiry { get; set; }
     }
 }
 
