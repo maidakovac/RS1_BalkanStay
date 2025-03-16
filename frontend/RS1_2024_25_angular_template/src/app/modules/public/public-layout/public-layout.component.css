@@ -1,121 +1,91 @@
-/* Footer Styles */
+/* Ensure the users container uses flexbox */
 .users {
   display: flex;
+  align-items: center;
   gap: 15px;
+  margin-right: 12px;
 }
 
-.user-profile span {
-  padding: 0;
-}
-
+/* Style for all buttons including Hi, FirstName */
 .user-profile {
-  padding: 10px; /* Razmak unutar ivice */
-  border-radius: 5px; /* Zaokruženi uglovi */
+  padding: 10px;
+  border-radius: 5px;
   display: flex;
-  align-items: center; /* Centriranje sadržaja unutar user-profile */
-  justify-content: center; /* Centriranje sadržaja unutar user-profile */
-  flex-grow: 1; /* Ensures both have the same width */
-  text-align: center; /* Ensures text is centered within the container */
-  width: 90px;
+  align-items: center;
+  justify-content: center;
+  width: 120px; /* Ensure consistent width */
   background-color: #1a2e35;
   color: white;
-
-  /* Dodavanje ravnomerne sjene sa svih strana */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sjena sa svih strana */
-}
-
-
-
-
-.user-profile:hover {
-  background-color: white; /* Efekt na hover */
-  color: black;
-  /* Dodavanje ravnomerne sjene sa svih strana */
-  border: 1px solid #1a2e35;
-}
-
-
-.footer {
-  background-color: #1a2e35;
-  color: white;
-  font-family: Arial, sans-serif;
-  padding: 20px 0;
-}
-
-/* Social Media Section */
-.social-media {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  border-bottom: 1px solid #ddd;
-}
-
-.social-media-left span {
-  font-weight: bold;
-}
-
-.social-media-right {
-  display: flex;
-  gap: 15px;
-}
-
-.social-icon {
-  color: #6c757d;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.social-icon:hover {
-  color: #495057;
-}
-
-/* Footer Links Section */
-.footer-links {
-  padding: 40px 40px;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.footer-column {
-  width: 22%;
-  margin-bottom: 20px;
-}
-
-.footer-title {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.footer-column p {
-  margin: 5px 0;
-}
-
-.footer-column a {
-  color: #6c757d;
-  text-decoration: none;
-}
-
-.footer-column a:hover {
-  color: #495057;
-}
-
-/* Footer Copyright Section */
-.footer-copyright {
-  background-color: rgba(0, 0, 0, 0.05);
   text-align: center;
-  padding: 10px 0;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensures padding/borders don't affect size */
+  border: 1px solid transparent; /* Set a default border */
+  transition: border-radius 0.2s ease-in-out;
 }
 
-.footer-link {
-  color: #495057;
-  font-weight: bold;
-  text-decoration: none;
+/* When dropdown is open, remove bottom border-radius */
+.dropdown:hover .user-profile {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.footer-link:hover {
-  color: #007bff;
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  width: 120px; /* Match the width of the button */
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Matches the button width */
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  z-index: 10;
+  font-size: 17px;
+  border-top-left-radius: 0; /* Remove top border radius */
+  border-top-right-radius: 0;
+  overflow: hidden; /* Prevents overflow issues */
+}
+
+/* Show dropdown when hovering over the dropdown button */
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* Ensure dropdown menu buttons are inline */
+.dropdown-menu button {
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  text-align: left;
+  color: #1a2e35;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  border-bottom: #1a2e35 solid 1px;
+  width: 100%;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+
+/* Ensure all buttons in dropdown are aligned properly */
+.dropdown-menu {
+  min-width: 150px; /* Increase width to fit text in one line */
+}
+
+/* Remove bottom border from the last dropdown item */
+.dropdown-menu button:last-child {
+  border-bottom: none;
+}
+
+/* Hover effect */
+.dropdown-menu button:hover {
+  background-color: #f5f5f5;
 }

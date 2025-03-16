@@ -24,14 +24,42 @@
 
 
   <div class="users">
-    <div class="user-profile" routerLink="/auth/login">
-      <span>Login</span>
+    <!-- Show login/register if the user is NOT logged in -->
+    <div *ngIf="!isLoggedIn()" class="user-buttons">
+      <div class="user-profile" routerLink="/auth/login">
+        <span>Login</span>
+      </div>
+
+      <div class="user-profile" routerLink="/auth/register">
+        <span>Register</span>
+      </div>
     </div>
 
-    <div class="user-profile" routerLink="/auth/register">
-      <span>Register</span>
+    <!-- Show greeting message with dropdown if the user IS logged in -->
+    <div *ngIf="isLoggedIn()" class="dropdown">
+      <!-- Dropdown Button (Styled like Login/Register buttons) -->
+      <div class="user-profile dropdown-button" (click)="toggleDropdown()">
+        <span>Hi, {{ authInfo?.firstName }}</span>
+      </div>
+
+      <!-- Dropdown Menu -->
+      <div class="dropdown-menu" *ngIf="dropdownOpen">
+        <button routerLink="/profile">
+          <mat-icon>person</mat-icon> My Profile
+        </button>
+        <button (click)="logout()">
+          <mat-icon>logout</mat-icon> Logout
+        </button>
+      </div>
     </div>
   </div>
+
+
+
+
+
+
+
 
 </div>
 

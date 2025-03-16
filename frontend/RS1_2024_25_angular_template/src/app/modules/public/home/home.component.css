@@ -81,7 +81,7 @@
 }
 
 .search-button:hover{
-  background-color: #ff3b5c;
+  background-color: #253e49;
 }
 
 .search-button .material-icons {
@@ -100,11 +100,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-left: 10px; /* Da ne bude previše blizu search button-a */
+  margin-left: 10px;
 }
 
 .reset-button:hover {
-  background-color: #ff3b5c; /* Isto hover stanje */
+  background-color: #253e49;
 }
 
 .reset-button .material-icons {
