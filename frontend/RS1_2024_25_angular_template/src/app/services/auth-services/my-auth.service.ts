@@ -20,8 +20,8 @@ export class MyAuthService {
     return this.getMyAuthInfo()?.isAdmin ?? false;
   }
 
-  isManager(): boolean {
-    return this.getMyAuthInfo()?.isManager ?? false;
+  isOwner(): boolean {
+    return this.getMyAuthInfo()?.isOwner ?? false;
   }
 
   setLoggedInUser(x: LoginTokenDto | null) {

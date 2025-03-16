@@ -5,7 +5,7 @@ export interface MyAuthInfo {
   firstName: string;
   lastName: string;
   isAdmin: boolean;
-  isManager: boolean;
+  isOwner: boolean;
   isLoggedIn: boolean;
   slikaPath?: any;
 }
