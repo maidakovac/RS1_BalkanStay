@@ -1,0 +1,121 @@
+/* Footer Styles */
+.users {
+  display: flex;
+  gap: 15px;
+}
+
+.user-profile span {
+  padding: 0;
+}
+
+.user-profile {
+  padding: 10px; /* Razmak unutar ivice */
+  border-radius: 5px; /* Zaokruženi uglovi */
+  display: flex;
+  align-items: center; /* Centriranje sadržaja unutar user-profile */
+  justify-content: center; /* Centriranje sadržaja unutar user-profile */
+  flex-grow: 1; /* Ensures both have the same width */
+  text-align: center; /* Ensures text is centered within the container */
+  width: 90px;
+  background-color: #1a2e35;
+  color: white;
+
+  /* Dodavanje ravnomerne sjene sa svih strana */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sjena sa svih strana */
+}
+
+
+
+
+.user-profile:hover {
+  background-color: white; /* Efekt na hover */
+  color: black;
+  /* Dodavanje ravnomerne sjene sa svih strana */
+  border: 1px solid #1a2e35;
+}
+
+
+.footer {
+  background-color: #1a2e35;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px 0;
+}
+
+/* Social Media Section */
+.social-media {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+.social-media-left span {
+  font-weight: bold;
+}
+
+.social-media-right {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  color: #6c757d;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.social-icon:hover {
+  color: #495057;
+}
+
+/* Footer Links Section */
+.footer-links {
+  padding: 40px 40px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  width: 22%;
+  margin-bottom: 20px;
+}
+
+.footer-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-column p {
+  margin: 5px 0;
+}
+
+.footer-column a {
+  color: #6c757d;
+  text-decoration: none;
+}
+
+.footer-column a:hover {
+  color: #495057;
+}
+
+/* Footer Copyright Section */
+.footer-copyright {
+  background-color: rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding: 10px 0;
+}
+
+.footer-link {
+  color: #495057;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #007bff;
+}
