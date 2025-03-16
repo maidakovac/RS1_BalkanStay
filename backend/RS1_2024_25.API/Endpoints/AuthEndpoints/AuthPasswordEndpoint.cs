@@ -20,7 +20,7 @@ namespace RS1_2024_25.API.Endpoints.Auth
         private readonly string smtpUsername = "izellapin@gmail.com";
         private readonly string smtpPassword = "vsho odio tbie lgcz";
         private readonly string senderEmail = "izellapin@gmail.com";
-        private readonly string frontendResetUrl = "http://localhost:4200/auth/password/forgot"; // ✅ Usklađeno sa frontend rutom
+        private readonly string frontendResetUrl = "http://localhost:4200/auth/reset-password";
 
         [HttpPost("forgot")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
@@ -70,7 +70,7 @@ namespace RS1_2024_25.API.Endpoints.Auth
         {
             try
             {
-                string resetUrl = $"{frontendResetUrl}?token={resetToken}"; // ✅ Generiše ispravan frontend URL
+                string resetUrl = $"{frontendResetUrl}?token={resetToken}"; 
 
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(senderEmail);
