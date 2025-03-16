@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
-public class MyAuthorizationAttribute(bool isAdmin, bool isManager) : Attribute, IAuthorizationFilter
+public class MyAuthorizationAttribute(bool isAdmin, bool isOwner) : Attribute, IAuthorizationFilter
 {
     public void OnAuthorization(AuthorizationFilterContext context)
     {
@@ -33,7 +33,7 @@ public class MyAuthorizationAttribute(bool isAdmin, bool isManager) : Attribute,
             return;
         }
 
-        if (isManager && !authInfo.IsManager)
+        if (isOwner && !authInfo.isOwner)
         {
             context.Result = new ForbidResult();
             return;

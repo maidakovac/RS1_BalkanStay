@@ -113,7 +113,7 @@ namespace RS1_2024_25.API.Services
                 FirstName = account.FirstName ?? account.Email.Split('@')[0], // Derive FirstName if null
                 LastName = account.LastName ?? "N/A", // Provide fallback if LastName is null
                 IsAdmin = account.isAdministrator, // Admin check
-                IsManager = account.isOwner, // Manager logic based on Owner
+                isOwner = account.isOwner, // Manager logic based on Owner
                 IsLoggedIn = true,
                 SlikaPath = user?.Image // Use Image property only if the account is a User
             };
@@ -128,7 +128,7 @@ namespace RS1_2024_25.API.Services
         public string FirstName { get; set; } // Derived from Email
         public string LastName { get; set; } // Placeholder
         public bool IsAdmin { get; set; } // Defaulted to false
-        public bool IsManager { get; set; } // Defaulted to false
+        public bool isOwner { get; set; } // Defaulted to false
         public bool IsLoggedIn { get; set; }
         public byte[] SlikaPath { get; set; } // Maps to Image
     }
