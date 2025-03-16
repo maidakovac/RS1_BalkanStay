@@ -26,7 +26,7 @@ export class LoginComponent {
     this.authLoginService.handleAsync(this.loginRequest).subscribe({
       next: () => {
         console.log('Login successful');
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/home']);
       },
       error: (error: any) => {
         this.errorMessage = 'Incorrect username or password';

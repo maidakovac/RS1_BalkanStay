@@ -50,7 +50,7 @@ h2 {
 
 .input-container input:focus,
 .input-container input:valid {
-  border-color: #007bff;
+  border-color: #253e49;
 }
 
 .input-container input:focus + label,
@@ -75,7 +75,7 @@ h2 {
 }
 
 .login-button:hover {
-  background-color: #0056b3;
+  background-color: #253e49;
 }
 
 .error-message {
