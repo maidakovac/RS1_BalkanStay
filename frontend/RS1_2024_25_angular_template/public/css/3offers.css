@@ -76,7 +76,7 @@
 
 /* Hover efekat za cenu */
 .part3 .offer-price:hover {
-  background-color: #ff3b5c;
+  background-color: #1e343c;
   transform: scale(1.05);
 }
 
@@ -95,7 +95,7 @@
 
 /* Hover na dugme */
 .part3 .ponuda-dugme:hover {
-  background-color: #ff3b5c;
+  background-color: #253e49;
 }
 
 /* Poboljšana slika */
