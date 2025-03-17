@@ -2,10 +2,15 @@ import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angula
 import { HttpClient } from '@angular/common/http';
 import {timer} from 'rxjs';
 
+import { Router } from '@angular/router';
+import { Apartment, ApartmentImage, Reservation, Account, ApartmentRule, ApartmentAmenity, ApartmentToiletry} from '../../../models/apartment.model';
+
 export interface GetPodaciResponse {
   datumPonude: string
   podaci: Drzava[]
 }
+
+
 
 export interface Drzava {
   id: number
@@ -18,17 +23,7 @@ export interface Drzava {
   planiranaPutovanja: PlaniranaPutovanja[]
 }
 
-export interface Apartment {
-  apartmentId: number;
-  name: string;
-  description: string;
-  adress: string;
-  pricePerNight: number;
-  cityId: number | null;
-  accountID: number | null;
-  apartmentImages: ApartmentImages[];
-  city: City;
-}
+
 
 export interface City {
   id: number;
@@ -84,6 +79,10 @@ export interface PlaniranaPutovanja {
   standalone: false
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+
+  odabraniApartman: Apartment | null = null;
+
+
   @ViewChild('scrollAnchor', { static: false }) scrollAnchor!: ElementRef;
 
   traziVrijednost: string = "";
@@ -92,7 +91,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   sviApartmani: Apartment[] = [];
   odabranaDrzava: Drzava | null = null;
   odabranoPutovanje: PlaniranaPutovanja | null = null;
-  odabraniApartman: Apartment | null = null;
+
   checkInDate: Date | null = null;
   checkOutDate: Date | null = null;
   sviGradovi: City[] = [];
@@ -107,9 +106,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   totalApartments: number = 0;
   filtriraniApartmani: Apartment[] = [];
 
-  private firstLoadDone: boolean = false; // ✅ Flag to track first API call
+  private firstLoadDone: boolean = false;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   private initialized: boolean = false;
 
@@ -136,10 +135,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     let url = `${this.bazniUrl}/Apartment/Get?page=${this.page}&limit=${this.pageSize}`;
 
-    const delayTime = this.firstLoadDone ? 1200 : 0; // ⏳ 1s delay only after first request
+    const delayTime = this.firstLoadDone ? 1200 : 0;
 
 
-    timer(delayTime).subscribe(() => { // 2 seconds delay
+    timer(delayTime).subscribe(() => {
       this.httpClient.get<Apartment[]>(url).subscribe(
         (response) => {
           if (response && response.length > 0) {
@@ -268,8 +267,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.odabranaDrzava = drzave;
   }
 
-  K2_odaberiApartment(apartman: Apartment) {
+  K2_odaberiApartment(apartman: Apartment): void {
     this.odabraniApartman = apartman;
+    this.router.navigate(['/apartment', apartman.apartmentId]);
   }
 
   K3_OdaberiPutovanje(polazak: PlaniranaPutovanja) {

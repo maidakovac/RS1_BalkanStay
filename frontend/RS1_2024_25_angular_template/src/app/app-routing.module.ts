@@ -2,8 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UnauthorizedComponent } from './modules/shared/unauthorized/unauthorized.component';
 import { AuthGuard } from './auth-guards/auth-guard.service';
+import { ApartmentDetailsComponent } from './apartment-details/apartment-details.component';
+
+
+
 
 const routes: Routes = [
+  { path: 'apartment/:id', component: ApartmentDetailsComponent },
+
+
   { path: 'unauthorized', component: UnauthorizedComponent },
   {
     path: 'admin',
@@ -24,6 +31,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   },
   { path: '**', redirectTo: 'public', pathMatch: 'full' }
+
 ];
 
 @NgModule({

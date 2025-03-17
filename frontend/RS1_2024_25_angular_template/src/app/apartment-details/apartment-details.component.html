@@ -1,0 +1,29 @@
+<div *ngIf="apartment">
+  <h2>{{ apartment.name }}</h2>
+  <p>{{ apartment.description }}</p>
+  <p><strong>Address:</strong> {{ apartment.adress }}</p>
+  <p><strong>City:</strong> {{ apartment.city.name }}, {{ apartment.city.country.name }}</p>
+  <p><strong>Price per Night:</strong> {{ apartment.pricePerNight }} €</p>
+
+  <h3>Amenities</h3>
+  <ul>
+    <li *ngFor="let amenity of apartment.apartmentAmenities">{{ amenity.amenityName }}</li>
+  </ul>
+
+  <h3>Rules</h3>
+  <ul>
+    <li *ngFor="let rule of apartment.apartmentRules">{{ rule.ruleName }}</li>
+  </ul>
+
+  <h3>Toiletries</h3>
+  <ul>
+    <li *ngFor="let toiletry of apartment.apartmentToiletries">{{ toiletry.toiletryName }}</li>
+  </ul>
+
+  <h3>Images</h3>
+  <div class="image-gallery">
+    <div *ngFor="let image of apartment.apartmentImages">
+      <img [src]="image.image.imagePath" alt="Apartment Image" />
+    </div>
+  </div>
+</div>

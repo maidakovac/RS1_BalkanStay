@@ -19,11 +19,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 import {AuthRoutingModule} from './modules/auth/auth-routing.module';
+import { ApartmentDetailsComponent } from './apartment-details/apartment-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ApartmentDetailsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
