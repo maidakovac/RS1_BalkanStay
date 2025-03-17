@@ -1,19 +1,30 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace RS1_2024_25.API.Data.Models.Auth
 {
     public class TwoFactorAuth
-
     {
         [Key]
-        public int TwoFactorAuthId { get; set; } // 2FAID
-        public int AccountId { get; set; }       // Foreign Key to Account
-        public string AuthToken { get; set; }    // Authentication Token
-        public DateTime CreatedAt { get; set; }  // Timestamp when the token is created
-        public DateTime ExpiresAt { get; set; }  // Timestamp when the token expires
+        public int TwoFactorAuthId { get; set; }
 
-        // Navigation Property
-        public Account Account { get; set; }
+        [Required]
+        [ForeignKey("Account")]
+        public int AccountId { get; set; }
+
+        [Required]
+        [MaxLength(128)] 
+        public string AuthTokenHash { get; set; } 
+
+        [Required]
+        public DateTime CreatedAt { get; set; }
+
+        [Required]
+        public DateTime ExpiresAt { get; set; }
+
+        [JsonIgnore] 
+        public virtual Account Account { get; set; }
     }
 }

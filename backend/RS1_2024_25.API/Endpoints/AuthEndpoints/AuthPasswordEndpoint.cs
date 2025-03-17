@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.Data.Models.Auth;
+using RS1_2024_25.API.Services;
 using System;
 using System.Net;
 using System.Net.Mail;
@@ -13,14 +14,18 @@ namespace RS1_2024_25.API.Endpoints.Auth
 {
     [Route("auth/password")]
     [ApiController]
-    public class AuthPasswordEndpoint(ApplicationDbContext db) : ControllerBase
+    public class AuthPasswordEndpoint : ControllerBase
     {
-        private readonly string smtpServer = "smtp.gmail.com";
-        private readonly int smtpPort = 587;
-        private readonly string smtpUsername = "izellapin@gmail.com";
-        private readonly string smtpPassword = "vsho odio tbie lgcz";
-        private readonly string senderEmail = "izellapin@gmail.com";
+        private readonly ApplicationDbContext _db;
+        private readonly EmailService _emailService; 
         private readonly string frontendResetUrl = "http://localhost:4200/auth/reset-password";
+
+        public AuthPasswordEndpoint(ApplicationDbContext db, EmailService emailService)
+        {
+            _db = db;
+            _emailService = emailService;
+        }
+
 
         [HttpPost("forgot")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
@@ -28,7 +33,7 @@ namespace RS1_2024_25.API.Endpoints.Auth
             if (string.IsNullOrEmpty(request.Email))
                 return BadRequest(new { message = "Email is required." });
 
-            var user = await db.Accounts.FirstOrDefaultAsync(u => u.Email == request.Email);
+            var user = await _db.Accounts.FirstOrDefaultAsync(u => u.Email == request.Email);
             if (user == null)
                 return NotFound(new { message = "Email not found." });
 
@@ -36,9 +41,10 @@ namespace RS1_2024_25.API.Endpoints.Auth
 
             user.ResetToken = resetToken;
             user.ResetTokenExpiry = DateTime.UtcNow.AddHours(1);
-            await db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
 
-            bool emailSent = SendResetEmail(user.Email, resetToken);
+            string resetUrl = $"{frontendResetUrl}?token={resetToken}";
+            bool emailSent = await _emailService.SendResetEmailAsync(user.Email, resetUrl);
 
             if (!emailSent)
                 return StatusCode(500, new { message = "Error sending email. Please try again." });
@@ -52,7 +58,7 @@ namespace RS1_2024_25.API.Endpoints.Auth
             if (string.IsNullOrEmpty(request.Token) || string.IsNullOrEmpty(request.NewPassword))
                 return BadRequest(new { message = "Invalid request." });
 
-            var user = await db.Accounts.FirstOrDefaultAsync(u => u.ResetToken == request.Token && u.ResetTokenExpiry > DateTime.UtcNow);
+            var user = await _db.Accounts.FirstOrDefaultAsync(u => u.ResetToken == request.Token && u.ResetTokenExpiry > DateTime.UtcNow);
             if (user == null)
                 return BadRequest(new { message = "Invalid or expired reset token." });
 
@@ -61,38 +67,9 @@ namespace RS1_2024_25.API.Endpoints.Auth
 
             user.ResetToken = null;
             user.ResetTokenExpiry = null;
-            await db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
 
             return Ok(new { message = "Password has been reset successfully." });
-        }
-
-        private bool SendResetEmail(string email, string resetToken)
-        {
-            try
-            {
-                string resetUrl = $"{frontendResetUrl}?token={resetToken}"; 
-
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(senderEmail);
-                mail.To.Add(email);
-                mail.Subject = "Password Reset Request";
-                mail.Body = $"<p>Click the link below to reset your password:</p><p><a href='{resetUrl}'>{resetUrl}</a></p>";
-                mail.IsBodyHtml = true;
-
-                SmtpClient smtp = new SmtpClient(smtpServer, smtpPort)
-                {
-                    Credentials = new NetworkCredential(smtpUsername, smtpPassword),
-                    EnableSsl = true
-                };
-
-                smtp.Send(mail);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Email sending failed: {ex.Message}");
-                return false;
-            }
         }
 
         public class ForgotPasswordRequest

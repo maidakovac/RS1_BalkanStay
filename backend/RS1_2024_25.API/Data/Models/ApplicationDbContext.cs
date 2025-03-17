@@ -17,7 +17,9 @@ namespace RS1_2024_25.API.Data
         public DbSet<Account> Accounts { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
+
         public DbSet<TwoFactorAuth> TwoFactorAuths { get; set; }
+
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Review> Reviews { get; set; }
@@ -32,6 +34,7 @@ namespace RS1_2024_25.API.Data
         public DbSet<ApartmentAmenity> ApartmentAmenities { get; set; }
         public DbSet<Toiletry> Toiletries { get; set; }
         public DbSet<ApartmentToiletry> ApartmentToiletries { get; set; }
+
 
 
         public DbSet<ContactMessage> ContactMessages { get; set; }
