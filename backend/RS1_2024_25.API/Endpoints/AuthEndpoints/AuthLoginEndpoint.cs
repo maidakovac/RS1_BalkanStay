@@ -11,21 +11,34 @@ using System.Threading.Tasks;
 namespace RS1_2024_25.API.Endpoints.Auth
 {
     [Route("auth")]
-    public class AuthLoginEndpoint(ApplicationDbContext db, MyAuthService authService, PasswordHasherService passwordHasherService) : ControllerBase
+    [ApiController]
+    public class AuthLoginEndpoint : ControllerBase
     {
+        private readonly ApplicationDbContext _db;
+        private readonly MyAuthService _authService;
+        private readonly PasswordHasherService _passwordHasherService;
+        private readonly TwoFactorAuthService _twoFactorAuthService;
+
+        public AuthLoginEndpoint(ApplicationDbContext db, MyAuthService authService, PasswordHasherService passwordHasherService, TwoFactorAuthService twoFactorAuthService)
+        {
+            _db = db;
+            _authService = authService;
+            _passwordHasherService = passwordHasherService;
+            _twoFactorAuthService = twoFactorAuthService; 
+        }
+
         [HttpPost("login")]
         public async Task<ActionResult<LoginResponse>> HandleAsync([FromBody] LoginRequest request, CancellationToken cancellationToken = default)
         {
-            // Fetch user by username or email
-            var loggedInUser = await db.Accounts
-                .FirstOrDefaultAsync(u => (u.Username == request.Username || u.Email == request.Email), cancellationToken);
+            var loggedInUser = await _db.Accounts
+                .Include(a => a.TwoFactorAuth)
+                .FirstOrDefaultAsync(u => u.Username == request.Username || u.Email == request.Email, cancellationToken);
 
             if (loggedInUser == null)
             {
                 return Unauthorized(new { Message = "Incorrect username or email" });
             }
 
-            // Verify the hashed password
             var passwordHasher = new PasswordHasher<Account>();
             var passwordVerificationResult = passwordHasher.VerifyHashedPassword(loggedInUser, loggedInUser.Password, request.Password);
 
@@ -34,15 +47,30 @@ namespace RS1_2024_25.API.Endpoints.Auth
                 return Unauthorized(new { Message = "Incorrect password" });
             }
 
-            // Generate authentication token
-            var newAuthToken = await authService.GenerateAuthToken(loggedInUser, cancellationToken);
-            var authInfo = authService.GetAuthInfo(newAuthToken);
 
-            return new LoginResponse
+            if (loggedInUser.TwoFactorAuth != null) 
+            {
+                Console.WriteLine($"[DEBUG] Generating 2FA token for UserId: {loggedInUser.AccountID}");
+
+                var token = await _twoFactorAuthService.Generate2FAToken(loggedInUser.AccountID);
+
+                return Ok(new
+                {
+                    Requires2FA = true,
+                    Message = "A verification code has been sent to your email.",
+                    UserId = loggedInUser.AccountID
+                });
+            }
+
+
+            var newAuthToken = await _authService.GenerateAuthToken(loggedInUser, cancellationToken);
+            var authInfo = _authService.GetAuthInfo(newAuthToken);
+
+            return Ok(new LoginResponse
             {
                 Token = newAuthToken.Value,
                 MyAuthInfo = authInfo
-            };
+            });
         }
 
         public class LoginRequest

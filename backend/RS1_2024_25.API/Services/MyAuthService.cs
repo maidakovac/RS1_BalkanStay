@@ -50,6 +50,7 @@ namespace RS1_2024_25.API.Services
                 RecordedAt = DateTime.Now
             };
 
+
             applicationDbContext.MyAuthenticationTokens.Add(authToken);
             await applicationDbContext.SaveChangesAsync(cancellationToken);
 

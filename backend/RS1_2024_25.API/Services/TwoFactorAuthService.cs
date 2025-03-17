@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using NETCore.MailKit.Core;
+using Microsoft.Identity.Client;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Data.Models.Auth;
 using RS1_2024_25.API.Helpers;
@@ -11,79 +11,89 @@ namespace RS1_2024_25.API.Services
 {
     public class TwoFactorAuthService
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IEmailService _emailService; // Or SMS Service
+        private readonly ApplicationDbContext _context; 
+        private readonly EmailService _emailService;
 
-        public TwoFactorAuthService(ApplicationDbContext context, IEmailService emailService)
+
+        public TwoFactorAuthService(ApplicationDbContext context, EmailService emailService) // ✅ Inject _context
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
             _emailService = emailService;
         }
 
         public async Task<string> Generate2FAToken(int accountId)
         {
-            var token = GenerateRandomToken(); // 6-digit code
-            var tokenHash = TokenHasher.HashToken(token); // Hash the token before storing
+            var user = await _context.Accounts
+                .Include(a => a.TwoFactorAuth)
+                .FirstOrDefaultAsync(a => a.AccountID == accountId);
 
-            var expiration = DateTime.UtcNow.AddMinutes(5); // 5-minute expiration
-
-            var existing2FA = await _context.TwoFactorAuths
-                .FirstOrDefaultAsync(tfa => tfa.AccountId == accountId);
-
-            if (existing2FA != null)
+            if (user == null)
             {
-                _context.TwoFactorAuths.Remove(existing2FA); // Remove old token
+                throw new InvalidOperationException($"User with ID {accountId} not found.");
             }
 
-            var twoFactorAuth = new TwoFactorAuth
-            {
-                AccountId = accountId,
-                AuthTokenHash = tokenHash, // Store the hashed token
-                CreatedAt = DateTime.UtcNow,
-                ExpiresAt = expiration
-            };
+            var token = GenerateRandomToken();
+            var tokenHash = TokenHasher.HashToken(token);
 
-            _context.TwoFactorAuths.Add(twoFactorAuth);
+            var expiration = DateTime.UtcNow.AddMinutes(5);
+
+            if (user.TwoFactorAuth == null)
+            {
+                Console.WriteLine($"[ERROR] User does not have 2FA enabled.");
+                return null; // Prevent 2FA generation if user does not have 2FA enabled
+            }
+
+            // ✅ Update existing 2FA record
+            user.TwoFactorAuth.AuthTokenHash = tokenHash;
+            user.TwoFactorAuth.CreatedAt = DateTime.UtcNow;
+            user.TwoFactorAuth.ExpiresAt = expiration;
+
             await _context.SaveChangesAsync();
 
-            var account = await _context.Accounts.FindAsync(accountId);
-            if (account != null)
-            {
-                //await _emailService.SendEmailAsync(account.Email, "Your 2FA Code", $"Your code is: {token}");
-            }
+            // ✅ Send token to user email
+            await _emailService.SendResetEmailAsync(user.Email, $"Your 2FA Code: {token}");
 
-            return token; // Send plain token to user, but store only hashed version
+            return token;
         }
 
-        private string GenerateRandomToken()
-        {
-            var random = new Random();
-            return random.Next(100000, 999999).ToString(); // Generates a 6-digit code
-        }
 
         public async Task<bool> Verify2FAToken(int accountId, string token)
         {
+            Console.WriteLine($"[DEBUG] Verifying 2FA for UserId: {accountId} with Token: {token}");
+
             var twoFactorAuth = await _context.TwoFactorAuths
                 .Where(tfa => tfa.AccountId == accountId)
                 .OrderByDescending(tfa => tfa.CreatedAt)
                 .FirstOrDefaultAsync();
 
-            if (twoFactorAuth == null || twoFactorAuth.ExpiresAt < DateTime.UtcNow)
+            if (twoFactorAuth == null)
             {
-                return false; // Invalid or expired token
+                Console.WriteLine($"[ERROR] No 2FA record found for UserId: {accountId}");
+                return false;
             }
 
-            // Verify hashed token
+            Console.WriteLine($"[DEBUG] Stored Hash: {twoFactorAuth.AuthTokenHash}");
+            Console.WriteLine($"[DEBUG] User Input Token: {token}");
+
             if (!TokenHasher.VerifyToken(token, twoFactorAuth.AuthTokenHash))
             {
-                return false; // Token doesn't match
+                Console.WriteLine($"[ERROR] 2FA token mismatch for UserId: {accountId}");
+                return false;
             }
 
-            // Delete used token
+            Console.WriteLine($"[SUCCESS] 2FA verified successfully for UserId: {accountId}");
+
             _context.TwoFactorAuths.Remove(twoFactorAuth);
             await _context.SaveChangesAsync();
 
             return true;
+        }
+
+
+        private string GenerateRandomToken()
+        {
+            var random = new Random();
+            return random.Next(100000, 999999).ToString();
         }
     }
 }

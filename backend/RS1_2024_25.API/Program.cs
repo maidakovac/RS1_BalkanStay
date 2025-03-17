@@ -1,9 +1,5 @@
-﻿using FluentAssertions.Common;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using NETCore.MailKit.Core;
-using NETCore.MailKit.Extensions;
-using NETCore.MailKit.Infrastructure.Internal;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Helper;
 using RS1_2024_25.API.Helper.Auth;
@@ -24,10 +20,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x => x.OperationFilter<MyAuthorizationSwaggerHeader>());
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddTransient<MyAuthService>();
+builder.Services.AddScoped<TwoFactorAuthService>();
+builder.Services.AddScoped<MyAuthService>();
+builder.Services.AddScoped<EmailService>();
 builder.Services.AddTransient<MyTokenGenerator>();
 builder.Services.AddTransient<PasswordHasherService>();
-builder.Services.AddScoped<RS1_2024_25.API.Services.EmailService>();
+
 
 
 builder.Services.AddCors(options =>

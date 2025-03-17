@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.Data.Models.Auth;
@@ -31,23 +32,34 @@ namespace RS1_2024_25.API.Endpoints.Auth
             {
                 Username = request.UserName,
                 Email = request.Email,
-                Password = authService.HashPassword(request.Password), // Sada se hashira!
+                Password = authService.HashPassword(request.Password),
                 FirstName = request.FirstName,
                 LastName = request.LastName
             };
 
+            var twoFactorAuth = new TwoFactorAuth
+            {
+                AccountId = newUser.AccountID,
+                AuthTokenHash = "",
+                CreatedAt = DateTime.UtcNow,
+                ExpiresAt = DateTime.UtcNow.AddMinutes(5)
+            };
+
+            newUser.TwoFactorAuth = twoFactorAuth;
+
 
             db.Accounts.Add(newUser);
+            db.TwoFactorAuths.Add(twoFactorAuth);
             await db.SaveChangesAsync(cancellationToken);
-
             // Generiši authentication token
-            var newAuthToken = await authService.GenerateAuthToken(newUser, cancellationToken);
-            var authInfo = authService.GetAuthInfo(newAuthToken);
+            // var newAuthToken = await authService.GenerateAuthToken(newUser, cancellationToken);
+            // var authInfo = authService.GetAuthInfo(newAuthToken);
 
             return new RegisterResponse
             {
-                Token = newAuthToken.Value,
-                MyAuthInfo = authInfo
+                Account = newUser
+                // Token = newAuthToken.Value,
+                // MyAuthInfo = authInfo
             };
         }
 
@@ -62,8 +74,9 @@ namespace RS1_2024_25.API.Endpoints.Auth
 
         public class RegisterResponse
         {
-            public required MyAuthInfo? MyAuthInfo { get; set; }
-            public string Token { get; internal set; }
+            public Account Account { get; set; }
+            // public required MyAuthInfo? MyAuthInfo { get; set; }
+            // public string Token { get; internal set; }
         }
     }
 }
