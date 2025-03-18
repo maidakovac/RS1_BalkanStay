@@ -37,6 +37,7 @@ export class ApartmentDetailsComponent implements OnInit {
     this.loading = true;
     this.apartmentService.getApartmentById(this.apartmentId).subscribe(
       (response) => {
+        console.log('Fetched Apartment Data:', response);
         this.apartment = response;
         this.loading = false;
       },
@@ -47,4 +48,5 @@ export class ApartmentDetailsComponent implements OnInit {
       }
     );
   }
+
 }

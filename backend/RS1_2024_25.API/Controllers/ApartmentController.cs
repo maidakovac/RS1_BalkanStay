@@ -118,6 +118,14 @@ namespace RS1_2024_25.API.Controllers
                 return BadRequest();
             }
 
+            foreach (var image in apartment.ApartmentImages)
+            {
+                if (!string.IsNullOrEmpty(image.Image?.ImagePath))
+                {
+                    image.Image.ImagePath = $"http://localhost:8000/images/{Path.GetFileName(image.Image.ImagePath)}";
+                }
+            }
+
             return Ok(apartment);
         }
 
