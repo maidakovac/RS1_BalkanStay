@@ -53,12 +53,15 @@ namespace RS1_2024_25.API.Controllers
                                           .ThenInclude(y => y.Country)
                                       .Include(x => x.ApartmentImages)
                                           .ThenInclude(z => z.Image)
-                                      .Include(x => x.Account)  // Include the Account navigation property
+                                      .Include(x => x.Account)
                                       .Include(x => x.Reservations)
-                                          .ThenInclude(r => r.Account)  // Include the Account navigation in Reservations
+                                          .ThenInclude(a => a.Account)
                                       .Include(x => x.ApartmentRules)
+                                           .ThenInclude(r => r.Rule)
                                       .Include(x => x.ApartmentAmenities)
+                                            .ThenInclude(aa => aa.Amenity)
                                       .Include(x => x.ApartmentToiletries)
+                                             .ThenInclude(t => t.Toiletry)
                                       .ToList();      
 
 
@@ -107,10 +110,13 @@ namespace RS1_2024_25.API.Controllers
                                   .ThenInclude(z => z.Image)
                               .Include(x => x.Account)  
                               .Include(x => x.Reservations)
-                                  .ThenInclude(r => r.Account)  
+                                  .ThenInclude(a => a.Account)  
                               .Include(x => x.ApartmentRules)
+                                   .ThenInclude(r=>r.Rule)
                               .Include(x => x.ApartmentAmenities)
+                                    .ThenInclude(aa=>aa.Amenity)
                               .Include(x => x.ApartmentToiletries)
+                                    .ThenInclude(t=>t.Toiletry)
                               .FirstOrDefault(a => a.ApartmentId == ApartmentId);
 
             if (apartment == null)
