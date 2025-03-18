@@ -100,28 +100,27 @@ namespace RS1_2024_25.API.Controllers
 
 
         [HttpGet("{ApartmentId}")]
-
         public ActionResult<Apartment> GetById(int ApartmentId)
         {
             var apartment = _DbContext.Apartments
-                              .Include(x => x.City)
-                                  .ThenInclude(y => y.Country)
-                              .Include(x => x.ApartmentImages)
-                                  .ThenInclude(z => z.Image)
-                              .Include(x => x.Account)  
-                              .Include(x => x.Reservations)
-                                  .ThenInclude(a => a.Account)  
-                              .Include(x => x.ApartmentRules)
-                                   .ThenInclude(r=>r.Rule)
-                              .Include(x => x.ApartmentAmenities)
-                                    .ThenInclude(aa=>aa.Amenity)
-                              .Include(x => x.ApartmentToiletries)
-                                    .ThenInclude(t=>t.Toiletry)
-                              .FirstOrDefault(a => a.ApartmentId == ApartmentId);
+                                  .Include(x => x.City)
+                                      .ThenInclude(y => y.Country)
+                                  .Include(x => x.ApartmentImages)
+                                      .ThenInclude(z => z.Image)
+                                  .Include(x => x.Account)
+                                  .Include(x => x.Reservations)
+                                      .ThenInclude(a => a.Account)
+                                  .Include(x => x.ApartmentRules)
+                                       .ThenInclude(r => r.Rule)
+                                  .Include(x => x.ApartmentAmenities)
+                                        .ThenInclude(aa => aa.Amenity)
+                                  .Include(x => x.ApartmentToiletries)
+                                        .ThenInclude(t => t.Toiletry)
+                                  .FirstOrDefault(a => a.ApartmentId == ApartmentId);
 
             if (apartment == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             foreach (var image in apartment.ApartmentImages)
@@ -132,9 +131,22 @@ namespace RS1_2024_25.API.Controllers
                 }
             }
 
-            return Ok(apartment);
-        }
+            var amenities = apartment.ApartmentAmenities
+                                     .Select(aa => new
+                                     {
+                                         aa.Amenity.AmenityID,
+                                         aa.Amenity.AmenityText
+                                     })
+                                     .ToList();
 
+            var result = new
+            {
+                Apartment = apartment,
+                Amenities = amenities
+            };
+
+            return Ok(result);
+        }
 
 
 

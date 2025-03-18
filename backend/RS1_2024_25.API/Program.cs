@@ -30,19 +30,29 @@ builder.Services.AddTransient<PasswordHasherService>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngular",
-        policy => policy.WithOrigins("http://localhost:4200")
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials());
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
 });
 
+builder.Services.AddControllers();
 
 //builder.Services.AddMailKit(config => config.UseMailKit(builder.Configuration.GetSection("MailKitOptions").Get<MailKitOptions>()));
 
 
-
 var app = builder.Build();
+
+app.UseCors("AllowAllOrigins");
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+
 
 
 app.UseSwagger();
@@ -55,6 +65,10 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 using (var scope = app.Services.CreateScope())
 {
