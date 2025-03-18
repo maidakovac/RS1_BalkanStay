@@ -1,3 +1,5 @@
+<p>apartment-details works!</p>
+
 <div *ngIf="apartment">
   <h2>{{ apartment.name }}</h2>
   <p>{{ apartment.description }}</p>
@@ -23,8 +25,7 @@
   <h3>Images</h3>
   <div class="image-gallery">
     <div *ngFor="let image of apartment.apartmentImages">
-      <img [src]="'http://localhost:8000' + image.image.imagePath" alt="Apartment Image" />
+      <img [src]="image.image.imagePath" alt="Apartment Image" />
     </div>
   </div>
-
 </div>

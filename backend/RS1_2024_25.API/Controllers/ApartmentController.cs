@@ -57,11 +57,8 @@ namespace RS1_2024_25.API.Controllers
                                       .Include(x => x.Reservations)
                                           .ThenInclude(a => a.Account)
                                       .Include(x => x.ApartmentRules)
-                                           .ThenInclude(r => r.Rule)
                                       .Include(x => x.ApartmentAmenities)
-                                            .ThenInclude(aa => aa.Amenity)
                                       .Include(x => x.ApartmentToiletries)
-                                             .ThenInclude(t => t.Toiletry)
                                       .ToList();      
 
 
@@ -131,21 +128,8 @@ namespace RS1_2024_25.API.Controllers
                 }
             }
 
-            var amenities = apartment.ApartmentAmenities
-                                     .Select(aa => new
-                                     {
-                                         aa.Amenity.AmenityID,
-                                         aa.Amenity.AmenityText
-                                     })
-                                     .ToList();
-
-            var result = new
-            {
-                Apartment = apartment,
-                Amenities = amenities
-            };
-
-            return Ok(result);
+            
+            return Ok(apartment);
         }
 
 

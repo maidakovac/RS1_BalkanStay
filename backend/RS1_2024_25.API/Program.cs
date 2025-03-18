@@ -30,13 +30,15 @@ builder.Services.AddTransient<PasswordHasherService>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins",
-        builder =>
-        {
-            builder.AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
-        });
+    options.AddPolicy("AllowSpecificOrigin",
+
+      builder => builder.WithOrigins("http://localhost:4200") 
+
+                        .AllowAnyMethod() 
+
+                        .AllowAnyHeader()); 
+
+
 });
 
 builder.Services.AddControllers();
@@ -46,7 +48,7 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
-app.UseCors("AllowAllOrigins");
+app.UseCors("AllowSpecificOrigin");
 
 if (app.Environment.IsDevelopment())
 {
@@ -65,10 +67,7 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
+
 
 using (var scope = app.Services.CreateScope())
 {

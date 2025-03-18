@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {timer} from 'rxjs';
-
 import { Router } from '@angular/router';
 import { Apartment, ApartmentImage, Reservation, Account, ApartmentRule, ApartmentAmenity, ApartmentToiletry} from '../../../models/apartment.model';
 
@@ -9,8 +8,6 @@ export interface GetPodaciResponse {
   datumPonude: string
   podaci: Drzava[]
 }
-
-
 
 export interface Drzava {
   id: number
@@ -23,7 +20,17 @@ export interface Drzava {
   planiranaPutovanja: PlaniranaPutovanja[]
 }
 
-
+//export interface Apartment {
+//  apartmentId: number;
+//  name: string;
+//  description: string;
+//  adress: string;
+//  pricePerNight: number;
+//  cityId: number | null;
+//  accountID: number | null;
+//  apartmentImages: ApartmentImages[];
+//  city: City;
+//}
 
 export interface City {
   id: number;
@@ -80,9 +87,6 @@ export interface PlaniranaPutovanja {
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  odabraniApartman: Apartment | null = null;
-
-
   @ViewChild('scrollAnchor', { static: false }) scrollAnchor!: ElementRef;
 
   traziVrijednost: string = "";
@@ -91,6 +95,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   sviApartmani: Apartment[] = [];
   odabranaDrzava: Drzava | null = null;
   odabranoPutovanje: PlaniranaPutovanja | null = null;
+
+  odabraniApartman: Apartment | null = null;
+
 
   checkInDate: Date | null = null;
   checkOutDate: Date | null = null;
@@ -108,7 +115,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   private firstLoadDone: boolean = false;
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private httpClient: HttpClient,  private router: Router) { }
 
   private initialized: boolean = false;
 

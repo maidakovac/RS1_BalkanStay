@@ -2,14 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UnauthorizedComponent } from './modules/shared/unauthorized/unauthorized.component';
 import { AuthGuard } from './auth-guards/auth-guard.service';
-import { ApartmentDetailsComponent } from './apartment-details/apartment-details.component';
-
-
-
+import { ApartmentDetailsComponent } from './modules/public/apartment-details/apartment-details.component';
 
 const routes: Routes = [
   { path: 'apartment/:id', component: ApartmentDetailsComponent },
-
 
   { path: 'unauthorized', component: UnauthorizedComponent },
   {
