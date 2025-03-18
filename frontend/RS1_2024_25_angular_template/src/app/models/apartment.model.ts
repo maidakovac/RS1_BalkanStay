@@ -34,15 +34,13 @@ export interface Apartment {
   description: string;
   adress: string;
   pricePerNight: number;
-  cityId: number | null;
-  city: City;
-  accountId: number | null;
-  account: Account;
-  apartmentImages: ApartmentImage[];
-  reservations: Reservation[];
-  apartmentRules: ApartmentRule[];
-  apartmentAmenities: ApartmentAmenity[];
-  apartmentToiletries: ApartmentToiletry[];
+  cityName: string;
+  countryName: string;
+  amenities: string[];
+  toiletries: string[];
+  rules: string[];
+  imagePaths: string[];
+  apartmentImages?: ApartmentImage[];
 }
 
 export interface Account {

@@ -247,7 +247,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.isFiltered = true;
 
     this.filtriraniApartmani = this.sviApartmani.filter(apartman =>
-      apartman.city.name.toLowerCase() === searchTerm &&
+      apartman.cityName.toLowerCase() === searchTerm &&
       this.isAvailable(apartman)
     );
   }
