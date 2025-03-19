@@ -20,12 +20,14 @@ import { FormsModule } from '@angular/forms';
 
 import {AuthRoutingModule} from './modules/auth/auth-routing.module';
 import { ApartmentDetailsComponent } from './modules/public/apartment-details/apartment-details.component';
+import { FooterComponent } from './app/modules/shared/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ApartmentDetailsComponent
+    ApartmentDetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserAnimationsModule,
