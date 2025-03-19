@@ -21,6 +21,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
+import { ApartmentDetailsComponent } from './apartment-details/apartment-details.component';
 
 @NgModule({
   declarations: [

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApartmentService } from '../services/apartment.service';
-import { Apartment } from '../models/apartment.model';
+import { ApartmentService } from '../../../services/apartment/apartment.service';
+import { Apartment } from '../../../models/apartment.model';
 
 @Component({
   selector: 'app-apartment-details',
@@ -37,7 +37,6 @@ export class ApartmentDetailsComponent implements OnInit {
     this.loading = true;
     this.apartmentService.getApartmentById(this.apartmentId).subscribe(
       (response) => {
-        console.log('Fetched Apartment Data:', response);
         this.apartment = response;
         this.loading = false;
       },
@@ -48,5 +47,4 @@ export class ApartmentDetailsComponent implements OnInit {
       }
     );
   }
-
 }

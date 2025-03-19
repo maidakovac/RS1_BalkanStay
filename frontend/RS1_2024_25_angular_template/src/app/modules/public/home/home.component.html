@@ -58,11 +58,11 @@
     <div id="destinacije" class="offers-container" [class.loading]="isLoading">
       <article *ngFor="let x of filtriraniApartmani" class="offer">
         <div class="offer-image"
-             [style.background-image]="'url(' + (x.apartmentImages?.[0]?.image?.imagePath || 'https://placehold.co/600x400') + ')'" >
+             [style.background-image]="'url(' + (x.imagePaths?.[0] || 'https://placehold.co/600x400') + ')'" >
         </div>
         <div class="offer-details">
           <div class="offer-destination">
-            {{ x.city?.name }}, {{ x.city?.country?.name }}
+            {{ x.cityName }}, {{ x.countryName }}
           </div>
           <div class="offer-description">{{ x.adress }}</div>
           <div class="offer-description">{{ x.description }}</div>
