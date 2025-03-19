@@ -14,6 +14,7 @@ export class ApartmentDetailsComponent implements OnInit {
   apartment: Apartment | null = null;
   loading: boolean = false;
   errorMessage: string | null = null;
+  selectedImage: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -33,12 +34,25 @@ export class ApartmentDetailsComponent implements OnInit {
     });
   }
 
+  selectImage(imagePath: string) {
+    this.selectedImage = imagePath;
+  }
+
   getApartmentDetails() {
     this.loading = true;
     this.apartmentService.getApartmentById(this.apartmentId).subscribe(
       (response) => {
         this.apartment = response;
         this.loading = false;
+        console.log("Apartment data loaded:", this.apartment);
+
+        // Postavljanje prve slike kao glavne kada podaci stignu
+        if (this.apartment?.imagePaths?.length > 0) {
+          this.selectedImage = this.apartment.imagePaths[0];
+          console.log("Main image selected:", this.selectedImage);
+        } else {
+          console.warn("No images found for this apartment");
+        }
       },
       (error) => {
         console.error('Error fetching apartment details', error);

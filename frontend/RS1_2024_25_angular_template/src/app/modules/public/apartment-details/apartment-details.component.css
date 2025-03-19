@@ -1,37 +1,175 @@
-.apartment-details {
-  padding: 20px;
+body {
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  max-width: 1600px;
+}
+* {
+  font-family: Arial, Helvetica;
+  box-sizing: border-box;
 }
 
-.loading {
+h2, h3 {
+  color: #222;
+}
+
+.name{
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.image-gallery {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.main-image {
+  flex: 2; /* Glavna slika zauzima više prostora */
+}
+
+.main-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.thumbnail-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.thumbnail-list img {
+  width: 150px;
+  height: 117px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.thumbnail-list img:hover {
+  transform: scale(1.1);
+}
+
+.thumbnail-list img.selected {
+  border: 3px solid #007BFF;
+}
+.description{
+  margin-top: 20px;
+  padding: 15px;
+  background: #e8e8e8;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  color: #1a2e35;
+
   text-align: center;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+
+.price-container {
+  margin-top: 20px;
+  padding: 15px;
+  background: #1a2e35;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.city-info {
-  margin-top: 1rem;
-}
-
-.apartment-images img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
+.price {
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  margin: 0;
 }
 
 ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
 li {
-  margin: 5px 0;
+  font-size: 20px;
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.error {
-  color: red;
-  text-align: center;
+strong {
   font-weight: bold;
+}
+
+.apartment-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.info-column {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.info-column h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.info-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info-column li {
+  font-size: 18px;
+  padding: 8px;
+  background: rgba(230, 230, 230, 0.58);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 600px) {
+  .image-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+  .info-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

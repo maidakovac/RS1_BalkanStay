@@ -1,32 +1,54 @@
-<p>apartment-details works!</p>
 
 <div *ngIf="apartment">
-  <h2>{{ apartment?.name }}</h2>
-  <p>{{ apartment?.description }}</p>
-  <p><strong>Address:</strong> {{ apartment?.adress }}</p>
-  <p><strong>City:</strong> {{ apartment?.cityName }}, {{ apartment?.countryName }}</p>
-  <p><strong>Price per Night:</strong> {{ apartment?.pricePerNight }} €</p>
+  <h2 class="name">{{ apartment?.name }}</h2>
+  <p class="adress"> {{ apartment?.adress }}</p>
+  <p class="country">{{ apartment?.countryName }}</p>
 
-  <h3>Amenities</h3>
-  <ul>
-    <li *ngFor="let amenity of apartment.amenities">{{ amenity }}</li>
-  </ul>
-
-  <h3>Rules</h3>
-  <ul>
-    <li *ngFor="let rule of apartment.rules">{{ rule }}</li>
-  </ul>
-
-  <h3>Toiletries</h3>
-  <ul>
-    <li *ngFor="let toiletry of apartment.toiletries">{{ toiletry }}</li>
-  </ul>
-
-  <h3>Images</h3>
   <div class="image-gallery">
-    <div *ngFor="let imagePath of apartment.imagePaths">
-      <img [src]="imagePath" alt="Apartment Image" />
+    <div class="main-image">
+      <img [src]="selectedImage" alt="Main Apartment Image">
+    </div>
+
+    <div class="thumbnail-list">
+      <img
+        *ngFor="let imagePath of apartment.imagePaths"
+        [src]="imagePath"
+        alt="Thumbnail"
+        (click)="selectImage(imagePath)"
+        [class.selected]="imagePath === selectedImage"
+      />
+    </div>
+  </div>
+
+  <p class="description">{{ apartment?.description }}</p>
+
+  <div class="price-container">
+    <p class="price"> {{ apartment?.pricePerNight }} € per night</p>
+  </div>
+
+
+  <div class="info-grid">
+    <div class="info-column">
+      <h3>AMENITIES</h3>
+      <ul>
+        <li *ngFor="let amenity of apartment.amenities">{{ amenity }}</li>
+      </ul>
+    </div>
+
+    <div class="info-column">
+      <h3>TOILETRIES</h3>
+      <ul>
+        <li *ngFor="let toiletry of apartment.toiletries">{{ toiletry }}</li>
+      </ul>
+    </div>
+
+    <div class="info-column">
+      <h3>RULES</h3>
+      <ul>
+        <li *ngFor="let rule of apartment.rules">{{ rule }}</li>
+      </ul>
     </div>
   </div>
 </div>
+
 <app-footer></app-footer>
