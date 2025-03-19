@@ -20,6 +20,7 @@ import {MatProgressBar} from '@angular/material/progress-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {FooterComponent} from './footer/footer.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MyDialogSimpleComponent,
     MyDialogConfirmComponent,
     MyPageProgressbarComponent,
+    FooterComponent
 
   ],
   imports: [
@@ -56,6 +58,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FormsModule,
     ReactiveFormsModule,
     MyPageProgressbarComponent,
+    FooterComponent
 
   ]
 })

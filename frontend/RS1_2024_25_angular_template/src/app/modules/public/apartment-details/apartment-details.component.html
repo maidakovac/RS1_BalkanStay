@@ -1,11 +1,11 @@
 <p>apartment-details works!</p>
 
 <div *ngIf="apartment">
-  <h2>{{ apartment.name }}</h2>
-  <p>{{ apartment.description }}</p>
-  <p><strong>Address:</strong> {{ apartment.adress }}</p>
-  <p><strong>City:</strong> {{ apartment.cityName }}, {{ apartment.countryName }}</p>
-  <p><strong>Price per Night:</strong> {{ apartment.pricePerNight }} €</p>
+  <h2>{{ apartment?.name }}</h2>
+  <p>{{ apartment?.description }}</p>
+  <p><strong>Address:</strong> {{ apartment?.adress }}</p>
+  <p><strong>City:</strong> {{ apartment?.cityName }}, {{ apartment?.countryName }}</p>
+  <p><strong>Price per Night:</strong> {{ apartment?.pricePerNight }} €</p>
 
   <h3>Amenities</h3>
   <ul>
@@ -29,3 +29,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>
