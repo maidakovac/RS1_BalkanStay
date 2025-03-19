@@ -1,1 +1,10 @@
-<p>two-factor works!</p>
+<div class="two-factor-container">
+  <h2>Two-Factor Authentication</h2>
+  <p>Enter the verification code sent to your email.</p>
+
+  <input type="text" [(ngModel)]="code" placeholder="Enter 2FA Code" required />
+
+  <button (click)="verify2FA()">Verify</button>
+
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+</div>

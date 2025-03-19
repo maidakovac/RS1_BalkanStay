@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
+import {MyAuthService, RegisterRequest } from '../../../services/auth-services/my-auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,42 +12,37 @@ import {HttpClient} from '@angular/common/http';
 })
 
 export class RegisterComponent {
-  name: string = '';
-  surname: string = '';
-  username: string = '';
-  email: string = '';
-  password: string = '';
-  message: string = '';
+  registerForm: FormGroup;
+  errorMessage: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private router: Router, private authService: MyAuthService, private fb: FormBuilder)
+  {
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      userName: ['', Validators.required]
+    });
+  }
 
   onRegister() {
-    if (!this.name || !this.surname || !this.username || !this.email || !this.password) {
-      this.message = "All fields are required!";
-      return;
-    }
+    if (this.registerForm.invalid) return;
 
-    const userData = {
-      email: this.email,
-      password: this.password,
-      firstName: this.name,  // ✅ Changed
-      lastName: this.surname, // ✅ Changed
-      userName: this.username // ✅ Changed (Backend expects userName, not username)
-    };
+    const registerData: RegisterRequest = this.registerForm.value;
 
-    this.http.post('http://localhost:8000/auth/register', userData, {
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .subscribe({
-        next: (response: any) => {
-          this.message = "Registration successful! Redirecting to login...";
-          setTimeout(() => this.router.navigate(['/auth/login']), 3000);
-        },
-        error: (error) => {
-          this.message = error.error.message || "Registration failed.";
-          console.error("Registration error:", error);
-        }
-      });
+    console.log(registerData)
+
+    this.authService.register(registerData).subscribe({
+      next: (response) => {
+        console.log('Registration successful:', response);
+        this.router.navigateByUrl('/auth/login');
+      },
+      error: (error) => {
+        this.errorMessage = error.message;
+      }
+    });
+
   }
 
 }

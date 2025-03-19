@@ -72,7 +72,8 @@ namespace RS1_2024_25.API.Services
             return true;
         }
 
-        // Get authentication info
+        // Get authentication
+        // 
         public MyAuthInfo GetAuthInfo()
         {
             string? authToken = httpContextAccessor.HttpContext?.Request.Headers["my-auth-token"];

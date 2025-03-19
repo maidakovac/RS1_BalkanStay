@@ -703,9 +703,9 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 9, 1, new DateTime(2025, 3, 17, 18, 42, 20, 950, DateTimeKind.Utc).AddTicks(6066), 2, new byte[0], "061-000-111" },
-                    { 10, 2, new DateTime(2025, 3, 17, 18, 42, 20, 950, DateTimeKind.Utc).AddTicks(6273), 2, new byte[0], "061-000-222" },
-                    { 11, 3, new DateTime(2025, 3, 17, 18, 42, 20, 950, DateTimeKind.Utc).AddTicks(6278), 1, new byte[0], "061-000-333" }
+                    { 9, 1, new DateTime(2025, 3, 18, 20, 6, 47, 656, DateTimeKind.Utc).AddTicks(6144), 2, new byte[0], "061-000-111" },
+                    { 10, 2, new DateTime(2025, 3, 18, 20, 6, 47, 656, DateTimeKind.Utc).AddTicks(6306), 2, new byte[0], "061-000-222" },
+                    { 11, 3, new DateTime(2025, 3, 18, 20, 6, 47, 656, DateTimeKind.Utc).AddTicks(6308), 1, new byte[0], "061-000-333" }
                 });
 
             migrationBuilder.InsertData(
@@ -713,10 +713,10 @@ namespace RS1_2024_25.API.Migrations
                 columns: new[] { "AccountID", "CityID", "CreatedAt", "GenderID", "Image", "Phone" },
                 values: new object[,]
                 {
-                    { 5, 1, new DateTime(2025, 3, 17, 18, 42, 20, 950, DateTimeKind.Utc).AddTicks(4544), 1, null, "+38761000111" },
-                    { 6, 2, new DateTime(2025, 3, 17, 18, 42, 20, 950, DateTimeKind.Utc).AddTicks(4805), 2, null, "+38761000222" },
-                    { 7, 3, new DateTime(2025, 3, 17, 18, 42, 20, 950, DateTimeKind.Utc).AddTicks(4808), 1, null, "+38761000222" },
-                    { 8, 4, new DateTime(2025, 3, 17, 18, 42, 20, 950, DateTimeKind.Utc).AddTicks(4811), 2, null, "+38761000222" }
+                    { 5, 1, new DateTime(2025, 3, 18, 20, 6, 47, 656, DateTimeKind.Utc).AddTicks(4930), 1, null, "+38761000111" },
+                    { 6, 2, new DateTime(2025, 3, 18, 20, 6, 47, 656, DateTimeKind.Utc).AddTicks(5167), 2, null, "+38761000222" },
+                    { 7, 3, new DateTime(2025, 3, 18, 20, 6, 47, 656, DateTimeKind.Utc).AddTicks(5169), 1, null, "+38761000222" },
+                    { 8, 4, new DateTime(2025, 3, 18, 20, 6, 47, 656, DateTimeKind.Utc).AddTicks(5171), 2, null, "+38761000222" }
                 });
 
             migrationBuilder.InsertData(

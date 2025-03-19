@@ -1,10 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {tap} from 'rxjs/operators';
-import {MyConfig} from '../../my-config';
-import {MyAuthService} from '../../services/auth-services/my-auth.service';
-import {LoginTokenDto} from '../../services/auth-services/dto/login-token-dto';
-import {MyBaseEndpointAsync} from '../../helper/my-base-endpoint-async.interface';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
+import { MyConfig } from '../../my-config';
+import { MyAuthService } from '../../services/auth-services/my-auth.service';
+import { LoginTokenDto } from '../../services/auth-services/dto/login-token-dto';
+import { MyBaseEndpointAsync } from '../../helper/my-base-endpoint-async.interface';
+import {Observable} from 'rxjs';
 
 export interface LoginRequest {
   email?: string;
@@ -12,25 +13,20 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface LoginResponse {
+  message: string;
+  accountID?: number;
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthLoginEndpointService implements MyBaseEndpointAsync<LoginRequest, LoginTokenDto> {
+export class AuthLoginEndpointService implements MyBaseEndpointAsync<LoginRequest, LoginResponse> {
   private apiUrl = `${MyConfig.base_url}/auth/login`;
 
-  constructor(private httpClient: HttpClient, private myAuthService: MyAuthService) {
-  }
+  constructor(private httpClient: HttpClient, private myAuthService: MyAuthService) {}
 
-  handleAsync(request: LoginRequest) {
-    return this.httpClient.post<LoginTokenDto>(`${this.apiUrl}`, request, ).pipe(
-      tap((response) => {
-        // Use MyAuthService to store login token and auth info
-        this.myAuthService.setLoggedInUser({
-          token: response.token,
-          myAuthInfo: response.myAuthInfo
-        });
-      })
-    );
+  handleAsync(request: LoginRequest): Observable<LoginResponse> {
+    return this.httpClient.post<LoginResponse>(this.apiUrl, request);
   }
 }

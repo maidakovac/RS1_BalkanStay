@@ -1,5 +1,5 @@
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
-export interface MyBaseEndpointAsync<TRequest = void, TResponse = void> {
+export interface MyBaseEndpointAsync<TRequest = void, TResponse = any> {
   handleAsync(request: TRequest): Observable<TResponse>;
 }

@@ -25,30 +25,44 @@ namespace RS1_2024_25.API.Endpoints.AuthEndpoints
         }
 
         [HttpPost("verify-2fa")]
-        public async Task<ActionResult<LoginResponse>> VerifyTwoFactorAsync([FromBody] TwoFactorRequest request, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<TwoFactorResponse>> VerifyTwoFactorAsync([FromBody] TwoFactorRequest request, CancellationToken cancellationToken = default)
         {
             var user = await _db.Accounts.FindAsync(request.UserId);
             if (user == null)
             {
-                return Unauthorized(new { Message = "User not found" });
+                Console.WriteLine("❌ [ERROR] User not found.");
+                return Unauthorized(new TwoFactorResponse { Message = "User not found." });
             }
 
             var isValid = await _twoFactorAuthService.Verify2FAToken(user.AccountID, request.Token);
             if (!isValid)
             {
-                return Unauthorized(new { Message = "Invalid or expired 2FA code" });
+                Console.WriteLine("❌ [ERROR] Invalid or expired 2FA token.");
+                return Unauthorized(new TwoFactorResponse { Message = "Invalid or expired 2FA code." });
             }
 
-
+            // ✅ Generate the authentication token
             var newAuthToken = await _authService.GenerateAuthToken(user, cancellationToken);
-            var authInfo = _authService.GetAuthInfo(newAuthToken);
 
-            return Ok(new LoginResponse
+            // ✅ Debugging: Fetch MyAuthInfo
+            var authInfo = _authService.GetAuthInfo(newAuthToken);
+            if (authInfo == null || !authInfo.IsLoggedIn)
             {
+                Console.WriteLine("❌ [ERROR] MyAuthInfo is null or user is not logged in.");
+            }
+            else
+            {
+                Console.WriteLine($"✅ [SUCCESS] MyAuthInfo Retrieved: {authInfo.Username}");
+            }
+
+            return Ok(new TwoFactorResponse
+            {
+                Message = "2FA verified successfully.",
                 Token = newAuthToken.Value,
-                MyAuthInfo = authInfo
+                MyAuthInfo = authInfo 
             });
         }
+
 
 
         [HttpPost("enable-2fa")]
@@ -92,6 +106,13 @@ namespace RS1_2024_25.API.Endpoints.AuthEndpoints
         {
             public int UserId { get; set; }
             public required string Token { get; set; }
+        }
+
+        public class TwoFactorResponse
+        {
+            public string Message { get; set; }
+            public string Token { get; set; }
+            public MyAuthInfo MyAuthInfo { get; set; }
         }
     }
 }

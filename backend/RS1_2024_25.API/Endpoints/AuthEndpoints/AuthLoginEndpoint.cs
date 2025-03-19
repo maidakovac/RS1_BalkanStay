@@ -24,7 +24,7 @@ namespace RS1_2024_25.API.Endpoints.Auth
             _db = db;
             _authService = authService;
             _passwordHasherService = passwordHasherService;
-            _twoFactorAuthService = twoFactorAuthService; 
+            _twoFactorAuthService = twoFactorAuthService;
         }
 
         [HttpPost("login")]
@@ -36,42 +36,28 @@ namespace RS1_2024_25.API.Endpoints.Auth
 
             if (loggedInUser == null)
             {
-                return Unauthorized(new { Message = "Incorrect username or email" });
+                return Unauthorized(new LoginResponse { Message = "Incorrect username or email." });
             }
-
             var passwordHasher = new PasswordHasher<Account>();
             var passwordVerificationResult = passwordHasher.VerifyHashedPassword(loggedInUser, loggedInUser.Password, request.Password);
-
             if (passwordVerificationResult == PasswordVerificationResult.Failed)
             {
-                return Unauthorized(new { Message = "Incorrect password" });
+                return Unauthorized(new LoginResponse { Message = "Incorrect password." });
             }
-
-
-            if (loggedInUser.TwoFactorAuth != null) 
+            if (loggedInUser.TwoFactorAuth == null)
             {
-                Console.WriteLine($"[DEBUG] Generating 2FA token for UserId: {loggedInUser.AccountID}");
-
-                var token = await _twoFactorAuthService.Generate2FAToken(loggedInUser.AccountID);
-
-                return Ok(new
-                {
-                    Requires2FA = true,
-                    Message = "A verification code has been sent to your email.",
-                    UserId = loggedInUser.AccountID
-                });
+                return Ok(new LoginResponse {Message = "Login failed. Two Factor Auth is null." });
             }
-
-
-            var newAuthToken = await _authService.GenerateAuthToken(loggedInUser, cancellationToken);
-            var authInfo = _authService.GetAuthInfo(newAuthToken);
-
+            Console.WriteLine($"Generating 2FA token for UserId: {loggedInUser.AccountID}");
+            //var token = await _twoFactorAuthService.Generate2FAToken(loggedInUser.AccountID);
+            await _twoFactorAuthService.Generate2FAToken(loggedInUser.AccountID);
             return Ok(new LoginResponse
             {
-                Token = newAuthToken.Value,
-                MyAuthInfo = authInfo
+                Message = "A verification code has been sent to your email.",
+                AccountID = loggedInUser.AccountID,
             });
         }
+
 
         public class LoginRequest
         {
@@ -82,8 +68,8 @@ namespace RS1_2024_25.API.Endpoints.Auth
 
         public class LoginResponse
         {
-            public required MyAuthInfo? MyAuthInfo { get; set; }
-            public string Token { get; internal set; }
+            public string Message { get; set; }
+            public int AccountID { get; set; }
         }
     }
 }
