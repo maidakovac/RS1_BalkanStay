@@ -15,6 +15,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import {MatButton, MatButtonModule} from '@angular/material/button';
 import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     MatButton,
     MatSlideToggle,
     ReactiveFormsModule,
+    SharedModule,
   ],
   providers: []
 })

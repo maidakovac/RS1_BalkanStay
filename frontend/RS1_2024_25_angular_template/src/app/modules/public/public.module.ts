@@ -22,6 +22,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
 import { ApartmentDetailsComponent } from './apartment-details/apartment-details.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ApartmentDetailsComponent } from './apartment-details/apartment-details
     MatCardModule,
     MatAutocompleteModule,
     MatMenu,
-    MatMenuTrigger
+    MatMenuTrigger,
+    SharedModule
   ],
   exports: [
     AboutComponent,

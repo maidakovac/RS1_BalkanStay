@@ -20,7 +20,7 @@ import {MatProgressBar} from '@angular/material/progress-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {FooterComponent} from '../../app/modules/shared/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import {FooterComponent} from '../../app/modules/shared/footer/footer.component'
     MyDialogSimpleComponent,
     MyDialogConfirmComponent,
     MyPageProgressbarComponent,
-    FooterComponent
+
   ],
   imports: [
     CommonModule,
@@ -56,7 +56,7 @@ import {FooterComponent} from '../../app/modules/shared/footer/footer.component'
     FormsModule,
     ReactiveFormsModule,
     MyPageProgressbarComponent,
-    FooterComponent
+
   ]
 })
 export class SharedModule {
