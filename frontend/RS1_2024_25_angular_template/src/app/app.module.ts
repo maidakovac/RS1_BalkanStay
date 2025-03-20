@@ -19,13 +19,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 import {AuthRoutingModule} from './modules/auth/auth-routing.module';
-import { SearchBoxComponent } from './src/app/modules/shared/search-box/search-box/search-box.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchBoxComponent,
 
   ],
   imports: [
