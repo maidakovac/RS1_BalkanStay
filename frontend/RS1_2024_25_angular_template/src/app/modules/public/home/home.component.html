@@ -71,7 +71,7 @@
           <div class="offer-info">
             <div class="offer-price">{{ x.pricePerNight }} €</div>
           </div>
-          <div class="ponuda-dugme" (click)="K2_odaberiApartment(x)">Pogledaj apartman</div>
+          <div class="ponuda-dugme" (click)="K2_odaberiApartment(x)">Reserve</div>
         </div>
       </article>
     </div>
@@ -107,13 +107,13 @@
       <table class="styled-table">
         <thead class="travel-table-header">
         <tr>
-          <th>Putovanje ID</th>
-          <th>Polazak</th>
-          <th>Povratak</th>
-          <th>Broj dana</th>
-          <th>Broj slobodnih mjesta</th>
-          <th>Cijena</th>
-          <th>Odaberi</th>
+          <th>Travel ID</th>
+          <th>Check in</th>
+          <th>Check out</th>
+          <th>Days</th>
+          <th>Available spots</th>
+          <th>Price</th>
+          <th>Reserve</th>
         </tr>
         </thead>
         <tbody id="putovanjaTabela" *ngIf="odabranaDrzava">
@@ -159,29 +159,29 @@
       <div id="contact-form">
         <div class="container2">
           <div class="item">
-            <label for="drzavaText">Drzava</label>
+            <label for="drzavaText">Country</label>
             <input disabled id="drzavaText" type="text" [value]="odabranaDrzava!=null?odabranaDrzava.drzava:''"/>
           </div>
           <div class="item">
-            <label for="datumPolaska">Datum polaska</label>
+            <label for="datumPolaska">Check in</label>
             <input disabled id="datumPolaska" type="text"/>
           </div>
         </div>
         <hr/>
         <div class="container2">
           <div class="item">
-            <label class="bold" for="brojGostiju">Broj gostiju</label>
+            <label class="bold" for="brojGostiju">Number of guests</label>
             <input id="brojGostiju" max="5" min="1" oninput="promjenaBrojaGostiju()" type="number" value="1"/>
           </div>
           <div class="item">
-            <label for="cijenaPoGostu">Cijena po gostu</label>
+            <label for="cijenaPoGostu">Price per guest</label>
             <input disabled id="cijenaPoGostu" type="text"/>
           </div>
         </div>
         <div class="container2">
           <div class="item"></div>
           <div class="item">
-            <label class="bold" for="ukupnaCijena">Sumarno za sve goste</label>
+            <label class="bold" for="ukupnaCijena">Total price</label>
             <input disabled id="ukupnaCijena" type="text"/>
           </div>
         </div>
@@ -192,11 +192,11 @@
         <div class="container3">
           <div class="item-container">
             <div class="item">
-              <label for="brojPasosa">Broj pasoša</label>
+              <label for="brojPasosa">ID number</label>
               <input id="brojPasosa" oninput="provjeriBrojPasosa()"/>
             </div>
             <div class="item">
-              <label for="datumVazenjaPasosa">Datum važenja pasoša</label>
+              <label for="datumVazenjaPasosa">Valid date</label>
               <input id="datumVazenjaPasosa" oninput="provjeriPasos()"/>
             </div>
           </div>
@@ -206,7 +206,7 @@
               <input id="email" oninput="provjeriEmail()"/>
             </div>
             <div class="item">
-              <label for="phone">Broj telefona</label>
+              <label for="phone">Phone number</label>
               <input id="phone" oninput="provjeriTelefon()"/>
             </div>
           </div>
