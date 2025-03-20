@@ -1,13 +1,25 @@
-<div class="two-factor-container">
+<div class="login-container">
   <h2>Two-Factor Authentication</h2>
   <p>Enter the verification code sent to your email.</p>
 
-  <input type="text" [(ngModel)]="code" placeholder="Enter 2FA Code" required />
+  <form (ngSubmit)="verify2FA()">
+    <div class="form-group">
+      <div class="input-container">
+        <input type="text" id="2fa-code" name="2fa-code" [(ngModel)]="code" required>
+        <label for="2fa-code">Enter 2FA Code</label>
+      </div>
+    </div>
 
-  <button (click)="verify2FA()">Verify</button>
-  <button (click)="reset2FA()">Reset 2FA Code</button>
+    <button class="login-button" type="submit">Verify</button>
+    <button class="reset-button" type="button" (click)="reset2FA()">Reset 2FA Code</button>
 
-  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
+    <!-- Back to Login Link -->
+    <div class="login-links">
+      <a routerLink="/auth/login">Back to Login</a>
+    </div>
+  </form>
 </div>
+
 <app-footer></app-footer>
