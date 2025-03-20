@@ -15,7 +15,7 @@ namespace RS1_2024_25.API.Services
         private readonly EmailService _emailService;
 
 
-        public TwoFactorAuthService(ApplicationDbContext context, EmailService emailService) // ✅ Inject _context
+        public TwoFactorAuthService(ApplicationDbContext context, EmailService emailService)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _emailService = emailService;
@@ -34,27 +34,26 @@ namespace RS1_2024_25.API.Services
 
             var token = GenerateRandomToken();
             var tokenHash = TokenHasher.HashToken(token);
-
             var expiration = DateTime.UtcNow.AddMinutes(5);
 
             if (user.TwoFactorAuth == null)
             {
                 Console.WriteLine($"[ERROR] User does not have 2FA enabled.");
-                return null; // Prevent 2FA generation if user does not have 2FA enabled
+                return null;
             }
 
-            // ✅ Update existing 2FA record
+  
             user.TwoFactorAuth.AuthTokenHash = tokenHash;
             user.TwoFactorAuth.CreatedAt = DateTime.UtcNow;
             user.TwoFactorAuth.ExpiresAt = expiration;
 
             await _context.SaveChangesAsync();
 
-            // ✅ Send token to user email
-            await _emailService.SendResetEmailAsync(user.Email, $"Your 2FA Code: {token}");
+            await _emailService.SendResetEmailAsync(user.Email, $"Your new 2FA Code: {token}");
 
             return token;
         }
+
 
 
         public async Task<bool> Verify2FAToken(int accountId, string token)

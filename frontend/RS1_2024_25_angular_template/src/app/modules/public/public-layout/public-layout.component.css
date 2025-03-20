@@ -6,26 +6,31 @@
   margin-right: 12px;
 }
 
+.user-profile span {
+  padding-right: 0;
+}
 
 .user-profile {
   padding: 10px;
+  font-size: 18px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
-  background-color: #1a2e35;
-  color: white;
+  width: auto;
+  margin: auto;
+  color: #1a2e35;
   text-align: center;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  border: 1px solid transparent;
+  border: 1px solid #1a2e35;
   transition: border-radius 0.2s ease-in-out;
 }
 
 .user-buttons {
   display: flex;
+  justify-content: center;
   gap: 15px;
   flex-direction: row;
   width: auto;
@@ -41,7 +46,7 @@
 
 .dropdown {
   position: relative;
-  width: 120px;
+  width: auto;
 }
 
 

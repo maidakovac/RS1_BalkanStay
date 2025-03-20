@@ -67,4 +67,39 @@ export class TwoFactorComponent {
       }
     });
   }
+
+  reset2FA(): void {
+    if (!this.userId || this.userId <= 0) {
+      this.errorMessage = 'Invalid User ID. Please log in again.';
+      console.error('❌ 2FA reset failed: Invalid userId', this.userId);
+      return;
+    }
+
+    console.log('🔄 Requesting 2FA reset for user:', this.userId);
+
+    this.http.post<TwoFactorResponse>(
+      'http://localhost:8000/auth/reset-2fa',
+      { userId: this.userId, token: '' }
+    ).subscribe({
+      next: (response) => {
+        console.log(' 2FA reset successful:', response);
+
+        if (response.token) {
+          console.log('🔑 Storing new 2FA token:', response.token);
+          localStorage.setItem('2fa-token', response.token);
+        }
+
+        this.errorMessage = null;
+        alert('A new 2FA code has been sent to your email.');
+      },
+      error: (error: any) => {
+        console.error('Error resetting 2FA:', error);
+        this.errorMessage = error.error?.message || 'Failed to reset 2FA. Please try again.';
+      }
+    });
+  }
+
+
+
+
 }

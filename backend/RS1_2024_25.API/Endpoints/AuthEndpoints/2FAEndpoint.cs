@@ -41,10 +41,10 @@ namespace RS1_2024_25.API.Endpoints.AuthEndpoints
                 return Unauthorized(new TwoFactorResponse { Message = "Invalid or expired 2FA code." });
             }
 
-            // ✅ Generate the authentication token
+
             var newAuthToken = await _authService.GenerateAuthToken(user, cancellationToken);
 
-            // ✅ Debugging: Fetch MyAuthInfo
+
             var authInfo = _authService.GetAuthInfo(newAuthToken);
             if (authInfo == null || !authInfo.IsLoggedIn)
             {
@@ -59,7 +59,7 @@ namespace RS1_2024_25.API.Endpoints.AuthEndpoints
             {
                 Message = "2FA verified successfully.",
                 Token = newAuthToken.Value,
-                MyAuthInfo = authInfo 
+                MyAuthInfo = authInfo
             });
         }
 
@@ -82,7 +82,7 @@ namespace RS1_2024_25.API.Endpoints.AuthEndpoints
             var twoFactorAuth = new TwoFactorAuth
             {
                 AccountId = user.AccountID,
-                AuthTokenHash = "", 
+                AuthTokenHash = "",
                 CreatedAt = DateTime.UtcNow,
                 ExpiresAt = DateTime.UtcNow.AddMinutes(5)
             };
@@ -114,5 +114,58 @@ namespace RS1_2024_25.API.Endpoints.AuthEndpoints
             public string Token { get; set; }
             public MyAuthInfo MyAuthInfo { get; set; }
         }
+
+
+
+        [HttpPost("reset-2fa")]
+        public async Task<IActionResult> ResetTwoFactorAuth([FromBody] TwoFactorRequest request)
+        {
+            Console.WriteLine($"🔄 [DEBUG] Received Reset 2FA Request: {request.UserId}");
+
+            if (request == null)
+            {
+                Console.WriteLine("❌ [ERROR] Received null request body.");
+                return BadRequest(new { Message = "Invalid request format. Request body is missing." });
+            }
+
+            if (request.UserId <= 0)
+            {
+                Console.WriteLine("❌ [ERROR] Invalid user ID received: " + request.UserId);
+                return BadRequest(new { Message = "Invalid user ID." });
+            }
+
+            var user = await _db.Accounts
+                .Include(a => a.TwoFactorAuth)
+                .FirstOrDefaultAsync(a => a.AccountID == request.UserId);
+
+            if (user == null)
+            {
+                Console.WriteLine("❌ [ERROR] User not found in database.");
+                return NotFound(new { Message = "User not found." });
+            }
+
+            if (user.TwoFactorAuth == null)
+            {
+                Console.WriteLine("⚠️ [WARNING] User does not have 2FA enabled.");
+                return BadRequest(new { Message = "2FA is not enabled for this user." });
+            }
+
+            Console.WriteLine("✅ [SUCCESS] Resetting 2FA for user " + request.UserId);
+
+            user.TwoFactorAuth.AuthTokenHash = "";
+            user.TwoFactorAuth.CreatedAt = DateTime.UtcNow;
+            user.TwoFactorAuth.ExpiresAt = DateTime.UtcNow.AddMinutes(5);
+
+            await _db.SaveChangesAsync();
+
+            var newToken = await _twoFactorAuthService.Generate2FAToken(user.AccountID);
+
+            Console.WriteLine($"✅ [SUCCESS] New 2FA Code Sent: {newToken}");
+
+            return Ok(new { Message = "2FA reset successful. A new code has been sent.", Token = newToken });
+        }
+
+
+
     }
 }

@@ -5,7 +5,9 @@
   <input type="text" [(ngModel)]="code" placeholder="Enter 2FA Code" required />
 
   <button (click)="verify2FA()">Verify</button>
+  <button (click)="reset2FA()">Reset 2FA Code</button>
 
   <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
 </div>
 <app-footer></app-footer>
