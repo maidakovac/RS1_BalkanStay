@@ -19,13 +19,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 import {AuthRoutingModule} from './modules/auth/auth-routing.module';
-import { ApartmentDetailsComponent } from './modules/public/apartment-details/apartment-details.component';
+import { SearchBoxComponent } from './src/app/modules/shared/search-box/search-box/search-box.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ApartmentDetailsComponent,
+    SearchBoxComponent,
 
   ],
   imports: [
@@ -41,7 +41,7 @@ import { ApartmentDetailsComponent } from './modules/public/apartment-details/ap
     MatButtonModule,
     MatIconModule,
     FormsModule,
-    AuthRoutingModule,
+    AuthRoutingModule
 
   ],
   providers: [

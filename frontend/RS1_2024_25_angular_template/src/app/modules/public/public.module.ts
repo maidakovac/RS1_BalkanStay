@@ -31,7 +31,8 @@ import {SharedModule} from '../shared/shared.module';
     ContactUsComponent,
     HomeComponent,
     PublicLayoutComponent,
-    TravelsComponent
+    TravelsComponent,
+    ApartmentDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +59,8 @@ import {SharedModule} from '../shared/shared.module';
     ContactUsComponent,
     HomeComponent,
     PublicLayoutComponent,
-    TravelsComponent
+    TravelsComponent,
+    ApartmentDetailsComponent
   ]
 })
 export class PublicModule {

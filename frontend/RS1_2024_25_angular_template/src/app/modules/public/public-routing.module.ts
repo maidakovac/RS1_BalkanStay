@@ -6,6 +6,7 @@ import {AboutComponent} from './about/about.component';
 import {BlogComponent} from './blog/blog.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
 import {TravelsComponent} from './travels/travels.component';
+import { ApartmentDetailsComponent } from './apartment-details/apartment-details.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       {path: 'blog', component: BlogComponent},
       {path: 'contact-us', component: ContactUsComponent},
       {path: 'travels', component: TravelsComponent},
+      {path: 'apartment/:id', component:ApartmentDetailsComponent},
       {path: '**', redirectTo: 'home', pathMatch: 'full'}  // Default ruta koja vodi na public
     ]
   }

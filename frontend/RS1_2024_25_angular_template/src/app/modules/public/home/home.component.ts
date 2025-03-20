@@ -276,7 +276,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   K2_odaberiApartment(apartman: Apartment): void {
     this.odabraniApartman = apartman;
-    this.router.navigate(['/apartment', apartman.apartmentId]);
+    this.router.navigate(['/public/apartment', apartman.apartmentId]);
   }
 
   K3_OdaberiPutovanje(polazak: PlaniranaPutovanja) {
