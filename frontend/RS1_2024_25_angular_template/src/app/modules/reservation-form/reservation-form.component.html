@@ -1,0 +1,12 @@
+<p>reservation-form works!</p>
+<form [formGroup]="reservationForm" (ngSubmit)="submitReservation()">
+  <label for="startDate">Check In:</label>
+  <input type="date" id="startDate" formControlName="startDate" />
+
+  <label for="endDate">Check Out:</label>
+  <input type="date" id="endDate" formControlName="endDate" />
+
+  <button type="submit" [disabled]="reservationForm.invalid">
+    Finish
+  </button>
+</form>

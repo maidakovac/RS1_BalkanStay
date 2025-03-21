@@ -23,6 +23,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
 import { ApartmentDetailsComponent } from './apartment-details/apartment-details.component';
 import {SharedModule} from '../shared/shared.module';
+import {ReservationFormComponent} from '../reservation-form/reservation-form.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {SharedModule} from '../shared/shared.module';
     MatAutocompleteModule,
     MatMenu,
     MatMenuTrigger,
-    SharedModule
+    SharedModule,
+    ReservationFormComponent
   ],
   exports: [
     AboutComponent,

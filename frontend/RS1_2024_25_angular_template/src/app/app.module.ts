@@ -19,11 +19,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 import {AuthRoutingModule} from './modules/auth/auth-routing.module';
+import { ReservationFormComponent } from './modules/reservation-form/reservation-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+
 
   ],
   imports: [
@@ -39,7 +41,8 @@ import {AuthRoutingModule} from './modules/auth/auth-routing.module';
     MatButtonModule,
     MatIconModule,
     FormsModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    ReservationFormComponent
 
   ],
   providers: [

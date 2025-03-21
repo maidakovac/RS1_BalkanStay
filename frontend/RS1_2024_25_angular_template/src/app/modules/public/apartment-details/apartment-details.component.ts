@@ -22,6 +22,10 @@ export class ApartmentDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.apartmentId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log("Apartment ID:", this.apartmentId);
+
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id && !isNaN(+id)) {
