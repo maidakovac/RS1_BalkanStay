@@ -84,18 +84,28 @@ namespace RS1_2024_25.API.Controllers
 
         public ActionResult Insert(ReservationInsertVM x)
         {
+            bool isOverlapping = _DbContext.Reservations.Any(r =>
+        r.ApartmentId == x.ApartmentId &&
+        r.Status && // Samo aktivne rezervacije
+        !(r.EndDate < x.StartDate || r.StartDate > x.EndDate) // Provera preklapanja
+    );
+
+            if (isOverlapping)
+            {
+                return BadRequest("Unavailable for these dates!");
+            }
+
             var newReservation = new Reservation()
             {
-                AccountID=x.AccountID,
-                ApartmentId=x.ApartmentId,
-                StartDate=x.StartDate,
-                EndDate=x.EndDate,
-                Status=x.Status
+                AccountID = x.AccountID,
+                ApartmentId = x.ApartmentId,
+                StartDate = x.StartDate,
+                EndDate = x.EndDate,
+                Status = x.Status
             };
 
             _DbContext.Reservations.Add(newReservation);
             _DbContext.SaveChanges();
-
 
             return Ok(newReservation);
         }
@@ -125,5 +135,18 @@ namespace RS1_2024_25.API.Controllers
 
             return Ok(updatedReservation);
         }
+
+
+        [HttpGet("GetOccupiedDates/{apartmentId}")]
+        public IActionResult GetOccupiedDates(int apartmentId)
+        {
+            var occupiedDates = _DbContext.Reservations
+                .Where(r => r.ApartmentId == apartmentId && r.Status)
+                .Select(r => new { r.StartDate, r.EndDate })
+                .ToList();
+
+            return Ok(occupiedDates);
+        }
+
     }
 }

@@ -1,12 +1,19 @@
-<p>reservation-form works!</p>
 <form [formGroup]="reservationForm" (ngSubmit)="submitReservation()">
   <label for="startDate">Check In:</label>
-  <input type="date" id="startDate" formControlName="startDate" />
+  <input type="text"
+         id="startDate"
+         formControlName="startDate"
+         class="form-control"
+         bsDatepicker
+         [datesDisabled]="occupiedDates" [minDate]="minDate"
+
+         (bsValueChange)="onStartDateChange($event)"/>
+
 
   <label for="endDate">Check Out:</label>
-  <input type="date" id="endDate" formControlName="endDate" />
+  <input type="text" id="endDate" formControlName="endDate" class="form-control"
+         bsDatepicker [datesDisabled]="occupiedDates" [minDate]="minDate"
+         [maxDate]="maxCheckOutDate" [minDate]="minCheckOutDate" />
 
-  <button type="submit" [disabled]="reservationForm.invalid">
-    Finish
-  </button>
+  <button type="submit" [disabled]="reservationForm.invalid">Finish</button>
 </form>

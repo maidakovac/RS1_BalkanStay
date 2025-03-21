@@ -1,0 +1,31 @@
+
+.bs-datepicker {
+  background-color: #f8f9fa ;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.bs-datepicker .bs-datepicker-calendar td, .bs-datepicker .bs-datepicker-calendar th {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.bs-datepicker .bs-datepicker-calendar .today {
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+}
+
+.bs-datepicker .bs-datepicker-calendar .day:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+input[bsDatepicker] {
+  width: 200px;
+  height: 40px;
+}
+
+
+
+

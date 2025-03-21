@@ -24,6 +24,9 @@ import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
 import { ApartmentDetailsComponent } from './apartment-details/apartment-details.component';
 import {SharedModule} from '../shared/shared.module';
 import {ReservationFormComponent} from '../reservation-form/reservation-form.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import {ReservationFormComponent} from '../reservation-form/reservation-form.com
     HomeComponent,
     PublicLayoutComponent,
     TravelsComponent,
-    ApartmentDetailsComponent
+    ApartmentDetailsComponent,
+    ReservationFormComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +57,8 @@ import {ReservationFormComponent} from '../reservation-form/reservation-form.com
     MatMenu,
     MatMenuTrigger,
     SharedModule,
-    ReservationFormComponent
+    BsDatepickerModule.forRoot(),
+    ReactiveFormsModule
   ],
   exports: [
     AboutComponent,

@@ -19,8 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 import {AuthRoutingModule} from './modules/auth/auth-routing.module';
-import { ReservationFormComponent } from './modules/reservation-form/reservation-form.component';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -42,7 +41,7 @@ import { ReservationFormComponent } from './modules/reservation-form/reservation
     MatIconModule,
     FormsModule,
     AuthRoutingModule,
-    ReservationFormComponent
+    BsDatepickerModule.forRoot(),
 
   ],
   providers: [
