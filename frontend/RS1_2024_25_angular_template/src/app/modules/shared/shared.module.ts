@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
-import {RouterLink} from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {MyDialogSimpleComponent} from './dialogs/my-dialog-simple/my-dialog-simple.component';
 import {
   MatDialogActions,
@@ -21,6 +21,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {FooterComponent} from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {FooterComponent} from './footer/footer.component';
     MyDialogSimpleComponent,
     MyDialogConfirmComponent,
     MyPageProgressbarComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
 
   ],
   imports: [
@@ -50,7 +52,9 @@ import {FooterComponent} from './footer/footer.component';
     MatDialogModule,
     MatButtonModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    RouterLinkActive,
+    RouterOutlet
   ],
   exports: [
     UnauthorizedComponent, // Omogućavamo ponovno korištenje UnauthorizedComponent
@@ -58,7 +62,8 @@ import {FooterComponent} from './footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     MyPageProgressbarComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
 
   ]
 })
