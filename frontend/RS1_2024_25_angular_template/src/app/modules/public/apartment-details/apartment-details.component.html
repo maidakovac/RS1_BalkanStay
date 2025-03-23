@@ -27,30 +27,28 @@
   </div>
 
 
-  <div class="info-grid">
+  <div class="apartment-details-container">
     <div class="info-column">
       <h3>AMENITIES</h3>
       <ul>
         <li *ngFor="let amenity of apartment.amenities">{{ amenity }}</li>
       </ul>
-    </div>
-
-    <div class="info-column">
       <h3>TOILETRIES</h3>
       <ul>
         <li *ngFor="let toiletry of apartment.toiletries">{{ toiletry }}</li>
       </ul>
-    </div>
-
-    <div class="info-column">
       <h3>RULES</h3>
       <ul>
         <li *ngFor="let rule of apartment.rules">{{ rule }}</li>
       </ul>
     </div>
+
+    <div class="reservation-column">
+      <app-reservation-form [apartmentId]="apartment.apartmentId"></app-reservation-form>
+    </div>
   </div>
 
-  <app-reservation-form [apartmentId]="apartment.apartmentId"></app-reservation-form>
+
 
 </div>
 

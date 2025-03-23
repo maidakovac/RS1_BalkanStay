@@ -1,31 +1,98 @@
+.reservation-container {
+  width: 100%;
+  margin:auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
-.bs-datepicker {
-  background-color: #f8f9fa ;
-  border-radius: 8px;
-  border: 1px solid #ccc;
 }
 
-.bs-datepicker .bs-datepicker-calendar td, .bs-datepicker .bs-datepicker-calendar th {
-  padding: 10px;
-  font-size: 14px;
-}
-
-.bs-datepicker .bs-datepicker-calendar .today {
-  background-color: #007bff;
+.avail {
+  margin-top: 20px;
+  padding: 15px;
+  background: #2e6047;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 25px;
   color: white;
+}
+
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.date-picker-field {
+  width: 100%;
+}
+
+button.submit-btn {
+  background-color: #1a2e35;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button.submit-btn:disabled {
+  background-color: #d6d6d6;
+  cursor: not-allowed;
+}
+
+button.submit-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+mat-datepicker {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+mat-datepicker-toggle {
+  color: #000000;
   border-radius: 50%;
+  padding: 5px;
+  transition: transform 0.3s ease;
 }
 
-.bs-datepicker .bs-datepicker-calendar .day:hover {
-  background-color: #007bff;
-  color: white;
+mat-form-field {
+  width: 100%;
 }
 
-input[bsDatepicker] {
-  width: 200px;
-  height: 40px;
+mat-label {
+  font-weight: bold;
+  color: #333;
 }
 
+mat-input {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+mat-input:focus {
+  outline: none;
+  border-color: #1a2e35;
+}
 
+@media (max-width: 600px) {
+  .reservation-container {
+    padding: 20px;
+  }
 
+  .reservation-form {
+    gap: 15px;
+  }
+
+  button.submit-btn {
+    padding: 8px 16px;
+  }
+}
