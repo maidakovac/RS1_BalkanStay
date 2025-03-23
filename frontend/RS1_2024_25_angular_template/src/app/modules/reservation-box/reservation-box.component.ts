@@ -6,6 +6,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MyAuthService } from '../../services/auth-services/my-auth.service'; 
 
 @Component({
   selector: 'app-reservation-box',
@@ -30,7 +31,8 @@ export class ReservationBoxComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private reservationService: ReservationService
+    private reservationService: ReservationService,
+    private authService: MyAuthService
   ) {
     this.reservationForm = this.fb.group({
       startDate: ['', Validators.required],
@@ -52,7 +54,6 @@ export class ReservationBoxComponent implements OnInit {
     if (!date) return false;
     const normalizedDate = this.normalizeDate(date);
 
-    console.log("Proverava Start Date:", normalizedDate);
 
     const isLastDayOfReservation = this.occupiedDates.some((d, index, array) => {
       const nextDay = new Date(d);
@@ -107,6 +108,7 @@ export class ReservationBoxComponent implements OnInit {
       this.occupiedDates = blockedDates;
     });
   }
+
   onStartDateChange(selectedDate: Date | null) {
     if (!selectedDate) return;
 
@@ -127,15 +129,22 @@ export class ReservationBoxComponent implements OnInit {
       this.reservationForm.controls['endDate'].setValue(null); // resetuje endate ako je manji od start
     }
   }
+
   submitReservation() {
     if (this.reservationForm.valid) {
       const startDate = this.normalizeDate(this.reservationForm.value.startDate);
       const endDate = this.normalizeDate(this.reservationForm.value.endDate);
 
+      // account id mora biti od prijavljenog korisnika
+      const loggedInUser = this.authService.getMyAuthInfo();
+      if (!loggedInUser) {
+        alert('You must be logged in to make a reservation.');
+        return;
+      }
 
       const reservation: Reservation = {
         reservationID: 0,
-        accountID: 1, // Postaviti na ID prijavljenog korisnika
+        accountID: loggedInUser.userId,
         apartmentId: this.apartmentId,
         startDate: startDate.toISOString(),
         endDate: endDate.toISOString(),
@@ -147,5 +156,4 @@ export class ReservationBoxComponent implements OnInit {
       });
     }
   }
-
 }
