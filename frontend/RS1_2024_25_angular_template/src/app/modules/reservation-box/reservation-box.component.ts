@@ -6,7 +6,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MyAuthService } from '../../services/auth-services/my-auth.service'; 
+import { MyAuthService } from '../../services/auth-services/my-auth.service';
 
 @Component({
   selector: 'app-reservation-box',

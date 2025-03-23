@@ -14,8 +14,6 @@ export class ContactService {
     return this.http.post(this.apiUrl, formData);
   }
 
-  getMessages(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:8000/Contact/Get');
-  }
+
 
 }

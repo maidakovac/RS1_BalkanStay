@@ -24,16 +24,6 @@ export class ContactUsComponent implements OnInit {
 
   messages: any[] = [];
 
-  loadMessages() {
-    this.contactService.getMessages().subscribe({
-      next: (data) => {
-        this.messages = data;
-      },
-      error: (err) => {
-        console.error("Error fetching messages:", err);
-      }
-    });
-  }
 
   ngOnInit() {
     // preuzimanje drzava sa REST API-ja
@@ -42,7 +32,6 @@ export class ContactUsComponent implements OnInit {
       this.filteredCountries = this.countries; // Inicijalno prikaži sve države
     });
 
-    this.loadMessages();
   }
 
   // filtriranje drzava dok korisnik kuca
