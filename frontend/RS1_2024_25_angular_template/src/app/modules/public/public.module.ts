@@ -23,7 +23,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
 import { ApartmentDetailsComponent } from './apartment-details/apartment-details.component';
 import {SharedModule} from '../shared/shared.module';
-import {ReservationFormComponent} from '../reservation-form/reservation-form.component';
+import {ReservationBoxComponent} from '../reservation-box/reservation-box.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -58,7 +58,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
     SharedModule,
     BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
-    ReservationFormComponent
+    ReservationBoxComponent
   ],
   exports: [
     AboutComponent,

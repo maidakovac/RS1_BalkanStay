@@ -8,8 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-reservation-form',
-  templateUrl: './reservation-form.component.html',
+  selector: 'app-reservation-box',
+  templateUrl: './reservation-box.component.html',
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -18,9 +18,9 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
   ],
-  styleUrls: ['./reservation-form.component.css']
+  styleUrls: ['./reservation-box.component.css']
 })
-export class ReservationFormComponent implements OnInit {
+export class ReservationBoxComponent implements OnInit {
   @Input() apartmentId!: number;
   reservationForm: FormGroup;
   occupiedDates: Date[] = [];
