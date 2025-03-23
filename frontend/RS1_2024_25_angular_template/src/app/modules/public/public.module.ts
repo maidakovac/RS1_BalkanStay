@@ -36,8 +36,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
     HomeComponent,
     PublicLayoutComponent,
     TravelsComponent,
-    ApartmentDetailsComponent,
-    ReservationFormComponent
+    ApartmentDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +57,8 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
     MatMenuTrigger,
     SharedModule,
     BsDatepickerModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ReservationFormComponent
   ],
   exports: [
     AboutComponent,

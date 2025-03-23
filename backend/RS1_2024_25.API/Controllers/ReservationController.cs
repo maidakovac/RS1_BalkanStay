@@ -81,14 +81,15 @@ namespace RS1_2024_25.API.Controllers
 
 
         [HttpPost] /// INSERT
-
         public ActionResult Insert(ReservationInsertVM x)
         {
+            
             bool isOverlapping = _DbContext.Reservations.Any(r =>
-        r.ApartmentId == x.ApartmentId &&
-        r.Status && // Samo aktivne rezervacije
-        !(r.EndDate < x.StartDate || r.StartDate > x.EndDate) // Provera preklapanja
-    );
+                r.ApartmentId == x.ApartmentId &&
+                r.Status && 
+                !(r.EndDate <= x.StartDate || r.StartDate >= x.EndDate) && 
+                !(r.EndDate == x.StartDate || r.StartDate == x.EndDate) // iskljucujemo prvi i posljednji dan rezervacije
+            );
 
             if (isOverlapping)
             {
@@ -109,7 +110,6 @@ namespace RS1_2024_25.API.Controllers
 
             return Ok(newReservation);
         }
-
 
 
 
