@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RS1_2024_25.API.Data;
 using RS1_2024_25.API.Data.Models;
 using RS1_2024_25.API.Data.Models.Auth;
+using RS1_2024_25.API.DataTransferObjects;
 using RS1_2024_25.API.ViewModel;
 using System.Net.NetworkInformation;
 
@@ -26,17 +27,31 @@ namespace RS1_2024_25.API.Controllers
 
         [HttpGet]
 
-        public ActionResult<List<Reservation>> Get()
+        public ActionResult<List<ReservationDTO>> Get()
         {
             var reservations = _DbContext.Reservations
-                                            .Include(x => x.Apartment)
-                                            .ToList();
+                                 .Include(r => r.Account) // Učitaj Account povezane sa rezervacijom
+                                 .Select(r => new ReservationDTO
+                                 {
+                                     ReservationID = r.ReservationID,
+                                     AccountID = r.AccountID,
+                                     ApartmentId = r.ApartmentId,
+                                     StartDate = r.StartDate,
+                                     EndDate = r.EndDate,
+                                     Status = r.Status,
 
-            if (reservations == null)
+                                     // Dodaj podatke o korisniku
+                                     Username = r.Account.Username,
+                                     Email = r.Account.Email,
+                                     FirstName = r.Account.FirstName,
+                                     LastName = r.Account.LastName
+                                 })
+                                 .ToList();
+
+            if (reservations == null || reservations.Count == 0)
             {
-                return BadRequest();
+                return NotFound("No reservations found.");
             }
-
 
             return Ok(reservations);
         }
