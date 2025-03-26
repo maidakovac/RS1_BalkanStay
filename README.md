@@ -1,20 +1,55 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Balkan Stay - Apartment Reservation System
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+## Overview
+This project is an **Angular** application for searching and booking apartments on the Balkans. Users can explore available apartments, check their details, filter results, and make reservations. The system includes authentication, reservation management, and an integrated search functionality.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Features
+- **Apartment Search & Filtering**: Users can search apartments by location, price, and amenities.
+- **Reservation System**: Users can make reservations, and the system retrieves occupied dates to prevent double booking.
+- **Authentication & Security**: Users can create profiles and log in securely. The system includes **two-factor authentication (2FA)** to enhance security and protect user accounts.
+- **Backend Integration**: Fetches data via API.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+## Technologies Used
+- **Frontend**: Angular, TypeScript, HTML, SCSS
+- **Backend**: ASP.NET Core Web API
+- **Database**: SQL Server
+- **Hosting & DevOps**: Azure DevOps, GitHub
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/maidakovac/RS1_BalkanStay.git
+   cd RS1_BalkanStay
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   ng serve
+   ```
+4. Open the app in your browser: `http://localhost:4200`
+
+## API Configuration
+Ensure your backend API is running and update `environment.ts` with the correct API URL:
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8000/api'
+};
+```
+
+## Deployment
+- The project supports **CI/CD via Azure DevOps**, with automated deployments configured for the frontend and backend.
+- To deploy manually:
+  ```bash
+  ng build --prod
+  ```
+  Deploy the `dist/` folder to the hosting service.
+
+## Contribution
+Feel free to fork this repository, submit issues, or make pull requests to improve the system.
+
+## License
+This project is licensed under the MIT License.
